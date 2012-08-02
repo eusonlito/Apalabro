@@ -19,7 +19,11 @@ class Curl {
 
         curl_setopt($this->connection, CURLOPT_REFERER, $this->server);
         curl_setopt($this->connection, CURLOPT_FAILONERROR, true);
-        curl_setopt($this->connection, CURLOPT_FOLLOWLOCATION, true);
+
+        if (!ini_get('open_basedir') && (strtolower(ini_get('safe_mode')) !== 'on')) {
+            curl_setopt($this->connection, CURLOPT_FOLLOWLOCATION, true);
+        }
+
         curl_setopt($this->connection, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($this->connection, CURLINFO_HEADER_OUT, true);
         curl_setopt($this->connection, CURLOPT_TIMEOUT, 10);
