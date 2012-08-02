@@ -28,15 +28,15 @@
                             <li<?php echo (basename(getenv('SCRIPT_FILENAME')) == 'about.php') ? ' class="active"' : ''; ?>><a href="<?php echo BASE_WWW; ?>about.php">About</a></li>
                         </ul>
 
+                        <?php if ($Api->logged()) { ?>
                         <ul class="nav pull-right">
                             <?php if ($Api->Cache->enabled()) { ?>
                             <li><a href="?<?php echo http_build_query(array('reload' => true) + $_GET); ?>">Reload Cache</a></li>
                             <?php } ?>
 
-                            <?php if ($Api->logged()) { ?>
                             <li><a href="<?php echo BASE_WWW; ?>?logout=true">Logout</a></li>
-                            <?php } ?>
-                        </div>
+                        </ul>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
