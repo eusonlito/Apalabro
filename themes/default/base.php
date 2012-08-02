@@ -24,8 +24,8 @@
 
                     <div class="nav-collapse">
                         <ul class="nav">
-                            <li class="active"><a href="<?php echo BASE_WWW; ?>">Home</a></li>
-                            <li><a href="<?php echo BASE_WWW; ?>about.php">About</a></li>
+                            <li<?php echo (basename(getenv('SCRIPT_FILENAME')) == 'index.php') ? ' class="active"' : ''; ?>><a href="<?php echo BASE_WWW; ?>">Home</a></li>
+                            <li<?php echo (basename(getenv('SCRIPT_FILENAME')) == 'about.php') ? ' class="active"' : ''; ?>><a href="<?php echo BASE_WWW; ?>about.php">About</a></li>
                         </ul>
 
                         <ul class="nav pull-right">
