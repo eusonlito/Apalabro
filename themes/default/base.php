@@ -13,6 +13,7 @@
 
         <script src="<?php echo $Theme->www(); ?>js/jquery.min.js" type="text/javascript"></script>
         <script src="<?php echo $Theme->www(); ?>js/jquery-ui/js/jquery-ui-1.8.22.custom.min.js" type="text/javascript"></script>
+        <script src="<?php echo $Theme->www(); ?>bootstrap/js/bootstrap-dropdown.js" type="text/javascript"></script>
         <script src="<?php echo $Theme->www(); ?>js/scripts.js" type="text/javascript"></script>
     </head>
 
@@ -33,15 +34,32 @@
                             <li<?php echo (basename(getenv('SCRIPT_FILENAME')) == 'about.php') ? ' class="active"' : ''; ?>><a href="<?php echo BASE_WWW; ?>about.php"><?php __e('About'); ?></a></li>
                         </ul>
 
-                        <?php if ($Api->logged()) { ?>
+                        
                         <ul class="nav pull-right">
+                            <?php if ($Api->logged()) { ?>
+
                             <?php if ($Api->Cache->enabled()) { ?>
                             <li><a href="?<?php echo http_build_query(array('reload' => true) + $_GET); ?>"><?php __e('Reload Cache'); ?></a></li>
                             <?php } ?>
 
                             <li><a href="<?php echo BASE_WWW; ?>?logout=true"><?php __e('Logout'); ?></a></li>
+
+                            <?php } ?>
+
+                            <li class="divider-vertical"></li>
+
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php __e('language_'.$Api->getLanguage()); ?> <b class="caret"></b></a>
+
+                                <ul class="dropdown-menu">
+                                    <?php foreach ($Api->getLanguages() as $language) { ?>
+                                    <li<?php ($language === $Api->getLanguage()) ? ' class="active"' : ''; ?>>
+                                        <a href="?<?php echo http_build_query(array('language' => $language) + $_GET); ?>"><?php __e('language_'.$language); ?></a>
+                                    </li>
+                                    <?php } ?>
+                                </ul>
+                            </li>
                         </ul>
-                        <?php } ?>
                     </div>
                 </div>
             </div>

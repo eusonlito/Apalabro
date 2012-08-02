@@ -1,6 +1,4 @@
 <?php
-ini_set('memory_limit', -1);
-
 include (__DIR__.'/Loader-min.php');
 
 if (isset($_GET['reload'])) {

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Apalabro!\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-08-03 01:13+0100\n"
-"PO-Revision-Date: 2012-08-03 01:13+0100\n"
+"PO-Revision-Date: 2012-08-03 01:16+0100\n"
 "Last-Translator: Lito <lito@eordes.com>\n"
 "Language-Team: Lito <lito@eordes.com>\n"
 "Language: \n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: __;__e\n"
 "X-Poedit-Basepath: /home/lito/www/apalabro/\n"
-"X-Poedit-Language: Spanish\n"
+"X-Poedit-Language: English\n"
 "X-Poedit-Country: Spain\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -27,136 +27,136 @@ msgstr "Castellano"
 
 #: libs/Lito/Apalabro/dynamic-strings.php:7
 msgid "Turn"
-msgstr "Turno"
+msgstr ""
 
 #: libs/Lito/Apalabro/dynamic-strings.php:8
 msgid "Waiting"
-msgstr "Esperando"
+msgstr ""
 
 #: libs/Lito/Apalabro/dynamic-strings.php:9
 msgid "Ended"
-msgstr "Finalizadas"
+msgstr ""
 
 #: libs/Lito/Apalabro/dynamic-strings.php:10
 msgid "ACTIVE"
-msgstr "ACTIVO"
+msgstr ""
 
 #: libs/Lito/Apalabro/dynamic-strings.php:11
 msgid "ENDED"
-msgstr "FINALIZADA"
+msgstr ""
 
 #: libs/Lito/Apalabro/dynamic-strings.php:12
 msgid "RESIGN"
-msgstr "RENDICIÓN"
+msgstr ""
 
 #: libs/Lito/Apalabro/dynamic-strings.php:13
 msgid "REJECT"
-msgstr "RECHAZADA"
+msgstr ""
 
 #: libs/Lito/Apalabro/Theme.php:43
 #, php-format
 msgid "Theme path \"%s\" does not exists."
-msgstr "El directorio \"%s\" para este tema no existe."
+msgstr ""
 
 #: libs/Lito/Apalabro/functions.php:67
 msgid "just now"
-msgstr "justo ahora"
+msgstr ""
 
 #: libs/Lito/Apalabro/functions.php:76
 msgid "one minute ago"
-msgstr "hace un minuto"
+msgstr ""
 
 #: libs/Lito/Apalabro/functions.php:78
 #, php-format
 msgid "%s minutes ago"
-msgstr "hace %s minutos"
+msgstr ""
 
 #: libs/Lito/Apalabro/functions.php:80
 msgid "one hour ago"
-msgstr "hace una hora"
+msgstr ""
 
 #: libs/Lito/Apalabro/functions.php:82
 #, php-format
 msgid "%s hours ago"
-msgstr "hace %s horas"
+msgstr ""
 
 #: libs/Lito/Apalabro/functions.php:84
 msgid "yesterday"
-msgstr "ayer"
+msgstr ""
 
 #: libs/Lito/Apalabro/functions.php:86
 #, php-format
 msgid "%s days ago"
-msgstr "hace %s días"
+msgstr ""
 
 #: libs/Lito/Apalabro/functions.php:96
 msgid "in a minute"
-msgstr "en un minuto"
+msgstr ""
 
 #: libs/Lito/Apalabro/functions.php:98
 #, php-format
 msgid "in %s minutes"
-msgstr "en %s minutos"
+msgstr ""
 
 #: libs/Lito/Apalabro/functions.php:100
 msgid "in an hour"
-msgstr "en una hora"
+msgstr ""
 
 #: libs/Lito/Apalabro/functions.php:102
 #, php-format
 msgid "in %s hours"
-msgstr "en %s horas"
+msgstr ""
 
 #: themes/default/game.php:13
 msgid "Your turn"
-msgstr "Tu turno"
+msgstr ""
 
 #: themes/default/game.php:13
 msgid "Opponent turn"
-msgstr "Turno del oponente"
+msgstr ""
 
 #: themes/default/game.php:26
 #, php-format
 msgid "%s tiles to remaining"
-msgstr "%s fichas para finalizar"
+msgstr ""
 
 #: themes/default/game.php:49
 msgid "Suggested words"
-msgstr "Palabras sugeridas"
+msgstr ""
 
 #: themes/default/game.php:53
 #, php-format
 msgid "%s points"
-msgstr "%s puntos"
+msgstr ""
 
 #: themes/default/index.php:12
 msgid "No games here :)"
-msgstr "Ninguna partida aquí :)"
+msgstr ""
 
 #: themes/default/base.php:7
 #: themes/default/base.php:24
 msgid "Apalabro!"
-msgstr "Apalabro!"
+msgstr ""
 
 #: themes/default/base.php:28
 msgid "Home"
-msgstr "Inicio"
+msgstr ""
 
 #: themes/default/base.php:31
 msgid "Game"
-msgstr "Juego"
+msgstr ""
 
 #: themes/default/base.php:34
 msgid "About"
-msgstr "Sobre"
+msgstr ""
 
 #: themes/default/base.php:42
 msgid "Reload Cache"
-msgstr "Actualizar Caché"
+msgstr ""
 
 #: themes/default/base.php:45
 msgid "Logout"
-msgstr "Salir"
+msgstr ""
 
 #: themes/default/base.php:52
 #: themes/default/base.php:57
@@ -165,17 +165,17 @@ msgstr ""
 
 #: themes/default/login.php:11
 msgid "Your username"
-msgstr "Tu usuario"
+msgstr ""
 
 #: themes/default/login.php:14
 msgid "Your password"
-msgstr "Tu contraseña"
+msgstr ""
 
 #: themes/default/login.php:18
 msgid "Login"
-msgstr "Entrar"
+msgstr ""
 
 #: themes/default/about.php:4
 msgid "About Apalabro!"
-msgstr "Sobre Apalabro!"
+msgstr ""
 

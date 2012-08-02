@@ -53,12 +53,10 @@ class Cache {
         $file = $this->file($key);
 
         if (!is_dir(dirname($file))) {
-            mkdir(dirname($file), 0700, true);
+            mkdir(dirname($file), 0755, true);
         }
 
         file_put_contents($file, gzdeflate(serialize($value)));
-
-        chmod($file, 0600);
 
         touch($file, time() + ($expire ?: $this->expire));
 

@@ -23,6 +23,8 @@ if (!$Game) {
     die();
 }
 
+$Api->setLanguage($Game->language);
+
 $words = $Api->solve($Game->id);
 
 $Theme->set('body', basename(__FILE__));
