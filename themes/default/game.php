@@ -15,7 +15,7 @@
         ?></small>
 
         <p>
-            <small class="label"><?php echo $Theme->HumaDate($Game->last_turn->play_date); ?></small>
+            <small class="label"><?php echo $Theme->humanDate($Game->last_turn->play_date); ?></small>
 
             <small class="label label-<?php echo ($Game->my_score > $Game->opponent_score) ? 'success' : 'important'; ?>"><?php
                 echo $Game->my_score.' / '.$Game->opponent_score;

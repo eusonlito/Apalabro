@@ -66,13 +66,14 @@ class Theme {
         return $this->www;
     }
 
-    public function HumaDate ($timestamp)
+    public function humanDate ($timestamp)
     {
         $timestamp = preg_match('/^[0-9]+$/', $timestamp) ? $timestamp : strtotime($timestamp);
+
         // Get time difference and setup arrays
         $difference = time() - $timestamp;
         $periods = array('second', 'minute', 'hour', 'day', 'week', 'month', 'years');
-        $lengths = array('60','60','24','7','4.35','12');
+        $lengths = array('60', '60', '24', '7', '4.35', '12');
 
         // Past or present
         if ($difference >= 0) {
