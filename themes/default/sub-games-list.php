@@ -23,13 +23,13 @@
                 <div class="span9">
                     <h4><a href="<?php echo BASE_WWW; ?>game.php?id=<?php echo $Game->id; ?>"><?php echo $Game->opponent->name; ?></a></h4>
 
-                    <small class="label"><?php echo $Theme->humanDate($Game->last_turn->play_date); ?></small>
+                    <small class="label"><?php echo humanDate($Game->last_turn->play_date); ?></small>
 
                     <strong class="label label-<?php echo ($Game->my_score > $Game->opponent_score) ? 'success' : 'important'; ?>"><?php
                         echo $Game->my_score.' / '.$Game->opponent_score;
                     ?></strong>
 
-                    <p><small><?php echo $Game->remaining_tiles; ?> tiles to remaining</small></p>
+                    <p><small><?php __e('%s tiles to remaining', $Game->remaining_tiles); ?></small></p>
                 </div>
             </div>
         </div>

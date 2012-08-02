@@ -8,14 +8,14 @@
     <div class="span5">
         <form action="<?php echo getenv('REQUEST_URI'); ?>" method="post" class="well">
             <fieldset>
-                <label for="user">Your username</label>
+                <label for="user"><?php __e('Your username'); ?></label>
                 <input type="text" name="user" value="" class="span4" />
 
-                <label for="password">Your password</label>
+                <label for="password"><?php __e('Your password'); ?></label>
                 <input type="password" name="password" value="" class="span4" />
 
                 <div class="form-actions">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary"><?php __e('Login'); ?></button>
               </div>
             </fieldset>
         </form>

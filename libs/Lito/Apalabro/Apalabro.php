@@ -257,6 +257,8 @@ class Apalabro {
             if (($wildcard = array_search('-', $Game->my_rack_tiles)) !== false) {
                 $Game->my_rack_tiles[$wildcard] = '*';
             }
+        } else {
+            $Game->my_rack_tiles = array();
         }
 
         return true;

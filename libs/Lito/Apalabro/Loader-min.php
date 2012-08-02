@@ -5,6 +5,7 @@ define('DOCUMENT_ROOT', preg_replace('#[/\\\]+#', '/', realpath(getenv('DOCUMENT
 define('BASE_PATH', preg_replace('#[/\\\]+#', '/', realpath(__DIR__.'/../../../').'/'));
 define('BASE_WWW', preg_replace('|^'.DOCUMENT_ROOT.'|i', '', BASE_PATH));
 
+require (__DIR__.'/functions.php');
 require (__DIR__.'/Autoload.php');
 
 Autoload::register();

@@ -1,7 +1,7 @@
 <?php defined('BASE_PATH') or die(); ?>
 
 <div class="page-header">
-    <h1>About Apalabro!</h1>
+    <h1><?php __e('About Apalabro!'); ?></h1>
 </div>
 
 <div class="lead">
