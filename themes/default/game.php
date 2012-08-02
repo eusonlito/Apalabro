@@ -5,11 +5,12 @@
         <a href="<?php echo BASE_WWW; ?>">&laquo;</a>
 
         <?php echo $Game->opponent->name; ?>
-
         <small><?php
             echo $Game->game_status;
 
-            if (($Game->game_status !== 'ACTIVE') && $Game->remaining_tiles) {
+            if ($Game->game_status === 'ACTIVE') {
+                echo ' ('.($Game->my_turn ? 'Your' : 'Opponent').' turn)';
+            } else if ($Game->remaining_tiles) {
                 echo ' ('.$Game->last_turn->type.')';
             }
         ?></small>
@@ -46,9 +47,9 @@
     <div class="span3">
         <h3>Suggested words</h3>
 
-        <dl class="dl-horizontal">
+        <dl class="dl-horizontal max-height-500">
             <?php foreach ($words as $points => $words) { ?>
-            <dt>With <?php echo $points; ?> points</dt>
+            <dt><?php echo $points; ?> points</dt>
             <dd><?php echo implode('</dd><dd>', $words); ?></dd>
             <?php } ?>
         </dl>

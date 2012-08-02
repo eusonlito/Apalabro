@@ -109,3 +109,8 @@ table.board tbody td {
 .rack-tiles div {
     margin-right: 20px;
 }
+
+.max-height-500 {
+    max-height: 500px;
+    overflow: auto;
+}

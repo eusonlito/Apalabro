@@ -20,27 +20,23 @@
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container">
-                    <div class="row">
-                        <div class="span10">
-                            <a class="brand" href="<?php echo BASE_WWW; ?>">Apalabro!</a>
+                    <a class="brand" href="<?php echo BASE_WWW; ?>">Apalabro!</a>
 
-                            <div class="nav-collapse">
-                                <ul class="nav">
-                                    <li class="active"><a href="<?php echo BASE_WWW; ?>">Home</a></li>
-                                    <li><a href="<?php echo BASE_WWW; ?>about.php">About</a></li>
+                    <div class="nav-collapse">
+                        <ul class="nav">
+                            <li class="active"><a href="<?php echo BASE_WWW; ?>">Home</a></li>
+                            <li><a href="<?php echo BASE_WWW; ?>about.php">About</a></li>
+                        </ul>
 
-                                    <?php if ($Api->logged()) { ?>
-                                    <li><a href="<?php echo BASE_WWW; ?>?logout=true">Logout</a></li>
-                                    <?php } ?>
-                                </ul>
-                            </div>
+                        <ul class="nav pull-right">
+                            <?php if ($Api->Cache->enabled()) { ?>
+                            <li><a href="?<?php echo http_build_query(array('reload' => true) + $_GET); ?>">Reload Cache</a></li>
+                            <?php } ?>
+
+                            <?php if ($Api->logged()) { ?>
+                            <li><a href="<?php echo BASE_WWW; ?>?logout=true">Logout</a></li>
+                            <?php } ?>
                         </div>
-
-                        <?php if ($Api->Cache->enabled()) { ?>
-                        <div class="span2">
-                            <a href="?<?php echo http_build_query(array('reload' => true) + $_GET); ?>" class="btn">Reload Cache</a>
-                        </div>
-                        <?php } ?>
                     </div>
                 </div>
             </div>
