@@ -11,3 +11,5 @@ __('ACTIVE');
 __('ENDED');
 __('RESIGN');
 __('REJECT');
+__('PENDING_MY_APPROVAL');
+__('PLACE_TILE');

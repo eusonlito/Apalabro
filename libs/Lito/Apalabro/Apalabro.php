@@ -204,6 +204,7 @@ class Apalabro {
 
         $this->games = array(
             'all' => array(),
+            'pending' => array(),
             'active' => array(),
             'endend' => array(),
             'turn' => array(),
@@ -231,6 +232,8 @@ class Apalabro {
                 } else {
                     $this->games['waiting'][$Game->id] = $Game;
                 }
+            } else if ($Game->game_status === 'PENDING_MY_APPROVAL') {
+                $this->games['pending'][$Game->id] = $Game;
             } else {
                 $this->games['ended'][$Game->id] = $Game;
             }

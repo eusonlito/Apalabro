@@ -11,7 +11,7 @@
 
             if ($Game->game_status === 'ACTIVE') {
                 echo ' ('.($Game->my_turn ? __('Your turn') : __('Opponent turn')).')';
-            } else if ($Game->remaining_tiles) {
+            } else if (($Game->game_status !== 'PENDING_MY_APPROVAL') && $Game->remaining_tiles) {
                 echo ' ('.__($Game->last_turn->type).')';
             }
         ?></small>

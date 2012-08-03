@@ -1,7 +1,7 @@
 <?php
 defined('BASE_PATH') or die();
 
-foreach (array('turn', 'waiting', 'ended') as $status) {
+foreach (array('pending', 'turn', 'waiting', 'ended') as $status) {
     echo '<div class="page-header">';
     echo '<h1>'.__(ucfirst($status)).'</h1>';
     echo '</div>';
