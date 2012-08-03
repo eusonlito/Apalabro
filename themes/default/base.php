@@ -10,8 +10,8 @@
 
         <meta name="title" content="<?php __e('Apalabro!'); ?>" />
         <meta property="og:title" content="<?php __e('Apalabro!'); ?>" />
-        <meta name="description" content="<?php __('Play to Apalabrados/Angry Words online!'); ?>" />
-        <meta property="og:description" content="<?php __('Play to Apalabrados/Angry Words online!'); ?>" />
+        <meta name="description" content="<?php __e('Play to Apalabrados/Angry Words online!'); ?>" />
+        <meta property="og:description" content="<?php __e('Play to Apalabrados/Angry Words online!'); ?>" />
         <meta name="image" content="<?php echo $Theme->www(); ?>images/logo.png" />
         <meta property="og:image" content="<?php echo $Theme->www(); ?>images/logo.png" />
 
