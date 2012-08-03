@@ -8,6 +8,7 @@ class Curl {
     private $server = '';
     private $headers = false;
     private $response;
+    private $info;
 
     public $Cache;
     public $Debug;
@@ -56,6 +57,7 @@ class Curl {
         curl_setopt($this->connection, CURLOPT_URL, $remote);
 
         $this->response = curl_exec($this->connection);
+        $this->info = curl_getinfo($this->connection);
 
         if (!$this->response) {
             return '';
@@ -74,10 +76,6 @@ class Curl {
     {
         $cache_key = func_get_args();
 
-        if ($this->Cache->exists($cache_key)) {
-            return $this->Cache->get($cache_key);
-        }
-
         curl_setopt($this->connection, CURLOPT_POST, true);
         curl_setopt($this->connection, CURLOPT_POSTFIELDS, json_encode($data));
 
@@ -85,9 +83,11 @@ class Curl {
 
         curl_setopt($this->connection, CURLOPT_POST, false);
 
-        $this->Cache->set($cache_key, $html);
-
         return $html;
+    }
+
+    public function getInfo () {
+        return $this->info;
     }
 
     public function setCookie ($value)

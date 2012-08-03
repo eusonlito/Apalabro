@@ -432,6 +432,47 @@ class Apalabro {
         return $words;
     }
 
+    public function play ($game, $post)
+    {
+        if (!isset($post['played_tiles']) || !$post['played_tiles']) {
+            return false;
+        }
+
+        if (!$this->games['all'][$game]) {
+            return false;
+        }
+
+        $Game = $this->games['all'][$game];
+
+        if (($Game->game_status !== 'ACTIVE') || !$Game->my_turn) {
+            return false;
+        }
+
+        $played_tiles = '';
+
+        foreach ($post['played_tiles'] as $position => $tile) {
+            $played_tiles[] = strtoupper($tile).'|'.$position;
+        }
+
+        return $this->Curl->post('users/'.$this->user.'/games/'.$Game->id.'/turns', array(
+            'type' => 'PLACE_TILE',
+            'played_tiles' => implode(',', $played_tiles)
+        ));
+    }
+
+    public function turnType ($game, $type, $data = array())
+    {
+        $this->_loggedOrDie();
+
+        if (!isset($this->games['active'][$game])) {
+            return false;
+        }
+
+        $data['type'] = $type;
+
+        return $this->Curl->post('users/'.$this->user.'/games/'.$game.'/turns', $data);
+    }
+
     public function setBoardSpaces ($game)
     {
         if (!$this->games['all'][$game]) {
@@ -505,6 +546,7 @@ class Apalabro {
         }
 
         $word = str_split(strtolower($word));
+        $full = count($compare);
         $used = 0;
         $points = 0;
 
@@ -526,24 +568,11 @@ class Apalabro {
             }
         }
 
-        if ($used === 7) {
+        if (($full === 7) && ($used >= 7) && !$compare) {
             $points += 40;
         }
 
         return $points;
-    }
-
-    public function turnType ($game, $type)
-    {
-        $this->_loggedOrDie();
-
-        if (!isset($this->games['active'][$game])) {
-            return false;
-        }
-
-        $Game = $this->Curl->post('users/'.$this->user.'/games/'.$game.'/turns', array('type' => $type));
-
-        return $Game;
     }
 
     private function loadLanguage ()

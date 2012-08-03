@@ -23,6 +23,16 @@ if (!$Game) {
     die();
 }
 
+if (isset($_POST['play']) && ($_POST['play'] === 'true')) {
+    $success = $Api->play($Game->id, $_POST);
+
+    if ($success) {
+        $Api->reload();
+
+        $Game = $Api->getGame($Game->id);
+    }
+}
+
 $Api->setLanguage($Game->language);
 
 $words = $Api->solve($Game->id);

@@ -29,31 +29,43 @@
 </div>
 
 <div class="row">
-    <div class="span7 tableiro">
-        <table class="board">
-            <?php echo $Api->getBoard($Game->id); ?>
-        </table>
+    <form id="game-form" action="<?php echo getenv('REQUEST_URI'); ?>" method="post" class="form-horizontal">
+        <?php if (($Game->game_status === 'ACTIVE') && $Game->my_turn) { ?>
+        <input type="hidden" name="play" value="true" />
+        <?php } ?>
 
-        <div class="rack-tiles">
-            <?php foreach ($Game->my_rack_tiles as $tile) { ?>
-            <div class="tile-35<?php echo (strstr($tile, '*') === false) ? '' : ' wildcard'; ?>">
-                <span class="letter"><?php echo $tile; ?></span>
-                <span class="points"><?php echo $Api->getWordPoints($tile); ?></span>
+        <div class="span7 relative">
+            <table class="board">
+                <?php echo $Api->getBoard($Game->id); ?>
+            </table>
+
+            <div class="rack-tiles" height="50">
+                <?php foreach ($Game->my_rack_tiles as $tile) { ?>
+                <div class="tile-35<?php echo (strstr($tile, '*') === false) ? '' : ' wildcard'; ?>">
+                    <span class="letter"><?php echo $tile; ?></span>
+                    <span class="points"><?php echo $Api->getWordPoints($tile); ?></span>
+                </div>
+                <?php } ?>
             </div>
+
+            <?php if (($Game->game_status === 'ACTIVE') && $Game->my_turn) { ?>
+            <fieldset class="form-actions">
+                <button type="submit" name="play" value="true" class="btn btn-primary" disabled="disabled"><?php __e('Play!'); ?></button>
+            </fieldset>
             <?php } ?>
         </div>
-    </div>
 
-    <?php if ($words) { ?>
-    <div class="span3">
-        <h3><?php __e('Suggested words'); ?></h3>
+        <?php if ($words) { ?>
+        <div class="span3">
+            <h3><?php __e('Suggested words'); ?></h3>
 
-        <dl class="dl-horizontal max-height-500">
-            <?php foreach ($words as $points => $words) { ?>
-            <dt><?php __e('%s points', $points); ?></dt>
-            <dd><?php echo implode('</dd><dd>', $words); ?></dd>
-            <?php } ?>
-        </dl>
-    </div>
-    <?php } ?>
+            <dl class="dl-horizontal max-height-500">
+                <?php foreach ($words as $points => $words) { ?>
+                <dt><?php __e('%s points', $points); ?></dt>
+                <dd><?php echo implode('</dd><dd>', $words); ?></dd>
+                <?php } ?>
+            </dl>
+        </div>
+        <?php } ?>
+    </form>
 </div>
