@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apalabro!\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-03 14:10+0100\n"
-"PO-Revision-Date: 2012-08-03 14:11+0100\n"
+"POT-Creation-Date: 2012-08-03 20:34+0100\n"
+"PO-Revision-Date: 2012-08-03 20:34+0100\n"
 "Last-Translator: Lito <lito@eordes.com>\n"
 "Language-Team: Lito <lito@eordes.com>\n"
 "Language: \n"
@@ -17,78 +17,49 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: themes/default/base.php:7
-#: themes/default/base.php:26
-msgid "Apalabro!"
-msgstr "Apalabro!"
+#: libs/Lito/Apalabro/dynamic-strings.php:4
+msgid "language_en"
+msgstr "English"
 
-#: themes/default/base.php:30
-msgid "Home"
-msgstr "Inicio"
+#: libs/Lito/Apalabro/dynamic-strings.php:5
+msgid "language_es"
+msgstr "Castellano"
 
-#: themes/default/base.php:33
-msgid "Game"
-msgstr "Juego"
+#: libs/Lito/Apalabro/dynamic-strings.php:7
+msgid "Turn"
+msgstr "Turno"
 
-#: themes/default/base.php:36
-msgid "About"
-msgstr "Sobre"
+#: libs/Lito/Apalabro/dynamic-strings.php:8
+msgid "Waiting"
+msgstr "Esperando"
 
-#: themes/default/base.php:44
-msgid "Reload Cache"
-msgstr "Actualizar Caché"
+#: libs/Lito/Apalabro/dynamic-strings.php:9
+msgid "Ended"
+msgstr "Finalizadas"
 
-#: themes/default/base.php:47
-msgid "Logout"
-msgstr "Salir"
+#: libs/Lito/Apalabro/dynamic-strings.php:10
+msgid "ACTIVE"
+msgstr "ACTIVO"
 
-#: themes/default/base.php:54
-#: themes/default/base.php:59
-msgid "language_"
-msgstr ""
+#: libs/Lito/Apalabro/dynamic-strings.php:11
+msgid "ENDED"
+msgstr "FINALIZADA"
 
-#: themes/default/sub-games-list.php:32
-#: themes/default/game.php:26
-#, php-format
-msgid "%s tiles to remaining"
-msgstr "%s fichas para finalizar"
+#: libs/Lito/Apalabro/dynamic-strings.php:12
+msgid "RESIGN"
+msgstr "RENDICIÓN"
 
-#: themes/default/game.php:13
-msgid "Your turn"
-msgstr "Tu turno"
+#: libs/Lito/Apalabro/dynamic-strings.php:13
+msgid "REJECT"
+msgstr "RECHAZADA"
 
-#: themes/default/game.php:13
-msgid "Opponent turn"
-msgstr "Turno del oponente"
+#: libs/Lito/Apalabro/dynamic-strings.php:14
+msgid "PENDING_MY_APPROVAL"
+msgstr "PENDIENTE DE MI APROBACIÓN"
 
-#: themes/default/game.php:49
-msgid "Suggested words"
-msgstr "Palabras sugeridas"
-
-#: themes/default/game.php:53
-#, php-format
-msgid "%s points"
-msgstr "%s puntos"
-
-#: themes/default/about.php:4
-msgid "About Apalabro!"
-msgstr "Sobre Apalabro!"
-
-#: themes/default/login.php:11
-msgid "Your username"
-msgstr "Tu usuario"
-
-#: themes/default/login.php:14
-msgid "Your password"
-msgstr "Tu contraseña"
-
-#: themes/default/login.php:18
-msgid "Login"
-msgstr "Entrar"
-
-#: themes/default/index.php:12
-msgid "No games here :)"
-msgstr "Ninguna partida aquí :)"
+#: libs/Lito/Apalabro/dynamic-strings.php:15
+msgid "PLACE_TILE"
+msgstr "COLOCAR FICHA"
 
 #: libs/Lito/Apalabro/Theme.php:43
 #, php-format
@@ -144,47 +115,86 @@ msgstr "en una hora"
 msgid "in %s hours"
 msgstr "en %s horas"
 
-#: libs/Lito/Apalabro/dynamic-strings.php:4
-msgid "language_en"
-msgstr "English"
+#: themes/default/game.php:13
+msgid "Your turn"
+msgstr "Tu turno"
 
-#: libs/Lito/Apalabro/dynamic-strings.php:5
-msgid "language_es"
-msgstr "Castellano"
+#: themes/default/game.php:13
+msgid "Opponent turn"
+msgstr "Turno del oponente"
 
-#: libs/Lito/Apalabro/dynamic-strings.php:7
-msgid "Turn"
-msgstr "Turno"
+#: themes/default/game.php:26
+#, php-format
+msgid "%s tiles to remaining"
+msgstr "%s fichas para finalizar"
 
-#: libs/Lito/Apalabro/dynamic-strings.php:8
-msgid "Waiting"
-msgstr "Esperando"
+#: themes/default/game.php:53
+msgid "Play!"
+msgstr "Jugar!"
 
-#: libs/Lito/Apalabro/dynamic-strings.php:9
-msgid "Ended"
-msgstr "Finalizadas"
+#: themes/default/game.php:60
+msgid "Suggested words"
+msgstr "Palabras sugeridas"
 
-#: libs/Lito/Apalabro/dynamic-strings.php:10
-msgid "ACTIVE"
-msgstr "ACTIVO"
+#: themes/default/game.php:64
+#, php-format
+msgid "%s points"
+msgstr "%s puntos"
 
-#: libs/Lito/Apalabro/dynamic-strings.php:11
-msgid "ENDED"
-msgstr "FINALIZADA"
+#: themes/default/index.php:18
+msgid "No games here :)"
+msgstr "Ninguna partida aquí :)"
 
-#: libs/Lito/Apalabro/dynamic-strings.php:12
-msgid "RESIGN"
-msgstr "RENDICIÓN"
+#: themes/default/base.php:7
+#: themes/default/base.php:11
+#: themes/default/base.php:12
+#: themes/default/base.php:40
+msgid "Apalabro!"
+msgstr "Apalabro!"
 
-#: libs/Lito/Apalabro/dynamic-strings.php:13
-msgid "REJECT"
-msgstr "RECHAZADA"
+#: themes/default/base.php:13
+#: themes/default/base.php:14
+msgid "Play to Apalabrados/Angry Words online!"
+msgstr "Juega a Apalabrados en línea!"
 
-#: libs/Lito/Apalabro/dynamic-strings.php:14
-msgid "PENDING_MY_APPROVAL"
-msgstr "PENDIENTE DE MI APROBACIÓN"
+#: themes/default/base.php:44
+msgid "Home"
+msgstr "Inicio"
 
-#: libs/Lito/Apalabro/dynamic-strings.php:15
-msgid "PLACE_TILE"
-msgstr "COLOCAR FICHA"
+#: themes/default/base.php:47
+msgid "Game"
+msgstr "Juego"
+
+#: themes/default/base.php:50
+msgid "About"
+msgstr "Sobre"
+
+#: themes/default/base.php:58
+msgid "Reload Cache"
+msgstr "Actualizar Caché"
+
+#: themes/default/base.php:61
+msgid "Logout"
+msgstr "Salir"
+
+#: themes/default/base.php:68
+#: themes/default/base.php:73
+msgid "language_"
+msgstr ""
+
+#: themes/default/login.php:11
+msgid "Your username"
+msgstr "Tu usuario"
+
+#: themes/default/login.php:14
+msgid "Your password"
+msgstr "Tu contraseña"
+
+#: themes/default/login.php:18
+msgid "Login"
+msgstr "Entrar"
+
+#: themes/default/about.php:4
+msgid "About Apalabro!"
+msgstr "Sobre Apalabro!"
 

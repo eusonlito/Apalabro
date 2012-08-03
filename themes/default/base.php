@@ -8,6 +8,14 @@
 
         <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 
+        <meta name="title" content="<?php __e('Apalabro!'); ?>" />
+        <meta property="og:title" content="<?php __e('Apalabro!'); ?>" />
+        <meta name="description" content="<?php __('Play to Apalabrados/Angry Words online!'); ?>" />
+        <meta property="og:description" content="<?php __('Play to Apalabrados/Angry Words online!'); ?>" />
+        <meta name="image" content="<?php echo $Theme->www(); ?>images/logo.png" />
+        <meta property="og:image" content="<?php echo $Theme->www(); ?>images/logo.png" />
+
+        <link rel="image_src" href="<?php echo $Theme->www(); ?>images/logo.png" />
         <link rel="shortcut icon" href="<?php echo BASE_WWW; ?>favicon.ico" />
 
         <link href="<?php echo $Theme->www(); ?>bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
