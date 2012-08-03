@@ -505,6 +505,7 @@ class Apalabro {
         }
 
         $word = str_split(strtolower($word));
+        $used = 0;
         $points = 0;
 
         foreach ($word as $letter) {
@@ -517,10 +518,16 @@ class Apalabro {
 
                 if (isset($this->words[$letter])) {
                     $points += $this->words[$letter];
+                    ++$used;
                 }
             } else if (isset($this->words[$letter])) {
                 $points += $this->words[$letter];
+                ++$used;
             }
+        }
+
+        if ($used === 7) {
+            $points += 40;
         }
 
         return $points;
