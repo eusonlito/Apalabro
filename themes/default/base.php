@@ -8,6 +8,8 @@
 
         <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 
+        <link rel="shortcut icon" href="<?php echo BASE_WWW; ?>favicon.ico" />
+
         <link href="<?php echo $Theme->www(); ?>bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
         <link href="<?php echo $Theme->www(); ?>css/styles.css" type="text/css" rel="stylesheet" />
 
