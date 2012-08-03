@@ -58,10 +58,7 @@ class Curl {
         $this->response = curl_exec($this->connection);
 
         if (!$this->response) {
-            $this->Debug->show(curl_getinfo($this->connection));
-            $this->Debug->show(curl_error($this->connection));
-
-            die();
+            return '';
         }
 
         $html = json_decode(preg_replace('/>\s+</', '><', str_replace(array("\n", "\r", "\t"), '', $this->response)));
