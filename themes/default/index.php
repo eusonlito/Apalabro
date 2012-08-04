@@ -1,7 +1,7 @@
 <?php
 defined('BASE_PATH') or die();
 
-foreach (array('pending', 'turn', 'waiting', 'ended') as $status) {
+foreach (array('turn', 'waiting', 'pending', 'ended') as $status) {
     $games = $Api->getGames($status);
 
     if (!$games && ($status === 'pending')) {

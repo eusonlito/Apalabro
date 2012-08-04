@@ -2,9 +2,7 @@
 require (__DIR__.'/libs/Lito/Apalabro/Loader.php');
 
 if (!isset($_GET['id'])) {
-    $Theme->set('body', 'sub-message.php');
-
-    $Theme->setMessage('No game ID was received', 'error');
+    $Theme->setMessage(__('No game ID was received'), 'error', true);
 
     include ($Theme->get('base.php'));
 
@@ -14,9 +12,7 @@ if (!isset($_GET['id'])) {
 $Game = $Api->getGame($_GET['id']);
 
 if (!$Game) {
-    $Theme->set('body', 'sub-message.php');
-
-    $Theme->setMessage('This game does not exists', 'error');
+    $Theme->setMessage(__('This game does not exists'), 'error', true);
 
     include ($Theme->get('base.php'));
 
@@ -27,15 +23,23 @@ if (isset($_POST['play']) && ($_POST['play'] === 'true')) {
     $success = $Api->play($Game->id, $_POST);
 
     if ($success) {
+        $Theme->setMessage(__('Your tiles were set successfully'), 'success');
+
         $Api->reload();
 
         $Game = $Api->getGame($Game->id);
+    } else {
+        $Theme->setMessage(__('Sorry but these word is no valid'), 'error');
     }
 }
 
 $Api->setLanguage($Game->language);
 
-$words = $Api->solve($Game->id);
+if ($Game->game_status !== 'ENDED') {
+    $words = $Api->solve($Game->my_rack_tiles);
+} else {
+    $words = array();
+}
 
 $Theme->set('body', basename(__FILE__));
 

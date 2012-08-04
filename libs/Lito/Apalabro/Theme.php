@@ -22,11 +22,12 @@ class Theme {
 
     public function get ($key)
     {
-        if (isset($this->templates[$key]))
-        {
+        if (isset($this->templates[$key])) {
             return $this->path.$this->templates[$key];
-        } else {
+        } else if (is_file($this->path.$key)) {
             return $this->path.$key;
+        } else {
+            return $this->path.'empty.html';
         }
     }
 
@@ -48,11 +49,12 @@ class Theme {
         $this->theme = $theme;
     }
 
-    public function setMessage ($text, $status)
+    public function setMessage ($text, $status, $back = false)
     {
         $this->message = array(
             'text' => $text,
-            'status' => $status
+            'status' => $status,
+            'back' => $back
         );
     }
 

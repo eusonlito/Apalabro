@@ -109,6 +109,8 @@ class Apalabro {
     {
         $this->Cache->reload(true);
         $this->Curl->Cache->reload(true);
+
+        unset($_GET['reload']);
     }
 
     public function clearData ()
@@ -232,7 +234,7 @@ class Apalabro {
                 } else {
                     $this->games['waiting'][$Game->id] = $Game;
                 }
-            } else if ($Game->game_status === 'PENDING_MY_APPROVAL') {
+            } else if (in_array($Game->game_status, array('PENDING_FRIENDS_APPROVAL', 'PENDING_MY_APPROVAL', 'PENDING_FIRST_MOVE'))) {
                 $this->games['pending'][$Game->id] = $Game;
             } else {
                 $this->games['ended'][$Game->id] = $Game;
@@ -291,17 +293,19 @@ class Apalabro {
 
         $Game = &$this->games['all'][$game];
 
-        $tiles = explode(',', $Game->board_tiles);
+        if ($Game->board_tiles) {
+            $tiles = explode(',', $Game->board_tiles);
 
-        $Game->board_tiles = array();
+            $Game->board_tiles = array();
 
-        foreach ($tiles as $tile) {
-            list($letter, $position) = explode('|', $tile);
+            foreach ($tiles as $tile) {
+                list($letter, $position) = explode('|', $tile);
 
-            $Game->board_tiles[$position] = str_replace('-', '*', $letter);
+                $Game->board_tiles[$position] = str_replace('-', '*', $letter);
+            }
+
+            ksort($Game->board_tiles);
         }
-
-        ksort($Game->board_tiles);
 
         if (isset($Game->my_rack_tiles) && $Game->my_rack_tiles) {
             $Game->my_rack_tiles = explode(',', $Game->my_rack_tiles);
@@ -376,35 +380,21 @@ class Apalabro {
         return $board;
     }
 
-    public function solve ($game)
+    public function solve ($tiles)
     {
-        if (!$this->games['all'][$game]) {
+        if (!$tiles) {
             return array();
         }
 
-        if (!isset($this->games['all'][$game]->board_tiles)) {
-            $this->getGame($game);
-        }
-
-        $Game = $this->games['all'][$game];
-
-        if (!isset($Game->my_rack_tiles) || !$Game->my_rack_tiles) {
-            return array();
-        }
-
-        if (strtolower($Game->language) !== $this->language) {
-            return array();
-        }
-
-        if ($this->Cache->exists($Game->my_rack_tiles)) {
-            return $this->Cache->get($Game->my_rack_tiles);
+        if ($this->Cache->exists($tiles)) {
+            return $this->Cache->get($tiles);
         }
 
         $this->loadLanguage();
 
-        $len_tiles = count($Game->my_rack_tiles);
+        $len_tiles = count($tiles);
         $len_dic = count($this->dictionary);
-        $wildcard = in_array('*', $Game->my_rack_tiles);
+        $wildcard = in_array('*', $tiles);
         $words = array();
 
         for ($i = 0; $i < $len_dic; $i++) {
@@ -414,11 +404,11 @@ class Apalabro {
                 continue;
             }
 
-            if (!$this->allInArray(str_split($word), $Game->my_rack_tiles, $wildcard)) {
+            if (!$this->allInArray(str_split_unicode($word), $tiles, $wildcard)) {
                 continue;
             }
 
-            $points = $this->getWordPoints($word, $Game->my_rack_tiles);
+            $points = $this->getWordPoints($word, $tiles);
 
             if (!isset($words[$points]) || !in_array($word, $words[$points])) {
                 $words[$points][] = $word;
@@ -427,7 +417,7 @@ class Apalabro {
 
         krsort($words);
 
-        $this->Cache->set($Game->my_rack_tiles, $words);
+        $this->Cache->set($tiles, $words);
 
         return $words;
     }
@@ -444,7 +434,7 @@ class Apalabro {
 
         $Game = $this->games['all'][$game];
 
-        if (($Game->game_status !== 'ACTIVE') || !$Game->my_turn) {
+        if (!in_array($Game->game_status, array('ACTIVE', 'PENDING_FIRST_MOVE', 'PENDING_MY_APPROVAL')) || !$Game->my_turn) {
             return false;
         }
 
@@ -545,7 +535,7 @@ class Apalabro {
             $this->loadWords();
         }
 
-        $word = str_split(strtolower($word));
+        $word = str_split_unicode(strtolower($word));
         $full = count($compare);
         $used = 0;
         $points = 0;

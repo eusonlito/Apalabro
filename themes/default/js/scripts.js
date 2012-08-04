@@ -44,7 +44,7 @@ $(document).ready(function () {
             }
 
             if ($(this).hasClass('wildcard')) {
-                var letter = prompt('Which letter use?');
+                var letter = prompt(strings['which_letter_use']);
 
                 if (!/^[a-zA-Z\u00C0-\u00ff]+$/.test(letter)) {
                     alert('Letter not valid');
@@ -52,9 +52,13 @@ $(document).ready(function () {
                 }
 
                 $('span.letter', $(this)).html(letter);
+
+                letter = '-' + letter;
+            } else {
+                var letter = $('span.letter', $(this)).html();
             }
 
-            $(this).append('<input type="hidden" id="board-tile-' + position + '" name="played_tiles[' + position + ']" value="' + $('span.letter', $(this)).html() + '" />');
+            $(this).append('<input type="hidden" id="board-tile-' + position + '" name="played_tiles[' + position + ']" value="' + letter + '" />');
 
             $(this).animate({
                 top: snapToHight(this, dropped),
@@ -112,7 +116,11 @@ $(document).ready(function () {
     });
 
     $('#game-form').submit(function () {
-        return playReady();
+        if (!playReady()) {
+            return false;
+        }
+
+        return confirm(strings['play_tiles']);
     });
 });
 
@@ -147,6 +155,10 @@ function playReady () {
     $('table.board td[data-position!=""]').each(function () {
         empty[$(this).data('position')] = true;
     });
+
+    if (empty.length == (15 * 15)) {
+        return (len > 1) ? true : false;
+    }
 
     var valid = false;
     var letter = '';

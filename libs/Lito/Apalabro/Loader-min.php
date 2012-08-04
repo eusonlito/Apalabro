@@ -27,3 +27,6 @@ if (isset($_GET['logout'])) {
 }
 
 $Theme = new \Lito\Apalabro\Theme();
+$Debug = new \Lito\Apalabro\Debug();
+
+$Debug->setDebug(true);

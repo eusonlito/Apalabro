@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apalabro!\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-03 20:34+0100\n"
-"PO-Revision-Date: 2012-08-03 20:34+0100\n"
+"POT-Creation-Date: 2012-08-04 03:06+0100\n"
+"PO-Revision-Date: 2012-08-04 03:07+0100\n"
 "Last-Translator: Lito <lito@eordes.com>\n"
 "Language-Team: Lito <lito@eordes.com>\n"
 "Language: \n"
@@ -16,6 +16,22 @@ msgstr ""
 "X-Poedit-Country: Spain\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
+
+#: game.php:5
+msgid "No game ID was received"
+msgstr "No se ha recibido el ID del juego"
+
+#: game.php:15
+msgid "This game does not exists"
+msgstr "Este juego no existe"
+
+#: game.php:26
+msgid "Your tiles were set successfully"
+msgstr "Tus fichas han sido colocadas correctamente"
+
+#: game.php:32
+msgid "Sorry but these word is no valid"
+msgstr "Lo siento pero esta palabra no es válida"
 
 #: libs/Lito/Apalabro/dynamic-strings.php:4
 msgid "language_en"
@@ -38,30 +54,50 @@ msgid "Ended"
 msgstr "Finalizadas"
 
 #: libs/Lito/Apalabro/dynamic-strings.php:10
+msgid "Pending"
+msgstr "Pendiente"
+
+#: libs/Lito/Apalabro/dynamic-strings.php:11
+msgid "Active"
+msgstr "Activo"
+
+#: libs/Lito/Apalabro/dynamic-strings.php:12
 msgid "ACTIVE"
 msgstr "ACTIVO"
 
-#: libs/Lito/Apalabro/dynamic-strings.php:11
+#: libs/Lito/Apalabro/dynamic-strings.php:13
 msgid "ENDED"
 msgstr "FINALIZADA"
 
-#: libs/Lito/Apalabro/dynamic-strings.php:12
+#: libs/Lito/Apalabro/dynamic-strings.php:14
 msgid "RESIGN"
 msgstr "RENDICIÓN"
 
-#: libs/Lito/Apalabro/dynamic-strings.php:13
+#: libs/Lito/Apalabro/dynamic-strings.php:15
 msgid "REJECT"
 msgstr "RECHAZADA"
 
-#: libs/Lito/Apalabro/dynamic-strings.php:14
+#: libs/Lito/Apalabro/dynamic-strings.php:16
 msgid "PENDING_MY_APPROVAL"
 msgstr "PENDIENTE DE MI APROBACIÓN"
 
-#: libs/Lito/Apalabro/dynamic-strings.php:15
+#: libs/Lito/Apalabro/dynamic-strings.php:17
+msgid "PENDING_FIRST_MOVE"
+msgstr "PENDIENTE DE PRIMER MOVIMIENTO"
+
+#: libs/Lito/Apalabro/dynamic-strings.php:18
+msgid "PENDING_FRIENDS_APPROVAL"
+msgstr "PENDIENTE DE APROBACIÓN DEL RIVAL"
+
+#: libs/Lito/Apalabro/dynamic-strings.php:19
 msgid "PLACE_TILE"
 msgstr "COLOCAR FICHA"
 
-#: libs/Lito/Apalabro/Theme.php:43
+#: libs/Lito/Apalabro/dynamic-strings.php:20
+msgid "PASS"
+msgstr "PASA"
+
+#: libs/Lito/Apalabro/Theme.php:44
 #, php-format
 msgid "Theme path \"%s\" does not exists."
 msgstr "El directorio \"%s\" para este tema no existe."
@@ -123,20 +159,25 @@ msgstr "Tu turno"
 msgid "Opponent turn"
 msgstr "Turno del oponente"
 
-#: themes/default/game.php:26
+#: themes/default/game.php:27
+#, php-format
+msgid "Last turn: %s"
+msgstr "Último turno: %s"
+
+#: themes/default/game.php:30
 #, php-format
 msgid "%s tiles to remaining"
 msgstr "%s fichas para finalizar"
 
-#: themes/default/game.php:53
+#: themes/default/game.php:57
 msgid "Play!"
 msgstr "Jugar!"
 
-#: themes/default/game.php:60
+#: themes/default/game.php:64
 msgid "Suggested words"
 msgstr "Palabras sugeridas"
 
-#: themes/default/game.php:64
+#: themes/default/game.php:68
 #, php-format
 msgid "%s points"
 msgstr "%s puntos"
@@ -148,7 +189,7 @@ msgstr "Ninguna partida aquí :)"
 #: themes/default/base.php:7
 #: themes/default/base.php:11
 #: themes/default/base.php:12
-#: themes/default/base.php:40
+#: themes/default/base.php:55
 msgid "Apalabro!"
 msgstr "Apalabro!"
 
@@ -157,28 +198,28 @@ msgstr "Apalabro!"
 msgid "Play to Apalabrados/Angry Words online!"
 msgstr "Juega a Apalabrados en línea!"
 
-#: themes/default/base.php:44
+#: themes/default/base.php:59
 msgid "Home"
 msgstr "Inicio"
 
-#: themes/default/base.php:47
+#: themes/default/base.php:62
 msgid "Game"
 msgstr "Juego"
 
-#: themes/default/base.php:50
+#: themes/default/base.php:65
 msgid "About"
 msgstr "Sobre"
 
-#: themes/default/base.php:58
+#: themes/default/base.php:73
 msgid "Reload Cache"
 msgstr "Actualizar Caché"
 
-#: themes/default/base.php:61
+#: themes/default/base.php:76
 msgid "Logout"
 msgstr "Salir"
 
-#: themes/default/base.php:68
-#: themes/default/base.php:73
+#: themes/default/base.php:83
+#: themes/default/base.php:88
 msgid "language_"
 msgstr ""
 
@@ -197,4 +238,12 @@ msgstr "Entrar"
 #: themes/default/about.php:4
 msgid "About Apalabro!"
 msgstr "Sobre Apalabro!"
+
+#: themes/default/js/js-strings.php:9
+msgid "Which letter use?"
+msgstr "Que letras quieres usar?"
+
+#: themes/default/js/js-strings.php:10
+msgid "Play this tiles?"
+msgstr "Jugar estas fichas?"
 

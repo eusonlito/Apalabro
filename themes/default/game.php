@@ -11,7 +11,7 @@
 
             if ($Game->game_status === 'ACTIVE') {
                 echo ' ('.($Game->my_turn ? __('Your turn') : __('Opponent turn')).')';
-            } else if (($Game->game_status !== 'PENDING_MY_APPROVAL') && $Game->remaining_tiles) {
+            } else if (isset($Game->last_turn->type) && ($Game->last_turn->type !== 'PLACE_TILE')) {
                 echo ' ('.__($Game->last_turn->type).')';
             }
         ?></small>
@@ -23,14 +23,18 @@
                 echo $Game->my_score.' / '.$Game->opponent_score;
             ?></small>
 
+            <?php if (isset($Game->last_turn->words)) { ?>
+            <small class="label label-info"><?php __e('Last turn: %s', $Game->last_turn->words); ?></small>
+            <?php } ?>
+
             <small class="label label-info"><?php __e('%s tiles to remaining', $Game->remaining_tiles); ?></small>
         </p>
     </h1>
 </div>
 
 <div class="row">
-    <form id="game-form" action="<?php echo getenv('REQUEST_URI'); ?>" method="post" class="form-horizontal">
-        <?php if (($Game->game_status === 'ACTIVE') && $Game->my_turn) { ?>
+    <form id="game-form" action="?id=<?php echo $Game->id; ?>" method="post" class="form-horizontal">
+        <?php if (in_array($Game->game_status, array('ACTIVE', 'PENDING_FIRST_MOVE')) && $Game->my_turn) { ?>
         <input type="hidden" name="play" value="true" />
         <?php } ?>
 
@@ -48,7 +52,7 @@
                 <?php } ?>
             </div>
 
-            <?php if (($Game->game_status === 'ACTIVE') && $Game->my_turn) { ?>
+            <?php if (in_array($Game->game_status, array('ACTIVE', 'PENDING_FIRST_MOVE')) && $Game->my_turn) { ?>
             <fieldset class="form-actions">
                 <button type="submit" name="play" value="true" class="btn btn-primary" disabled="disabled"><?php __e('Play!'); ?></button>
             </fieldset>

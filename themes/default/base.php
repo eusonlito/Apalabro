@@ -30,7 +30,22 @@
         <script src="<?php echo $Theme->www(); ?>js/jquery.min.js" type="text/javascript"></script>
         <script src="<?php echo $Theme->www(); ?>js/jquery-ui/js/jquery-ui-1.8.22.custom.min.js" type="text/javascript"></script>
         <script src="<?php echo $Theme->www(); ?>bootstrap/js/bootstrap-dropdown.js" type="text/javascript"></script>
+
+        <script src="<?php echo $Theme->www(); ?>js/js-strings.php" type="text/javascript"></script>
+
         <script src="<?php echo $Theme->www(); ?>js/scripts.js" type="text/javascript"></script>
+
+        <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-33869691-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+        </script>
     </head>
 
     <body>
@@ -44,7 +59,7 @@
                             <li<?php echo (basename(getenv('SCRIPT_FILENAME')) == 'index.php') ? ' class="active"' : ''; ?>><a href="<?php echo BASE_WWW; ?>"><?php __e('Home'); ?></a></li>
 
                             <?php if (basename(getenv('SCRIPT_FILENAME')) == 'game.php') { ?>
-                            <li class="active"><a href="<?php echo getenv('REQUEST_URI'); ?>"><?php __e('Game'); ?></a></li>
+                            <li class="active"><a href="?id=<?php echo $Game->id; ?>"><?php __e('Game'); ?></a></li>
                             <?php } ?>
 
                             <li<?php echo (basename(getenv('SCRIPT_FILENAME')) == 'about.php') ? ' class="active"' : ''; ?>><a href="<?php echo BASE_WWW; ?>about.php"><?php __e('About'); ?></a></li>
@@ -82,7 +97,10 @@
         </div>
 
         <div class="container">
-            <?php include ($Theme->get('body')); ?>
+            <?php
+            include ($Theme->get('sub-message.php'));
+            include ($Theme->get('body'));
+            ?>
         </div>
     </body>
 </html>

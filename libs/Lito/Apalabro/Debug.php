@@ -21,8 +21,8 @@ class Debug {
         }
     }
 
-    public function setDebug ($debug)
+    public function setDebug ($enable)
     {
-        $this->debug = $debug;
+        $this->enable = $enable;
     }
 }
