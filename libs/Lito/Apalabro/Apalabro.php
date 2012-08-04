@@ -418,15 +418,7 @@ class Apalabro {
             return $this->Cache->get($cache_key);
         }
 
-        $words = $this->searchWithLetters($Game->my_rack_tiles);
-
-        if (false && $this->board_spaces) {
-            foreach ($this->board_spaces as $board_spaces) {
-                $words = array_merge($words, $this->searchWithWords($Game->my_rack_tiles, $board_spaces));
-            }
-        }
-
-        krsort($words);
+        $words = $this->searchWords($Game->my_rack_tiles);
 
         $this->Cache->set($cache_key, $words);
 
@@ -508,7 +500,7 @@ class Apalabro {
                 continue;
             }
 
-            $letter = $Game->board_tiles[$i];
+            $letter = str_replace('*', '', $Game->board_tiles[$i]);
 
             if ($this->board_spaces) {
                 $previous = &$this->board_spaces[count($this->board_spaces) - 1];
@@ -544,7 +536,7 @@ class Apalabro {
         return $this->board_spaces;
     }
 
-    public function searchWithLetters ($tiles) {
+    public function searchWords ($tiles) {
         $this->loadLanguage();
 
         $len_tiles = count($tiles);
@@ -568,23 +560,37 @@ class Apalabro {
                 $words[$points][] = $word;
             }
         }
+
+        krsort($words);
 
         return $words;
     }
 
-    public function searchWithWords ($tiles, $word) {
-        return array();
+    public function searchWordsExpression ($tiles, $expression = '') {
+        if (!$expression) {
+            return array();
+        }
 
         $this->loadLanguage();
 
-        $len_tiles = count($tiles);
+        $expression = strtolower($expression);
+        $expression_tiles = str_split_unicode(preg_replace('/[^a-zñ]/', '', $expression));
+
+        if ($expression_tiles) {
+            $tiles = array_merge($tiles, $expression_tiles);
+        }
+
         $wildcard = in_array('*', $tiles);
         $words = array();
 
         for ($i = 0; $i < $this->dictionary_len; $i++) {
             $word = $this->dictionary[$i];
 
-            if ((strlen($word) > $len_tiles) || (strlen($word) < 2)) {
+            if (strlen($word) < 2) {
+                continue;
+            }
+
+            if (!preg_match('/'.$expression.'/', $word)) {
                 continue;
             }
 
@@ -598,6 +604,8 @@ class Apalabro {
                 $words[$points][] = $word;
             }
         }
+
+        krsort($words);
 
         return $words;
     }

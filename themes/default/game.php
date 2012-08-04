@@ -60,17 +60,41 @@
         </div>
 
         <?php if ($words) { ?>
-        <div class="span3">
-            <h3><?php __e('Suggested words'); ?></h3>
+        <div class="span5 tabbable">
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a href="#tab-suggested-words" data-toggle="tab"><?php __e('Suggested words'); ?></a>
+                </li>
 
-            <!--input type="text" class="filter-words" data-list=".words-list" value="" /-->
+                <li>
+                    <a href="#tab-regular-expression" data-toggle="tab"><?php __e('Regular expression'); ?></a>
+                </li>
+            </ul>
 
-            <dl class="dl-horizontal max-height-500 words-list">
-                <?php foreach ($words as $points => $words) { ?>
-                <dt><?php __e('%s points', $points); ?></dt>
-                <dd><?php echo implode('</dd><dd>', $words); ?></dd>
-                <?php } ?>
-            </dl>
+            <div class="tab-content">
+                <div class="tab-pane active" id="tab-suggested-words">
+                    <div class="control-group">
+                        <input type="text" class="span5 filter-list" data-filtered=".words-list li span" value="" placeholder="<?php __e('Filter suggested words'); ?>">
+                    </div>
+
+                    <ul class="dl-horizontal max-height-500 words-list">
+                        <?php foreach ($words as $points => $words) { ?>
+                        <li class="row-fluid">
+                            <div class="span3"><strong><?php __e('%s points', $points); ?></strong></div>
+                            <div class="span7"><span><?php echo implode('</span><span><br />', $words); ?></span></div>
+                        </li>
+                        <?php } ?>
+                    </ul>
+                </div>
+
+                <div class="tab-pane" id="tab-regular-expression">
+                    <input type="text" class="span5 filter-expression" value="" data-filtered=".words-expression" data-tiles="<?php echo implode(',', $Game->my_rack_tiles); ?>" placeholder="<?php __e('Filter with regular expression'); ?>">
+
+                    <ul class="dl-horizontal max-height-500 words-expression">
+                        <li></li>
+                    </ul>
+                </div>
+            </div>
         </div>
         <?php } ?>
     </form>

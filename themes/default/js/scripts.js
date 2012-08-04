@@ -25,37 +25,65 @@ $(document).ready(function () {
 
         return false;
     });
-/*
-    $('.filter-words').keyup(function() {
-        var filter = $(this).val(), count = 0;
+
+    $('.filter-list').keyup(function (e) {
+        if (e.keyCode == 27) {
+            $(this).val('');
+            $($(this).data('filtered')).show();
+
+            return false;
+        }
+
+        var filter = $(this).val();
         var length = $(this).val().length;
 
-        if (length > 1) {
-            var filter_tags = filter.split(" ");
-
-            $(".filtered li").each(function() {
+        if (length > 0) {
+            $($(this).data('filtered')).each(function () {
                 var $this = $(this);
-                var matches = true;
-                $.each(filter_tags, function(i, a_filter) {
-                    if ($this.text().indexOf(a_filter) === -1) {
-                        matches = false;
-                    }
-                });
-                if (matches) {
-                    $this.removeClass("hidden");
-                    count++;
+
+                if ($this.text().indexOf(filter) != -1) {
+                    $this.show();
                 } else {
-                    $this.addClass("hidden");
+                    $this.hide();
                 }
-            });        
+            });
         } else {
-            $('.filtered li').removeClass("hidden")
-            count++;
+            $($(this).data('filtered')).show();
         }
-        
-        $("#filter-count").text(count);
-    });​
-*/
+    }).keydown(function (e) {
+        if (e.which == 13) {
+            e.preventDefault();
+        }  
+    });
+
+    $('.filter-expression').keyup(function (e) {
+        var $filtered = $($(this).data('filtered'));
+
+        if (e.keyCode == 27) {
+            $(this).val('');
+            $filtered.html('');
+
+            return false;
+        } else if (e.which != 13) {
+            return false;
+        }
+
+        var filter = $(this).val();
+        var length = $(this).val().length;
+
+        if (length > 0) {
+            $.post(BASE_WWW + 'search-words.php', {
+                tiles: $(this).data('tiles'),
+                filter: filter
+            }, function (response) {
+                console.log($(this).data('filtered'));
+                $filtered.html(response);
+            });
+        } else {
+            $filtered.html('');
+        }
+    });
+
     $('.rack-tiles div').draggable({
         cursor: "move",
         revert:  function (dropped) {

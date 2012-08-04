@@ -30,12 +30,15 @@
         <script src="<?php echo $Theme->www(); ?>js/jquery.min.js" type="text/javascript"></script>
         <script src="<?php echo $Theme->www(); ?>js/jquery-ui/js/jquery-ui-1.8.22.custom.min.js" type="text/javascript"></script>
         <script src="<?php echo $Theme->www(); ?>bootstrap/js/bootstrap-dropdown.js" type="text/javascript"></script>
+        <script src="<?php echo $Theme->www(); ?>bootstrap/js/bootstrap-tab.js" type="text/javascript"></script>
 
         <script src="<?php echo $Theme->www(); ?>js/js-strings.php" type="text/javascript"></script>
 
         <script src="<?php echo $Theme->www(); ?>js/scripts.js" type="text/javascript"></script>
 
         <script type="text/javascript">
+        var BASE_WWW = '<?php echo BASE_WWW; ?>';
+
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-33869691-1']);
         _gaq.push(['_trackPageview']);
