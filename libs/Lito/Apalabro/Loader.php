@@ -13,7 +13,7 @@ if (!$Api->logged()) {
     }
 
     if ($logged) {
-        header('Location: '.BASE_WWW);
+        header('Location: '.BASE_WWW.'?reload=1');
         exit;
     } else {
         $Theme->set('body', 'login.php');

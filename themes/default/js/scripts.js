@@ -25,7 +25,37 @@ $(document).ready(function () {
 
         return false;
     });
+/*
+    $('.filter-words').keyup(function() {
+        var filter = $(this).val(), count = 0;
+        var length = $(this).val().length;
 
+        if (length > 1) {
+            var filter_tags = filter.split(" ");
+
+            $(".filtered li").each(function() {
+                var $this = $(this);
+                var matches = true;
+                $.each(filter_tags, function(i, a_filter) {
+                    if ($this.text().indexOf(a_filter) === -1) {
+                        matches = false;
+                    }
+                });
+                if (matches) {
+                    $this.removeClass("hidden");
+                    count++;
+                } else {
+                    $this.addClass("hidden");
+                }
+            });        
+        } else {
+            $('.filtered li').removeClass("hidden")
+            count++;
+        }
+        
+        $("#filter-count").text(count);
+    });​
+*/
     $('.rack-tiles div').draggable({
         cursor: "move",
         revert:  function (dropped) {

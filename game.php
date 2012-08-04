@@ -36,7 +36,7 @@ if (isset($_POST['play']) && ($_POST['play'] === 'true')) {
 $Api->setLanguage($Game->language);
 
 if ($Game->game_status !== 'ENDED') {
-    $words = $Api->solve($Game->my_rack_tiles);
+    $words = $Api->solve($Game->id);
 } else {
     $words = array();
 }

@@ -24,7 +24,7 @@
             ?></small>
 
             <?php if (isset($Game->last_turn->words)) { ?>
-            <small class="label label-info"><?php __e('Last turn: %s', $Game->last_turn->words); ?></small>
+            <small class="label label-info"><?php __e('Last words: %s', str_replace('-', ', ', $Game->last_turn->words)); ?></small>
             <?php } ?>
 
             <small class="label label-info"><?php __e('%s tiles to remaining', $Game->remaining_tiles); ?></small>
@@ -63,7 +63,9 @@
         <div class="span3">
             <h3><?php __e('Suggested words'); ?></h3>
 
-            <dl class="dl-horizontal max-height-500">
+            <!--input type="text" class="filter-words" data-list=".words-list" value="" /-->
+
+            <dl class="dl-horizontal max-height-500 words-list">
                 <?php foreach ($words as $points => $words) { ?>
                 <dt><?php __e('%s points', $points); ?></dt>
                 <dd><?php echo implode('</dd><dd>', $words); ?></dd>
