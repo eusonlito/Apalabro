@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apalabro!\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-05 21:00+0100\n"
-"PO-Revision-Date: 2012-08-05 21:20+0100\n"
+"POT-Creation-Date: 2012-08-05 23:17+0100\n"
+"PO-Revision-Date: 2012-08-05 23:17+0100\n"
 "Last-Translator: Lito <lito@eordes.com>\n"
 "Language-Team: Lito <lito@eordes.com>\n"
 "Language: \n"
@@ -18,7 +18,7 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 
 #: search-words.php:18
-#: themes/default/game.php:93
+#: themes/default/game.php:92
 #, php-format
 msgid "%s points"
 msgstr "%s puntos"
@@ -42,7 +42,7 @@ msgstr "Lo siento pero esta palabra no es válida"
 #: themes/default/base.php:7
 #: themes/default/base.php:11
 #: themes/default/base.php:12
-#: themes/default/base.php:59
+#: themes/default/base.php:61
 msgid "Apalabro!"
 msgstr "Apalabro!"
 
@@ -51,28 +51,28 @@ msgstr "Apalabro!"
 msgid "Play to Apalabrados/Angry Words online!"
 msgstr "Juega a Apalabrados en línea!"
 
-#: themes/default/base.php:63
+#: themes/default/base.php:65
 msgid "Home"
 msgstr "Inicio"
 
-#: themes/default/base.php:66
+#: themes/default/base.php:68
 msgid "Game"
 msgstr "Juego"
 
-#: themes/default/base.php:69
+#: themes/default/base.php:71
 msgid "About"
 msgstr "Sobre"
 
-#: themes/default/base.php:77
+#: themes/default/base.php:79
 msgid "Reload Cache"
 msgstr "Actualizar Caché"
 
-#: themes/default/base.php:80
+#: themes/default/base.php:82
 msgid "Logout"
 msgstr "Salir"
 
-#: themes/default/base.php:87
-#: themes/default/base.php:92
+#: themes/default/base.php:89
+#: themes/default/base.php:94
 msgid "language_"
 msgstr ""
 
@@ -95,41 +95,45 @@ msgstr "Turno del oponente"
 msgid "Last words: %s"
 msgstr "Últimas palabras: %s"
 
-#: themes/default/game.php:59
+#: themes/default/game.php:58
 msgid "Play!"
 msgstr "Jugar!"
 
-#: themes/default/game.php:68
+#: themes/default/game.php:67
 msgid "Do you need help?"
 msgstr "Necesitas ayuda?"
 
-#: themes/default/game.php:69
+#: themes/default/game.php:68
 msgid "I can give you some suggestions ;)"
 msgstr "Puedo darte algunas sugerencias ;)"
 
-#: themes/default/game.php:70
+#: themes/default/game.php:69
 msgid "Yes, please!"
 msgstr "Sí, por favor!"
 
-#: themes/default/game.php:76
+#: themes/default/game.php:75
 msgid "Suggested words"
 msgstr "Palabras sugeridas"
 
-#: themes/default/game.php:80
+#: themes/default/game.php:79
 msgid "Regular expression"
 msgstr "Expresión regular"
 
-#: themes/default/game.php:87
+#: themes/default/game.php:86
 msgid "Filter suggested words"
 msgstr "Filtrar palabras sugeridas"
 
-#: themes/default/game.php:104
+#: themes/default/game.php:103
 msgid "Filter with regular expression"
 msgstr "Filtrar con expresión regular"
 
-#: themes/default/game.php:106
+#: themes/default/game.php:105
 msgid "Search"
 msgstr "Buscar"
+
+#: themes/default/game.php:107
+msgid "Help"
+msgstr "Ayuda"
 
 #: themes/default/about.php:4
 msgid "About Apalabro!"
@@ -162,6 +166,10 @@ msgstr "Jugar estas fichas?"
 #: themes/default/js/js-strings.php:11
 msgid "Waiting for reply..."
 msgstr "Esperando respuesta..."
+
+#: themes/default/js/js-strings.php:12
+msgid "No results for your query"
+msgstr "Sin resultados para tu consulta"
 
 #: libs/Lito/Apalabro/Theme.php:44
 #, php-format

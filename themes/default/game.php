@@ -103,6 +103,8 @@
                         <input type="text" name="filter" value="" class="input-large search-query" placeholder="<?php __e('Filter with regular expression'); ?>">
 
                         <button type="submit" class="btn btn-info"><?php __e('Search'); ?></button>
+
+                        <a href="http://www.phpf1.com/tutorial/php-regular-expression.html" class="btn btn-success pull-right" target="_blank"><?php __e('Help'); ?></a>
                     </form>
 
                     <ul class="dl-horizontal max-height-500 words-expression">
