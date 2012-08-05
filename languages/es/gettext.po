@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Apalabro!\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-08-05 21:00+0100\n"
-"PO-Revision-Date: 2012-08-05 21:00+0100\n"
+"PO-Revision-Date: 2012-08-05 21:20+0100\n"
 "Last-Translator: Lito <lito@eordes.com>\n"
 "Language-Team: Lito <lito@eordes.com>\n"
 "Language: \n"
@@ -109,7 +109,7 @@ msgstr "Puedo darte algunas sugerencias ;)"
 
 #: themes/default/game.php:70
 msgid "Yes, please!"
-msgstr "Sí, gracias!"
+msgstr "Sí, por favor!"
 
 #: themes/default/game.php:76
 msgid "Suggested words"
