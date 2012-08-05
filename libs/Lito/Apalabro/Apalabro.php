@@ -48,6 +48,11 @@ class Apalabro {
         }
     }
 
+    public function getLanguage ()
+    {
+        return $this->language;
+    }
+
     public function debug ($text, $info = true)
     {
         $this->Debug->show($text, $info);

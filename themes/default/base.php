@@ -21,11 +21,13 @@
         <link href="<?php echo $Theme->www(); ?>bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
         <link href="<?php echo $Theme->www(); ?>css/styles.css" type="text/css" rel="stylesheet" />
 
+        <?php if ($Api->getLanguage()) { ?>
         <style>
         table.board {
-            background: url('languages/<?php echo $Gettext->getLanguage(); ?>/board.png') no-repeat;
+            background: url('languages/<?php echo $Api->getLanguage(); ?>/board.png') no-repeat;
         }
         </style>
+        <?php } ?>
 
         <script src="<?php echo $Theme->www(); ?>js/jquery.min.js" type="text/javascript"></script>
         <script src="<?php echo $Theme->www(); ?>js/jquery-ui/js/jquery-ui-1.8.22.custom.min.js" type="text/javascript"></script>

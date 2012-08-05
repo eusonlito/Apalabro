@@ -3,6 +3,7 @@ defined('BASE_PATH') or die();
 
 __('language_en');
 __('language_es');
+__('language_gl');
 
 __('Turn');
 __('Waiting');

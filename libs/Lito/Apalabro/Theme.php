@@ -63,6 +63,11 @@ class Theme {
         return $this->message;
     }
 
+    public function path ()
+    {
+        return $this->path;
+    }
+
     public function www ()
     {
         return $this->www;

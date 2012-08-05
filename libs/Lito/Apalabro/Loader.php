@@ -16,6 +16,14 @@ if (!$Api->logged()) {
         header('Location: '.BASE_WWW.'?reload=1');
         exit;
     } else {
+        $language = $Gettext->getLanguage();
+
+        if (is_file(BASE_PATH.'languages/'.$language.'/board.png')) {
+            $Api->setLanguage($language);
+        } else {
+            $Api->setLanguage('es');
+        }
+
         $Theme->set('body', 'login.php');
 
         include ($Theme->get('base.php'));

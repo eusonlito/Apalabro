@@ -25,19 +25,19 @@ msgstr "%s puntos"
 
 #: game-check.php:5
 msgid "No game ID was received"
-msgstr "No se ha recibido el ID del juego"
+msgstr "Non se recibiu o ID da partida"
 
 #: game-check.php:15
 msgid "This game does not exists"
-msgstr "Este juego no existe"
+msgstr "Esta partida non existe"
 
 #: game.php:12
 msgid "Your tiles were set successfully"
-msgstr "Tus fichas han sido colocadas correctamente"
+msgstr "As fichas colocáronse correctamente"
 
 #: game.php:18
 msgid "Sorry but these word is no valid"
-msgstr "Lo siento pero esta palabra no es válida"
+msgstr "Recoiros, a palabra que escolleches non parece valer"
 
 #: themes/default/base.php:7
 #: themes/default/base.php:11
@@ -49,15 +49,15 @@ msgstr "Apalabro!"
 #: themes/default/base.php:13
 #: themes/default/base.php:14
 msgid "Play to Apalabrados/Angry Words online!"
-msgstr "Juega a Apalabrados en línea!"
+msgstr "Xoga a Apalabrados en liña!"
 
 #: themes/default/base.php:63
 msgid "Home"
-msgstr "Inicio"
+msgstr "Comezo"
 
 #: themes/default/base.php:66
 msgid "Game"
-msgstr "Juego"
+msgstr "Partida"
 
 #: themes/default/base.php:69
 msgid "About"
@@ -69,7 +69,7 @@ msgstr "Actualizar Caché"
 
 #: themes/default/base.php:80
 msgid "Logout"
-msgstr "Salir"
+msgstr "Saír"
 
 #: themes/default/base.php:87
 #: themes/default/base.php:92
@@ -80,15 +80,15 @@ msgstr ""
 #: themes/default/game.php:32
 #, php-format
 msgid "%s tiles to remaining"
-msgstr "%s fichas para finalizar"
+msgstr "%s fichas para rematar"
 
 #: themes/default/game.php:13
 msgid "Your turn"
-msgstr "Tu turno"
+msgstr "O teu turno"
 
 #: themes/default/game.php:13
 msgid "Opponent turn"
-msgstr "Turno del oponente"
+msgstr "Turno do oponente"
 
 #: themes/default/game.php:29
 #, php-format
@@ -97,15 +97,15 @@ msgstr "Últimas palabras: %s"
 
 #: themes/default/game.php:59
 msgid "Play!"
-msgstr "Jugar!"
+msgstr "Xogar!"
 
 #: themes/default/game.php:68
 msgid "Do you need help?"
-msgstr "Necesitas ayuda?"
+msgstr "Precisas axuda?"
 
 #: themes/default/game.php:69
 msgid "I can give you some suggestions ;)"
-msgstr "Puedo darte algunas sugerencias ;)"
+msgstr "Se o precisas podo darche algunhas suxerencias ;)"
 
 #: themes/default/game.php:70
 msgid "Yes, please!"
@@ -113,7 +113,7 @@ msgstr "Sí, gracias!"
 
 #: themes/default/game.php:76
 msgid "Suggested words"
-msgstr "Palabras sugeridas"
+msgstr "Palabras suxeridas"
 
 #: themes/default/game.php:80
 msgid "Regular expression"
@@ -121,7 +121,7 @@ msgstr "Expresión regular"
 
 #: themes/default/game.php:87
 msgid "Filter suggested words"
-msgstr "Filtrar palabras sugeridas"
+msgstr "Filtrar as palabras suxeridas"
 
 #: themes/default/game.php:104
 msgid "Filter with regular expression"
@@ -137,11 +137,11 @@ msgstr "Sobre Apalabro!"
 
 #: themes/default/login.php:11
 msgid "Your username"
-msgstr "Tu usuario"
+msgstr "O teu usuario"
 
 #: themes/default/login.php:14
 msgid "Your password"
-msgstr "Tu contraseña"
+msgstr "O teu contrasinal"
 
 #: themes/default/login.php:18
 msgid "Login"
@@ -149,15 +149,15 @@ msgstr "Entrar"
 
 #: themes/default/index.php:18
 msgid "No games here :)"
-msgstr "Ninguna partida aquí :)"
+msgstr "Ningunha partida aquí :)"
 
 #: themes/default/js/js-strings.php:9
 msgid "Which letter use?"
-msgstr "Que letras quieres usar?"
+msgstr "Que letras queres usar?"
 
 #: themes/default/js/js-strings.php:10
 msgid "Play this tiles?"
-msgstr "Jugar estas fichas?"
+msgstr "Xogar estas fichas?"
 
 #: themes/default/js/js-strings.php:11
 msgid "Waiting for reply..."
@@ -166,42 +166,42 @@ msgstr "Esperando respuesta..."
 #: libs/Lito/Apalabro/Theme.php:44
 #, php-format
 msgid "Theme path \"%s\" does not exists."
-msgstr "El directorio \"%s\" para este tema no existe."
+msgstr "O directorio \"%s\" para este tema non existe."
 
 #: libs/Lito/Apalabro/functions.php:59
 msgid "just now"
-msgstr "justo ahora"
+msgstr "xusto agora"
 
 #: libs/Lito/Apalabro/functions.php:68
 msgid "one minute ago"
-msgstr "hace un minuto"
+msgstr "hai un minuto"
 
 #: libs/Lito/Apalabro/functions.php:70
 #, php-format
 msgid "%s minutes ago"
-msgstr "hace %s minutos"
+msgstr "hai %s minutos"
 
 #: libs/Lito/Apalabro/functions.php:72
 msgid "one hour ago"
-msgstr "hace una hora"
+msgstr "hai unha hora"
 
 #: libs/Lito/Apalabro/functions.php:74
 #, php-format
 msgid "%s hours ago"
-msgstr "hace %s horas"
+msgstr "hai %s horas"
 
 #: libs/Lito/Apalabro/functions.php:76
 msgid "yesterday"
-msgstr "ayer"
+msgstr "onte"
 
 #: libs/Lito/Apalabro/functions.php:78
 #, php-format
 msgid "%s days ago"
-msgstr "hace %s días"
+msgstr "hai %s días"
 
 #: libs/Lito/Apalabro/functions.php:88
 msgid "in a minute"
-msgstr "en un minuto"
+msgstr "nun minuto"
 
 #: libs/Lito/Apalabro/functions.php:90
 #, php-format
@@ -210,7 +210,7 @@ msgstr "en %s minutos"
 
 #: libs/Lito/Apalabro/functions.php:92
 msgid "in an hour"
-msgstr "en una hora"
+msgstr "nunha hora"
 
 #: libs/Lito/Apalabro/functions.php:94
 #, php-format
@@ -235,15 +235,15 @@ msgstr "Turno"
 
 #: libs/Lito/Apalabro/dynamic-strings.php:9
 msgid "Waiting"
-msgstr "Esperando"
+msgstr "Agardando"
 
 #: libs/Lito/Apalabro/dynamic-strings.php:10
 msgid "Ended"
-msgstr "Finalizadas"
+msgstr "Rematadas"
 
 #: libs/Lito/Apalabro/dynamic-strings.php:11
 msgid "Pending"
-msgstr "Pendiente"
+msgstr "Pentente"
 
 #: libs/Lito/Apalabro/dynamic-strings.php:12
 msgid "Active"
@@ -255,7 +255,7 @@ msgstr "ACTIVO"
 
 #: libs/Lito/Apalabro/dynamic-strings.php:14
 msgid "ENDED"
-msgstr "FINALIZADA"
+msgstr "REMATADA"
 
 #: libs/Lito/Apalabro/dynamic-strings.php:15
 msgid "RESIGN"
@@ -263,19 +263,19 @@ msgstr "RENDICIÓN"
 
 #: libs/Lito/Apalabro/dynamic-strings.php:16
 msgid "REJECT"
-msgstr "RECHAZADA"
+msgstr "REXEITADA"
 
 #: libs/Lito/Apalabro/dynamic-strings.php:17
 msgid "PENDING_MY_APPROVAL"
-msgstr "PENDIENTE DE MI APROBACIÓN"
+msgstr "PENDIENTE DA MIÑA APROBACIÓN"
 
 #: libs/Lito/Apalabro/dynamic-strings.php:18
 msgid "PENDING_FIRST_MOVE"
-msgstr "PENDIENTE DE PRIMER MOVIMIENTO"
+msgstr "PENDIENTE DO PRIMEIRO MOVEMENTO"
 
 #: libs/Lito/Apalabro/dynamic-strings.php:19
 msgid "PENDING_FRIENDS_APPROVAL"
-msgstr "PENDIENTE DE APROBACIÓN DEL RIVAL"
+msgstr "PENDIENTE DE APROBACIÓN DO RIVAL"
 
 #: libs/Lito/Apalabro/dynamic-strings.php:20
 msgid "PLACE_TILE"

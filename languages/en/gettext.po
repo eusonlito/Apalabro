@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apalabro!\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-03 01:13+0100\n"
-"PO-Revision-Date: 2012-08-03 01:16+0100\n"
+"POT-Creation-Date: 2012-08-05 21:01+0100\n"
+"PO-Revision-Date: 2012-08-05 21:01+0100\n"
 "Last-Translator: Lito <lito@eordes.com>\n"
 "Language-Team: Lito <lito@eordes.com>\n"
 "Language: \n"
@@ -17,94 +17,69 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: libs/Lito/Apalabro/dynamic-strings.php:4
-msgid "language_en"
-msgstr "English"
-
-#: libs/Lito/Apalabro/dynamic-strings.php:5
-msgid "language_es"
-msgstr "Castellano"
-
-#: libs/Lito/Apalabro/dynamic-strings.php:7
-msgid "Turn"
-msgstr ""
-
-#: libs/Lito/Apalabro/dynamic-strings.php:8
-msgid "Waiting"
-msgstr ""
-
-#: libs/Lito/Apalabro/dynamic-strings.php:9
-msgid "Ended"
-msgstr ""
-
-#: libs/Lito/Apalabro/dynamic-strings.php:10
-msgid "ACTIVE"
-msgstr ""
-
-#: libs/Lito/Apalabro/dynamic-strings.php:11
-msgid "ENDED"
-msgstr ""
-
-#: libs/Lito/Apalabro/dynamic-strings.php:12
-msgid "RESIGN"
-msgstr ""
-
-#: libs/Lito/Apalabro/dynamic-strings.php:13
-msgid "REJECT"
-msgstr ""
-
-#: libs/Lito/Apalabro/Theme.php:43
+#: search-words.php:18
+#: themes/default/game.php:93
 #, php-format
-msgid "Theme path \"%s\" does not exists."
+msgid "%s points"
 msgstr ""
 
-#: libs/Lito/Apalabro/functions.php:67
-msgid "just now"
+#: game-check.php:5
+msgid "No game ID was received"
 msgstr ""
 
-#: libs/Lito/Apalabro/functions.php:76
-msgid "one minute ago"
+#: game-check.php:15
+msgid "This game does not exists"
 msgstr ""
 
-#: libs/Lito/Apalabro/functions.php:78
+#: game.php:12
+msgid "Your tiles were set successfully"
+msgstr ""
+
+#: game.php:18
+msgid "Sorry but these word is no valid"
+msgstr ""
+
+#: themes/default/base.php:7
+#: themes/default/base.php:11
+#: themes/default/base.php:12
+#: themes/default/base.php:59
+msgid "Apalabro!"
+msgstr ""
+
+#: themes/default/base.php:13
+#: themes/default/base.php:14
+msgid "Play to Apalabrados/Angry Words online!"
+msgstr ""
+
+#: themes/default/base.php:63
+msgid "Home"
+msgstr ""
+
+#: themes/default/base.php:66
+msgid "Game"
+msgstr ""
+
+#: themes/default/base.php:69
+msgid "About"
+msgstr ""
+
+#: themes/default/base.php:77
+msgid "Reload Cache"
+msgstr ""
+
+#: themes/default/base.php:80
+msgid "Logout"
+msgstr ""
+
+#: themes/default/base.php:87
+#: themes/default/base.php:92
+msgid "language_"
+msgstr ""
+
+#: themes/default/sub-games-list.php:35
+#: themes/default/game.php:32
 #, php-format
-msgid "%s minutes ago"
-msgstr ""
-
-#: libs/Lito/Apalabro/functions.php:80
-msgid "one hour ago"
-msgstr ""
-
-#: libs/Lito/Apalabro/functions.php:82
-#, php-format
-msgid "%s hours ago"
-msgstr ""
-
-#: libs/Lito/Apalabro/functions.php:84
-msgid "yesterday"
-msgstr ""
-
-#: libs/Lito/Apalabro/functions.php:86
-#, php-format
-msgid "%s days ago"
-msgstr ""
-
-#: libs/Lito/Apalabro/functions.php:96
-msgid "in a minute"
-msgstr ""
-
-#: libs/Lito/Apalabro/functions.php:98
-#, php-format
-msgid "in %s minutes"
-msgstr ""
-
-#: libs/Lito/Apalabro/functions.php:100
-msgid "in an hour"
-msgstr ""
-
-#: libs/Lito/Apalabro/functions.php:102
-#, php-format
-msgid "in %s hours"
+msgid "%s tiles to remaining"
 msgstr ""
 
 #: themes/default/game.php:13
@@ -115,52 +90,49 @@ msgstr ""
 msgid "Opponent turn"
 msgstr ""
 
-#: themes/default/game.php:26
+#: themes/default/game.php:29
 #, php-format
-msgid "%s tiles to remaining"
+msgid "Last words: %s"
 msgstr ""
 
-#: themes/default/game.php:49
+#: themes/default/game.php:59
+msgid "Play!"
+msgstr ""
+
+#: themes/default/game.php:68
+msgid "Do you need help?"
+msgstr ""
+
+#: themes/default/game.php:69
+msgid "I can give you some suggestions ;)"
+msgstr ""
+
+#: themes/default/game.php:70
+msgid "Yes, please!"
+msgstr ""
+
+#: themes/default/game.php:76
 msgid "Suggested words"
 msgstr ""
 
-#: themes/default/game.php:53
-#, php-format
-msgid "%s points"
+#: themes/default/game.php:80
+msgid "Regular expression"
 msgstr ""
 
-#: themes/default/index.php:12
-msgid "No games here :)"
+#: themes/default/game.php:87
+msgid "Filter suggested words"
 msgstr ""
 
-#: themes/default/base.php:7
-#: themes/default/base.php:24
-msgid "Apalabro!"
+#: themes/default/game.php:104
+msgid "Filter with regular expression"
 msgstr ""
 
-#: themes/default/base.php:28
-msgid "Home"
+#: themes/default/game.php:106
+msgid "Search"
 msgstr ""
 
-#: themes/default/base.php:31
-msgid "Game"
-msgstr ""
-
-#: themes/default/base.php:34
-msgid "About"
-msgstr ""
-
-#: themes/default/base.php:42
-msgid "Reload Cache"
-msgstr ""
-
-#: themes/default/base.php:45
-msgid "Logout"
-msgstr ""
-
-#: themes/default/base.php:52
-#: themes/default/base.php:57
-msgid "language_"
+#: themes/default/about.php:4
+msgid "About Apalabro!"
 msgstr ""
 
 #: themes/default/login.php:11
@@ -175,7 +147,141 @@ msgstr ""
 msgid "Login"
 msgstr ""
 
-#: themes/default/about.php:4
-msgid "About Apalabro!"
+#: themes/default/index.php:18
+msgid "No games here :)"
+msgstr ""
+
+#: themes/default/js/js-strings.php:9
+msgid "Which letter use?"
+msgstr ""
+
+#: themes/default/js/js-strings.php:10
+msgid "Play this tiles?"
+msgstr ""
+
+#: themes/default/js/js-strings.php:11
+msgid "Waiting for reply..."
+msgstr ""
+
+#: libs/Lito/Apalabro/Theme.php:44
+#, php-format
+msgid "Theme path \"%s\" does not exists."
+msgstr ""
+
+#: libs/Lito/Apalabro/functions.php:59
+msgid "just now"
+msgstr ""
+
+#: libs/Lito/Apalabro/functions.php:68
+msgid "one minute ago"
+msgstr ""
+
+#: libs/Lito/Apalabro/functions.php:70
+#, php-format
+msgid "%s minutes ago"
+msgstr ""
+
+#: libs/Lito/Apalabro/functions.php:72
+msgid "one hour ago"
+msgstr ""
+
+#: libs/Lito/Apalabro/functions.php:74
+#, php-format
+msgid "%s hours ago"
+msgstr ""
+
+#: libs/Lito/Apalabro/functions.php:76
+msgid "yesterday"
+msgstr ""
+
+#: libs/Lito/Apalabro/functions.php:78
+#, php-format
+msgid "%s days ago"
+msgstr ""
+
+#: libs/Lito/Apalabro/functions.php:88
+msgid "in a minute"
+msgstr ""
+
+#: libs/Lito/Apalabro/functions.php:90
+#, php-format
+msgid "in %s minutes"
+msgstr ""
+
+#: libs/Lito/Apalabro/functions.php:92
+msgid "in an hour"
+msgstr ""
+
+#: libs/Lito/Apalabro/functions.php:94
+#, php-format
+msgid "in %s hours"
+msgstr ""
+
+#: libs/Lito/Apalabro/dynamic-strings.php:4
+msgid "language_en"
+msgstr "English"
+
+#: libs/Lito/Apalabro/dynamic-strings.php:5
+msgid "language_es"
+msgstr "Castellano"
+
+#: libs/Lito/Apalabro/dynamic-strings.php:6
+msgid "language_gl"
+msgstr "Galego"
+
+#: libs/Lito/Apalabro/dynamic-strings.php:8
+msgid "Turn"
+msgstr ""
+
+#: libs/Lito/Apalabro/dynamic-strings.php:9
+msgid "Waiting"
+msgstr ""
+
+#: libs/Lito/Apalabro/dynamic-strings.php:10
+msgid "Ended"
+msgstr ""
+
+#: libs/Lito/Apalabro/dynamic-strings.php:11
+msgid "Pending"
+msgstr ""
+
+#: libs/Lito/Apalabro/dynamic-strings.php:12
+msgid "Active"
+msgstr ""
+
+#: libs/Lito/Apalabro/dynamic-strings.php:13
+msgid "ACTIVE"
+msgstr ""
+
+#: libs/Lito/Apalabro/dynamic-strings.php:14
+msgid "ENDED"
+msgstr ""
+
+#: libs/Lito/Apalabro/dynamic-strings.php:15
+msgid "RESIGN"
+msgstr ""
+
+#: libs/Lito/Apalabro/dynamic-strings.php:16
+msgid "REJECT"
+msgstr ""
+
+#: libs/Lito/Apalabro/dynamic-strings.php:17
+msgid "PENDING_MY_APPROVAL"
+msgstr ""
+
+#: libs/Lito/Apalabro/dynamic-strings.php:18
+msgid "PENDING_FIRST_MOVE"
+msgstr ""
+
+#: libs/Lito/Apalabro/dynamic-strings.php:19
+msgid "PENDING_FRIENDS_APPROVAL"
+msgstr ""
+
+#: libs/Lito/Apalabro/dynamic-strings.php:20
+msgid "PLACE_TILE"
+msgstr ""
+
+#: libs/Lito/Apalabro/dynamic-strings.php:21
+msgid "PASS"
 msgstr ""
 
