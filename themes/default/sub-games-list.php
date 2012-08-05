@@ -1,7 +1,10 @@
 <?php defined('BASE_PATH') or die(); ?>
 
 <div class="row">
-    <?php foreach ($games as $Game) { ?>
+    <?php
+    foreach ($games as $Game) {
+        $Api->setLanguage($Game->language);
+    ?>
     <div class="span4">
         <div class="well">
             <div class="row-fluid">

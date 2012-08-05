@@ -45,6 +45,9 @@ class Gettext
     private $table_originals = NULL; // table for original strings (offsets)
     private $table_translations = NULL; // table for translated strings (offsets)
     private $cache_translations = array(); // original -> translation mapping
+    private $languages = array();
+    private $language = 'es';
+    private $loaded;
 
     const MAGIC1 = -1794895138;
     const MAGIC2 = -569244523;
@@ -57,9 +60,60 @@ class Gettext
      */
     public function __construct ($time = 'now', $timezone = NULL)
     {
-        global $Debug;
+        $this->Cookie = new Cookie;
 
-        $this->Debug = $Debug;
+        $this->setLanguages();
+        $this->setLanguage('', false);
+    }
+
+    public function setLanguages ()
+    {
+        foreach (glob(BASE_PATH.'/languages/*', GLOB_ONLYDIR) as $language) {
+            if (is_file($language.'/gettext.mo')) {
+                $this->languages[] = basename($language);
+            }
+        }
+    }
+
+    public function getLanguages ()
+    {
+        return $this->languages;
+    }
+
+    public function setLanguage ($language = '', $store = false)
+    {
+        $language = strtolower($language);
+
+        if ($language === $this->language) {
+            return $this->load();
+        }
+
+        $cookie = $this->Cookie->get();
+
+        if (!$language) {
+            if (!isset($cookie['language']) || ($cookie['language'] === $this->language)) {
+                return $this->load();
+            }
+
+            $language = $cookie['language'];
+        }
+
+        if (!in_array($language, $this->languages)) {
+            return false;
+        }
+        
+        $this->language = $language;
+
+        $this->load();
+
+        if ($store) {
+            $this->Cookie->set(array('language' => $this->language));
+        }
+    }
+
+    public function getLanguage ()
+    {
+        return $this->language;
     }
 
     private function readInt ()
@@ -90,13 +144,20 @@ class Gettext
         }
     }
 
-    public function load ($file)
+    public function load ()
     {
+
+        if ($this->loaded === $this->language) {
+            return true;
+        }
+
+        $file = BASE_PATH.'languages/'.$this->language.'/gettext.mo';
+
         if (!is_file($file)) {
             return false;
         }
 
-        $Reader = new \Lito\Apalabro\CachedFileReader($file);
+        $Reader = new CachedFileReader($file);
 
         if (!$Reader || isset($Reader->error) ) {
             return false;
@@ -115,11 +176,14 @@ class Gettext
             return false;
         }
 
+        $this->loaded = $this->language;
+
         $this->readInt();
 
         $this->total = $this->readInt();
         $this->originals = $this->readInt();
         $this->translations = $this->readInt();
+        $this->cache_translations = array();
 
         $this->STREAM->seekto($this->originals);
         $this->table_originals = $this->readIntArray($this->total * 2);

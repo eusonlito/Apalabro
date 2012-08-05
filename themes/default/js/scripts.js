@@ -56,32 +56,21 @@ $(document).ready(function () {
         }  
     });
 
-    $('.filter-expression').keyup(function (e) {
+    $('.filter-expression').submit(function (e) {
         var $filtered = $($(this).data('filtered'));
 
-        if (e.keyCode == 27) {
-            $(this).val('');
-            $filtered.html('');
-
-            return false;
-        } else if (e.which != 13) {
-            return false;
-        }
-
-        var filter = $(this).val();
-        var length = $(this).val().length;
-
-        if (length > 0) {
-            $.post(BASE_WWW + 'search-words.php', {
-                tiles: $(this).data('tiles'),
-                filter: filter
-            }, function (response) {
-                console.log($(this).data('filtered'));
-                $filtered.html(response);
-            });
+        if ($('input[type="text"]', $(this)).val().length > 0) {
+            $.post($(this).attr('action'),
+                $('input', $(this)).serialize(),
+                function (response) {
+                    $filtered.html(response);
+                }
+            );
         } else {
             $filtered.html('');
         }
+
+        return false;
     });
 
     $('.rack-tiles div').draggable({

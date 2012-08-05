@@ -16,15 +16,7 @@ defined('BASE_PATH') or die();
  */
 function __ ($text, $args = null)
 {
-    static $Gettext = null;
-
-    if (is_null($Gettext)) {
-        global $Api;
-
-        $Gettext = new \Lito\Apalabro\Gettext;
-
-        $Gettext->load(BASE_PATH.'languages/'.$Api->getLanguage().'/gettext.mo');
-    }
+    global $Gettext;
 
     $text = $Gettext->translate($text);
 
@@ -80,7 +72,7 @@ function humanDate ($timestamp)
             return __('one hour ago');
         } else if ($diff < 86400) {
             return __('%s hours ago', floor($diff / 3600));
-        } else if($day_diff === 1) {
+        } else if($day_diff == 1) {
             return __('yesterday');
         } else if ($day_diff < 7) {
             return __('%s days ago', $day_diff);
@@ -91,7 +83,7 @@ function humanDate ($timestamp)
         $diff = abs($diff);
         $day_diff = floor($diff / 86400);
 
-        if ($day_diff === 0) {
+        if ($day_diff == 0) {
             if ($diff < 120) {
                 return __('in a minute');
             } else if ($diff < 3600) {

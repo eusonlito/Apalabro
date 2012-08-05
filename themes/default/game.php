@@ -23,6 +23,8 @@
                 echo $Game->my_score.' / '.$Game->opponent_score;
             ?></small>
 
+            <small class="label label-info"><?php echo $Game->language; ?></small>
+
             <?php if (isset($Game->last_turn->words)) { ?>
             <small class="label label-info"><?php __e('Last words: %s', str_replace('-', ', ', $Game->last_turn->words)); ?></small>
             <?php } ?>
@@ -58,44 +60,50 @@
             </fieldset>
             <?php } ?>
         </div>
+    </form>
 
-        <?php if ($words) { ?>
-        <div class="span5 tabbable">
-            <ul class="nav nav-tabs">
-                <li class="active">
-                    <a href="#tab-suggested-words" data-toggle="tab"><?php __e('Suggested words'); ?></a>
-                </li>
+    <?php if ($words) { ?>
+    <div class="span5 tabbable">
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <a href="#tab-suggested-words" data-toggle="tab"><?php __e('Suggested words'); ?></a>
+            </li>
 
-                <li>
-                    <a href="#tab-regular-expression" data-toggle="tab"><?php __e('Regular expression'); ?></a>
-                </li>
-            </ul>
+            <li>
+                <a href="#tab-regular-expression" data-toggle="tab"><?php __e('Regular expression'); ?></a>
+            </li>
+        </ul>
 
-            <div class="tab-content">
-                <div class="tab-pane active" id="tab-suggested-words">
-                    <div class="control-group">
-                        <input type="text" class="span5 filter-list" data-filtered=".words-list li span" value="" placeholder="<?php __e('Filter suggested words'); ?>">
-                    </div>
-
-                    <ul class="dl-horizontal max-height-500 words-list">
-                        <?php foreach ($words as $points => $words) { ?>
-                        <li class="row-fluid">
-                            <div class="span3"><strong><?php __e('%s points', $points); ?></strong></div>
-                            <div class="span7"><span><?php echo implode('</span><span><br />', $words); ?></span></div>
-                        </li>
-                        <?php } ?>
-                    </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="tab-suggested-words">
+                <div class="control-group">
+                    <input type="text" class="span5 filter-list" data-filtered=".words-list li span" value="" placeholder="<?php __e('Filter suggested words'); ?>">
                 </div>
 
-                <div class="tab-pane" id="tab-regular-expression">
-                    <input type="text" class="span5 filter-expression" value="" data-filtered=".words-expression" data-tiles="<?php echo implode(',', $Game->my_rack_tiles); ?>" placeholder="<?php __e('Filter with regular expression'); ?>">
+                <ul class="dl-horizontal max-height-500 words-list">
+                    <?php foreach ($words as $points => $words) { ?>
+                    <li class="row-fluid">
+                        <div class="span3"><strong><?php __e('%s points', $points); ?></strong></div>
+                        <div class="span7"><span><?php echo implode('</span><span><br />', $words); ?></span></div>
+                    </li>
+                    <?php } ?>
+                </ul>
+            </div>
 
-                    <ul class="dl-horizontal max-height-500 words-expression">
-                        <li></li>
-                    </ul>
-                </div>
+            <div class="tab-pane" id="tab-regular-expression">
+                <form action="<?php echo BASE_WWW; ?>search-words.php" class="form-inline filter-expression" data-filtered=".words-expression" method="post">
+                    <input type="hidden" name="game" value="<?php echo $Game->id; ?>" />
+
+                    <input type="text" name="filter" value="" class="input-large search-query" placeholder="<?php __e('Filter with regular expression'); ?>">
+
+                    <button type="submit" class="btn btn-info"><?php __e('Search'); ?></button>
+                </form>
+
+                <ul class="dl-horizontal max-height-500 words-expression">
+                    <li></li>
+                </ul>
             </div>
         </div>
-        <?php } ?>
-    </form>
+    </div>
+    <?php } ?>
 </div>

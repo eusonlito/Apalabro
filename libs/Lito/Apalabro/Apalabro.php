@@ -8,8 +8,7 @@ class Apalabro {
     private $logged = false;
     private $user = 0;
     private $session = '';
-    private $languages = array();
-    private $language = 'es';
+    private $language = '';
     private $dictionary = array();
     private $dictionary_len = 0;
     private $words = array();
@@ -17,6 +16,7 @@ class Apalabro {
     private $my_rack_tiles = array();
     private $board_spaces = array();
 
+    private $Cookie;
     private $Curl;
     private $Debug;
 
@@ -25,13 +25,11 @@ class Apalabro {
     public function __construct ()
     {
         $this->Cache = new Cache;
+        $this->Cookie = new Cookie;
         $this->Curl = new Curl;
         $this->Debug = new Debug;
 
         $this->Curl->init($this->server);
-
-        $this->setLanguages();
-        $this->setLanguage();
     }
 
     public function setDebug ($debug)
@@ -40,71 +38,19 @@ class Apalabro {
         $this->Curl->Debug->setDebug($debug);
     }
 
+    public function setLanguage ($language)
+    {
+        $this->language = '';
+        $language = strtolower($language);
+
+        if (is_dir(BASE_PATH.'/languages/'.$language)) {
+            $this->language = $language;
+        }
+    }
+
     public function debug ($text, $info = true)
     {
         $this->Debug->show($text, $info);
-    }
-
-    private function setCookie ($value) {
-        $cookie = array_merge($this->getCookie(), (array)$value);
-
-        setCookie('apalabro', gzdeflate(serialize($cookie)));
-    }
-
-    private function getCookie () {
-        if (isset($_COOKIE['apalabro'])) {
-            return unserialize(gzinflate($_COOKIE['apalabro']));
-        } else {
-            return array();
-        }
-    }
-
-    public function setLanguages ($language = '', $store = false)
-    {
-        foreach (glob(BASE_PATH.'/languages/*', GLOB_ONLYDIR) as $language) {
-            if (is_file($language.'/dictionary.txt') && is_file($language.'/words.txt')) {
-                $this->languages[] = basename($language);
-            }
-        }
-    }
-
-    public function getLanguages ()
-    {
-        return $this->languages;
-    }
-
-    public function setLanguage ($language = '', $store = false)
-    {
-        $language = strtolower($language);
-
-        if ($language === $this->language) {
-            return true;
-        }
-
-        $cookie = $this->getCookie();
-
-        if (!$language) {
-            if (!isset($cookie['language']) || ($cookie['language'] === $this->language)) {
-                return true;
-            }
-
-            $language = $cookie['language'];
-        }
-
-        if (!in_array($language, $this->languages)) {
-            return false;
-        }
-        
-        $this->language = $language;
-
-        if ($store) {
-            $this->setCookie(array('language' => $this->language));
-        }
-    }
-
-    public function getLanguage ()
-    {
-        return $this->language;
     }
 
     public function reload ()
@@ -129,7 +75,7 @@ class Apalabro {
             return $this->logged;
         }
 
-        $cookie = $this->getCookie();
+        $cookie = $this->Cookie->get();
 
         if (!isset($cookie['user']) || !isset($cookie['session'])) {
             return false;
@@ -160,7 +106,7 @@ class Apalabro {
 
         $this->loadGames($Login->id);
 
-        $this->setCookie(array(
+        $this->Cookie->set(array(
             'user' => $this->user,
             'session' => $this->session
         ));
@@ -181,7 +127,7 @@ class Apalabro {
             $this->user = $user;
             $this->session = $session;
 
-            $cookie = $this->getCookie();
+            $cookie = $this->Cookie->get();
 
             if (!$cookie) {
                 $this->setCookie(array(
@@ -195,7 +141,7 @@ class Apalabro {
     }
 
     public function logout () {
-        return setcookie('apalabros', '', time() - 3600);
+        $this->Cookie->set('', -3600);
     }
 
     private function loadGames ($user)
@@ -283,6 +229,7 @@ class Apalabro {
         $this->games['all'][$game] = $Game;
 
         $this->setTiles($game);
+        $this->setLanguage($Game->language);
 
         return $Game;
     }
@@ -388,7 +335,7 @@ class Apalabro {
         return $board;
     }
 
-    public function solve ($game)
+    public function solve ($game, $expression = '')
     {
         $this->_loggedOrDie();
 
@@ -406,19 +353,17 @@ class Apalabro {
             return array();
         }
 
-        if (strtolower($Game->language) !== $this->language) {
-            return array();
-        }
-
-        $this->setBoardSpaces($Game->id);
-
-        $cache_key = array_merge($Game->my_rack_tiles, $this->board_spaces);
+        $cache_key = implode('', $Game->my_rack_tiles).$expression;
 
         if ($this->Cache->exists($cache_key)) {
             return $this->Cache->get($cache_key);
         }
 
-        $words = $this->searchWords($Game->my_rack_tiles);
+        if ($expression) {
+            $words = $this->searchWordsExpression($Game->my_rack_tiles, $expression);
+        } else {
+            $words = $this->searchWords($Game->my_rack_tiles);
+        }
 
         $this->Cache->set($cache_key, $words);
 
@@ -658,10 +603,12 @@ class Apalabro {
             return true;
         }
 
+        $this->dictionary = array();
+
         $file = BASE_PATH.'/languages/'.$this->language.'/dictionary.txt';
 
         if (!is_file($file)) {
-            throw new \Exception(sprintf('File dictionary.txt not exists into %s folder .', basename($file)));
+            return false;
         }
 
         $this->dictionary = file($file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
@@ -674,10 +621,12 @@ class Apalabro {
             return true;
         }
 
+        $this->words = array();
+
         $file = BASE_PATH.'/languages/'.$this->language.'/words.txt';
 
         if (!is_file($file)) {
-            throw new \Exception(sprintf('File words.txt not exists into %s folder .', basename($file)));
+            return false;
         }
 
         $this->words = array();

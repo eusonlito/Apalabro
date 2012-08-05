@@ -2,7 +2,7 @@
 
 <!DOCTYPE html>
 
-<html lang="<?php $Api->getLanguage(); ?>">
+<html lang="<?php $Gettext->getLanguage(); ?>">
     <head>
         <title><?php __e('Apalabro!'); ?></title>
 
@@ -23,12 +23,13 @@
 
         <style>
         table.board {
-            background: url('languages/<?php echo $Api->getLanguage(); ?>/board.png') no-repeat;
+            background: url('languages/<?php echo $Gettext->getLanguage(); ?>/board.png') no-repeat;
         }
         </style>
 
         <script src="<?php echo $Theme->www(); ?>js/jquery.min.js" type="text/javascript"></script>
         <script src="<?php echo $Theme->www(); ?>js/jquery-ui/js/jquery-ui-1.8.22.custom.min.js" type="text/javascript"></script>
+        <script src="<?php echo $Theme->www(); ?>js/jquery-ui/js/jquery.ui.touch-punch.min.js" type="text/javascript"></script>
         <script src="<?php echo $Theme->www(); ?>bootstrap/js/bootstrap-dropdown.js" type="text/javascript"></script>
         <script src="<?php echo $Theme->www(); ?>bootstrap/js/bootstrap-tab.js" type="text/javascript"></script>
 
@@ -59,13 +60,13 @@
 
                     <div class="nav-collapse">
                         <ul class="nav">
-                            <li<?php echo (basename(getenv('SCRIPT_FILENAME')) == 'index.php') ? ' class="active"' : ''; ?>><a href="<?php echo BASE_WWW; ?>"><?php __e('Home'); ?></a></li>
+                            <li<?php echo (FILENAME === 'index.php') ? ' class="active"' : ''; ?>><a href="<?php echo BASE_WWW; ?>"><?php __e('Home'); ?></a></li>
 
-                            <?php if (basename(getenv('SCRIPT_FILENAME')) == 'game.php') { ?>
+                            <?php if ((FILENAME === 'game.php') && isset($Game->id)) { ?>
                             <li class="active"><a href="?id=<?php echo $Game->id; ?>"><?php __e('Game'); ?></a></li>
                             <?php } ?>
 
-                            <li<?php echo (basename(getenv('SCRIPT_FILENAME')) == 'about.php') ? ' class="active"' : ''; ?>><a href="<?php echo BASE_WWW; ?>about.php"><?php __e('About'); ?></a></li>
+                            <li<?php echo (FILENAME === 'about.php') ? ' class="active"' : ''; ?>><a href="<?php echo BASE_WWW; ?>about.php"><?php __e('About'); ?></a></li>
                         </ul>
 
                         
@@ -83,11 +84,11 @@
                             <li class="divider-vertical"></li>
 
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php __e('language_'.$Api->getLanguage()); ?> <b class="caret"></b></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php __e('language_'.$Gettext->getLanguage()); ?> <b class="caret"></b></a>
 
                                 <ul class="dropdown-menu">
-                                    <?php foreach ($Api->getLanguages() as $language) { ?>
-                                    <li<?php ($language === $Api->getLanguage()) ? ' class="active"' : ''; ?>>
+                                    <?php foreach ($Gettext->getLanguages() as $language) { ?>
+                                    <li<?php ($language === $Gettext->getLanguage()) ? ' class="active"' : ''; ?>>
                                         <a href="?<?php echo http_build_query(array('language' => $language) + $_GET); ?>"><?php __e('language_'.$language); ?></a>
                                     </li>
                                     <?php } ?>

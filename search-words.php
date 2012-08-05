@@ -1,12 +1,16 @@
 <?php
 
-if (!isset($_POST['tiles']) || !$_POST['tiles'] || !isset($_POST['filter']) || !$_POST['filter']) {
+if (!isset($_POST['game']) || !$_POST['game'] || !isset($_POST['filter']) || !$_POST['filter']) {
     die();
 }
 
 require (__DIR__.'/libs/Lito/Apalabro/Loader.php');
 
-$words = $Api->searchWordsExpression(explode(',', $_POST['tiles']), $_POST['filter']);
+$game = $_POST['game'];
+
+require (__DIR__.'/game-check.php');
+
+$words = $Api->solve($Game->id, $_POST['filter']);
 
 if ($words) {
     foreach ($words as $points => $words) {
