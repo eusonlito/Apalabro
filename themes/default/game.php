@@ -64,44 +64,52 @@
 
     <?php if ($words) { ?>
     <div class="span5 tabbable">
-        <ul class="nav nav-tabs">
-            <li class="active">
-                <a href="#tab-suggested-words" data-toggle="tab"><?php __e('Suggested words'); ?></a>
-            </li>
+        <div id="suggestions-previous">
+            <h3><?php __e('Do you need help?'); ?></h3>
+            <p><?php __e('I can give you some suggestions ;)'); ?></p>
+            <button class="span4 btn btn-info"><?php __e('Yes, please!'); ?></button>
+        </div>
 
-            <li>
-                <a href="#tab-regular-expression" data-toggle="tab"><?php __e('Regular expression'); ?></a>
-            </li>
-        </ul>
+        <div id="suggestions" class="hide">
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a href="#tab-suggested-words" data-toggle="tab"><?php __e('Suggested words'); ?></a>
+                </li>
 
-        <div class="tab-content">
-            <div class="tab-pane active" id="tab-suggested-words">
-                <div class="control-group">
-                    <input type="text" class="span5 filter-list" data-filtered=".words-list li span" value="" placeholder="<?php __e('Filter suggested words'); ?>">
+                <li>
+                    <a href="#tab-regular-expression" data-toggle="tab"><?php __e('Regular expression'); ?></a>
+                </li>
+            </ul>
+
+            <div class="tab-content">
+                <div class="tab-pane active" id="tab-suggested-words">
+                    <div class="control-group">
+                        <input type="text" class="span5 filter-list" data-filtered=".words-list li span" value="" placeholder="<?php __e('Filter suggested words'); ?>">
+                    </div>
+
+                    <ul class="dl-horizontal max-height-500 words-list">
+                        <?php foreach ($words as $points => $words) { ?>
+                        <li class="row-fluid">
+                            <div class="span3"><strong><?php __e('%s points', $points); ?></strong></div>
+                            <div class="span7"><span><?php echo implode('</span><span><br />', $words); ?></span></div>
+                        </li>
+                        <?php } ?>
+                    </ul>
                 </div>
 
-                <ul class="dl-horizontal max-height-500 words-list">
-                    <?php foreach ($words as $points => $words) { ?>
-                    <li class="row-fluid">
-                        <div class="span3"><strong><?php __e('%s points', $points); ?></strong></div>
-                        <div class="span7"><span><?php echo implode('</span><span><br />', $words); ?></span></div>
-                    </li>
-                    <?php } ?>
-                </ul>
-            </div>
+                <div class="tab-pane" id="tab-regular-expression">
+                    <form action="<?php echo BASE_WWW; ?>search-words.php" class="form-inline filter-expression" data-filtered=".words-expression" method="post">
+                        <input type="hidden" name="game" value="<?php echo $Game->id; ?>" />
 
-            <div class="tab-pane" id="tab-regular-expression">
-                <form action="<?php echo BASE_WWW; ?>search-words.php" class="form-inline filter-expression" data-filtered=".words-expression" method="post">
-                    <input type="hidden" name="game" value="<?php echo $Game->id; ?>" />
+                        <input type="text" name="filter" value="" class="input-large search-query" placeholder="<?php __e('Filter with regular expression'); ?>">
 
-                    <input type="text" name="filter" value="" class="input-large search-query" placeholder="<?php __e('Filter with regular expression'); ?>">
+                        <button type="submit" class="btn btn-info"><?php __e('Search'); ?></button>
+                    </form>
 
-                    <button type="submit" class="btn btn-info"><?php __e('Search'); ?></button>
-                </form>
-
-                <ul class="dl-horizontal max-height-500 words-expression">
-                    <li></li>
-                </ul>
+                    <ul class="dl-horizontal max-height-500 words-expression">
+                        <li></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

@@ -26,6 +26,13 @@ $(document).ready(function () {
         return false;
     });
 
+    $('#suggestions-previous button').click(function () {
+        $('#suggestions-previous').remove();
+        $('#suggestions').show();
+
+        return false;
+    });
+
     $('.filter-list').keyup(function (e) {
         if (e.keyCode == 27) {
             $(this).val('');
@@ -57,9 +64,13 @@ $(document).ready(function () {
     });
 
     $('.filter-expression').submit(function (e) {
+        e.preventDefault(); 
+
         var $filtered = $($(this).data('filtered'));
 
         if ($('input[type="text"]', $(this)).val().length > 0) {
+            $filtered.html('<li><h4>' + strings['waiting_reply'] + '</h4></li>');
+
             $.post($(this).attr('action'),
                 $('input', $(this)).serialize(),
                 function (response) {
