@@ -35,12 +35,11 @@
 </div>
 
 <div class="row">
-    <form id="game-form" action="?id=<?php echo $Game->id; ?>" method="post" class="form-horizontal">
-        <?php if (in_array($Game->game_status, array('ACTIVE', 'PENDING_FIRST_MOVE')) && $Game->my_turn) { ?>
-        <input type="hidden" name="play" value="true" />
-        <?php } ?>
-
-        <div class="span7 relative">
+    <div class="span7 relative">
+        <form id="game-form" action="?id=<?php echo $Game->id; ?>" method="post" class="form-horizontal">
+            <?php if (in_array($Game->game_status, array('ACTIVE', 'PENDING_FIRST_MOVE')) && $Game->my_turn) { ?>
+            <input type="hidden" name="play" value="true" />
+            <?php } ?>
             <table class="board">
                 <?php echo $Api->getBoard($Game->id); ?>
             </table>
@@ -59,8 +58,8 @@
                 <button type="submit" name="play" value="true" class="btn btn-primary" disabled="disabled"><?php __e('Play!'); ?></button>
             </fieldset>
             <?php } ?>
-        </div>
-    </form>
+        </form>
+    </div>
 
     <?php if ($words) { ?>
     <div class="span5 tabbable">
