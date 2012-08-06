@@ -74,6 +74,7 @@
                         
                         <ul class="nav pull-right">
                             <?php if ($Api->logged()) { ?>
+                            <li<?php echo (FILENAME === 'new.php') ? ' class="active"' : ''; ?>><a href="<?php echo BASE_WWW; ?>new.php"><?php __e('New Game'); ?></a></li>
                             <li><a href="<?php echo BASE_WWW; ?>?logout=true"><?php __e('Logout'); ?></a></li>
                             <?php } ?>
 

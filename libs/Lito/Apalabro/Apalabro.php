@@ -9,6 +9,7 @@ class Apalabro {
     private $user = 0;
     private $session = '';
     private $language = '';
+    private $languages = array();
     private $dictionary = array();
     private $dictionary_len = 0;
     private $words = array();
@@ -30,6 +31,8 @@ class Apalabro {
         $this->Debug = new Debug;
 
         $this->Curl->init($this->server);
+
+        $this->setLanguages();
     }
 
     public function setDebug ($debug)
@@ -38,14 +41,31 @@ class Apalabro {
         $this->Curl->Debug->setDebug($debug);
     }
 
+    public function setLanguages ()
+    {
+        $this->languages = array();
+
+        foreach (glob(BASE_PATH.'/languages/*', GLOB_ONLYDIR) as $language) {
+            if (is_file($language.'/dictionary.txt') || is_file($language.'/words.txt')) {
+                $this->languages[] = basename($language);
+            }
+        }
+    }
+
     public function setLanguage ($language)
     {
         $this->language = '';
+
         $language = strtolower($language);
 
-        if (is_dir(BASE_PATH.'/languages/'.$language)) {
+        if (in_array($language, $this->languages)) {
             $this->language = $language;
         }
+    }
+
+    public function getLanguages ()
+    {
+        return $this->languages;
     }
 
     public function getLanguage ()
@@ -403,7 +423,7 @@ class Apalabro {
 
         $Game = $this->games['all'][$game];
 
-        if (!in_array($Game->game_status, array('ACTIVE', 'PENDING_FIRST_MOVE', 'PENDING_MY_APPROVAL')) || !$Game->my_turn) {
+        if (!$Game->active || !$Game->my_turn) {
             return false;
         }
 
@@ -416,6 +436,19 @@ class Apalabro {
         return $this->Curl->post('users/'.$this->user.'/games/'.$Game->id.'/turns', array(
             'type' => 'PLACE_TILE',
             'played_tiles' => implode(',', $played_tiles)
+        ));
+    }
+
+    public function newGame ($language)
+    {
+        $this->_loggedOrDie();
+
+        if (!in_array($language, $this->languages)) {
+            return false;
+        }
+
+        return $this->Curl->post('users/'.$this->user.'/games', array(
+            'language' => strtoupper($language)
         ));
     }
 
