@@ -231,6 +231,12 @@ class Apalabro {
             $Game->opponent->avatar = '';
         }
 
+        if (in_array($Game->game_status, array('ACTIVE', 'PENDING_MY_APPROVAL', 'PENDING_FIRST_MOVE'))) {
+            $Game->active = true;
+        } else {
+            $Game->active = false;
+        }
+
         $this->games['all'][$game] = $Game;
 
         $this->setTiles($game);

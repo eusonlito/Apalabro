@@ -26,6 +26,8 @@
                 <div class="span9">
                     <h4><a href="<?php echo BASE_WWW; ?>game.php?id=<?php echo $Game->id; ?>"><?php echo $Game->opponent->name; ?></a></h4>
 
+                    <small class="label label-info"><?php echo $Game->language; ?></small>
+
                     <small class="label"><?php echo humanDate($Game->last_turn->play_date); ?></small>
 
                     <strong class="label label-<?php echo ($Game->my_score > $Game->opponent_score) ? 'success' : 'important'; ?>"><?php

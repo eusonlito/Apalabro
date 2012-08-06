@@ -9,11 +9,11 @@ if (!$message) {
 ?>
 
 <div class="alert alert-<?php echo $message['status']; ?>">
-    <h1>
+    <strong>
         <?php if ($message['back']) { ?>
         <a href="<?php echo getenv('HTTP_REFERER'); ?>">&laquo;</a>
         <?php } ?>
 
         <?php echo $message['text']; ?>
-    </h1>
+    </strong>
 </div>

@@ -9,7 +9,7 @@
         <small><?php
             __e($Game->game_status);
 
-            if ($Game->game_status === 'ACTIVE') {
+            if ($Game->active) {
                 echo ' ('.($Game->my_turn ? __('Your turn') : __('Opponent turn')).')';
             } else if (isset($Game->last_turn->type) && ($Game->last_turn->type !== 'PLACE_TILE')) {
                 echo ' ('.__($Game->last_turn->type).')';
@@ -37,7 +37,7 @@
 <div class="row">
     <div class="span7 relative">
         <form id="game-form" action="?id=<?php echo $Game->id; ?>" method="post" class="form-horizontal">
-            <?php if (in_array($Game->game_status, array('ACTIVE', 'PENDING_FIRST_MOVE')) && $Game->my_turn) { ?>
+            <?php if ($Game->active && $Game->my_turn) { ?>
             <input type="hidden" name="play" value="true" />
             <?php } ?>
             <table class="board">
@@ -53,7 +53,7 @@
                 <?php } ?>
             </div>
 
-            <?php if (in_array($Game->game_status, array('ACTIVE', 'PENDING_FIRST_MOVE')) && $Game->my_turn) { ?>
+            <?php if ($Game->active && $Game->my_turn) { ?>
             <fieldset class="form-actions">
                 <button type="submit" name="play" value="true" class="btn btn-primary" disabled="disabled"><?php __e('Play!'); ?></button>
             </fieldset>
@@ -86,7 +86,7 @@
                         <input type="text" class="span5 filter-list" data-filtered=".words-list li span" value="" placeholder="<?php __e('Filter suggested words'); ?>">
                     </div>
 
-                    <ul class="dl-horizontal max-height-500 words-list">
+                    <ul class="dl-horizontal words-list">
                         <?php foreach ($words as $points => $words) { ?>
                         <li class="row-fluid">
                             <div class="span3"><strong><?php __e('%s points', $points); ?></strong></div>
@@ -107,7 +107,7 @@
                         <a href="http://www.phpf1.com/tutorial/php-regular-expression.html" class="btn btn-success pull-right" target="_blank"><?php __e('Help'); ?></a>
                     </form>
 
-                    <ul class="dl-horizontal max-height-500 words-expression">
+                    <ul class="dl-horizontal words-expression">
                         <li></li>
                     </ul>
                 </div>
