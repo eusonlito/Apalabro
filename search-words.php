@@ -16,7 +16,13 @@ if ($words) {
     foreach ($words as $points => $words) {
         echo '<li class="row-fluid">';
         echo '<div class="span3"><strong>'.__('%s points', $points).'</strong></div>';
-        echo '<div class="span7"><span>'.implode('</span><span><br />', $words).'</span></div>';
+        echo '<div class="span7">';
+
+        foreach ($words as $word) {
+            echo '<span>'.$word.'</span> <span class="pull-right small">'.__('%s letters', strlen($word)).'</span><br />';
+        }
+
+        echo '</div>';
         echo '</li>';
     }
 }

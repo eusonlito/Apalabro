@@ -90,7 +90,11 @@
                         <?php foreach ($words as $points => $words) { ?>
                         <li class="row-fluid">
                             <div class="span3"><strong><?php __e('%s points', $points); ?></strong></div>
-                            <div class="span7"><span><?php echo implode('</span><span><br />', $words); ?></span></div>
+                            <div class="span7">
+                                <?php foreach ($words as $word) { ?>
+                                <span><?php echo $word; ?></span> <span class="pull-right small"><?php __e('%s letters', strlen($word)); ?></span><br />
+                                <?php } ?>
+                            </div>
                         </li>
                         <?php } ?>
                     </ul>

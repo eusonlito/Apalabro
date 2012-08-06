@@ -107,3 +107,8 @@ table.board tbody td {
     max-height: 425px;
     overflow: auto;
 }
+
+.small {
+    font-size: 0.8em;
+    color: rgba(0, 0, 0, 0.4);
+}
