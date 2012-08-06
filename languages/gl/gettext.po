@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apalabro!\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-06 11:19+0100\n"
-"PO-Revision-Date: 2012-08-06 11:19+0100\n"
+"POT-Creation-Date: 2012-08-06 15:15+0100\n"
+"PO-Revision-Date: 2012-08-06 15:15+0100\n"
 "Last-Translator: Lito <lito@eordes.com>\n"
 "Language-Team: Lito <lito@eordes.com>\n"
 "Language: \n"
@@ -23,6 +23,12 @@ msgstr ""
 msgid "%s points"
 msgstr "%s puntos"
 
+#: search-words.php:22
+#: themes/default/game.php:95
+#, php-format
+msgid "%s letters"
+msgstr "%s letras"
+
 #: game-check.php:5
 msgid "No game ID was received"
 msgstr "Non se recibiu o ID da partida"
@@ -35,9 +41,13 @@ msgstr "Esta partida non existe"
 msgid "Your tiles were set successfully"
 msgstr "As fichas colocáronse correctamente"
 
-#: game.php:18
+#: game.php:16
 msgid "Sorry but these word is no valid"
 msgstr "Recoiros, a palabra que escolleches non parece valer"
+
+#: new.php:12
+msgid "Sorry but I can't create a new game... Please try it again in some minutes"
+msgstr "Sentímolo pero non se puido crear unha nova partida... Por favor, inténtao de novo nuns intres."
 
 #: themes/default/base.php:7
 #: themes/default/base.php:11
@@ -63,16 +73,18 @@ msgstr "Partida"
 msgid "About"
 msgstr "Sobre"
 
-#: themes/default/base.php:79
-msgid "Reload Cache"
-msgstr "Actualizar Caché"
+#: themes/default/base.php:77
+#: themes/default/new.php:4
+msgid "New Game"
+msgstr "Nova Partida"
 
-#: themes/default/base.php:82
+#: themes/default/base.php:78
 msgid "Logout"
 msgstr "Saír"
 
+#: themes/default/base.php:84
 #: themes/default/base.php:89
-#: themes/default/base.php:94
+#: themes/default/new.php:15
 msgid "language_"
 msgstr ""
 
@@ -123,15 +135,15 @@ msgstr "Expresión regular"
 msgid "Filter suggested words"
 msgstr "Filtrar as palabras suxeridas"
 
-#: themes/default/game.php:103
+#: themes/default/game.php:107
 msgid "Filter with regular expression"
 msgstr "Filtrar con expresión regular"
 
-#: themes/default/game.php:105
+#: themes/default/game.php:109
 msgid "Search"
 msgstr "Buscar"
 
-#: themes/default/game.php:107
+#: themes/default/game.php:111
 msgid "Help"
 msgstr "Axuda"
 
@@ -154,6 +166,10 @@ msgstr "Entrar"
 #: themes/default/index.php:18
 msgid "No games here :)"
 msgstr "Ningunha partida aquí :)"
+
+#: themes/default/new.php:22
+msgid "Start a new game with random opponent"
+msgstr "Comezar unha nova partida cun rival aleatorio"
 
 #: themes/default/js/js-strings.php:9
 msgid "Which letter use?"
@@ -297,3 +313,5 @@ msgstr "COLOCAR FICHA"
 msgid "PASS"
 msgstr "PASA"
 
+#~ msgid "Reload Cache"
+#~ msgstr "Actualizar Caché"
