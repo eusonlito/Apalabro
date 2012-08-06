@@ -63,7 +63,7 @@ function humanDate ($timestamp)
 
     if ($diff > 0) {
         if ($diff < 60) {
-            return 'just now';
+            return __('just now');
         } else if ($diff < 120) {
             return __('one minute ago');
         } else if ($diff < 3600) {

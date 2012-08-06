@@ -119,7 +119,7 @@ class Apalabro {
 
         $Login = $this->Curl->post('login', array('email' => $user, 'password' => $password));
 
-        if (!is_object($Login) || !$Login->id) {
+        if (!is_object($Login) || !isset($Login->id)) {
             return false;
         }
 
@@ -161,6 +161,43 @@ class Apalabro {
                 ));
             }
         }
+
+        return $this->logged;
+    }
+
+    public function loginFacebook ($email)
+    {
+        $this->clearData();
+
+        $User = $this->Curl->post('emails', $email);
+
+        if (!is_object($User) || ($User->total !== 1)) {
+            return false;
+        }
+
+        $Login = $this->Curl->post('login', array(
+            'id' => $User->list[0]->id,
+            'username' => $User->list[0]->username,
+            'email' => $User->list[0]->email,
+            'facebook_id' => $User->list[0]->facebook_id,
+        ));
+
+        if (!is_object($Login) || !isset($Login->id)) {
+            return false;
+        }
+
+        $this->logged = true;
+        $this->user = $Login->id;
+        $this->session = $Login->session->session;
+
+        $this->Curl->setCookie('ap_session='.$this->session);
+
+        $this->loadGames($Login->id);
+
+        $this->Cookie->set(array(
+            'user' => $this->user,
+            'session' => $this->session
+        ));
 
         return $this->logged;
     }

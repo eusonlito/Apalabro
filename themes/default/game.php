@@ -61,7 +61,7 @@
         </form>
     </div>
 
-    <?php if ($words) { ?>
+    <?php if ($Game->game_status !== 'ENDED') { ?>
     <div class="span5 tabbable">
         <div id="suggestions-previous">
             <h3><?php __e('Do you need help?'); ?></h3>
@@ -87,6 +87,7 @@
                     </div>
 
                     <ul class="dl-horizontal words-list">
+                        <?php if ($words) { ?>
                         <?php foreach ($words as $points => $words) { ?>
                         <li class="row-fluid">
                             <div class="span3"><strong><?php __e('%s points', $points); ?></strong></div>
@@ -96,6 +97,7 @@
                                 <?php } ?>
                             </div>
                         </li>
+                        <?php } ?>
                         <?php } ?>
                     </ul>
                 </div>

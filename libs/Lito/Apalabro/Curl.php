@@ -20,7 +20,7 @@ class Curl {
         $this->connection = curl_init();
 
         curl_setopt($this->connection, CURLOPT_REFERER, $this->server);
-        curl_setopt($this->connection, CURLOPT_FAILONERROR, true);
+        curl_setopt($this->connection, CURLOPT_FAILONERROR, false);
 
         if (!ini_get('open_basedir') && (strtolower(ini_get('safe_mode')) !== 'on')) {
             curl_setopt($this->connection, CURLOPT_FOLLOWLOCATION, true);
@@ -43,6 +43,19 @@ class Curl {
 
         $this->Cache = new \Lito\Apalabro\Cache;
         $this->Debug = new \Lito\Apalabro\Debug;
+    }
+
+    public function fullGet ($url) {
+        $server = $this->server;
+        $info = parse_url($url);
+
+        $this->server = $info['scheme'].'://'.$info['host'];
+
+        $response = $this->get($info['path'].(isset($info['query']) ? ('?'.$info['query']) : ''));
+
+        $this->server = $server;
+
+        return $response;
     }
 
     public function get ($url, $post = false, $cache = false)
@@ -78,7 +91,7 @@ class Curl {
     public function post ($url, $data)
     {
         curl_setopt($this->connection, CURLOPT_POST, true);
-        curl_setopt($this->connection, CURLOPT_POSTFIELDS, json_encode($data));
+        curl_setopt($this->connection, CURLOPT_POSTFIELDS, (is_array($data) ? json_encode($data) : $data));
 
         $html = $this->get($url, true);
 
@@ -87,8 +100,14 @@ class Curl {
         return $html;
     }
 
-    public function getInfo () {
+    public function getInfo ()
+    {
         return $this->info;
+    }
+
+    public function getResponse ()
+    {
+        return $this->response;
     }
 
     public function setCookie ($value)
