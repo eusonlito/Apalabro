@@ -9,6 +9,7 @@ class Curl {
     private $headers = false;
     private $response;
     private $info;
+    private $cache = false;
 
     public $Cache;
     public $Debug;
@@ -46,7 +47,7 @@ class Curl {
 
     public function get ($url, $post = false)
     {
-        if (!$post && $this->Cache->exists($url)) {
+        if ($this->cache && !$post && $this->Cache->exists($url)) {
             return $this->Cache->get($url);
         }
 
@@ -65,7 +66,7 @@ class Curl {
 
         $html = json_decode(preg_replace('/>\s+</', '><', str_replace(array("\n", "\r", "\t"), '', $this->response)));
 
-        if (!$post) {
+        if ($this->cache && !$post) {
             $this->Cache->set($url, $html);
         }
 
@@ -74,8 +75,6 @@ class Curl {
 
     public function post ($url, $data)
     {
-        $cache_key = func_get_args();
-
         curl_setopt($this->connection, CURLOPT_POST, true);
         curl_setopt($this->connection, CURLOPT_POSTFIELDS, json_encode($data));
 

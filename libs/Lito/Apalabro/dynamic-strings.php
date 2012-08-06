@@ -2,6 +2,7 @@
 defined('BASE_PATH') or die();
 
 __('language_en');
+__('language_en-uk');
 __('language_es');
 __('language_gl');
 

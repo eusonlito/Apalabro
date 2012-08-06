@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apalabro!\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-05 23:17+0100\n"
-"PO-Revision-Date: 2012-08-05 23:17+0100\n"
+"POT-Creation-Date: 2012-08-06 11:19+0100\n"
+"PO-Revision-Date: 2012-08-06 11:19+0100\n"
 "Last-Translator: Lito <lito@eordes.com>\n"
 "Language-Team: Lito <lito@eordes.com>\n"
 "Language: \n"
@@ -76,7 +76,7 @@ msgstr "Saír"
 msgid "language_"
 msgstr ""
 
-#: themes/default/sub-games-list.php:35
+#: themes/default/sub-games-list.php:37
 #: themes/default/game.php:32
 #, php-format
 msgid "%s tiles to remaining"
@@ -227,69 +227,73 @@ msgstr "en %s horas"
 
 #: libs/Lito/Apalabro/dynamic-strings.php:4
 msgid "language_en"
-msgstr "English"
+msgstr "US English"
 
 #: libs/Lito/Apalabro/dynamic-strings.php:5
+msgid "language_en-uk"
+msgstr "UK English"
+
+#: libs/Lito/Apalabro/dynamic-strings.php:6
 msgid "language_es"
 msgstr "Castellano"
 
-#: libs/Lito/Apalabro/dynamic-strings.php:6
+#: libs/Lito/Apalabro/dynamic-strings.php:7
 msgid "language_gl"
 msgstr "Galego"
 
-#: libs/Lito/Apalabro/dynamic-strings.php:8
+#: libs/Lito/Apalabro/dynamic-strings.php:9
 msgid "Turn"
 msgstr "Turno"
 
-#: libs/Lito/Apalabro/dynamic-strings.php:9
+#: libs/Lito/Apalabro/dynamic-strings.php:10
 msgid "Waiting"
 msgstr "Agardando"
 
-#: libs/Lito/Apalabro/dynamic-strings.php:10
+#: libs/Lito/Apalabro/dynamic-strings.php:11
 msgid "Ended"
 msgstr "Rematadas"
 
-#: libs/Lito/Apalabro/dynamic-strings.php:11
+#: libs/Lito/Apalabro/dynamic-strings.php:12
 msgid "Pending"
 msgstr "Pentente"
 
-#: libs/Lito/Apalabro/dynamic-strings.php:12
+#: libs/Lito/Apalabro/dynamic-strings.php:13
 msgid "Active"
 msgstr "Activo"
 
-#: libs/Lito/Apalabro/dynamic-strings.php:13
+#: libs/Lito/Apalabro/dynamic-strings.php:14
 msgid "ACTIVE"
 msgstr "ACTIVO"
 
-#: libs/Lito/Apalabro/dynamic-strings.php:14
+#: libs/Lito/Apalabro/dynamic-strings.php:15
 msgid "ENDED"
 msgstr "REMATADA"
 
-#: libs/Lito/Apalabro/dynamic-strings.php:15
+#: libs/Lito/Apalabro/dynamic-strings.php:16
 msgid "RESIGN"
 msgstr "RENDICIÓN"
 
-#: libs/Lito/Apalabro/dynamic-strings.php:16
+#: libs/Lito/Apalabro/dynamic-strings.php:17
 msgid "REJECT"
 msgstr "REXEITADA"
 
-#: libs/Lito/Apalabro/dynamic-strings.php:17
+#: libs/Lito/Apalabro/dynamic-strings.php:18
 msgid "PENDING_MY_APPROVAL"
 msgstr "PENDIENTE DA MIÑA APROBACIÓN"
 
-#: libs/Lito/Apalabro/dynamic-strings.php:18
+#: libs/Lito/Apalabro/dynamic-strings.php:19
 msgid "PENDING_FIRST_MOVE"
 msgstr "PENDIENTE DO PRIMEIRO MOVEMENTO"
 
-#: libs/Lito/Apalabro/dynamic-strings.php:19
+#: libs/Lito/Apalabro/dynamic-strings.php:20
 msgid "PENDING_FRIENDS_APPROVAL"
 msgstr "PENDIENTE DE APROBACIÓN DO RIVAL"
 
-#: libs/Lito/Apalabro/dynamic-strings.php:20
+#: libs/Lito/Apalabro/dynamic-strings.php:21
 msgid "PLACE_TILE"
 msgstr "COLOCAR FICHA"
 
-#: libs/Lito/Apalabro/dynamic-strings.php:21
+#: libs/Lito/Apalabro/dynamic-strings.php:22
 msgid "PASS"
 msgstr "PASA"
 
