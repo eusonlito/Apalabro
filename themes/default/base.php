@@ -74,13 +74,7 @@
                         
                         <ul class="nav pull-right">
                             <?php if ($Api->logged()) { ?>
-
-                            <?php if ($Api->Cache->enabled()) { ?>
-                            <li><a href="?<?php echo http_build_query(array('reload' => true) + $_GET); ?>"><?php __e('Reload Cache'); ?></a></li>
-                            <?php } ?>
-
                             <li><a href="<?php echo BASE_WWW; ?>?logout=true"><?php __e('Logout'); ?></a></li>
-
                             <?php } ?>
 
                             <li class="divider-vertical"></li>

@@ -219,7 +219,15 @@ class Apalabro {
             return false;
         }
 
-        $Game = $this->Curl->get('users/'.$this->user.'/games/'.$game);
+        if ($this->Cache->exists('game-'.$game)) {
+            $Game = $this->Cache->get('game-'.$game);
+        } else {
+            $Game = $this->Curl->get('users/'.$this->user.'/games/'.$game);
+
+            if ($Game->game_status === 'ENDED') {
+                $this->Cache->set('game-'.$game, $Game);
+            }
+        }
 
         if (isset($Game->opponent->facebook_name)) {
             $Game->opponent->name = $Game->opponent->facebook_name;

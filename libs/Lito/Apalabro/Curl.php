@@ -45,9 +45,11 @@ class Curl {
         $this->Debug = new \Lito\Apalabro\Debug;
     }
 
-    public function get ($url, $post = false)
+    public function get ($url, $post = false, $cache = false)
     {
-        if ($this->cache && !$post && $this->Cache->exists($url)) {
+        $cache = (!$post && ($cache || $this->cache));
+
+        if ($cache && $this->Cache->exists($url)) {
             return $this->Cache->get($url);
         }
 
@@ -66,7 +68,7 @@ class Curl {
 
         $html = json_decode(preg_replace('/>\s+</', '><', str_replace(array("\n", "\r", "\t"), '', $this->response)));
 
-        if ($this->cache && !$post) {
+        if ($cache) {
             $this->Cache->set($url, $html);
         }
 

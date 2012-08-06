@@ -11,8 +11,6 @@ if (isset($_POST['play']) && ($_POST['play'] === 'true')) {
     if ($success) {
         $Theme->setMessage(__('Your tiles were set successfully'), 'success');
 
-        $Api->reload();
-
         $Game = $Api->getGame($Game->id);
     } else {
         $Theme->setMessage(__('Sorry but these word is no valid'), 'error');
