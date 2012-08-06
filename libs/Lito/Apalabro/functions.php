@@ -99,7 +99,8 @@ function humanDate ($timestamp)
     }
 }
 
-function str_split_unicode ($str, $l = 0) {
+function str_split_unicode ($str, $l = 0)
+{
     if ($l > 0) {
         $ret = array();
         $len = mb_strlen($str, 'UTF-8');

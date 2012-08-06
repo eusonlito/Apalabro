@@ -14,6 +14,7 @@ require (__DIR__.'/Autoload.php');
 Autoload::register();
 Autoload::registerComposer();
 
+$Timer = new Timer();
 $Gettext = new Gettext();
 $Api = new Apalabro();
 

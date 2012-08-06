@@ -91,7 +91,7 @@ $(document).ready(function () {
                 return true;
             }
 
-            if ($(dropped).hasClass('rack-tiles')) {
+            if ($(dropped).hasClass('rack-tiles') || $(dropped).hasClass('droppable-swap')) {
                 return false;
             }
 
@@ -180,6 +180,45 @@ $(document).ready(function () {
 
         return confirm(strings['play_tiles']);
     });
+
+    $('#swap-form').submit(function () {
+        if ($('input[name^=swapped_tiles\\[]').length == 0) {
+            alert(strings['no_swap_tiles']);
+            return false;
+        }
+
+        return confirm(strings['swap_tiles']);
+    });
+
+    $('a[name="swap"]').click(function () {
+        $('table.board').hide();
+        $('div.swap').show();
+
+        return false;
+    });
+
+    $('.droppable-swap').droppable({
+        hoverClass: 'hover',
+        drop: function (event, ui) {
+            $(this).append('<input type="hidden" name="swapped_tiles[]" value="' + $('span.letter', $(ui.draggable)).html() + '" />');
+
+            ui.draggable.animate({
+                top: snapToHight(ui.draggable, $(this))
+            }, {
+                duration: 600,
+                easing: 'easeOutBack'
+            });
+        }
+    });
+
+    $('.swap button.btn-danger').click(function () {
+        $('input[name^=swapped_tiles\\[]').remove();
+
+        $('div.swap').hide();
+        $('table.board').show();
+
+        return false;
+    });
 });
 
 function snapToHight (dragger, target) {
@@ -208,13 +247,17 @@ function playReady () {
         return false;
     }
 
+    var total = 0;
     var empty = new Array;
 
-    $('table.board td[data-position!=""]').each(function () {
-        empty[$(this).data('position')] = true;
+    $('table.board td').each(function () {
+        if ($(this).data('position') != undefined) {
+            empty[$(this).data('position')] = true;
+            total++;
+        }
     });
 
-    if (empty.length == (15 * 15)) {
+    if (total == (15 * 15)) {
         return (len > 1) ? true : false;
     }
 

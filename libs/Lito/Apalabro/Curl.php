@@ -10,17 +10,24 @@ class Curl {
     private $response;
     private $info;
     private $cache = false;
+    private $failonerror = true;
+
+    private $Timer;
 
     public $Cache;
     public $Debug;
 
     public function init ($server)
     {
+        global $Timer;
+
+        $this->Timer = $Timer;
+
         $this->server = $server;
         $this->connection = curl_init();
 
         curl_setopt($this->connection, CURLOPT_REFERER, $this->server);
-        curl_setopt($this->connection, CURLOPT_FAILONERROR, false);
+        curl_setopt($this->connection, CURLOPT_FAILONERROR, $this->failonerror);
 
         if (!ini_get('open_basedir') && (strtolower(ini_get('safe_mode')) !== 'on')) {
             curl_setopt($this->connection, CURLOPT_FOLLOWLOCATION, true);
@@ -41,11 +48,12 @@ class Curl {
             curl_setopt($this->connection, CURLOPT_VERBOSE, true);
         }
 
-        $this->Cache = new \Lito\Apalabro\Cache;
-        $this->Debug = new \Lito\Apalabro\Debug;
+        $this->Cache = new Cache;
+        $this->Debug = new Debug;
     }
 
-    public function fullGet ($url) {
+    public function fullGet ($url)
+    {
         $server = $this->server;
         $info = parse_url($url);
 
@@ -66,6 +74,8 @@ class Curl {
             return $this->Cache->get($url);
         }
 
+        $this->Timer->mark('INI: Curl->get');
+
         $remote = $this->server.$url;
 
         $this->Debug->show('Connection to <strong>'.$remote.'</strong>');
@@ -84,6 +94,8 @@ class Curl {
         if ($cache) {
             $this->Cache->set($url, $html);
         }
+
+        $this->Timer->mark('END: Curl->get');
 
         return $html;
     }

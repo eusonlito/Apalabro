@@ -5,15 +5,29 @@ $game = isset($_GET['id']) ? $_GET['id'] : null;
 
 require (__DIR__.'/game-check.php');
 
-if (isset($_POST['play']) && ($_POST['play'] === 'true')) {
-    $success = $Api->play($Game->id, $_POST);
+if (isset($_POST['play'])) {
+    if ($_POST['play'] === 'true') {
+        $success = $Api->play($Game->id, $_POST);
 
-    if ($success) {
-        $Theme->setMessage(__('Your tiles were set successfully'), 'success');
+        if ($success) {
+            $Theme->setMessage(__('Your tiles were set successfully'), 'success');
 
-        $Game = $Api->getGame($Game->id);
-    } else {
-        $Theme->setMessage(__('Sorry but these word is no valid'), 'error');
+            $Game = $Api->getGame($Game->id);
+        } else {
+            $Theme->setMessage(__('Sorry but these word is no valid'), 'error');
+        }
+    }
+
+    if ($_POST['play'] === 'swap') {
+        $success = $Api->swapTiles($Game->id, $_POST['swapped_tiles']);
+
+        if ($success) {
+            $Theme->setMessage(__('Your tiles were swapped successfully'), 'success');
+
+            $Game = $Api->getGame($Game->id);
+        } else {
+            $Theme->setMessage(__('Sorry but yours tiles can not be swapped'), 'error');
+        }
     }
 }
 

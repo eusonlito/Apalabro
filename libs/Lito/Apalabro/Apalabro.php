@@ -11,7 +11,6 @@ class Apalabro {
     private $language = '';
     private $languages = array();
     private $dictionary = array();
-    private $dictionary_len = 0;
     private $words = array();
     private $games = array();
     private $my_rack_tiles = array();
@@ -20,15 +19,20 @@ class Apalabro {
     private $Cookie;
     private $Curl;
     private $Debug;
+    private $Timer;
 
     public $Cache;
 
     public function __construct ()
     {
+        global $Timer;
+
         $this->Cache = new Cache;
         $this->Cookie = new Cookie;
         $this->Curl = new Curl;
         $this->Debug = new Debug;
+
+        $this->Timer = $Timer;
 
         $this->Curl->init($this->server);
 
@@ -46,7 +50,7 @@ class Apalabro {
         $this->languages = array();
 
         foreach (glob(BASE_PATH.'/languages/*', GLOB_ONLYDIR) as $language) {
-            if (is_file($language.'/dictionary.txt') || is_file($language.'/words.txt')) {
+            if (is_file($language.'/dictionary.php') || is_file($language.'/words.php')) {
                 $this->languages[] = basename($language);
             }
         }
@@ -202,7 +206,8 @@ class Apalabro {
         return $this->logged;
     }
 
-    public function logout () {
+    public function logout ()
+    {
         $this->Cookie->set('', -3600);
     }
 
@@ -489,6 +494,19 @@ class Apalabro {
         ));
     }
 
+    public function swapTiles ($game, $tiles)
+    {
+        $this->_loggedOrDie();
+
+        if (!$tiles || !isset($this->games['active'][$game])) {
+            return false;
+        }
+
+        return $this->turnType($game, 'SWAP', array(
+            'played_tiles' => implode(',', $tiles)
+        ));
+    }
+
     public function turnType ($game, $type, $data = array())
     {
         $this->_loggedOrDie();
@@ -500,6 +518,122 @@ class Apalabro {
         $data['type'] = $type;
 
         return $this->Curl->post('users/'.$this->user.'/games/'.$game.'/turns', $data);
+    }
+
+    public function searchWords ($tiles)
+    {
+        $this->loadLanguage();
+
+        $this->Timer->mark('INI: Apalabro->searchWords');
+
+        $len_tiles = count($tiles);
+        $wildcard = in_array('*', $tiles);
+        $words = array();
+
+        foreach ($this->dictionary as $word) {
+            if ((strlen($word) > $len_tiles) || (strlen($word) < 2)) {
+                continue;
+            }
+
+            if (!$this->allInArray(str_split_unicode($word), $tiles, $wildcard)) {
+                continue;
+            }
+
+            $points = $this->getWordPoints($word, $tiles);
+
+            if (!isset($words[$points]) || !in_array($word, $words[$points])) {
+                $words[$points][] = $word;
+            }
+        }
+
+        krsort($words);
+
+        $this->Timer->mark('END: Apalabro->searchWords');
+
+        return $words;
+    }
+
+    public function searchWordsExpression ($tiles, $expression = '')
+    {
+        if (!$expression) {
+            return array();
+        }
+
+        $this->loadLanguage();
+
+        $this->Timer->mark('INI: Apalabro->searchWordsExpression');
+
+        $expression = strtolower($expression);
+        $expression_tiles = str_split_unicode(preg_replace('/[^a-zñ]/', '', $expression));
+
+        if ($expression_tiles) {
+            $tiles = array_merge($tiles, $expression_tiles);
+        }
+
+        $wildcard = in_array('*', $tiles);
+        $words = array();
+
+        foreach ($this->dictionary as $word) {
+            if (strlen($word) < 2) {
+                continue;
+            }
+
+            if (!preg_match('/'.$expression.'/', $word)) {
+                continue;
+            }
+
+            if (!$this->allInArray(str_split_unicode($word), $tiles, $wildcard)) {
+                continue;
+            }
+
+            $points = $this->getWordPoints($word, $tiles);
+
+            if (!isset($words[$points]) || !in_array($word, $words[$points])) {
+                $words[$points][] = $word;
+            }
+        }
+
+        krsort($words);
+
+        $this->Timer->mark('END: Apalabro->searchWordsExpression');
+
+        return $words;
+    }
+
+    public function getWordPoints ($word, $compare = array())
+    {
+        if (!$this->words) {
+            $this->loadWords();
+        }
+
+        $word = str_split_unicode(strtolower($word));
+        $full = count($compare);
+        $used = 0;
+        $points = 0;
+
+        foreach ($word as $letter) {
+            if ($compare) {
+                if (($key = array_search($letter, $compare)) === false) {
+                    continue;
+                }
+
+                unset($compare[$key]);
+
+                if (isset($this->words[$letter])) {
+                    $points += $this->words[$letter];
+                    ++$used;
+                }
+            } else if (isset($this->words[$letter])) {
+                $points += $this->words[$letter];
+                ++$used;
+            }
+        }
+
+        if (($full === 7) && ($used >= 7) && !$compare) {
+            $points += 40;
+        }
+
+        return $points;
     }
 
     public function setBoardSpaces ($game)
@@ -521,6 +655,8 @@ class Apalabro {
         if (!$Game->board_tiles) {
             return true;
         }
+
+        $this->Timer->mark('INI: Apalabro->setBoardSpaces');
 
         $previous = false;
         $left = $right = $top = $bottom = 0;
@@ -567,117 +703,9 @@ class Apalabro {
         $previous = &$this->board_spaces[count($this->board_spaces) - 1];
         $previous['right'] = (($previous['row'] + 1) * 15) - 1 - $previous['end'];
 
+        $this->Timer->mark('END: Apalabro->setBoardSpaces');
+
         return $this->board_spaces;
-    }
-
-    public function searchWords ($tiles) {
-        $this->loadLanguage();
-
-        $len_tiles = count($tiles);
-        $wildcard = in_array('*', $tiles);
-        $words = array();
-
-        for ($i = 0; $i < $this->dictionary_len; $i++) {
-            $word = $this->dictionary[$i];
-
-            if ((strlen($word) > $len_tiles) || (strlen($word) < 2)) {
-                continue;
-            }
-
-            if (!$this->allInArray(str_split_unicode($word), $tiles, $wildcard)) {
-                continue;
-            }
-
-            $points = $this->getWordPoints($word, $tiles);
-
-            if (!isset($words[$points]) || !in_array($word, $words[$points])) {
-                $words[$points][] = $word;
-            }
-        }
-
-        krsort($words);
-
-        return $words;
-    }
-
-    public function searchWordsExpression ($tiles, $expression = '') {
-        if (!$expression) {
-            return array();
-        }
-
-        $this->loadLanguage();
-
-        $expression = strtolower($expression);
-        $expression_tiles = str_split_unicode(preg_replace('/[^a-zñ]/', '', $expression));
-
-        if ($expression_tiles) {
-            $tiles = array_merge($tiles, $expression_tiles);
-        }
-
-        $wildcard = in_array('*', $tiles);
-        $words = array();
-
-        for ($i = 0; $i < $this->dictionary_len; $i++) {
-            $word = $this->dictionary[$i];
-
-            if (strlen($word) < 2) {
-                continue;
-            }
-
-            if (!preg_match('/'.$expression.'/', $word)) {
-                continue;
-            }
-
-            if (!$this->allInArray(str_split_unicode($word), $tiles, $wildcard)) {
-                continue;
-            }
-
-            $points = $this->getWordPoints($word, $tiles);
-
-            if (!isset($words[$points]) || !in_array($word, $words[$points])) {
-                $words[$points][] = $word;
-            }
-        }
-
-        krsort($words);
-
-        return $words;
-    }
-
-    public function getWordPoints ($word, $compare = array())
-    {
-        if (!$this->words) {
-            $this->loadWords();
-        }
-
-        $word = str_split_unicode(strtolower($word));
-        $full = count($compare);
-        $used = 0;
-        $points = 0;
-
-        foreach ($word as $letter) {
-            if ($compare) {
-                if (($key = array_search($letter, $compare)) === false) {
-                    continue;
-                }
-
-                unset($compare[$key]);
-
-                if (isset($this->words[$letter])) {
-                    $points += $this->words[$letter];
-                    ++$used;
-                }
-            } else if (isset($this->words[$letter])) {
-                $points += $this->words[$letter];
-                ++$used;
-            }
-        }
-
-        if (($full === 7) && ($used >= 7) && !$compare) {
-            $points += 40;
-        }
-
-        return $points;
     }
 
     private function loadLanguage ()
@@ -694,14 +722,17 @@ class Apalabro {
 
         $this->dictionary = array();
 
-        $file = BASE_PATH.'/languages/'.$this->language.'/dictionary.txt';
+        $file = BASE_PATH.'/languages/'.$this->language.'/dictionary.php';
 
         if (!is_file($file)) {
             return false;
         }
 
-        $this->dictionary = file($file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-        $this->dictionary_len = count($this->dictionary);
+        $this->Timer->mark('INI: Apalabro->loadDic '.$this->language);
+
+        $this->dictionary = include ($file);
+
+        $this->Timer->mark('END: Apalabro->loadDic '.$this->language);
     }
 
     private function loadWords ()
@@ -712,19 +743,13 @@ class Apalabro {
 
         $this->words = array();
 
-        $file = BASE_PATH.'/languages/'.$this->language.'/words.txt';
+        $file = BASE_PATH.'/languages/'.$this->language.'/words.php';
 
         if (!is_file($file)) {
             return false;
         }
 
-        $this->words = array();
-        $words = file($file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-
-        foreach ($words as $word) {
-            list($word, $value) = explode(',', $word);
-            $this->words[$word] = $value;
-        }
+        $this->words = include ($file);
     }
 
     private function allInArray ($array1, $array2, $wildcard)

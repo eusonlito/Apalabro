@@ -29,7 +29,8 @@ class Cache {
         return $this->folder.chunk_split($file, 4, '/').$file;
     }
 
-    public function enabled () {
+    public function enabled ()
+    {
         return $this->enabled;
     }
 
