@@ -26,3 +26,13 @@ if ($words) {
         echo '</li>';
     }
 }
+
+echo "\n".'<!--';
+
+foreach ($Timer->get() as $timer) {
+    echo "\n".sprintf('%01.6f', $timer['total']).' - '.$timer['text'];
+}
+
+echo "\n".'//-->';
+
+exit;

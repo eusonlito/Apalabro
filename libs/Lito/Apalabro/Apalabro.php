@@ -566,7 +566,7 @@ class Apalabro {
 
         $this->Timer->mark('INI: Apalabro->searchWordsExpression');
 
-        $expression = strtolower($expression);
+        $expression = str_replace('/', '', strtolower($expression));
         $expression_tiles = str_split_unicode(preg_replace('/[^a-zñ]/', '', $expression));
 
         if ($expression_tiles) {

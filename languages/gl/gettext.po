@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apalabro!\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-06 15:15+0100\n"
-"PO-Revision-Date: 2012-08-06 15:15+0100\n"
+"POT-Creation-Date: 2012-08-07 13:03+0100\n"
+"PO-Revision-Date: 2012-08-07 13:06+0100\n"
 "Last-Translator: Lito <lito@eordes.com>\n"
 "Language-Team: Lito <lito@eordes.com>\n"
 "Language: \n"
@@ -18,13 +18,13 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 
 #: search-words.php:18
-#: themes/default/game.php:92
+#: themes/default/game.php:113
 #, php-format
 msgid "%s points"
 msgstr "%s puntos"
 
 #: search-words.php:22
-#: themes/default/game.php:95
+#: themes/default/game.php:116
 #, php-format
 msgid "%s letters"
 msgstr "%s letras"
@@ -37,13 +37,21 @@ msgstr "Non se recibiu o ID da partida"
 msgid "This game does not exists"
 msgstr "Esta partida non existe"
 
-#: game.php:12
+#: game.php:13
 msgid "Your tiles were set successfully"
 msgstr "As fichas colocáronse correctamente"
 
-#: game.php:16
+#: game.php:17
 msgid "Sorry but these word is no valid"
 msgstr "Recoiros, a palabra que escolleches non parece valer"
+
+#: game.php:25
+msgid "Your tiles were swapped successfully"
+msgstr "O cambio de fichas fíxose correctamente"
+
+#: game.php:29
+msgid "Sorry but yours tiles can not be swapped"
+msgstr "Sinto, pero non se poideron cambiar as túas fichas"
 
 #: new.php:12
 msgid "Sorry but I can't create a new game... Please try it again in some minutes"
@@ -107,43 +115,63 @@ msgstr "Turno do oponente"
 msgid "Last words: %s"
 msgstr "Últimas palabras: %s"
 
-#: themes/default/game.php:58
+#: themes/default/game.php:43
+msgid "Swapping Tiles"
+msgstr "Cambiando Fichas"
+
+#: themes/default/game.php:47
+msgid "Swap"
+msgstr "Cambiar"
+
+#: themes/default/game.php:48
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: themes/default/game.php:53
+msgid "Move here yours tiles"
+msgstr "Move aquí as túas fichas"
+
+#: themes/default/game.php:77
 msgid "Play!"
 msgstr "Xogar!"
 
-#: themes/default/game.php:67
+#: themes/default/game.php:78
+msgid "Swap Tiles"
+msgstr "Cambiar Fichas"
+
+#: themes/default/game.php:87
 msgid "Do you need help?"
 msgstr "Precisas axuda?"
 
-#: themes/default/game.php:68
+#: themes/default/game.php:88
 msgid "I can give you some suggestions ;)"
 msgstr "Se o precisas podo darche algunhas suxerencias ;)"
 
-#: themes/default/game.php:69
+#: themes/default/game.php:89
 msgid "Yes, please!"
 msgstr "Sí, por favor!"
 
-#: themes/default/game.php:75
+#: themes/default/game.php:95
 msgid "Suggested words"
 msgstr "Palabras suxeridas"
 
-#: themes/default/game.php:79
+#: themes/default/game.php:99
 msgid "Regular expression"
 msgstr "Expresión regular"
 
-#: themes/default/game.php:86
+#: themes/default/game.php:106
 msgid "Filter suggested words"
 msgstr "Filtrar as palabras suxeridas"
 
-#: themes/default/game.php:107
+#: themes/default/game.php:129
 msgid "Filter with regular expression"
 msgstr "Filtrar con expresión regular"
 
-#: themes/default/game.php:109
+#: themes/default/game.php:131
 msgid "Search"
 msgstr "Buscar"
 
-#: themes/default/game.php:111
+#: themes/default/game.php:133
 msgid "Help"
 msgstr "Axuda"
 
@@ -185,7 +213,15 @@ msgstr "Agardando resposta..."
 
 #: themes/default/js/js-strings.php:12
 msgid "No results for your query"
-msgstr "Se resultados para a túa consulta"
+msgstr "Sen resultados para a túa consulta"
+
+#: themes/default/js/js-strings.php:13
+msgid "Are you sure do you want to swap this tiles?"
+msgstr "Estas seguro de querer cambiar estas fichas?"
+
+#: themes/default/js/js-strings.php:14
+msgid "You must select some tile to swap"
+msgstr "Debes seleccionar algunha ficha para ser cambiada"
 
 #: libs/Lito/Apalabro/Theme.php:44
 #, php-format
@@ -193,6 +229,7 @@ msgid "Theme path \"%s\" does not exists."
 msgstr "O directorio \"%s\" para este tema non existe."
 
 #: libs/Lito/Apalabro/functions.php:59
+#: libs/Lito/Apalabro/functions.php:66
 msgid "just now"
 msgstr "xusto agora"
 
