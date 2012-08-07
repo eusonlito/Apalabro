@@ -25,6 +25,8 @@ if ($words) {
         echo '</div>';
         echo '</li>';
     }
+} else {
+    __e('No results for your query');
 }
 
 echo "\n".'<!--';

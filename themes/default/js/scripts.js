@@ -74,7 +74,7 @@ $(document).ready(function () {
             $.post($(this).attr('action'),
                 $('input', $(this)).serialize(),
                 function (response) {
-                    $filtered.html(response ? response : strings['no_results']);
+                    $filtered.html(response);
                 }
             );
         } else {
