@@ -127,9 +127,9 @@ $(document).ready(function () {
             });
 
             if (playReady()) {
-                $('#game-form button[type="submit"]').attr('disabled', false);
+                $('#game-form button[name="play"]').attr('disabled', false);
             } else {
-                $('#game-form button[type="submit"]').attr('disabled', 'disabled');
+                $('#game-form button[name="play"]').attr('disabled', 'disabled');
             }
 
             return false;
@@ -159,9 +159,9 @@ $(document).ready(function () {
             }
 
             if (playReady()) {
-                $('#game-form button[type="submit"]').attr('disabled', false);
+                $('#game-form button[name="play"]').attr('disabled', false);
             } else {
-                $('#game-form button[type="submit"]').attr('disabled', 'disabled');
+                $('#game-form button[name="play"]').attr('disabled', 'disabled');
             }
 
             ui.draggable.animate({
@@ -173,24 +173,44 @@ $(document).ready(function () {
         }
     });
 
+    $('#game-form button[type="submit"]').click(function () {
+        $('#game-form').data('clicked', $(this).attr('name'));
+    });
+
     $('#game-form').submit(function () {
-        if (!playReady()) {
-            return false;
+        var clicked = $(this).data('clicked');
+
+        switch (clicked) {
+            case 'play':
+                if (!playReady()) {
+                    return false;
+                }
+
+                return confirm(strings['play_tiles']);
+
+            case 'swap':
+                if ($('input[name^=swapped_tiles\\[]').length == 0) {
+                    alert(strings['no_swap_tiles']);
+                    return false;
+                }
+
+                return confirm(strings['swap_tiles']);
+
+            case 'pass':
+                return confirm(strings['pass']);
+
+            case 'resign':
+                if (!confirm(strings['resign'])) {
+                    return false;
+                }
+                
+                return confirm(strings['resign_sure']);
         }
 
-        return confirm(strings['play_tiles']);
+        return false;
     });
 
-    $('#swap-form').submit(function () {
-        if ($('input[name^=swapped_tiles\\[]').length == 0) {
-            alert(strings['no_swap_tiles']);
-            return false;
-        }
-
-        return confirm(strings['swap_tiles']);
-    });
-
-    $('a[name="swap"]').click(function () {
+    $('a[data-action="swap"]').click(function () {
         $('table.board').hide();
         $('div.swap').show();
 

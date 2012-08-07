@@ -36,15 +36,14 @@
 
 <div class="row">
     <div class="span7 relative">
-        
-        <?php if ($Game->active && $Game->my_turn) { ?>
-        <div class="swap hide">
-            <form id="swap-form" action="?id=<?php echo $Game->id; ?>" method="post" class="form-horizontal">
+        <form id="game-form" action="?id=<?php echo $Game->id; ?>" method="post" class="form-horizontal">
+            <?php if ($Game->active && $Game->my_turn) { ?>
+            <div class="swap hide">
                 <h2><?php __e('Swapping Tiles'); ?></h2>
 
                 <div class="page-header">
                     <div class="row">
-                        <button type="submit" name="play" value="swap" class="span2 offset1 btn btn-success"><?php __e('Swap'); ?></button>
+                        <button type="submit" name="swap" value="true" class="span2 offset1 btn btn-success"><?php __e('Swap'); ?></button>
                         <button class="span2 offset1 btn btn-danger"><?php __e('Cancel'); ?></button>
                     </div>
                 </div>
@@ -54,15 +53,13 @@
 
                     <div class="droppable-swap"></div>
                 </div>
-            </form>
-        </div>
-        <?php } ?>
+            </div>
+            <?php } ?>
 
-        <table class="board">
-            <?php echo $Api->getBoard($Game->id); ?>
-        </table>
+            <table class="board">
+                <?php echo $Api->getBoard($Game->id); ?>
+            </table>
 
-        <form id="game-form" action="?id=<?php echo $Game->id; ?>" method="post" class="form-horizontal">
             <div class="rack-tiles" height="50">
                 <?php foreach ($Game->my_rack_tiles as $tile) { ?>
                 <div class="tile-35<?php echo (strstr($tile, '*') === false) ? '' : ' wildcard'; ?>">
@@ -72,10 +69,20 @@
                 <?php } ?>
             </div>
 
-            <?php if ($Game->active && $Game->my_turn) { ?>
-            <fieldset class="form-actions">
-                <button type="submit" name="play" value="true" class="btn btn-primary" disabled="disabled"><?php __e('Play!'); ?></button>
-                <a href="#" name="swap" class="btn btn-primary offset1"><?php __e('Swap Tiles'); ?></a>
+            <?php if ($Game->game_status !== 'ENDED') { ?>
+            <fieldset class="well">
+                <div class="row-fluid">
+                    <div class="pull-right">
+                        <?php if ($Game->active && $Game->my_turn) { ?>
+                        <button type="submit" name="play" value="true" class="btn btn-large btn-primary" disabled="disabled"><?php __e('Play!'); ?></button>
+
+                        <a href="#" data-action="swap" class="btn btn-info offset2"><?php __e('Swap Tiles'); ?></a>
+                        <button type="submit" name="pass" value="true" class="btn btn-warning"><?php __e('Pass'); ?></button>
+                        <?php } ?>
+
+                        <button type="submit" name="resign" value="true" class="btn btn-danger"><?php __e('Resign'); ?></button>
+                    </div>
+                </div>
             </fieldset>
             <?php } ?>
         </form>

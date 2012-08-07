@@ -244,7 +244,7 @@ class Apalabro {
 
             $this->games['all'][$Game->id] = $Game;
 
-            if ($Game->game_status === 'ACTIVE') {
+            if (in_array($Game->game_status, array('ACTIVE', 'PENDING_MY_APPROVAL', 'PENDING_FIRST_MOVE'))) {
                 $this->games['active'][$Game->id] = $Game;
 
                 if ($Game->my_turn) {
@@ -252,7 +252,7 @@ class Apalabro {
                 } else {
                     $this->games['waiting'][$Game->id] = $Game;
                 }
-            } else if (in_array($Game->game_status, array('PENDING_FRIENDS_APPROVAL', 'PENDING_MY_APPROVAL', 'PENDING_FIRST_MOVE'))) {
+            } else if ($Game->game_status == 'PENDING_FRIENDS_APPROVAL') {
                 $this->games['pending'][$Game->id] = $Game;
             } else {
                 $this->games['ended'][$Game->id] = $Game;
@@ -454,7 +454,7 @@ class Apalabro {
         return $words;
     }
 
-    public function play ($game, $post)
+    public function playGame ($game, $post)
     {
         $this->_loggedOrDie();
 
@@ -510,7 +510,21 @@ class Apalabro {
         ));
     }
 
-    public function turnType ($game, $type, $data = array())
+    public function passTurn ($game)
+    {
+        $this->_loggedOrDie();
+
+        return $this->turnType($game, 'PASS');
+    }
+
+    public function resignGame ($game)
+    {
+        $this->_loggedOrDie();
+
+        return $this->turnType($game, 'RESIGN');
+    }
+
+    public function turnType ($game, $type, $data = null)
     {
         $this->_loggedOrDie();
 
@@ -520,7 +534,7 @@ class Apalabro {
 
         $data['type'] = $type;
 
-        return $this->Curl->post('users/'.$this->user.'/games/'.$game.'/turns', $data);
+        return $this->Curl->post('users/'.$this->user.'/games/'.$game.'/turns', ($data ?: null));
     }
 
     public function searchWords ($tiles)
