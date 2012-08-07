@@ -121,7 +121,10 @@ class Apalabro {
 
         $this->clearData();
 
-        $Login = $this->Curl->post('login', array('email' => $user, 'password' => $password));
+        $Login = $this->Curl->post('login', array(
+            'email' => $user,
+            'password' => $password
+        ));
 
         if (!is_object($Login) || !isset($Login->id)) {
             return false;
@@ -531,7 +534,7 @@ class Apalabro {
         $words = array();
 
         foreach ($this->dictionary as $word) {
-            if ((strlen($word) > $len_tiles) || (strlen($word) < 2)) {
+            if ((mb_strlen($word) > $len_tiles) || (mb_strlen($word) < 2)) {
                 continue;
             }
 
@@ -574,7 +577,7 @@ class Apalabro {
         $words = array();
 
         foreach ($this->dictionary as $word) {
-            if (strlen($word) < 2) {
+            if (mb_strlen($word) < 2) {
                 continue;
             }
 
@@ -750,6 +753,51 @@ class Apalabro {
         }
 
         $this->words = include ($file);
+    }
+
+    public function mergeDic ($language, $file, $new)
+    {
+        if (!is_file($file)) {
+            return false;
+        }
+
+        $this->language = strtolower($language);
+
+        $this->loadDic();
+
+        $info = pathinfo($new);
+
+        if (!isset($info['extension'])) {
+            $new .= '.php';
+        } else if (strtolower($info['extension']) !== 'php') {
+            $new = preg_replace('/\.[^\.]+$/', '.php', $new);
+        }
+
+        $new = BASE_PATH.'/languages/'.$this->language.'/'.$new;
+
+        if ((is_file($new) && !is_writable($new)) || (!is_file($new) && !is_writable(dirname($new)))) {
+            return false;
+        }
+
+        $dictionary = $this->txtDic2array($file);
+
+        if ($this->dictionary) {
+            $dictionary = array_unique(array_merge($this->dictionary, $dictionary));
+        }
+
+        return file_put_contents($new, "<?php return array('".implode("','", $dictionary)."'); ?>");
+    }
+
+    private function txtDic2array ($file) {
+        if (!is_file($file)) {
+            return array();
+        }
+
+        $dictionary = trim(strtolower(file_get_contents($file)));
+        $dictionary = strtr(utf8_decode($dictionary), utf8_decode('àáâãäçèéêëìíîïòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝ'), 'aaaaaceeeeiiiiooooouuuuyyaaaaaceeeeiiiiooooouuuuy');
+        $dictionary = str_replace("\n", " ", preg_replace('/[^a-zñ\s]/', '', $dictionary));
+
+        return array_unique(explode(' ', trim(preg_replace('/\s+/', ' ', $dictionary))));
     }
 
     private function allInArray ($array1, $array2, $wildcard)

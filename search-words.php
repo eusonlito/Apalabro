@@ -19,7 +19,7 @@ if ($words) {
         echo '<div class="span7">';
 
         foreach ($words as $word) {
-            echo '<span>'.$word.'</span> <span class="pull-right small">'.__('%s letters', strlen($word)).'</span><br />';
+            echo '<span>'.$word.'</span> <span class="pull-right small">'.__('%s letters', mb_strlen($word)).'</span><br />';
         }
 
         echo '</div>';

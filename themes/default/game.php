@@ -75,7 +75,7 @@
             <?php if ($Game->active && $Game->my_turn) { ?>
             <fieldset class="form-actions">
                 <button type="submit" name="play" value="true" class="btn btn-primary" disabled="disabled"><?php __e('Play!'); ?></button>
-                <a href="#" name="swap" class="btn btn-primary"><?php __e('Swap Tiles'); ?></a>
+                <a href="#" name="swap" class="btn btn-primary offset1"><?php __e('Swap Tiles'); ?></a>
             </fieldset>
             <?php } ?>
         </form>
@@ -113,7 +113,7 @@
                             <div class="span3"><strong><?php __e('%s points', $points); ?></strong></div>
                             <div class="span7">
                                 <?php foreach ($words as $word) { ?>
-                                <span><?php echo $word; ?></span> <span class="pull-right small"><?php __e('%s letters', strlen($word)); ?></span><br />
+                                <span><?php echo $word; ?></span> <span class="pull-right small"><?php __e('%s letters', mb_strlen($word)); ?></span><br />
                                 <?php } ?>
                             </div>
                         </li>
