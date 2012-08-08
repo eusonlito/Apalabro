@@ -131,7 +131,7 @@
 
                 <div class="tab-pane" id="tab-regular-expression">
                     <form action="<?php echo BASE_WWW; ?>ajax/search-words.php" class="form-inline filter-expression" data-filtered=".words-expression" method="post">
-                        <input type="hidden" name="game" value="<?php echo $Game->id; ?>" />
+                        <input type="hidden" name="id" value="<?php echo $Game->id; ?>" />
 
                         <input type="text" name="filter" value="" class="input-large search-query" placeholder="<?php __e('Filter with regular expression'); ?>">
 

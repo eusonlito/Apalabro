@@ -1,13 +1,13 @@
 <?php
-if (!isset($_POST['game']) || !$_POST['game'] || !isset($_POST['filter']) || !$_POST['filter']) {
+if (!isset($_POST['id']) || !$_POST['id'] || !isset($_POST['filter']) || !$_POST['filter']) {
     die();
 }
 
 require (__DIR__.'/../libs/Lito/Apalabro/Loader.php');
 
-$game = $_POST['game'];
+$game = $_POST['id'];
 
-require (BASE_PATH.'/game-check.php');
+require (BASE_PATH.'/aux/game-check.php');
 
 $words = $Api->solve($Game->id, $_POST['filter']);
 
