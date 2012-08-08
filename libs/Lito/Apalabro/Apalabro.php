@@ -653,7 +653,7 @@ class Apalabro {
         return $points;
     }
 
-    public function setBoardSpaces ($game)
+    public function getBoardSpaces ($game)
     {
         $this->_loggedOrDie();
 
@@ -796,13 +796,19 @@ class Apalabro {
         $dictionary = $this->txtDic2array($file);
 
         if ($this->dictionary) {
-            $dictionary = array_unique(array_merge($this->dictionary, $dictionary));
+            // foreach is ALWAYS faster than array_merge
+            foreach ($this->dictionary as $word) {
+                $dictionary[] = $word;
+            }
+
+            $dictionary = array_unique($dictionary);
         }
 
         return file_put_contents($new, "<?php return array('".implode("','", $dictionary)."'); ?>");
     }
 
-    private function txtDic2array ($file) {
+    private function txtDic2array ($file)
+    {
         if (!is_file($file)) {
             return array();
         }
@@ -810,8 +816,11 @@ class Apalabro {
         $dictionary = trim(strtolower(file_get_contents($file)));
         $dictionary = strtr(utf8_decode($dictionary), utf8_decode('àáâãäçèéêëìíîïòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝ'), 'aaaaaceeeeiiiiooooouuuuyyaaaaaceeeeiiiiooooouuuuy');
         $dictionary = str_replace("\n", " ", preg_replace('/[^a-zñ\s]/', '', $dictionary));
+        $dictionary = array_unique(explode(' ', trim(preg_replace('/\s+/', ' ', $dictionary))));
 
-        return array_unique(explode(' ', trim(preg_replace('/\s+/', ' ', $dictionary))));
+        sort($dictionary);
+
+        return $dictionary;
     }
 
     private function allInArray ($array1, $array2, $wildcard)

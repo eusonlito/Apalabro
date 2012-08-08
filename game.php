@@ -3,7 +3,7 @@ require (__DIR__.'/libs/Lito/Apalabro/Loader.php');
 
 $game = isset($_GET['id']) ? $_GET['id'] : null;
 
-require (__DIR__.'/game-check.php');
+require (BASE_PATH.'/game-check.php');
 
 if ($Game->game_status !== 'ENDED') {
     if (isset($_POST['play']) && ($_POST['play'] === 'true')) {

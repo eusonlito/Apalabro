@@ -52,6 +52,11 @@ class Curl {
         $this->Debug = new Debug;
     }
 
+    public function setReferer ($referer)
+    {
+        curl_setopt($this->connection, CURLOPT_REFERER, $referer);
+    }
+
     public function fullGet ($url)
     {
         $server = $this->server;

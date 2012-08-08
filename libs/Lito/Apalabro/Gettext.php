@@ -254,8 +254,8 @@ class CachedFileReader
         $data = substr($this->_str, $this->_pos, $bytes);
         $this->_pos += $bytes;
 
-        if (mb_strlen($this->_str) < $this->_pos) {
-            $this->_pos = mb_strlen($this->_str);
+        if (strlen($this->_str) < $this->_pos) {
+            $this->_pos = strlen($this->_str);
         }
 
         return $data;
@@ -265,8 +265,8 @@ class CachedFileReader
     {
         $this->_pos = $pos;
 
-        if (mb_strlen($this->_str) < $this->_pos) {
-            $this->_pos = mb_strlen($this->_str);
+        if (strlen($this->_str) < $this->_pos) {
+            $this->_pos = strlen($this->_str);
         }
 
         return $this->_pos;
@@ -279,6 +279,6 @@ class CachedFileReader
 
     public function length ()
     {
-        return mb_strlen($this->_str);
+        return strlen($this->_str);
     }
 }

@@ -70,7 +70,6 @@
 
                             <li<?php echo (FILENAME === 'about.php') ? ' class="active"' : ''; ?>><a href="<?php echo BASE_WWW; ?>about.php"><?php __e('About'); ?></a></li>
                         </ul>
-
                         
                         <ul class="nav pull-right">
                             <?php if ($Api->logged()) { ?>
