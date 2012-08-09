@@ -3,6 +3,11 @@ body {
     padding-bottom: 40px;
 }
 
+div.home div.well {
+    height: 70px;
+    overflow: hidden;
+}
+
 .tile-35 {
     display: block;
     float: left;
@@ -154,4 +159,8 @@ table.board tbody td {
     width: 100%;
     height: 100px;
     border: 1px solid #CCC;
+}
+
+.height-auto {
+    height: auto !important;
 }
