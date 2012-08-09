@@ -40,7 +40,7 @@ $(document).ready(function () {
     $('.filter-list').keyup(function (e) {
         if (e.keyCode == 27) {
             $(this).val('');
-            $($(this).data('filtered')).show();
+            $($(this).data('filtered')).parent('div').show();
 
             return false;
         }
@@ -53,13 +53,13 @@ $(document).ready(function () {
                 var $this = $(this);
 
                 if ($this.text().indexOf(filter) != -1) {
-                    $this.show();
+                    $this.parent('div').show();
                 } else {
-                    $this.hide();
+                    $this.parent('div').hide();
                 }
             });
         } else {
-            $($(this).data('filtered')).show();
+            $($(this).data('filtered')).parent('div').show();
         }
     }).keydown(function (e) {
         if (e.which == 13) {

@@ -153,7 +153,7 @@
             <div class="tab-content">
                 <div class="tab-pane active" id="tab-suggested-words">
                     <div class="control-group">
-                        <input type="text" class="span5 filter-list" data-filtered=".words-list li span" value="" placeholder="<?php __e('Filter suggested words'); ?>">
+                        <input type="text" class="span5 filter-list" data-filtered=".words-list li span.word" value="" placeholder="<?php __e('Filter suggested words'); ?>">
                     </div>
 
                     <ul class="dl-horizontal words-list">
@@ -163,7 +163,10 @@
                             <div class="span3"><strong><?php __e('%s points', $points); ?></strong></div>
                             <div class="span7">
                                 <?php foreach ($words as $word) { ?>
-                                <span><?php echo $word; ?></span> <span class="pull-right small"><?php __e('%s letters', mb_strlen($word)); ?></span><br />
+                                <div>
+                                    <span class="word"><?php echo $word; ?></span>
+                                    <span class="pull-right small"><?php __e('%s letters', mb_strlen($word)); ?></span>
+                                </div>
                                 <?php } ?>
                             </div>
                         </li>
