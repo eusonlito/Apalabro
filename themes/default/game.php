@@ -77,50 +77,53 @@
             <?php if ($Game->game_status !== 'ENDED') { ?>
             <fieldset class="well">
                 <div class="row-fluid">
-                    <div class="pull-right">
-                        <?php if ($Game->active) { ?>
+                    <?php if ($Game->active) { ?>
 
+                    <div class="span3">
                         <?php if ($Game->my_turn) { ?>
-
                         <a href="#" data-action="confirm" data-url="<?php echo BASE_WWW; ?>ajax/get-points.php" class="btn btn-large btn-success" disabled="disabled">
                             <i class="icon-ok icon-white"></i> <?php __e('Play!'); ?>
                         </a>
-
-                        <a href="#" data-action="recall" class="btn btn-primary offset1"><?php __e('Recall'); ?></a>
-                        <a href="#" data-action="swap" class="btn btn-info"><?php __e('Swap Tiles'); ?></a>
-
-                        <button type="submit" name="pass" value="true" class="btn btn-warning"><?php __e('Pass'); ?></button>
-
                         <?php } else { ?>
-
                         <a href="#" data-action="test" data-url="<?php echo BASE_WWW; ?>ajax/get-points.php" class="btn btn-large btn-success" disabled="disabled">
                             <i class="icon-ok icon-white"></i>  <?php __e('Test'); ?>
                         </a>
-                        <a href="#" data-action="recall" class="btn btn-primary offset3"><?php __e('Recall'); ?></a>
-
                         <?php } ?>
-
-                        <div id="confirm-move" class="modal hide">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">×</button>
-                                <h3><?php __e('Confirm your move'); ?></h3>
-                            </div>
-
-                            <div class="modal-body"></div>
-
-                            <div class="modal-footer">
-                                <button type="submit" name="play" value="true" class="btn btn-large btn-primary">
-                                    <i class="icon-ok icon-white"></i> <?php __e('Confirm'); ?>
-                                </button>
-
-                                <a href="#" class="btn" data-dismiss="modal"><i class="icon-remove"></i> <?php __e('Back'); ?></a>
-                            </div>
-                        </div>
-
-                        <?php } ?>
-
-                        <button type="submit" name="resign" value="true" class="btn btn-danger"><?php __e('Resign'); ?></button>
                     </div>
+
+                    <div class="span9">
+                        <div class="pull-right">
+                            <a href="#" data-action="recall" class="btn btn-primary"><?php __e('Recall'); ?></a>
+
+                            <?php if ($Game->my_turn) { ?>
+                            
+                            <a href="#" data-action="swap" class="btn btn-info"><?php __e('Swap Tiles'); ?></a>
+
+                            <button type="submit" name="pass" value="true" class="btn btn-warning"><?php __e('Pass'); ?></button>
+
+                            <?php } ?>
+
+                            <div id="confirm-move" class="modal hide">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">×</button>
+                                    <h3><?php __e('Confirm your move'); ?></h3>
+                                </div>
+
+                                <div class="modal-body"></div>
+
+                                <div class="modal-footer">
+                                    <button type="submit" name="play" value="true" class="btn btn-large btn-primary">
+                                        <i class="icon-ok icon-white"></i> <?php __e('Confirm'); ?>
+                                    </button>
+
+                                    <a href="#" class="btn" data-dismiss="modal"><i class="icon-remove"></i> <?php __e('Back'); ?></a>
+                                </div>
+                            </div>
+
+                            <button type="submit" name="resign" value="true" class="btn btn-danger"><?php __e('Resign'); ?></button>
+                        </div>
+                    </div>
+                    <?php } ?>
                 </div>
             </fieldset>
             <?php } ?>

@@ -340,6 +340,8 @@ class Apalabro {
             }
 
             ksort($Game->board_tiles);
+        } else {
+            $Game->board_tiles = array();
         }
 
         if (isset($Game->my_rack_tiles) && $Game->my_rack_tiles) {
