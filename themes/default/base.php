@@ -36,7 +36,7 @@
         <script src="<?php echo $Theme->www(); ?>bootstrap/js/bootstrap-tab.js" type="text/javascript"></script>
         <script src="<?php echo $Theme->www(); ?>bootstrap/js/bootstrap-modal.js" type="text/javascript"></script>
 
-        <script src="<?php echo $Theme->www(); ?>js/js-strings.php" type="text/javascript"></script>
+        <script src="<?php echo $Theme->www(); ?>js/js-strings.php?lg=<?php echo $Gettext->getLanguage(); ?>" type="text/javascript"></script>
 
         <script src="<?php echo $Theme->www(); ?>js/scripts.js" type="text/javascript"></script>
 
