@@ -6,7 +6,7 @@
     </div>
 
     <div class="span5">
-        <form action="<?php echo getenv('REQUEST_URI'); ?>" method="post" class="well">
+        <form action="<?php echo getenv('REQUEST_URI'); ?>" method="post" class="login-form well">
             <fieldset>
                 <label for="user"><?php __e('Your username'); ?></label>
                 <input type="text" name="user" value="" class="span4" />
@@ -15,7 +15,10 @@
                 <input type="password" name="password" value="" class="span4" />
 
                 <div class="form-actions">
-                    <button type="submit" class="btn btn-primary"><?php __e('Login'); ?></button>
+                    <button type="submit" class="btn btn-primary pull-right">
+                        <?php __e('Login'); ?>
+                        <i class="icon-chevron-right icon-white"></i>
+                    </button>
               </div>
             </fieldset>
         </form>

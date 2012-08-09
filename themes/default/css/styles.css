@@ -3,6 +3,14 @@ body {
     padding-bottom: 40px;
 }
 
+.login-form.well {
+    padding-bottom: 0;
+}
+
+.login-form .form-actions {
+    margin-bottom: 0;
+}
+
 div.home div.well {
     height: 70px;
     overflow: hidden;
