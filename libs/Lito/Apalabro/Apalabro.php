@@ -664,8 +664,8 @@ class Apalabro {
         }
 
         foreach ($tiles as $cell => $letter) {
-            if (preg_match('/^[0-9]+$/', $cell) && preg_match('/^[a-zñ\*]+$/', $letter)) {
-                $tiles[$cell] = mb_strtolower($letter);
+            if (preg_match('/^[0-9]+$/', $cell) && preg_match('/^[a-zñ\-]+$/', $letter)) {
+                $tiles[$cell] = str_replace('-', '*', mb_strtolower($letter));
             } else {
                 unset($tiles[$cell]);
             }

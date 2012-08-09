@@ -108,7 +108,7 @@ $(document).ready(function () {
             if ($(this).hasClass('wildcard')) {
                 var letter = prompt(strings['which_letter_use']);
 
-                if (!/^[a-zA-Z\u00C0-\u00ff]+$/.test(letter)) {
+                if ((letter.length != 1) || !/^[a-zA-Z\u00C0-\u00ff]$/.test(letter)) {
                     alert('Letter not valid');
                     return true;
                 }
