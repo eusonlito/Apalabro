@@ -37,9 +37,10 @@
 <div class="row">
     <div class="span7 relative">
         <form id="game-form" action="?id=<?php echo $Game->id; ?>" method="post" class="form-horizontal">
-            <?php if ($Game->active && $Game->my_turn) { ?>
+            <?php if ($Game->active) { ?>
             <input type="hidden" name="id" value="<?php echo $Game->id; ?>" />
 
+            <?php if ($Game->my_turn) { ?>
             <div class="swap hide">
                 <h2><?php __e('Swapping Tiles'); ?></h2>
 
@@ -56,6 +57,8 @@
                     <div class="droppable-swap"></div>
                 </div>
             </div>
+            <?php } ?>
+
             <?php } ?>
 
             <table class="board">
@@ -75,11 +78,27 @@
             <fieldset class="well">
                 <div class="row-fluid">
                     <div class="pull-right">
-                        <?php if ($Game->active && $Game->my_turn) { ?>
-                        <a id="play-confirm" href="<?php echo BASE_WWW; ?>ajax/get-points.php" class="btn btn-large btn-primary" disabled="disabled"><?php __e('Play!'); ?></a>
+                        <?php if ($Game->active) { ?>
 
-                        <a href="#" data-action="swap" class="btn btn-info offset2"><?php __e('Swap Tiles'); ?></a>
+                        <?php if ($Game->my_turn) { ?>
+
+                        <a href="#" data-action="confirm" data-url="<?php echo BASE_WWW; ?>ajax/get-points.php" class="btn btn-large btn-success" disabled="disabled">
+                            <i class="icon-ok icon-white"></i> <?php __e('Play!'); ?>
+                        </a>
+
+                        <a href="#" data-action="recall" class="btn btn-primary offset1"><?php __e('Recall'); ?></a>
+                        <a href="#" data-action="swap" class="btn btn-info"><?php __e('Swap Tiles'); ?></a>
+
                         <button type="submit" name="pass" value="true" class="btn btn-warning"><?php __e('Pass'); ?></button>
+
+                        <?php } else { ?>
+
+                        <a href="#" data-action="test" data-url="<?php echo BASE_WWW; ?>ajax/get-points.php" class="btn btn-large btn-success" disabled="disabled">
+                            <i class="icon-ok icon-white"></i>  <?php __e('Test'); ?>
+                        </a>
+                        <a href="#" data-action="recall" class="btn btn-primary offset3"><?php __e('Recall'); ?></a>
+
+                        <?php } ?>
 
                         <div id="confirm-move" class="modal hide">
                             <div class="modal-header">
@@ -90,10 +109,14 @@
                             <div class="modal-body"></div>
 
                             <div class="modal-footer">
-                                <button type="submit" name="play" value="true" class="btn btn-large btn-primary"><?php __e('Confirm'); ?></button>
-                                <a href="#" class="btn" data-dismiss="modal"><?php __e('Cancel'); ?></a>
+                                <button type="submit" name="play" value="true" class="btn btn-large btn-primary">
+                                    <i class="icon-ok icon-white"></i> <?php __e('Confirm'); ?>
+                                </button>
+
+                                <a href="#" class="btn" data-dismiss="modal"><i class="icon-remove"></i> <?php __e('Back'); ?></a>
                             </div>
                         </div>
+
                         <?php } ?>
 
                         <button type="submit" name="resign" value="true" class="btn btn-danger"><?php __e('Resign'); ?></button>

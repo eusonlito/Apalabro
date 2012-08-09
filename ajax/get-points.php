@@ -19,35 +19,33 @@ $error = false;
 if ($words) {
     $total = 0;
 
-    $html = '<table class="table table-condensed">';
-    $html .= '<head><tr>';
-    $html .= '<th>'.__('Word').'</th><th>'.__('Points').'</th>';
-    $html .= '</tr></thead><tbody>';
-
     foreach ($words as $word) {
         if (!isset($word['ok'])) {
             $error = true;
         }
 
-        $html .= '<tr class="alert alert-'.(isset($word['ok']) ? 'success' : 'danger').'">';
-        $html .= '<td>'.implode('', $word['letters']).'</td>';
+        $html .= '<div class="row-fluid">';
+        $html .= '<div class="alert alert-'.(isset($word['ok']) ? 'success' : 'danger').'">';
 
         if (isset($word['ok'])) {
             $points = array_sum($word['points']);
             $total += $points;
 
-            $html .= '<td>'.$points.'</td>';
+            $html .= '<div class="points span2">'.$points.'</div>';
+            $html .= '<div class="span8">'.implode('', $word['letters']).'</div>';
         } else {
-            $html .= '<td>'.__('No valid word').'</td>';
+            $html .= '<div class="points span2">0</div>';
+            $html .= '<div class="span6">'.implode('', $word['letters']).'</div>';
+            $html .= '<div class="span4 pull-right">'.__('No valid word').'</div>';
         }
 
-        $html .= '</tr>';
+        $html .= '</div>';
+        $html .= '</div>';
     }
 
-    $html .= '</tbody>';
-    $html .= '<tfoot><tr>';
-    $html .= '<th>&nbsp;</th><th>'.__('Total %s points', $total).'</th>';
-    $html .= '</tr></tfoot></table>';
+    if (!$error && (count($words) > 1)) {
+        $html .= '<h4 class="alert alert-info">'.__('Playing for %s points', $total).'</h4>';
+    }
 } else {
     $error = true;
     $html = '<div class="alert alert-danger"><p>'.__('Sorry but these tiles can not be combined. Please, try it another cells').'</p></div>';

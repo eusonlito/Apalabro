@@ -108,6 +108,37 @@ table.board tbody td {
     overflow: auto;
 }
 
+#confirm-move div.alert {
+    height: 36px;
+}
+
+#confirm-move div.alert div {
+    padding-top: 8px;
+    font-weight: bold;
+}
+
+#confirm-move div.alert div.points {
+    text-align: center;
+    height: 36px;
+}
+
+#confirm-move div.alert-success div.points {
+    background: url('../images/badge-ok.png') no-repeat center;
+}
+
+#confirm-move div.alert-danger div.points {
+    background: url('../images/badge-wrong.png') no-repeat center;
+}
+
+#confirm-move div.alert-danger div.pull-right {
+    font-size: 12px;
+    color: #666;
+}
+
+#confirm-move h4 {
+    text-align: center;
+}
+
 .small {
     font-size: 0.8em;
     color: rgba(0, 0, 0, 0.4);

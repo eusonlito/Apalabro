@@ -10,10 +10,14 @@ $(document).ready(function () {
         return false;
     });
 
-    $('.recall').click(function () {
+    $('a[data-action="recall"]').click(function () {
         var rack = $('.rack-tiles');
 
+        $('a[data-action="confirm"]').attr('disabled', 'disabled');
+
         $('div', rack).each(function () {
+            $('input', this).remove();
+
             $(this).animate({
                 top: snapToHight($(this), $(rack)),
                 left: (rack.position().left + $(this).data('position').left)
@@ -127,9 +131,11 @@ $(document).ready(function () {
             });
 
             if (playReady()) {
-                $('#play-confirm').attr('disabled', false);
+                $('a[data-action="confirm"]').attr('disabled', false);
+                $('a[data-action="test"]').attr('disabled', false);
             } else {
-                $('#play-confirm').attr('disabled', 'disabled');
+                $('a[data-action="confirm"]').attr('disabled', 'disabled');
+                $('a[data-action="test"]').attr('disabled', 'disabled');
             }
 
             return false;
@@ -159,9 +165,11 @@ $(document).ready(function () {
             }
 
             if (playReady()) {
-                $('#play-confirm').attr('disabled', false);
+                $('a[data-action="confirm"]').attr('disabled', false);
+                $('a[data-action="test"]').attr('disabled', false);
             } else {
-                $('#play-confirm').attr('disabled', 'disabled');
+                $('a[data-action="confirm"]').attr('disabled', 'disabled');
+                $('a[data-action="test"]').attr('disabled', 'disabled');
             }
 
             ui.draggable.animate({
@@ -210,25 +218,35 @@ $(document).ready(function () {
         return false;
     });
 
-    $('#play-confirm').click(function () {
+    $('a[data-action="confirm"], a[data-action="test"]').click(function () {
         if (!playReady()) {
             return false;
         }
 
-        var content = '';
+        var test = ($(this).data('action') == 'test') ? true : false;
 
-        $.post($(this).attr('href'),
+        if (test) {
+            $('#confirm-move button').remove();
+        }
+
+        $('#confirm-move .modal-body').html('<h4>' + strings['waiting_reply'] + '</h4>');
+
+        $.post($(this).data('url'),
             $('#game-form input').serialize(),
             function (response) {
                 response = $.parseJSON(response);
+
+                $('#confirm-move .modal-body').html(response.html);
+
+                if (test) {
+                    return false;
+                }
 
                 if (response.error) {
                     $('#game-form button[name="play"]').attr('disabled', 'disabled');
                 } else {
                     $('#game-form button[name="play"]').attr('disabled', false);
                 }
-
-                $('#confirm-move .modal-body').html(response.html);
             }
         );
 

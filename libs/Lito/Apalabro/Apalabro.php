@@ -717,6 +717,10 @@ class Apalabro {
                     }
                 }
             }
+
+            if (count($word['added']) === 7) {
+                $word['points'][] += 40;
+            }
         }
 
         unset($word);
