@@ -10,7 +10,6 @@ class Curl {
     private $response;
     private $info;
     private $cache = false;
-    private $failonerror = true;
 
     private $Timer;
 
@@ -27,7 +26,7 @@ class Curl {
         $this->connection = curl_init();
 
         curl_setopt($this->connection, CURLOPT_REFERER, $this->server);
-        curl_setopt($this->connection, CURLOPT_FAILONERROR, $this->failonerror);
+        curl_setopt($this->connection, CURLOPT_FAILONERROR, true);
 
         if (!ini_get('open_basedir') && (strtolower(ini_get('safe_mode')) !== 'on')) {
             curl_setopt($this->connection, CURLOPT_FOLLOWLOCATION, true);
@@ -52,9 +51,9 @@ class Curl {
         $this->Debug = new Debug;
     }
 
-    public function setReferer ($referer)
+    public function setOption ($option, $value)
     {
-        curl_setopt($this->connection, CURLOPT_REFERER, $referer);
+        curl_setopt($this->connection, $option, $value);
     }
 
     public function fullGet ($url)
