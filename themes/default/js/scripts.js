@@ -227,6 +227,8 @@ $(document).ready(function () {
 
         if (test) {
             $('#confirm-move button').remove();
+        } else {
+            $('#game-form button[name="play"]').attr('disabled', 'disabled');
         }
 
         $('#confirm-move .modal-body').html('<h4>' + strings['waiting_reply'] + '</h4>');
@@ -238,13 +240,7 @@ $(document).ready(function () {
 
                 $('#confirm-move .modal-body').html(response.html);
 
-                if (test) {
-                    return false;
-                }
-
-                if (response.error) {
-                    $('#game-form button[name="play"]').attr('disabled', 'disabled');
-                } else {
+                if (!test && !response.error) {
                     $('#game-form button[name="play"]').attr('disabled', false);
                 }
             }

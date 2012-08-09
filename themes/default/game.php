@@ -123,6 +123,7 @@
                             <button type="submit" name="resign" value="true" class="btn btn-danger"><?php __e('Resign'); ?></button>
                         </div>
                     </div>
+
                     <?php } ?>
                 </div>
             </fieldset>
