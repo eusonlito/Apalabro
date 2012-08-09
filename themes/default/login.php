@@ -8,7 +8,7 @@
     <div class="span5">
         <form action="<?php echo getenv('REQUEST_URI'); ?>" method="post" class="login-form well">
             <fieldset>
-                <label for="user"><?php __e('Your username'); ?></label>
+                <label for="user"><?php __e('Your email'); ?></label>
                 <input type="text" name="user" value="" class="span4" />
 
                 <label for="password"><?php __e('Your password'); ?></label>
