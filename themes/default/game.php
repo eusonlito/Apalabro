@@ -38,6 +38,8 @@
     <div class="span7 relative">
         <form id="game-form" action="?id=<?php echo $Game->id; ?>" method="post" class="form-horizontal">
             <?php if ($Game->active && $Game->my_turn) { ?>
+            <input type="hidden" name="id" value="<?php echo $Game->id; ?>" />
+
             <div class="swap hide">
                 <h2><?php __e('Swapping Tiles'); ?></h2>
 
@@ -74,10 +76,24 @@
                 <div class="row-fluid">
                     <div class="pull-right">
                         <?php if ($Game->active && $Game->my_turn) { ?>
-                        <button type="submit" name="play" value="true" class="btn btn-large btn-primary" disabled="disabled"><?php __e('Play!'); ?></button>
+                        <a id="play-confirm" href="<?php echo BASE_WWW; ?>ajax/get-points.php" class="btn btn-large btn-primary" disabled="disabled"><?php __e('Play!'); ?></a>
 
                         <a href="#" data-action="swap" class="btn btn-info offset2"><?php __e('Swap Tiles'); ?></a>
                         <button type="submit" name="pass" value="true" class="btn btn-warning"><?php __e('Pass'); ?></button>
+
+                        <div id="confirm-move" class="modal hide">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">×</button>
+                                <h3><?php __e('Confirm your move'); ?></h3>
+                            </div>
+
+                            <div class="modal-body"></div>
+
+                            <div class="modal-footer">
+                                <button type="submit" name="play" value="true" class="btn btn-large btn-primary"><?php __e('Confirm'); ?></button>
+                                <a href="#" class="btn" data-dismiss="modal"><?php __e('Cancel'); ?></a>
+                            </div>
+                        </div>
                         <?php } ?>
 
                         <button type="submit" name="resign" value="true" class="btn btn-danger"><?php __e('Resign'); ?></button>

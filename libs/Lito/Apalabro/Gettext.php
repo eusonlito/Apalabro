@@ -82,7 +82,7 @@ class Gettext
 
     public function setLanguage ($language = '', $store = false)
     {
-        $language = strtolower($language);
+        $language = mb_strtolower($language);
 
         if ($language === $this->language) {
             return $this->load();

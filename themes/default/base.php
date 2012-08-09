@@ -34,6 +34,7 @@
         <script src="<?php echo $Theme->www(); ?>js/jquery-ui/js/jquery.ui.touch-punch.min.js" type="text/javascript"></script>
         <script src="<?php echo $Theme->www(); ?>bootstrap/js/bootstrap-dropdown.js" type="text/javascript"></script>
         <script src="<?php echo $Theme->www(); ?>bootstrap/js/bootstrap-tab.js" type="text/javascript"></script>
+        <script src="<?php echo $Theme->www(); ?>bootstrap/js/bootstrap-modal.js" type="text/javascript"></script>
 
         <script src="<?php echo $Theme->www(); ?>js/js-strings.php" type="text/javascript"></script>
 
@@ -105,12 +106,4 @@
     </body>
 </html>
 
-<!--
-<?php
-foreach ($Timer->get() as $timer) {
-    echo "\n".sprintf('%01.6f', $timer['total']).' - '.$timer['text'];
-}
-?>
-
-
-//-->
+<?php include ($Theme->get('sub-timer.php')); ?>

@@ -14,6 +14,7 @@ class Apalabro {
     private $words = array();
     private $games = array();
     private $my_rack_tiles = array();
+    private $board_points = array();
 
     private $Cookie;
     private $Curl;
@@ -59,7 +60,7 @@ class Apalabro {
     {
         $this->language = '';
 
-        $language = strtolower($language);
+        $language = mb_strtolower($language);
 
         if (in_array($language, $this->languages)) {
             $this->language = $language;
@@ -473,8 +474,8 @@ class Apalabro {
 
         $played_tiles = '';
 
-        foreach ($post['played_tiles'] as $position => $tile) {
-            $played_tiles[] = strtoupper($tile).'|'.$position;
+        foreach ($post['played_tiles'] as $cell => $letter) {
+            $played_tiles[] = strtoupper($letter).'|'.$cell;
         }
 
         return $this->Curl->post('users/'.$this->user.'/games/'.$Game->id.'/turns', array(
@@ -579,7 +580,7 @@ class Apalabro {
 
         $this->Timer->mark('INI: Apalabro->searchWordsExpression');
 
-        $expression = str_replace('/', '', strtolower($expression));
+        $expression = str_replace('/', '', mb_strtolower($expression));
         $expression_tiles = str_split_unicode(preg_replace('/[^a-zñ]/', '', $expression));
 
         if ($expression_tiles) {
@@ -622,7 +623,7 @@ class Apalabro {
             $this->loadWords();
         }
 
-        $word = str_split_unicode(strtolower($word));
+        $word = str_split_unicode(mb_strtolower($word));
         $full = count($compare);
         $used = 0;
         $points = 0;
@@ -660,77 +661,79 @@ class Apalabro {
             return array();
         }
 
-        $this->getBoardSpaces($game);
-
-        $Game = $this->games['all'][$game];
-
-        $words = array();
-        $tiles = explode(',', $tiles);
-
-        foreach ($tiles as $tile) {
-            list($letter, $cell) = explode('|', $tile);
-
-            if ($wildcard = (strstr($letter, '*') !== false)) {
-                $letter = str_replace('*', '', $letter);
-            }
-
-            if (isset($Game->board_spaces[$cell - 1]) && $Game->board_spaces[$cell - 1]['x']) {
-                if (isset($Game->board_spaces[$cell + 1]) && $Game->board_spaces[$cell + 1]['x']) {
-                    $points = $Game->board_spaces[$cell - 1]['x']['points'] + $Game->board_spaces[$cell + 1]['x']['points'];
-                    $word = $Game->board_spaces[$cell - 1]['x']['word'].$letter.$Game->board_spaces[$cell + 1]['x']['word'];
-
-                    $words[] = array(
-                        'word' => $word,
-                        'points' => ($points + ($wildcard ? 0 : $this->getWordPoints($letter)))
-                    );
-                } else {
-                    $Cell = $Game->board_spaces[$cell - 1];
-
-                    $words[] = array(
-                        'word' => $Cell['x']['word'].$letter,
-                        'points' => ($Cell['x']['points'] + ($wildcard ? 0 : $this->getWordPoints($letter)))
-                    );
-                }
-            } else if (isset($Game->board_spaces[$cell + 1]) && $Game->board_spaces[$cell + 1]['x']) {
-                $Cell = $Game->board_spaces[$cell + 1];
-
-                $words[] = array(
-                    'word' => $letter.$Cell['x']['word'],
-                    'points' => ($Cell['x']['points'] + ($wildcard ? 0 : $this->getWordPoints($letter)))
-                );
-            }
-
-            if (isset($Game->board_spaces[$cell - 15]) && $Game->board_spaces[$cell - 15]['y']) {
-                if (isset($Game->board_spaces[$cell + 15]) && $Game->board_spaces[$cell + 15]['y']) {
-                    $points = $Game->board_spaces[$cell - 15]['y']['points'] + $Game->board_spaces[$cell + 15]['y']['points'];
-                    $word = $Game->board_spaces[$cell - 15]['y']['word'].$letter.$Game->board_spaces[$cell + 15]['y']['word'];
-
-                    $words[] = array(
-                        'word' => $word,
-                        'points' => ($points + ($wildcard ? 0 : $this->getWordPoints($letter)))
-                    );
-                } else {
-                    $Cell = $Game->board_spaces[$cell - 15];
-
-                    $words[] = array(
-                        'word' => $Cell['y']['word'].$letter,
-                        'points' => ($Cell['y']['points'] + ($wildcard ? 0 : $this->getWordPoints($letter)))
-                    );
-                }
-            } else if (isset($Game->board_spaces[$cell + 15]) && $Game->board_spaces[$cell + 15]['y']) {
-                $Cell = $Game->board_spaces[$cell + 15];
-
-                $words[] = array(
-                    'word' => $letter.$Cell['y']['word'],
-                    'points' => ($Cell['y']['points'] + ($wildcard ? 0 : $this->getWordPoints($letter)))
-                );
+        foreach ($tiles as $cell => $letter) {
+            if (preg_match('/^[0-9]+$/', $cell) && preg_match('/^[a-zñ\*]+$/', $letter)) {
+                $tiles[$cell] = mb_strtolower($letter);
+            } else {
+                unset($tiles[$cell]);
             }
         }
 
-        return $words;
+        if (!$tiles) {
+            return array();
+        }
+
+        $this->loadBoardSpaces($game, $tiles);
+
+        $Game = $this->games['all'][$game];
+
+        $matched = $Game->board_spaces['added'];
+
+        if (!$matched) {
+            return array();
+        }
+
+        $words = array();
+
+        foreach ($matched as $word) {
+            $words[] = implode('', $word['letters']);
+        }
+
+        $words = array_unique($words);
+
+        $check = $this->Curl->post('dictionaries/'.mb_strtoupper($this->language), mb_strtoupper(implode(',', $words)));
+
+        $this->loadBoardPoints();
+
+        foreach ($matched as &$word) {
+            if (!in_array(mb_strtoupper(implode('', $word['letters'])), $check->ok)) {
+                continue;
+            }
+
+            $word['ok'] = true;
+
+            foreach ($word['added'] as $cell) {
+                $key = array_search($cell, $word['cells']);
+
+                $letter = $word['letters'][$key];
+
+                if (($word['points'][$key] > 0) && isset($this->board_points['letter'][$cell])) {
+                    $word['points'][$key] *= $this->board_points['letter'][$cell];
+                }
+
+                if (isset($this->board_points['word'][$cell])) {
+                    foreach (array_keys($word['points']) as $key) {
+                        $word['points'][$key] *= $this->board_points['word'][$cell];
+                    }
+                }
+            }
+        }
+
+        unset($word);
+
+        return $matched;
     }
 
-    public function getBoardSpaces ($game)
+    private function loadBoardPoints ()
+    {
+        if ($this->board_points) {
+            return true;
+        }
+
+        $this->board_points = include (BASE_PATH.'aux/board-points.php');
+    }
+
+    public function loadBoardSpaces ($game, $added = array())
     {
         $this->_loggedOrDie();
 
@@ -752,7 +755,7 @@ class Apalabro {
 
         $Game->board_spaces = array();
 
-        if (!$Game->board_tiles) {
+        if (!$Game->board_tiles && !$added) {
             return array();
         }
 
@@ -761,72 +764,114 @@ class Apalabro {
         $previous = false;
         $left = $right = $top = $bottom = 0;
 
+        $bt = $Game->board_tiles;
+
+        if ($added) {
+            $Game->board_spaces['added'] = array();
+            $bt += $added;
+        }
+
         for ($i = 0; $i < (15 * 15); ) {
-            if (!isset($Game->board_tiles[$i])) {
+            if (!isset($bt[$i])) {
                 ++$i;
                 continue;
             }
 
-            $word = array('word' => '', 'cells' => array(), 'points' => 0);
+            $word = array(
+                'letters' => array(),
+                'cells' => array(),
+                'points' => array(),
+                'wildcards' => array()
+            );
 
             do {
-                $letter = $Game->board_tiles[$i];
+                $letter = $bt[$i];
 
                 if ($wildcard = (strstr($letter, '*') !== false)) {
                     $letter = str_replace('*', '', $letter);
                 }
 
-                $word['word'] .= $letter;
+                $word['letters'][] = $letter;
                 $word['cells'][] = $i;
-                $word['points'] += ($wildcard ? 0 : $this->getWordPoints($letter));
-            } while (isset($Game->board_tiles[++$i]) && (($i % 15) !== 0));
+
+                if ($wildcard) {
+                    $word['points'][] = 0;
+                    $word['wildcards'][] = $i;
+                } else {
+                    $word['points'][] = $this->getWordPoints($letter);
+                    $word['wildcards'][] = false;
+                }
+            } while (isset($bt[++$i]) && (($i % 15) !== 0));
 
             foreach ($word['cells'] as $cell) {
                 $Game->board_spaces[$cell] = array(
-                    'x' => $word,
-                    'y' => array()
+                    'x' => $word
                 );
+
+                if (isset($added[$cell]) && (count($word['letters']) > 1)) {
+                    $key = implode('|', $word['cells']);
+
+                    if (!isset($Game->board_spaces['added'][$key])) {
+                        $Game->board_spaces['added'][$key] = $word;
+                        $Game->board_spaces['added'][$key]['added'] = array();
+                    }
+
+                    $Game->board_spaces['added'][$key]['added'][] = $cell;
+                }
             }
         }
 
         for ($i = 0; $i < (15 * 15); $i++) {
-            if (!isset($Game->board_tiles[$i]) || $Game->board_spaces[$i]['y']) {
+            if (!isset($bt[$i]) || isset($Game->board_spaces[$i]['y'])) {
                 continue;
             }
 
             $y = $i;
-            $word = array('word' => '', 'cells' => array(), 'points' => 0);
+            $word = array(
+                'letters' => array(),
+                'cells' => array(),
+                'points' => array(),
+                'wildcards' => array()
+            );
 
             do {
-                $letter = $Game->board_tiles[$y];
+                $letter = $bt[$y];
 
                 if ($wildcard = (strstr($letter, '*') !== false)) {
                     $letter = str_replace('*', '', $letter);
                 }
 
-                $word['word'] .= $letter;
+                $word['letters'][] = $letter;
                 $word['cells'][] = $y;
-                $word['points'] += ($wildcard ? 0 : $this->getWordPoints($letter));
+
+                if ($wildcard) {
+                    $word['points'][] = 0;
+                    $word['wildcards'][] = $y;
+                } else {
+                    $word['points'][] = $this->getWordPoints($letter);
+                    $word['wildcards'][] = false;
+                }
 
                 $y += 15;
-            } while (isset($Game->board_tiles[$y]));
+            } while (isset($bt[$y]));
 
             foreach ($word['cells'] as $cell) {
                 $Game->board_spaces[$cell]['y'] = $word;
+
+                if (isset($added[$cell]) && (count($word['letters']) > 1)) {
+                    $key = implode('|', $word['cells']);
+
+                    if (!isset($Game->board_spaces['added'][$key])) {
+                        $Game->board_spaces['added'][$key] = $word;
+                        $Game->board_spaces['added'][$key]['added'] = array();
+                    }
+
+                    $Game->board_spaces['added'][$key]['added'][] = $cell;
+                }
             }
         }
 
         $this->Timer->mark('END: Apalabro->setBoardSpaces');
-
-        foreach ($this->Timer->get() as $timer) {
-            echo "<pre>\n".sprintf('%01.6f', $timer['total']).' - '.$timer['text'].'</pre>';
-        }
-
-        $this->Debug->setDebug(true);
-
-        $this->Debug->show($Game->board_spaces);
-
-        return $Game->board_spaces;
     }
 
     private function loadLanguage ()
@@ -879,7 +924,7 @@ class Apalabro {
             return false;
         }
 
-        $this->language = strtolower($language);
+        $this->language = mb_strtolower($language);
 
         $this->loadDic();
 
@@ -887,7 +932,7 @@ class Apalabro {
 
         if (!isset($info['extension'])) {
             $new .= '.php';
-        } else if (strtolower($info['extension']) !== 'php') {
+        } else if (mb_strtolower($info['extension']) !== 'php') {
             $new = preg_replace('/\.[^\.]+$/', '.php', $new);
         }
 
@@ -917,7 +962,7 @@ class Apalabro {
             return array();
         }
 
-        $dictionary = trim(strtolower(file_get_contents($file)));
+        $dictionary = trim(mb_strtolower(file_get_contents($file)));
         $dictionary = strtr(utf8_decode($dictionary), utf8_decode('àáâãäçèéêëìíîïòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝ'), 'aaaaaceeeeiiiiooooouuuuyyaaaaaceeeeiiiiooooouuuuy');
         $dictionary = str_replace("\n", " ", preg_replace('/[^a-zñ\s]/', '', $dictionary));
         $dictionary = array_unique(explode(' ', trim(preg_replace('/\s+/', ' ', $dictionary))));

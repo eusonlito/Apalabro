@@ -127,9 +127,9 @@ $(document).ready(function () {
             });
 
             if (playReady()) {
-                $('#game-form button[name="play"]').attr('disabled', false);
+                $('#play-confirm').attr('disabled', false);
             } else {
-                $('#game-form button[name="play"]').attr('disabled', 'disabled');
+                $('#play-confirm').attr('disabled', 'disabled');
             }
 
             return false;
@@ -159,9 +159,9 @@ $(document).ready(function () {
             }
 
             if (playReady()) {
-                $('#game-form button[name="play"]').attr('disabled', false);
+                $('#play-confirm').attr('disabled', false);
             } else {
-                $('#game-form button[name="play"]').attr('disabled', 'disabled');
+                $('#play-confirm').attr('disabled', 'disabled');
             }
 
             ui.draggable.animate({
@@ -186,7 +186,7 @@ $(document).ready(function () {
                     return false;
                 }
 
-                return confirm(strings['play_tiles']);
+                return true;
 
             case 'swap':
                 if ($('input[name^=swapped_tiles\\[]').length == 0) {
@@ -206,6 +206,33 @@ $(document).ready(function () {
                 
                 return confirm(strings['resign_sure']);
         }
+
+        return false;
+    });
+
+    $('#play-confirm').click(function () {
+        if (!playReady()) {
+            return false;
+        }
+
+        var content = '';
+
+        $.post($(this).attr('href'),
+            $('#game-form input').serialize(),
+            function (response) {
+                response = $.parseJSON(response);
+
+                if (response.error) {
+                    $('#game-form button[name="play"]').attr('disabled', 'disabled');
+                } else {
+                    $('#game-form button[name="play"]').attr('disabled', false);
+                }
+
+                $('#confirm-move .modal-body').html(response.html);
+            }
+        );
+
+        $('#confirm-move').modal();
 
         return false;
     });
