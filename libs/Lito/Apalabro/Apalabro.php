@@ -395,8 +395,10 @@ class Apalabro {
 
             sort($Game->my_rack_tiles, SORT_STRING);
 
-            if (($wildcard = array_search('-', $Game->my_rack_tiles)) !== false) {
-                $Game->my_rack_tiles[$wildcard] = '*';
+            if ($wildcards = array_keys($Game->my_rack_tiles, '-')) {
+                foreach ($wildcards as $wildcard) {
+                    $Game->my_rack_tiles[$wildcard] = '*';
+                }
             }
         } else {
             $Game->my_rack_tiles = array();
@@ -596,7 +598,7 @@ class Apalabro {
         $this->Timer->mark('INI: Apalabro->searchWords');
 
         $len_tiles = count($tiles);
-        $wildcard = in_array('*', $tiles);
+        $wildcards = count(array_keys($tiles, '*'));
         $words = array();
 
         foreach ($this->dictionary as $word) {
@@ -604,7 +606,7 @@ class Apalabro {
                 continue;
             }
 
-            if (!$this->allInArray(str_split_unicode($word), $tiles, $wildcard)) {
+            if (!$this->allInArray(str_split_unicode($word), $tiles, $wildcards)) {
                 continue;
             }
 
@@ -639,7 +641,7 @@ class Apalabro {
             $tiles = array_merge($tiles, $expression_tiles);
         }
 
-        $wildcard = in_array('*', $tiles);
+        $wildcards = count(array_keys($tiles, '*'));
         $words = array();
 
         foreach ($this->dictionary as $word) {
@@ -651,7 +653,7 @@ class Apalabro {
                 continue;
             }
 
-            if (!$this->allInArray(str_split_unicode($word), $tiles, $wildcard)) {
+            if (!$this->allInArray(str_split_unicode($word), $tiles, $wildcards)) {
                 continue;
             }
 
@@ -1028,12 +1030,12 @@ class Apalabro {
         return $dictionary;
     }
 
-    private function allInArray ($array1, $array2, $wildcard)
+    private function allInArray ($array1, $array2, $wildcards)
     {
         foreach ($array1 as $value) { 
             if (($key = array_search($value, $array2, true)) === false) {
-                if ($wildcard && isset($this->words[$value])) {
-                    $wildcard = false;
+                if ($wildcards && isset($this->words[$value])) {
+                    --$wildcards;
                 } else {
                     return false;
                 }
