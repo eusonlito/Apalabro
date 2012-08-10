@@ -214,6 +214,52 @@ class Apalabro {
         $this->Cookie->set('', -3600);
     }
 
+    public function getFriends ()
+    {
+        $this->_loggedOrDie();
+
+        $Friends = $this->Curl->get('users/'.$this->user.'/friends');
+
+        foreach ($Friends->list as &$Friend) {
+            if (isset($Friend->friend->facebook_name)) {
+                $Friend->friend->name = $Friend->friend->facebook_name;
+                $Friend->friend->avatar = 'http://graph.facebook.com/'
+                    .$Friend->friend->facebook_id
+                    .'/picture';
+            } else {
+                $Friend->friend->name = $Friend->friend->username;
+                $Friend->friend->avatar = '';
+            }
+        }
+
+        unset($Friend);
+
+        return $Friends->list;
+    }
+
+    public function searchUsers ($filter)
+    {
+        $this->_loggedOrDie();
+
+        $Users = $this->Curl->get('search?email='.$filter.'&username='.$filter);
+
+        foreach ($Users->list as &$User) {
+            if (isset($User->facebook_name)) {
+                $User->name = $User->facebook_name;
+                $User->avatar = 'http://graph.facebook.com/'
+                    .$User->facebook_id
+                    .'/picture';
+            } else {
+                $User->name = $User->username;
+                $User->avatar = '';
+            }
+        }
+
+        unset($User);
+
+        return $Users->list;
+    }
+
     private function loadGames ($user)
     {
         $Games = $this->Curl->get('users/'.$user.'/games');
@@ -486,7 +532,7 @@ class Apalabro {
         ));
     }
 
-    public function newGame ($language)
+    public function newGame ($language, $user = '')
     {
         $this->_loggedOrDie();
 
@@ -494,9 +540,13 @@ class Apalabro {
             return false;
         }
 
-        return $this->Curl->post('users/'.$this->user.'/games', array(
-            'language' => strtoupper($language)
-        ));
+        $data = array('language' => strtoupper($language));
+
+        if ($user && preg_match('/^[0-9]+$/', $user)) {
+            $data['opponent'] = array('id' => $user);
+        }
+
+        return $this->Curl->post('users/'.$this->user.'/games', $data);
     }
 
     public function swapTiles ($game, $tiles)

@@ -1,4 +1,42 @@
 $(document).ready(function () {
+    $('#new-game').on('click', '.well.user', function () {
+        $('input[name="user_id"]', $('#new-game')).val($(this).data('id'));
+
+        $('#new-game .well.user').css('background-color', 'whiteSmoke');
+        $(this).css('background-color', 'yellowGreen');
+
+        $('button[type="submit"]', $(this).parents('div.tab-pane')).attr('disabled', false);
+    });
+
+    $('.filter-users button[type="submit"]').click(function (e) {
+        if (($(this).data('url') == undefined) || ($(this).data('filtered') == undefined)) {
+            return true;
+        }
+
+        e.preventDefault(); 
+
+        var $filtered = $($(this).data('filtered'));
+
+        if ($('input[type="text"][name="search"]').val().length > 0) {
+            $filtered.html('<h4 class="span12">' + strings['waiting_reply'] + '</h4>');
+
+            $.post($(this).data('url'), {
+                filter: $('input[type="text"][name="search"]').val(),
+                }, function (response) {
+                    $filtered.html(response);
+                }
+            );
+        }
+
+        return false;
+    }).keydown(function (e) {
+        if (e.which == 13) {
+            e.preventDefault();
+        }
+
+        return false;
+    });
+
     $('.randomize').click(function () {
         var randomize = $($(this).data('randomize'));
         var divs = randomize.children();
