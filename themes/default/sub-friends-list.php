@@ -22,7 +22,7 @@
             <div class="span9">
                 <h4><?php echo $Friend->friend->name; ?></h4>
 
-                <small class="label"><?php echo humanDate($Friend->lastPlayed); ?></small>
+                <small class="label"><?php echo __('last move %s', humanDate($Friend->lastPlayed)); ?></small>
 
                 <strong class="label label-<?php echo ($Friend->my_wins > $Friend->friend_wins) ? 'success' : (($Friend->my_wins < $Friend->friend_wins) ? 'important' : 'info'); ?>"><?php
                     echo $Friend->my_wins.' / '.$Friend->friend_wins;
