@@ -54,6 +54,7 @@
 
     <div class="span5">
         <?php if (!$Api->myUser($User->id)) { ?>
+
         <form action="<?php echo getenv('REQUEST_URI'); ?>" method="post">
             <fieldset>
                 <?php if ($User->is_favorite) { ?>
@@ -69,7 +70,6 @@
                 <?php } ?>
             </fieldset>
         </form>
-        <?php } ?>
 
         <p class="alert alert-info">
             <?php __e('<strong>%s</strong> finished versus games', $User->my_wins + $User->opponent_wins); ?>
@@ -89,6 +89,8 @@
                 </p>
             </div>
         </div>
+        <?php } ?>
+
         <?php } ?>
 
         <p class="alert alert-info">
