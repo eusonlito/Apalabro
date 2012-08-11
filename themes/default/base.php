@@ -4,7 +4,7 @@
 
 <html lang="<?php $Gettext->getLanguage(); ?>">
     <head>
-        <title><?php __e('Apalabro!'); ?></title>
+        <title><?php echo $Theme->meta('title').' - '.__('Apalabro!'); ?></title>
 
         <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 
@@ -67,6 +67,10 @@
 
                             <?php if ((FILENAME === 'game.php') && isset($Game->id)) { ?>
                             <li class="active"><a href="?id=<?php echo $Game->id; ?>"><?php __e('Game'); ?></a></li>
+                            <?php } ?>
+
+                            <?php if ((FILENAME === 'profile.php') && isset($User->id)) { ?>
+                            <li class="active"><a href="?id=<?php echo $User->id; ?>"><?php __e('Profile'); ?></a></li>
                             <?php } ?>
 
                             <li<?php echo (FILENAME === 'about.php') ? ' class="active"' : ''; ?>><a href="<?php echo BASE_WWW; ?>about.php"><?php __e('About'); ?></a></li>

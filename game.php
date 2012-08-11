@@ -61,4 +61,6 @@ if ($Game->game_status !== 'ENDED') {
 
 $Theme->set('body', basename(__FILE__));
 
+$Theme->meta('title', __('Game versus %s', $Game->opponent->name));
+
 include ($Theme->get('base.php'));

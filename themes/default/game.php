@@ -2,9 +2,9 @@
 
 <div class="page-header">
     <h1>
-        <a href="<?php echo BASE_WWW; ?>">&laquo;</a>
-
-        <?php echo $Game->opponent->name; ?>
+        <a href="<?php echo BASE_WWW; ?>profile.php?id=<?php echo $Game->opponent->id; ?>"><?php
+            echo $Game->opponent->name;
+        ?></a>
 
         <small><?php
             __e($Game->game_status);

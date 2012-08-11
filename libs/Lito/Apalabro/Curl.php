@@ -116,6 +116,21 @@ class Curl {
         return $html;
     }
 
+    public function custom ($request, $url, $data = array())
+    {
+        curl_setopt($this->connection, CURLOPT_CUSTOMREQUEST, $request);
+
+        if ($data) {
+            curl_setopt($this->connection, CURLOPT_POSTFIELDS, (is_array($data) ? json_encode($data) : $data));
+        }
+
+        $html = $this->get($url, true);
+
+        curl_setopt($this->connection, CURLOPT_CUSTOMREQUEST, false);
+
+        return $html;
+    }
+
     public function getInfo ()
     {
         return $this->info;

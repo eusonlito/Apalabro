@@ -214,6 +214,52 @@ class Apalabro {
         $this->Cookie->set('', -3600);
     }
 
+    public function getUser ($user = '')
+    {
+        $this->_loggedOrDie();
+
+        if ($user) {
+            $User = $this->Curl->get('users/'.$this->user.'/users/'.$user);
+        } else {
+            $User = $this->Curl->get('users/'.$this->user);
+        }
+
+        if (isset($User->facebook_name)) {
+            $User->name = $User->facebook_name;
+            $User->avatar = 'http://graph.facebook.com/'
+                .$User->facebook_id
+                .'/picture';
+        } else {
+            $User->name = $User->username;
+            $User->avatar = '';
+        }
+
+        return $User;
+    }
+
+    public function myUser ($user = '')
+    {
+        $this->_loggedOrDie();
+
+        return $user ? ($this->user == $user) : $this->user;
+    }
+
+    public function addFriend ($user)
+    {
+        $this->_loggedOrDie();
+
+        return $this->Curl->post('users/'.$this->user.'/favorites', array(
+            'id' => $user
+        ));
+    }
+
+    public function removeFriend ($user)
+    {
+        $this->_loggedOrDie();
+
+        return $this->Curl->custom('DELETE', 'users/'.$this->user.'/favorites/'.$user);
+    }
+
     public function getFriends ()
     {
         $this->_loggedOrDie();

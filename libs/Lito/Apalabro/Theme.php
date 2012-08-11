@@ -9,6 +9,7 @@ class Theme {
     private $www;
     private $templates;
     private $message;
+    private $meta;
 
     public function __construct ()
     {
@@ -71,5 +72,14 @@ class Theme {
     public function www ()
     {
         return $this->www;
+    }
+
+    public function meta ($tag, $value = '')
+    {
+        if ($value) {
+            $this->meta[$tag] = $value;
+        } else {
+            return $this->meta[$tag];
+        }
     }
 }

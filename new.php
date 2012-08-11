@@ -16,4 +16,6 @@ $friends = $Api->getFriends();
 
 $Theme->set('body', basename(__FILE__));
 
+$Theme->meta('title', __('New Game'));
+
 include ($Theme->get('base.php'));

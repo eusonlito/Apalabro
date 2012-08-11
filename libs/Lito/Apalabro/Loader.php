@@ -26,6 +26,8 @@ if (!$Api->logged()) {
 
         $Theme->set('body', 'login.php');
 
+        $Theme->meta('title', __('Login'));
+
         include ($Theme->get('base.php'));
 
         exit;
