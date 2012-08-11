@@ -71,9 +71,9 @@
 
                             <?php if (FILENAME === 'profile.php') { ?>
 
-                            <?php if (!isset($User->id) && $Api->myUser($User->id)) { ?>
+                            <?php if (!isset($User->id) || $Api->myUser($User->id)) { ?>
                             <li class="active"><a href="<?php echo BASE_WWW; ?>profile.php"><?php __e('My Profile'); ?></a></li>
-                            <?php } else if (isset($User->id)) { ?>
+                            <?php } else { ?>
                             <li class="active"><a href="?id=<?php echo $User->id; ?>"><?php __e('User Profile'); ?></a></li>
                             <?php } ?>
 
