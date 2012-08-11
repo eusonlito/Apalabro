@@ -93,7 +93,7 @@
 
         <?php } ?>
 
-        <?php if (isset($User->stats->game_played)) { ?>
+        <?php if (isset($User->stats->games_played)) { ?>
         <p class="alert alert-info">
             <?php __e('<strong>%s</strong> played games', $User->stats->games_played); ?>
         </p>
