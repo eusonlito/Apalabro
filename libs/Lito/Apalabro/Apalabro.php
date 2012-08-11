@@ -121,13 +121,15 @@ class Apalabro {
 
         $this->clearData();
 
+        $this->Curl->setOption(CURLOPT_FAILONERROR, false);
+
         $Login = $this->Curl->post('login', array(
             'email' => $user,
             'password' => $password
         ));
 
         if (!is_object($Login) || !isset($Login->id)) {
-            return false;
+            return $Login;
         }
 
         $this->logged = true;
@@ -135,8 +137,6 @@ class Apalabro {
         $this->session = $Login->session->session;
 
         $this->Curl->setCookie('ap_session='.$this->session);
-
-        $this->loadGames($Login->id);
 
         $this->Cookie->set(array(
             'user' => $this->user,
@@ -152,22 +152,20 @@ class Apalabro {
 
         $this->clearData();
 
-        $games = $this->loadGames($user);
+        $this->logged = true;
+        $this->user = $user;
+        $this->session = $session;
 
-        if ($games) {
-            $this->logged = true;
-            $this->user = $user;
-            $this->session = $session;
+        $cookie = $this->Cookie->get();
 
-            $cookie = $this->Cookie->get();
-
-            if (!$cookie) {
-                $this->setCookie(array(
-                    'user' => $this->user,
-                    'session' => $this->session
-                ));
-            }
+        if (!$cookie) {
+            $this->setCookie(array(
+                'user' => $this->user,
+                'session' => $this->session
+            ));
         }
+
+        $this->loadGames($this->user);
 
         return $this->logged;
     }
@@ -198,8 +196,6 @@ class Apalabro {
         $this->session = $Login->session->session;
 
         $this->Curl->setCookie('ap_session='.$this->session);
-
-        $this->loadGames($Login->id);
 
         $this->Cookie->set(array(
             'user' => $this->user,
@@ -308,20 +304,22 @@ class Apalabro {
 
     private function loadGames ($user)
     {
-        $Games = $this->Curl->get('users/'.$user.'/games');
-
-        if (!is_object($Games) || !$Games->total) {
-            return array();
-        }
+        $this->_loggedOrDie();
 
         $this->games = array(
             'all' => array(),
             'pending' => array(),
             'active' => array(),
-            'endend' => array(),
+            'ended' => array(),
             'turn' => array(),
             'waiting' => array()
         );
+
+        $Games = $this->Curl->get('users/'.$user.'/games');
+
+        if (!is_object($Games) || !$Games->total) {
+            return array();
+        }
 
         foreach ($Games->list as $Game) {
             if (isset($Game->opponent->facebook_name)) {

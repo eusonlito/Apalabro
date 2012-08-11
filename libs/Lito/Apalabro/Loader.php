@@ -6,14 +6,14 @@ if (isset($_GET['reload'])) {
 }
 
 if (!$Api->logged()) {
-    if (isset($_POST['user']) && isset($_POST['password'])) {
+    if (isset($_POST['user']) && isset($_POST['password']) && !$_POST['email']) {
         $logged = $Api->login($_POST['user'], $_POST['password']);
     } else {
         $logged = false;
     }
 
-    if ($logged) {
-        header('Location: '.BASE_WWW.'?reload=1');
+    if ($logged === true) {
+        header('Location: '.getenv('REQUEST_URI'));
         exit;
     } else {
         $language = $Gettext->getLanguage();
@@ -22,6 +22,10 @@ if (!$Api->logged()) {
             $Api->setLanguage($language);
         } else {
             $Api->setLanguage('es');
+        }
+
+        if (isset($logged->message)) {
+            $Theme->setMessage($logged->message, 'error');
         }
 
         $Theme->set('body', 'login.php');

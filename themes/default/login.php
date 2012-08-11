@@ -8,6 +8,10 @@
     <div class="span5">
         <form action="<?php echo getenv('REQUEST_URI'); ?>" method="post" class="login-form well">
             <fieldset>
+                <div class="hide">
+                    <input type="text" name="email" value="" class="required" />
+                </div>
+
                 <label for="user"><?php __e('Your email'); ?></label>
                 <input type="text" name="user" value="" class="span4" />
 

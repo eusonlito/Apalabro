@@ -9,14 +9,14 @@ class Cookie {
     public function set ($value, $time = null)
     {
         $cookie = array_merge($this->get(), (array)$value);
-        $time = $time ? (time() + $time) : $time;
+        $time = time() + ($time ?: (3600 * 24));
 
-        setCookie($this->name, gzdeflate(serialize($cookie)), $time);
+        return setCookie($this->name, gzdeflate(serialize($cookie)), $time);
     }
 
     public function get ()
     {
-        if (isset($_COOKIE['apalabro'])) {
+        if (isset($_COOKIE[$this->name])) {
             return unserialize(gzinflate($_COOKIE[$this->name]));
         } else {
             return array();
