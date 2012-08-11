@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apalabro!\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-11 11:45+0100\n"
-"PO-Revision-Date: 2012-08-11 11:48+0100\n"
+"POT-Creation-Date: 2012-08-11 12:01+0100\n"
+"PO-Revision-Date: 2012-08-11 12:02+0100\n"
 "Last-Translator: Lito <lito@eordes.com>\n"
 "Language-Team: Lito <lito@eordes.com>\n"
 "Language: \n"
@@ -182,10 +182,13 @@ msgid "Game"
 msgstr "Partida"
 
 #: themes/default/base.php:75
-#: themes/default/base.php:77
 #: themes/default/base.php:81
-msgid "Profile"
-msgstr "Perfil"
+msgid "My Profile"
+msgstr "Mi Perfil"
+
+#: themes/default/base.php:77
+msgid "User Profile"
+msgstr "Perfil del Usuario"
 
 #: themes/default/base.php:90
 msgid "Logout"

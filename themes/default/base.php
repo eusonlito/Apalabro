@@ -71,14 +71,14 @@
 
                             <?php if (FILENAME === 'profile.php') { ?>
 
-                            <?php if (isset($User->id) && $Api->myUser($User->id)) { ?>
-                            <li class="active"><a href="<?php echo BASE_WWW; ?>profile.php"><?php __e('Profile'); ?></a></li>
+                            <?php if (!isset($User->id) && $Api->myUser($User->id)) { ?>
+                            <li class="active"><a href="<?php echo BASE_WWW; ?>profile.php"><?php __e('My Profile'); ?></a></li>
                             <?php } else if (isset($User->id)) { ?>
-                            <li class="active"><a href="?id=<?php echo $User->id; ?>"><?php __e('Profile'); ?></a></li>
+                            <li class="active"><a href="?id=<?php echo $User->id; ?>"><?php __e('User Profile'); ?></a></li>
                             <?php } ?>
 
                             <?php } else { ?>
-                            <li><a href="<?php echo BASE_WWW; ?>profile.php"><?php __e('Profile'); ?></a></li>
+                            <li><a href="<?php echo BASE_WWW; ?>profile.php"><?php __e('My Profile'); ?></a></li>
                             <?php } ?>
 
                             <li<?php echo (FILENAME === 'about.php') ? ' class="active"' : ''; ?>><a href="<?php echo BASE_WWW; ?>about.php"><?php __e('About'); ?></a></li>
