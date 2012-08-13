@@ -10,6 +10,7 @@ class Curl {
     private $response;
     private $info;
     private $cache = false;
+    private $json = true;
 
     private $Timer;
 
@@ -56,6 +57,11 @@ class Curl {
         curl_setopt($this->connection, $option, $value);
     }
 
+    public function setJson ($json)
+    {
+        $this->json = $json;
+    }
+
     public function fullGet ($url)
     {
         $server = $this->server;
@@ -93,7 +99,11 @@ class Curl {
             return '';
         }
 
-        $html = json_decode(preg_replace('/>\s+</', '><', str_replace(array("\n", "\r", "\t"), '', $this->response)));
+        $html = preg_replace('/>\s+</', '><', str_replace(array("\n", "\r", "\t"), '', $this->response));
+
+        if ($this->json) {
+            $html = json_decode($html);
+        }
 
         if ($cache) {
             $this->Cache->set($url, $html);

@@ -1087,7 +1087,6 @@ class Apalabro {
 
         $dictionary = encode2utf(file_get_contents($file));
         $dictionary = trim(mb_strtolower(str_replace(chr(0), '', $dictionary)));
-
         $dictionary = mb_strtr($dictionary, $current, $replacement);
         $dictionary = str_replace(array("\r\n", "\r", "\n"), array("\n", "\n", ' '), $dictionary);
         $dictionary = array_unique(explode(' ', trim(preg_replace('/\s+/', ' ', $dictionary))));
