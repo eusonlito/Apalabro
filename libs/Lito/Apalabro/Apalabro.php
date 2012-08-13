@@ -1073,19 +1073,20 @@ class Apalabro {
             return array();
         }
 
-        $current = utf8_decode('àáâãäçèéêëìíîïòóôõöùúûüñýÿ');
+        $current = $this->encode2utf('àáâãäçèéêëìíîïòóôõöùúûüñýÿ');
         $replacement = 'aaaaaceeeeiiiiooooouuuunyy';
         $valid = array_keys($this->points);
 
         foreach ($valid as $letter) {
-            if (($position = mb_strpos($current, utf8_decode($letter))) !== false) {
+            if (($position = mb_strpos($current, $letter)) !== false) {
                 $current = substr_replace($current, '', $position, 1);
                 $replacement = substr_replace($replacement, '', $position, 1);
             }
         }
 
-        $dictionary = trim(mb_strtolower(utf8_encode(file_get_contents($file))));
-        $dictionary = strtr($dictionary, $current, $replacement);
+        $dictionary = $this->encode2utf(file_get_contents($file));
+        $dictionary = trim(mb_strtolower($dictionary));
+        $dictionary = str_replace(preg_split('~~u', $current), preg_split('~~u', $replacement), $dictionary);
         $dictionary = str_replace("\n", " ", $dictionary);
         $dictionary = array_unique(explode(' ', trim(preg_replace('/\s+/', ' ', $dictionary))));
 
@@ -1094,12 +1095,20 @@ class Apalabro {
         $valid = preg_quote(implode('', $valid), '/');
 
         foreach ($dictionary as $key => $word) {
-            if (preg_match('/[^'.$valid.']/', $word)) {
+            if (preg_match('/[^'.$valid.']/', $word) || (mb_strlen($word) > 15)) {
                 unset($dictionary[$key]);
             }
         }
 
         return $dictionary;
+    }
+
+    private function encode2utf ($string) {
+        if ((mb_detect_encoding($string) === 'UTF-8') && mb_check_encoding($string, 'UTF-8')) {
+            return $string;
+        } else {
+            return utf8_encode($string);
+        }
     }
 
     private function allInArray ($array1, $array2, $wildcards)
