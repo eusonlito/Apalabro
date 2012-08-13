@@ -322,6 +322,10 @@ class Apalabro {
         }
 
         foreach ($Games->list as $Game) {
+            if ($Game->game_status === 'RANDOM') {
+                continue;
+            }
+
             if (isset($Game->opponent->facebook_name)) {
                 $Game->opponent->name = $Game->opponent->facebook_name;
                 $Game->opponent->avatar = 'http://graph.facebook.com/'
