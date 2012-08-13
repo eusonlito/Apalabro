@@ -68,7 +68,7 @@ class Gettext
 
     public function setLanguages ()
     {
-        foreach (glob(BASE_PATH.'/languages/*', GLOB_ONLYDIR) as $language) {
+        foreach (glob(BASE_PATH.'languages/*', GLOB_ONLYDIR) as $language) {
             if (is_file($language.'/gettext.mo')) {
                 $this->languages[] = basename($language);
             }

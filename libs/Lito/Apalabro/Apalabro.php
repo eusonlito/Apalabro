@@ -11,7 +11,7 @@ class Apalabro {
     private $language = '';
     private $languages = array();
     private $dictionary = array();
-    private $words = array();
+    private $points = array();
     private $games = array();
     private $my_rack_tiles = array();
     private $board_points = array();
@@ -50,7 +50,7 @@ class Apalabro {
         $this->languages = array();
 
         foreach (glob(BASE_PATH.'/languages/*', GLOB_ONLYDIR) as $language) {
-            if (is_file($language.'/dictionary.php') || is_file($language.'/words.php')) {
+            if (is_file($language.'/dictionary.php') || is_file($language.'/points.php')) {
                 $this->languages[] = basename($language);
             }
         }
@@ -478,7 +478,7 @@ class Apalabro {
             $this->getGame($game);
         }
 
-        $this->loadWords();
+        $this->loadPoints();
 
         $Game = $this->games['all'][$game];
 
@@ -495,7 +495,7 @@ class Apalabro {
                 if (strstr($tiles[$i], '*') === false) {
                     $board .= '<td class="tile-35">';
                     $board .= '<span class="letter">'.$tiles[$i].'</span>';
-                    $board .= '<span class="points">'.$this->words[$tiles[$i]].'</span>';
+                    $board .= '<span class="points">'.$this->points[$tiles[$i]].'</span>';
                 } else {
                     $board .= '<td class="tile-35 wildcard">';
                     $board .= '<span class="letter">'.str_replace('*', '', $tiles[$i]).'</span>';
@@ -678,8 +678,9 @@ class Apalabro {
 
         $this->Timer->mark('INI: Apalabro->searchWordsExpression');
 
+        $valid = preg_quote(implode('', array_keys($this->points)), '/');
         $expression = str_replace('/', '', mb_strtolower($expression));
-        $expression_tiles = str_split_unicode(preg_replace('/[^a-zñ]/', '', $expression));
+        $expression_tiles = str_split_unicode(preg_replace('/[^'.$valid.']/', '', $expression));
 
         if ($expression_tiles) {
             $tiles = array_merge($tiles, $expression_tiles);
@@ -717,8 +718,8 @@ class Apalabro {
 
     public function getWordPoints ($word, $compare = array())
     {
-        if (!$this->words) {
-            $this->loadWords();
+        if (!$this->points) {
+            $this->loadPoints();
         }
 
         $word = str_split_unicode(mb_strtolower($word));
@@ -734,12 +735,12 @@ class Apalabro {
 
                 unset($compare[$key]);
 
-                if (isset($this->words[$letter])) {
-                    $points += $this->words[$letter];
+                if (isset($this->points[$letter])) {
+                    $points += $this->points[$letter];
                     ++$used;
                 }
-            } else if (isset($this->words[$letter])) {
-                $points += $this->words[$letter];
+            } else if (isset($this->points[$letter])) {
+                $points += $this->points[$letter];
                 ++$used;
             }
         }
@@ -759,8 +760,12 @@ class Apalabro {
             return array();
         }
 
+        $this->loadLanguage();
+
+        $valid = preg_quote(implode('', array_keys($this->points)), '/');
+
         foreach ($tiles as $cell => $letter) {
-            if (preg_match('/^[0-9]+$/', $cell) && preg_match('/^[a-zñ\-]+$/', $letter)) {
+            if (preg_match('/^[0-9]+$/', $cell) && preg_match('/^['.$valid.'\-]+$/', $letter)) {
                 $tiles[$cell] = str_replace('-', '*', mb_strtolower($letter));
             } else {
                 unset($tiles[$cell]);
@@ -979,7 +984,7 @@ class Apalabro {
     private function loadLanguage ()
     {
         $this->loadDic();
-        $this->loadWords();
+        $this->loadPoints();
     }
 
     private function loadDic ()
@@ -1003,21 +1008,21 @@ class Apalabro {
         $this->Timer->mark('END: Apalabro->loadDic '.$this->language);
     }
 
-    private function loadWords ()
+    private function loadPoints ()
     {
-        if ($this->words) {
+        if ($this->points) {
             return true;
         }
 
-        $this->words = array();
+        $this->points = array();
 
-        $file = BASE_PATH.'/languages/'.$this->language.'/words.php';
+        $file = BASE_PATH.'/languages/'.$this->language.'/points.php';
 
         if (!is_file($file)) {
             return false;
         }
 
-        $this->words = include ($file);
+        $this->points = include ($file);
     }
 
     public function mergeDic ($language, $file, $new)
@@ -1028,7 +1033,11 @@ class Apalabro {
 
         $this->language = mb_strtolower($language);
 
-        $this->loadDic();
+        $this->loadLanguage();
+
+        if (!$this->points) {
+            return false;
+        }
 
         $info = pathinfo($new);
 
@@ -1064,12 +1073,31 @@ class Apalabro {
             return array();
         }
 
-        $dictionary = trim(mb_strtolower(file_get_contents($file)));
-        $dictionary = strtr(utf8_decode($dictionary), utf8_decode('àáâãäçèéêëìíîïòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝ'), 'aaaaaceeeeiiiiooooouuuuyyaaaaaceeeeiiiiooooouuuuy');
-        $dictionary = str_replace("\n", " ", preg_replace('/[^a-zñ\s]/', '', $dictionary));
+        $current = utf8_decode('àáâãäçèéêëìíîïòóôõöùúûüñýÿ');
+        $replacement = 'aaaaaceeeeiiiiooooouuuunyy';
+        $valid = array_keys($this->points);
+
+        foreach ($valid as $letter) {
+            if (($position = mb_strpos($current, utf8_decode($letter))) !== false) {
+                $current = substr_replace($current, '', $position, 1);
+                $replacement = substr_replace($replacement, '', $position, 1);
+            }
+        }
+
+        $dictionary = trim(mb_strtolower(utf8_encode(file_get_contents($file))));
+        $dictionary = strtr($dictionary, $current, $replacement);
+        $dictionary = str_replace("\n", " ", $dictionary);
         $dictionary = array_unique(explode(' ', trim(preg_replace('/\s+/', ' ', $dictionary))));
 
         sort($dictionary);
+
+        $valid = preg_quote(implode('', $valid), '/');
+
+        foreach ($dictionary as $key => $word) {
+            if (preg_match('/[^'.$valid.']/', $word)) {
+                unset($dictionary[$key]);
+            }
+        }
 
         return $dictionary;
     }
@@ -1078,7 +1106,7 @@ class Apalabro {
     {
         foreach ($array1 as $value) { 
             if (($key = array_search($value, $array2, true)) === false) {
-                if ($wildcards && isset($this->words[$value])) {
+                if ($wildcards && isset($this->points[$value])) {
                     --$wildcards;
                 } else {
                     return false;

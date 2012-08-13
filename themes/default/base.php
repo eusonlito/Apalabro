@@ -65,6 +65,8 @@
                         <ul class="nav">
                             <li<?php echo (FILENAME === 'index.php') ? ' class="active"' : ''; ?>><a href="<?php echo BASE_WWW; ?>"><?php __e('Home'); ?></a></li>
 
+                            <?php if ($Api->logged()) { ?>
+
                             <?php if ((FILENAME === 'game.php') && isset($Game->id)) { ?>
                             <li class="active"><a href="?id=<?php echo $Game->id; ?>"><?php __e('Game'); ?></a></li>
                             <?php } ?>
@@ -79,6 +81,8 @@
 
                             <?php } else { ?>
                             <li><a href="<?php echo BASE_WWW; ?>profile.php"><?php __e('My Profile'); ?></a></li>
+                            <?php } ?>
+
                             <?php } ?>
 
                             <li<?php echo (FILENAME === 'about.php') ? ' class="active"' : ''; ?>><a href="<?php echo BASE_WWW; ?>about.php"><?php __e('About'); ?></a></li>
