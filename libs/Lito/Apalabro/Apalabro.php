@@ -724,7 +724,8 @@ class Apalabro {
 
         $word = str_split_unicode(mb_strtolower($word));
         $full = count($compare);
-        $used = 0;
+        $used = count(array_search('*', $word));
+
         $points = 0;
 
         foreach ($word as $letter) {
@@ -745,7 +746,7 @@ class Apalabro {
             }
         }
 
-        if (($full === 7) && ($used >= 7) && !$compare) {
+        if (($full === 7) && ($used >= 7) && (!$compare || (isset($compare[0]) && ($compare[0] === '*')))) {
             $points += 40;
         }
 
@@ -1073,42 +1074,37 @@ class Apalabro {
             return array();
         }
 
-        $current = $this->encode2utf('àáâãäçèéêëìíîïòóôõöùúûüñýÿ');
+        $current = encode2utf('àáâãäçèéêëìíîïòóôõöùúûüñýÿ');
         $replacement = 'aaaaaceeeeiiiiooooouuuunyy';
         $valid = array_keys($this->points);
 
         foreach ($valid as $letter) {
             if (($position = mb_strpos($current, $letter)) !== false) {
-                $current = substr_replace($current, '', $position, 1);
-                $replacement = substr_replace($replacement, '', $position, 1);
+                $current = mb_substr_replace($current, '', $position, 1);
+                $replacement = mb_substr_replace($replacement, '', $position, 1);
             }
         }
 
-        $dictionary = $this->encode2utf(file_get_contents($file));
-        $dictionary = trim(mb_strtolower($dictionary));
-        $dictionary = str_replace(preg_split('~~u', $current), preg_split('~~u', $replacement), $dictionary);
-        $dictionary = str_replace("\n", " ", $dictionary);
-        $dictionary = array_unique(explode(' ', trim(preg_replace('/\s+/', ' ', $dictionary))));
+        $dictionary = encode2utf(file_get_contents($file));
+        $dictionary = trim(mb_strtolower(str_replace(chr(0), '', $dictionary)));
 
-        sort($dictionary);
+        $dictionary = mb_strtr($dictionary, $current, $replacement);
+        $dictionary = str_replace(array("\r\n", "\r", "\n"), array("\n", "\n", ' '), $dictionary);
+        $dictionary = array_unique(explode(' ', trim(preg_replace('/\s+/', ' ', $dictionary))));
 
         $valid = preg_quote(implode('', $valid), '/');
 
         foreach ($dictionary as $key => $word) {
-            if (preg_match('/[^'.$valid.']/', $word) || (mb_strlen($word) > 15)) {
+            if (preg_match('/[^('.$valid.')]/', $word, $found) || (mb_strlen($word) > 15)) {
                 unset($dictionary[$key]);
             }
         }
 
-        return $dictionary;
-    }
+        $dictionary = array_filter($dictionary);
 
-    private function encode2utf ($string) {
-        if ((mb_detect_encoding($string) === 'UTF-8') && mb_check_encoding($string, 'UTF-8')) {
-            return $string;
-        } else {
-            return utf8_encode($string);
-        }
+        sort($dictionary);
+
+        return $dictionary;
     }
 
     private function allInArray ($array1, $array2, $wildcards)
