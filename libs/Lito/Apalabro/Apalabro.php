@@ -50,7 +50,7 @@ class Apalabro {
         $this->languages = array();
 
         foreach (glob(BASE_PATH.'/languages/*', GLOB_ONLYDIR) as $language) {
-            if (is_file($language.'/dictionary.php') || is_file($language.'/points.php')) {
+            if (is_file($language.'/dictionary.php') && is_file($language.'/points.php')) {
                 $this->languages[] = basename($language);
             }
         }
