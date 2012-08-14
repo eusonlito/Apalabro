@@ -283,7 +283,13 @@ class Apalabro {
     {
         $this->_loggedOrDie();
 
+        $filter = urlencode($filter);
+
         $Users = $this->Curl->get('search?email='.$filter.'&username='.$filter);
+
+        if (!is_object($Users) || !$Users->list) {
+            return array();
+        }
 
         foreach ($Users->list as &$User) {
             if (isset($User->facebook_name)) {

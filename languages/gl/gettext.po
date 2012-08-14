@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apalabro!\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-14 21:39+0100\n"
-"PO-Revision-Date: 2012-08-14 21:39+0100\n"
+"POT-Creation-Date: 2012-08-14 23:08+0100\n"
+"PO-Revision-Date: 2012-08-14 23:08+0100\n"
 "Last-Translator: Lito <lito@eordes.com>\n"
 "Language-Team: Lito <lito@eordes.com>\n"
 "Language: \n"
@@ -582,6 +582,10 @@ msgstr "Xogando por %s puntos"
 #: ajax/get-points.php:51
 msgid "Sorry but these tiles can not be combined. Please, try it another cells"
 msgstr "Sentímolo pero estas fichas non poden ser misturadas. Por favor, inténtao con outras fichas"
+
+#: ajax/search-users.php:13
+msgid "No users founded..."
+msgstr "Non se atoparon usuarios..."
 
 #~ msgid ""
 #~ "Sorry but I can't create a new game... Please try it again in some minutes"

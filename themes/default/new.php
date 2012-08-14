@@ -8,15 +8,13 @@
     <input type="hidden" name="new" value="true" />
     <input type="hidden" name="user_id" value="" />
 
-    <div class="control-group">
-        <div class="controls">
-            <?php foreach ($Api->getLanguages() as $language) { ?>
-            <label for="game-language-<?php echo $language; ?>" class="checkbox inline">
-                <input type="radio" id="game-language-<?php echo $language; ?>" name="language" value="<?php echo $language; ?>" />
-                <img src="<?php echo BASE_WWW.'languages/'.$language; ?>/flag.png" alt="<?php echo __('language_'.$language); ?>" title="<?php echo __('language_'.$language); ?>" />
-            </label>
-            <?php } ?>
-        </div>
+    <div class="row">
+        <?php foreach ($Api->getLanguages() as $language) { ?>
+        <label for="game-language-<?php echo $language; ?>" class="span1 center">
+            <img src="<?php echo BASE_WWW.'languages/'.$language; ?>/flag.png" alt="<?php echo __('language_'.$language); ?>" title="<?php echo __('language_'.$language); ?>" />
+            <p><input type="radio" id="game-language-<?php echo $language; ?>" name="language" value="<?php echo $language; ?>" /></p>
+        </label>
+        <?php } ?>
     </div>
 
     <div class="tabbable">

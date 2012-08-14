@@ -10,7 +10,7 @@ $users = $Api->searchUsers($_POST['filter']);
 if ($users) {
     include ($Theme->get('sub-users-list.php'));
 } else {
-    __e('No results for your query');
+    echo '<h3 class="span12 center">'.__('No users founded...').'</h3>';
 }
 
 include ($Theme->get('sub-timer.php'));
