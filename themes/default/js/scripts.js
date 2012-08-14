@@ -220,6 +220,11 @@ $(document).ready(function () {
                     return false;
                 }
 
+                $('#confirm-move .modal-header').hide();
+                $('#confirm-move .modal-footer').hide();
+
+                $('#confirm-move .modal-body').html('<h2>' + strings['waiting_reply'] + '</h2>');
+
                 return true;
 
             case 'swap':

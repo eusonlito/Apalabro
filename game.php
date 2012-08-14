@@ -4,7 +4,7 @@ require (__DIR__.'/libs/Lito/Apalabro/Loader.php');
 $game = isset($_GET['id']) ? $_GET['id'] : null;
 
 require (BASE_PATH.'/aux/game-check.php');
-
+$Game->my_turn = true;
 if ($Game->game_status !== 'ENDED') {
     if (isset($_POST['play']) && ($_POST['play'] === 'true')) {
         $success = $Api->playGame($Game->id, $_POST);
