@@ -34,4 +34,6 @@ if (isset($_GET['logout'])) {
 $Theme = new Theme();
 $Debug = new Debug();
 
+define('BASE_THEME', $Theme->www());
+
 $Debug->setDebug(true);

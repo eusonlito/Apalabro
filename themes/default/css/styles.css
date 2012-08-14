@@ -99,10 +99,6 @@ table.board tbody td {
     text-align: center;
 }
 
-.relative {
-    position: relative;
-}
-
 .rack-tiles {
     display: block;
     float: none;
@@ -175,4 +171,20 @@ table.board tbody td {
 
 .height-auto {
     height: auto !important;
+}
+
+.center {
+    text-align: center;
+}
+
+.relative {
+    position: relative;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.offset05 {
+    margin-left: 50px;
 }

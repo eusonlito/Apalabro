@@ -1,4 +1,14 @@
 $(document).ready(function () {
+    $('span[class="letter"]').each(function () {
+        var letters = $(this).text().length;
+
+        if (letters == 1) {
+            return true;
+        }
+
+        $(this).css('font-size', parseInt($(this).css('font-size')) - 7);
+    });
+    
     $('#new-game').on('click', '.well.user', function () {
         $('input[name="user_id"]', $('#new-game')).val($(this).data('id'));
 
@@ -18,7 +28,7 @@ $(document).ready(function () {
         var $filtered = $($(this).data('filtered'));
 
         if ($('input[type="text"][name="search"]').val().length > 0) {
-            $filtered.html('<h4 class="span12">' + strings['waiting_reply'] + '</h4>');
+            $filtered.html('<div class="span12 center"><img src="'+BASE_THEME+'images/loading.gif" /></div>');
 
             $.post($(this).data('url'), {
                 filter: $('input[type="text"][name="search"]').val(),
@@ -99,7 +109,7 @@ $(document).ready(function () {
         var $filtered = $($(this).data('filtered'));
 
         if ($('input[type="text"]', $(this)).val().length > 0) {
-            $filtered.html('<li><h4>' + strings['waiting_reply'] + '</h4></li>');
+            $filtered.html('<li class="center"><img src="'+BASE_THEME+'images/loading.gif" class="mt-20" /></li>');
 
             $.post($(this).attr('action'),
                 $('input', $(this)).serialize(),
@@ -223,7 +233,10 @@ $(document).ready(function () {
                 $('#confirm-move .modal-header').hide();
                 $('#confirm-move .modal-footer').hide();
 
-                $('#confirm-move .modal-body').html('<h2>' + strings['waiting_reply'] + '</h2>');
+                $('#confirm-move .modal-body').html(
+                    '<h2 class="center"><img src="'+BASE_THEME+'images/loading.gif" />'+
+                    '<span class="offset05">'+strings['sending']+'<span></h2>'
+                );
 
                 return true;
 
@@ -262,7 +275,7 @@ $(document).ready(function () {
             $('#game-form button[name="play"]').attr('disabled', 'disabled');
         }
 
-        $('#confirm-move .modal-body').html('<h4>' + strings['waiting_reply'] + '</h4>');
+        $('#confirm-move .modal-body').html('<div class="center"><img src="'+BASE_THEME+'images/loading.gif" /></div>');
 
         $.post($(this).data('url'),
             $('#game-form input').serialize(),
@@ -277,7 +290,10 @@ $(document).ready(function () {
             }
         );
 
-        $('#confirm-move').modal();
+        $('#confirm-move').modal({
+            keyboard: false,
+            backdrop: "static"
+        });
 
         return false;
     });

@@ -12,14 +12,14 @@
         <meta property="og:title" content="<?php __e('Apalabro!'); ?>" />
         <meta name="description" content="<?php __e('Play to Apalabrados/Angry Words online!'); ?>" />
         <meta property="og:description" content="<?php __e('Play to Apalabrados/Angry Words online!'); ?>" />
-        <meta name="image" content="<?php echo $Theme->www(); ?>images/logo.png" />
-        <meta property="og:image" content="<?php echo $Theme->www(); ?>images/logo.png" />
+        <meta name="image" content="<?php echo BASE_THEME; ?>images/logo.png" />
+        <meta property="og:image" content="<?php echo BASE_THEME; ?>images/logo.png" />
 
-        <link rel="image_src" href="<?php echo $Theme->www(); ?>images/logo.png" />
+        <link rel="image_src" href="<?php echo BASE_THEME; ?>images/logo.png" />
         <link rel="shortcut icon" href="<?php echo BASE_WWW; ?>favicon.ico" />
 
-        <link href="<?php echo $Theme->www(); ?>bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
-        <link href="<?php echo $Theme->www(); ?>css/styles.css" type="text/css" rel="stylesheet" />
+        <link href="<?php echo BASE_THEME; ?>bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+        <link href="<?php echo BASE_THEME; ?>css/styles.css" type="text/css" rel="stylesheet" />
 
         <?php if ($Api->getLanguage()) { ?>
         <style>
@@ -29,19 +29,20 @@
         </style>
         <?php } ?>
 
-        <script src="<?php echo $Theme->www(); ?>js/jquery.min.js" type="text/javascript"></script>
-        <script src="<?php echo $Theme->www(); ?>js/jquery-ui/js/jquery-ui-1.8.22.custom.min.js" type="text/javascript"></script>
-        <script src="<?php echo $Theme->www(); ?>js/jquery-ui/js/jquery.ui.touch-punch.min.js" type="text/javascript"></script>
-        <script src="<?php echo $Theme->www(); ?>bootstrap/js/bootstrap-dropdown.js" type="text/javascript"></script>
-        <script src="<?php echo $Theme->www(); ?>bootstrap/js/bootstrap-tab.js" type="text/javascript"></script>
-        <script src="<?php echo $Theme->www(); ?>bootstrap/js/bootstrap-modal.js" type="text/javascript"></script>
+        <script src="<?php echo BASE_THEME; ?>js/jquery.min.js" type="text/javascript"></script>
+        <script src="<?php echo BASE_THEME; ?>js/jquery-ui/js/jquery-ui-1.8.22.custom.min.js" type="text/javascript"></script>
+        <script src="<?php echo BASE_THEME; ?>js/jquery-ui/js/jquery.ui.touch-punch.min.js" type="text/javascript"></script>
+        <script src="<?php echo BASE_THEME; ?>bootstrap/js/bootstrap-dropdown.js" type="text/javascript"></script>
+        <script src="<?php echo BASE_THEME; ?>bootstrap/js/bootstrap-tab.js" type="text/javascript"></script>
+        <script src="<?php echo BASE_THEME; ?>bootstrap/js/bootstrap-modal.js" type="text/javascript"></script>
 
-        <script src="<?php echo $Theme->www(); ?>js/js-strings.php?lg=<?php echo $Gettext->getLanguage(); ?>" type="text/javascript"></script>
+        <script src="<?php echo BASE_THEME; ?>js/js-strings.php?lg=<?php echo $Gettext->getLanguage(); ?>" type="text/javascript"></script>
 
-        <script src="<?php echo $Theme->www(); ?>js/scripts.js" type="text/javascript"></script>
+        <script src="<?php echo BASE_THEME; ?>js/scripts.js" type="text/javascript"></script>
 
         <script type="text/javascript">
         var BASE_WWW = '<?php echo BASE_WWW; ?>';
+        var BASE_THEME = '<?php echo BASE_THEME; ?>';
 
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-33869691-1']);

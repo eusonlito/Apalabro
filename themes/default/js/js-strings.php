@@ -10,6 +10,7 @@ strings['which_letter_use'] = '<?php echo str_replace("\'", '&apos;', __('Which 
 strings['play_tiles'] = '<?php echo str_replace("\'", '&apos;', __('Play this tiles?')); ?>';
 strings['waiting_reply'] = '<?php echo str_replace("\'", '&apos;', __('Waiting for reply...')); ?>';
 strings['please_wait'] = '<?php echo str_replace("\'", '&apos;', __('Please, wait...')); ?>';
+strings['sending'] = '<?php echo str_replace("\'", '&apos;', __('Sending...')); ?>';
 strings['no_results'] = '<?php echo str_replace("\'", '&apos;', __('No results for your query')); ?>';
 strings['swap_tiles'] = '<?php echo str_replace("\'", '&apos;', __('Are you sure do you want to swap this tiles?')); ?>';
 strings['no_swap_tiles'] = '<?php echo str_replace("\'", '&apos;', __('You must select some tile to swap')); ?>';
