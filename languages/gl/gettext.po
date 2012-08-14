@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apalabro!\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-11 12:01+0100\n"
-"PO-Revision-Date: 2012-08-11 12:01+0100\n"
+"POT-Creation-Date: 2012-08-14 14:45+0100\n"
+"PO-Revision-Date: 2012-08-14 14:45+0100\n"
 "Last-Translator: Lito <lito@eordes.com>\n"
 "Language-Team: Lito <lito@eordes.com>\n"
 "Language: \n"
@@ -78,7 +78,7 @@ msgid "Game versus %s"
 msgstr "Partida contra %s"
 
 #: about.php:6
-#: themes/default/base.php:84
+#: themes/default/base.php:88
 msgid "About"
 msgstr "Sobre"
 
@@ -92,13 +92,14 @@ msgid "Sorry but you can't play now. You was added to a waiting list."
 msgstr "Sentímolo pero non hai ningunha partida dispoñible neste momento. Foches engadido a lista de espera."
 
 #: new.php:19
-#: themes/default/base.php:89
+#: themes/default/base.php:93
 msgid "New Game"
 msgstr "Nova Partida"
 
 #: themes/default/profile.php:43
-#: themes/default/base.php:96
-#: themes/default/base.php:101
+#: themes/default/base.php:100
+#: themes/default/base.php:105
+#: themes/default/about.php:24
 msgid "language_"
 msgstr ""
 
@@ -125,42 +126,42 @@ msgstr "gañaches <strong>%s</strong>"
 msgid "<strong>%s</strong> you lost!"
 msgstr "perdeches <strong>%s</strong>"
 
-#: themes/default/profile.php:97
+#: themes/default/profile.php:98
 #, php-format
 msgid "<strong>%s</strong> played games"
 msgstr "<strong>%s</strong> xogados"
 
-#: themes/default/profile.php:103
+#: themes/default/profile.php:104
 #, php-format
 msgid "<strong>%s</strong> won"
 msgstr "<strong>%s</strong> victorias"
 
-#: themes/default/profile.php:109
+#: themes/default/profile.php:110
 #, php-format
 msgid "<strong>%s</strong> lost"
 msgstr "<strong>%s</strong> derrotas"
 
-#: themes/default/profile.php:115
+#: themes/default/profile.php:116
 #, php-format
 msgid "<strong>%s%%</strong> resign"
 msgstr "<strong>%s</strong> rendicións"
 
-#: themes/default/profile.php:121
+#: themes/default/profile.php:122
 #, php-format
 msgid "<strong>%s</strong> was the longest word"
 msgstr "<strong>%s</strong> foi a palabra máis longa"
 
-#: themes/default/profile.php:125
+#: themes/default/profile.php:126
 #, php-format
 msgid "<strong>%s</strong> was the best game"
 msgstr "<strong>%s</strong> foi a mellor partida"
 
-#: themes/default/profile.php:129
+#: themes/default/profile.php:130
 #, php-format
 msgid "<strong>%s</strong> was the best play"
 msgstr "<strong>%s</strong> foi a mellor xogada"
 
-#: themes/default/profile.php:133
+#: themes/default/profile.php:135
 #, php-format
 msgid "last login <strong>%s</strong>"
 msgstr "último acceso <strong>%s</strong>"
@@ -177,20 +178,20 @@ msgstr "Apalabro!"
 msgid "Play to Apalabrados/Angry Words online!"
 msgstr "Xoga a Apalabrados en liña!"
 
-#: themes/default/base.php:69
+#: themes/default/base.php:71
 msgid "Game"
 msgstr "Partida"
 
-#: themes/default/base.php:75
-#: themes/default/base.php:81
+#: themes/default/base.php:77
+#: themes/default/base.php:83
 msgid "My Profile"
 msgstr "O Meu Perfil"
 
-#: themes/default/base.php:77
+#: themes/default/base.php:79
 msgid "User Profile"
 msgstr "Perfil do Usuario"
 
-#: themes/default/base.php:90
+#: themes/default/base.php:94
 msgid "Logout"
 msgstr "Saír"
 
@@ -320,20 +321,24 @@ msgstr "Axuda"
 msgid "About Apalabro!"
 msgstr "Sobre Apalabro!"
 
+#: themes/default/about.php:19
+msgid "Available Languages"
+msgstr "Idiomas Dispoñibles"
+
 #: themes/default/sub-users-list.php:25
 #, php-format
 msgid "last login %s"
 msgstr "último acceso %s"
 
-#: themes/default/login.php:11
+#: themes/default/login.php:15
 msgid "Your email"
 msgstr "O teu correo"
 
-#: themes/default/login.php:14
+#: themes/default/login.php:18
 msgid "Your password"
 msgstr "O teu contrasinal"
 
-#: themes/default/login.php:19
+#: themes/default/login.php:23
 msgid "Login"
 msgstr "Entrar"
 
@@ -479,74 +484,90 @@ msgid "This game does not exists"
 msgstr "Esta partida non existe"
 
 #: aux/dynamic-strings.php:4
+msgid "language_de"
+msgstr "Deutsch"
+
+#: aux/dynamic-strings.php:5
 msgid "language_en"
 msgstr "US English"
 
-#: aux/dynamic-strings.php:5
+#: aux/dynamic-strings.php:6
 msgid "language_en-uk"
 msgstr "UK English"
 
-#: aux/dynamic-strings.php:6
+#: aux/dynamic-strings.php:7
 msgid "language_es"
 msgstr "Castellano"
 
-#: aux/dynamic-strings.php:7
+#: aux/dynamic-strings.php:8
+msgid "language_fr"
+msgstr "Français"
+
+#: aux/dynamic-strings.php:9
 msgid "language_gl"
 msgstr "Galego"
 
-#: aux/dynamic-strings.php:9
+#: aux/dynamic-strings.php:10
+msgid "language_it"
+msgstr "Italiano"
+
+#: aux/dynamic-strings.php:11
+msgid "language_pt"
+msgstr "Português"
+
+#: aux/dynamic-strings.php:13
 msgid "Turn"
 msgstr "Turno"
 
-#: aux/dynamic-strings.php:10
+#: aux/dynamic-strings.php:14
 msgid "Waiting"
 msgstr "Agardando"
 
-#: aux/dynamic-strings.php:11
+#: aux/dynamic-strings.php:15
 msgid "Ended"
 msgstr "Rematadas"
 
-#: aux/dynamic-strings.php:12
+#: aux/dynamic-strings.php:16
 msgid "Pending"
 msgstr "Pentente"
 
-#: aux/dynamic-strings.php:13
+#: aux/dynamic-strings.php:17
 msgid "Active"
 msgstr "Activo"
 
-#: aux/dynamic-strings.php:14
+#: aux/dynamic-strings.php:18
 msgid "ACTIVE"
 msgstr "ACTIVO"
 
-#: aux/dynamic-strings.php:15
+#: aux/dynamic-strings.php:19
 msgid "ENDED"
 msgstr "REMATADA"
 
-#: aux/dynamic-strings.php:16
+#: aux/dynamic-strings.php:20
 msgid "RESIGN"
 msgstr "RENDICIÓN"
 
-#: aux/dynamic-strings.php:17
+#: aux/dynamic-strings.php:21
 msgid "REJECT"
 msgstr "REXEITADA"
 
-#: aux/dynamic-strings.php:18
+#: aux/dynamic-strings.php:22
 msgid "PENDING_MY_APPROVAL"
 msgstr "PENDIENTE DA MIÑA APROBACIÓN"
 
-#: aux/dynamic-strings.php:19
+#: aux/dynamic-strings.php:23
 msgid "PENDING_FIRST_MOVE"
 msgstr "PENDIENTE DO PRIMEIRO MOVEMENTO"
 
-#: aux/dynamic-strings.php:20
+#: aux/dynamic-strings.php:24
 msgid "PENDING_FRIENDS_APPROVAL"
 msgstr "PENDIENTE DA APROBACIÓN DO RIVAL"
 
-#: aux/dynamic-strings.php:21
+#: aux/dynamic-strings.php:25
 msgid "PLACE_TILE"
 msgstr "COLOCAR FICHA"
 
-#: aux/dynamic-strings.php:22
+#: aux/dynamic-strings.php:26
 msgid "PASS"
 msgstr "PASA"
 
