@@ -13,7 +13,7 @@
             <?php foreach ($Api->getLanguages() as $language) { ?>
             <label for="game-language-<?php echo $language; ?>" class="checkbox inline">
                 <input type="radio" id="game-language-<?php echo $language; ?>" name="language" value="<?php echo $language; ?>" />
-                <img src="<?php echo BASE_WWW.'languages/'.$language; ?>/flag.png" alt="<?php echo __('language_'.$language); ?>" />
+                <img src="<?php echo BASE_WWW.'languages/'.$language; ?>/flag.png" alt="<?php echo __('language_'.$language); ?>" title="<?php echo __('language_'.$language); ?>" />
             </label>
             <?php } ?>
         </div>

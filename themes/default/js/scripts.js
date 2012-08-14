@@ -49,21 +49,9 @@ $(document).ready(function () {
     });
 
     $('a[data-action="recall"]').click(function () {
-        var rack = $('.rack-tiles');
-
         $('a[data-action="confirm"]').attr('disabled', 'disabled');
 
-        $('div', rack).each(function () {
-            $('input', this).remove();
-
-            $(this).animate({
-                top: snapToHight($(this), $(rack)),
-                left: (rack.position().left + $(this).data('position').left)
-            }, {
-                duration: 600,
-                easing: 'easeOutBack'
-            });
-        });
+        recall();
 
         return false;
     });
@@ -290,6 +278,8 @@ $(document).ready(function () {
     });
 
     $('a[data-action="swap"]').click(function () {
+        recall();
+
         $('table.board').hide();
         $('div.swap').show();
 
@@ -312,6 +302,8 @@ $(document).ready(function () {
 
     $('.swap button.btn-danger').click(function () {
         $('input[name^=swapped_tiles\\[]').remove();
+
+        recall();
 
         $('div.swap').hide();
         $('table.board').show();
@@ -375,4 +367,24 @@ function playReady () {
     }
 
     return valid;
+}
+
+function recall () {
+    var rack = $('.rack-tiles');
+
+    $('div', rack).each(function () {
+        $('input', $(this)).remove();
+
+        if ($(this).hasClass('wildcard')) {
+            $('span.letter', $(this)).html('*');
+        }
+
+        $(this).animate({
+            top: snapToHight($(this), $(rack)),
+            left: (rack.position().left + $(this).data('position').left)
+        }, {
+            duration: 600,
+            easing: 'easeOutBack'
+        });
+    });
 }

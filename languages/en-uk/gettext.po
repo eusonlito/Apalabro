@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apalabro!\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-14 14:45+0100\n"
-"PO-Revision-Date: 2012-08-14 14:45+0100\n"
+"POT-Creation-Date: 2012-08-14 18:44+0100\n"
+"PO-Revision-Date: 2012-08-14 18:44+0100\n"
 "Last-Translator: Lito <lito@eordes.com>\n"
 "Language-Team: Lito <lito@eordes.com>\n"
 "Language: \n"
@@ -99,7 +99,7 @@ msgstr ""
 #: themes/default/profile.php:43
 #: themes/default/base.php:100
 #: themes/default/base.php:105
-#: themes/default/about.php:24
+#: themes/default/about.php:27
 msgid "language_"
 msgstr ""
 
@@ -317,11 +317,11 @@ msgstr ""
 msgid "Help"
 msgstr ""
 
-#: themes/default/about.php:4
+#: themes/default/about.php:5
 msgid "About Apalabro!"
 msgstr ""
 
-#: themes/default/about.php:19
+#: themes/default/about.php:22
 msgid "Available Languages"
 msgstr ""
 
@@ -484,90 +484,94 @@ msgid "This game does not exists"
 msgstr ""
 
 #: aux/dynamic-strings.php:4
+msgid "language_ca"
+msgstr "Català"
+
+#: aux/dynamic-strings.php:5
 msgid "language_de"
 msgstr "Deutsch"
 
-#: aux/dynamic-strings.php:5
+#: aux/dynamic-strings.php:6
 msgid "language_en"
 msgstr "US English"
 
-#: aux/dynamic-strings.php:6
+#: aux/dynamic-strings.php:7
 msgid "language_en-uk"
 msgstr "UK English"
 
-#: aux/dynamic-strings.php:7
+#: aux/dynamic-strings.php:8
 msgid "language_es"
 msgstr "Castellano"
 
-#: aux/dynamic-strings.php:8
+#: aux/dynamic-strings.php:9
 msgid "language_fr"
 msgstr "Français"
 
-#: aux/dynamic-strings.php:9
+#: aux/dynamic-strings.php:10
 msgid "language_gl"
 msgstr "Galego"
 
-#: aux/dynamic-strings.php:10
+#: aux/dynamic-strings.php:11
 msgid "language_it"
 msgstr "Italiano"
 
-#: aux/dynamic-strings.php:11
+#: aux/dynamic-strings.php:12
 msgid "language_pt"
 msgstr "Português"
 
-#: aux/dynamic-strings.php:13
+#: aux/dynamic-strings.php:14
 msgid "Turn"
 msgstr ""
 
-#: aux/dynamic-strings.php:14
+#: aux/dynamic-strings.php:15
 msgid "Waiting"
 msgstr ""
 
-#: aux/dynamic-strings.php:15
+#: aux/dynamic-strings.php:16
 msgid "Ended"
 msgstr ""
 
-#: aux/dynamic-strings.php:16
+#: aux/dynamic-strings.php:17
 msgid "Pending"
 msgstr ""
 
-#: aux/dynamic-strings.php:17
+#: aux/dynamic-strings.php:18
 msgid "Active"
 msgstr ""
 
-#: aux/dynamic-strings.php:18
+#: aux/dynamic-strings.php:19
 msgid "ACTIVE"
 msgstr ""
 
-#: aux/dynamic-strings.php:19
+#: aux/dynamic-strings.php:20
 msgid "ENDED"
 msgstr ""
 
-#: aux/dynamic-strings.php:20
+#: aux/dynamic-strings.php:21
 msgid "RESIGN"
 msgstr ""
 
-#: aux/dynamic-strings.php:21
+#: aux/dynamic-strings.php:22
 msgid "REJECT"
 msgstr ""
 
-#: aux/dynamic-strings.php:22
+#: aux/dynamic-strings.php:23
 msgid "PENDING_MY_APPROVAL"
 msgstr ""
 
-#: aux/dynamic-strings.php:23
+#: aux/dynamic-strings.php:24
 msgid "PENDING_FIRST_MOVE"
 msgstr ""
 
-#: aux/dynamic-strings.php:24
+#: aux/dynamic-strings.php:25
 msgid "PENDING_FRIENDS_APPROVAL"
 msgstr ""
 
-#: aux/dynamic-strings.php:25
+#: aux/dynamic-strings.php:26
 msgid "PLACE_TILE"
 msgstr ""
 
-#: aux/dynamic-strings.php:26
+#: aux/dynamic-strings.php:27
 msgid "PASS"
 msgstr ""
 

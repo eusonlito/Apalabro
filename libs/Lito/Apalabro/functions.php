@@ -99,47 +99,31 @@ function humanDate ($timestamp)
     }
 }
 
-function str_split_unicode ($str, $l = 0)
-{
-    if ($l > 0) {
-        $ret = array();
-        $len = mb_strlen($str, 'UTF-8');
-
-        for ($i = 0; $i < $len; $i += $l) {
-            $ret[] = mb_substr($str, $i, $l, 'UTF-8');
-        }
-
-        return $ret;
-    }
-
-    return preg_split('//u', $str, -1, PREG_SPLIT_NO_EMPTY);
-}
-
 if (!function_exists('mb_substr_replace')) {
     function mb_substr_replace ($string, $replacement, $start, $length = null, $encoding = null)
     {
         $string_length = is_null($encoding) ? mb_strlen($string) : mb_strlen($string, $encoding);
-        
+
         if ($start < 0) {
             $start = max(0, $string_length + $start);
         } else if ($start > $string_length) {
             $start = $string_length;
         }
-        
+
         if ($length < 0) {
             $length = max(0, $string_length - $start + $length);
         } else if ((is_null($length) === true) || ($length > $string_length)) {
             $length = $string_length;
         }
-        
+
         if (($start + $length) > $string_length) {
             $length = $string_length - $start;
         }
-        
+
         if (is_null($encoding)) {
             return mb_substr($string, 0, $start) . $replacement . mb_substr($string, $start + $length, $string_length - $start - $length);
         }
-        
+
         return mb_substr($string, 0, $start, $encoding) . $replacement . mb_substr($string, $start + $length, $string_length - $start - $length, $encoding);
     }
 }

@@ -1,6 +1,7 @@
 <?php
 defined('BASE_PATH') or die();
 
+__('language_ca');
 __('language_de');
 __('language_en');
 __('language_en-uk');

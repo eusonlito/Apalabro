@@ -650,11 +650,7 @@ class Apalabro {
         $words = array();
 
         foreach ($this->dictionary as $word) {
-            if ((mb_strlen($word) > $len_tiles) || (mb_strlen($word) < 2)) {
-                continue;
-            }
-
-            if (!$this->allInArray(str_split_unicode($word), $tiles, $wildcards)) {
+            if (!$this->stringInArray($word, $tiles, $wildcards)) {
                 continue;
             }
 
@@ -684,7 +680,7 @@ class Apalabro {
 
         $valid = preg_quote(implode('', array_keys($this->points)), '/');
         $expression = str_replace('/', '', mb_strtolower($expression));
-        $expression_tiles = str_split_unicode(preg_replace('/[^'.$valid.']/', '', $expression));
+        $expression_tiles = $this->splitWord(preg_replace('/[^'.$valid.']/', '', $expression));
 
         if ($expression_tiles) {
             $tiles = array_merge($tiles, $expression_tiles);
@@ -694,15 +690,11 @@ class Apalabro {
         $words = array();
 
         foreach ($this->dictionary as $word) {
-            if (mb_strlen($word) < 2) {
-                continue;
-            }
-
             if (!preg_match('/'.$expression.'/', $word)) {
                 continue;
             }
 
-            if (!$this->allInArray(str_split_unicode($word), $tiles, $wildcards)) {
+            if (!$this->stringInArray($word, $tiles, $wildcards)) {
                 continue;
             }
 
@@ -726,7 +718,10 @@ class Apalabro {
             $this->loadPoints();
         }
 
-        $word = str_split_unicode(mb_strtolower($word));
+        if (!is_array($word)) {
+            $word = $this->splitWord($word);
+        }
+
         $full = count($compare);
         $used = count(array_search('*', $word));
 
@@ -1028,6 +1023,10 @@ class Apalabro {
         }
 
         $this->points = include ($file);
+
+        uksort($this->points, function($a, $b) {
+            return mb_strlen($b) - mb_strlen($a);
+        });
     }
 
     public function mergeDic ($language, $file, $new)
@@ -1084,8 +1083,8 @@ class Apalabro {
 
         foreach ($valid as $letter) {
             if (($position = mb_strpos($current, $letter)) !== false) {
-                $current = mb_substr_replace($current, '', $position, 1);
-                $replacement = mb_substr_replace($replacement, '', $position, 1);
+                $current = mb_substr($current, 0, $position).mb_substr($current, $position + mb_strlen($letter));
+                $replacement = mb_substr($replacement, 0, $position).mb_substr($replacement, $position + mb_strlen($letter));
             }
         }
 
@@ -1110,20 +1109,56 @@ class Apalabro {
         return $dictionary;
     }
 
-    private function allInArray ($array1, $array2, $wildcards)
+    private function stringInArray ($string, $array, $wildcards)
     {
-        foreach ($array1 as $value) { 
-            if (($key = array_search($value, $array2, true)) === false) {
-                if ($wildcards && isset($this->points[$value])) {
-                    --$wildcards;
-                } else {
-                    return false;
-                }
+        foreach ($array as $letter) {
+            if (($position = mb_strpos($string, $letter)) === false) {
+                continue;
             }
 
-            unset($array2[$key]);
+            $string = mb_substr($string, 0, $position).mb_substr($string, $position + mb_strlen($letter));
+
+            if (!$string) {
+                return true;
+            }
+        }
+
+        if (!$wildcards) {
+            return false;
+        }
+
+        foreach (array_keys($this->points) as $letter) {
+            while (($position = mb_strpos($string, $letter)) !== false) {
+                $string = mb_substr($string, 0, $position).mb_substr($string, $position + mb_strlen($letter));
+
+                --$wildcard;
+
+                if ($wildcard < 0) {
+                    return false;
+                } else if (!$string) {
+                    return true;
+                }
+            }
         }
 
         return true;
+    }
+
+    private function splitWord ($word)
+    {
+        if (is_string($word)) {
+            $words = array();
+
+            foreach (array_keys($this->points) as $letter) {
+                while (($position = mb_strpos($word, $letter)) !== false) {
+                    $words[] = mb_substr($word, $position, mb_strlen($letter));
+                    $word = mb_substr($word, 0, $position).mb_substr($word, $position + mb_strlen($letter));
+                }
+            }
+        } else {
+            $words = $word;
+        }
+
+        return $words;
     }
 }
