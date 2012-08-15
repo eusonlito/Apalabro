@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apalabro!\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-15 02:44+0100\n"
-"PO-Revision-Date: 2012-08-15 02:45+0100\n"
+"POT-Creation-Date: 2012-08-15 21:21+0100\n"
+"PO-Revision-Date: 2012-08-15 21:22+0100\n"
 "Last-Translator: Lito <lito@eordes.com>\n"
 "Language-Team: Lito <lito@eordes.com>\n"
 "Language: \n"
@@ -160,123 +160,137 @@ msgstr "O teu turno"
 msgid "Opponent turn"
 msgstr "Turno do oponente"
 
-#: themes/default/game.php:29
+#: themes/default/game.php:20
+#: themes/default/sub-games-list.php:32
+#, php-format
+msgid "You have %s new chat messages"
+msgstr "Tes %s novas mensaxes no chat"
+
+#: themes/default/game.php:35
 #, php-format
 msgid "Last words: %s"
 msgstr "Últimas palabras: %s"
 
-#: themes/default/game.php:32
-#: themes/default/sub-games-list.php:37
+#: themes/default/game.php:38
+#: themes/default/sub-games-list.php:47
 #, php-format
 msgid "%s tiles to remaining"
 msgstr "%s fichas para rematar"
 
-#: themes/default/game.php:45
+#: themes/default/game.php:47
+msgid "Chat"
+msgstr "Chat"
+
+#: themes/default/game.php:53
+msgid "Close"
+msgstr "Pechar"
+
+#: themes/default/game.php:66
 msgid "Swapping Tiles"
 msgstr "Cambiando Fichas"
 
-#: themes/default/game.php:49
+#: themes/default/game.php:70
 msgid "Swap"
 msgstr "Cambiar"
 
-#: themes/default/game.php:50
+#: themes/default/game.php:71
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: themes/default/game.php:55
+#: themes/default/game.php:76
 msgid "Move here yours tiles"
 msgstr "Move aquí as túas fichas"
 
-#: themes/default/game.php:85
+#: themes/default/game.php:106
 msgid "Play!"
 msgstr "Xogar!"
 
-#: themes/default/game.php:89
+#: themes/default/game.php:110
 msgid "Test"
 msgstr "Probar"
 
-#: themes/default/game.php:96
+#: themes/default/game.php:117
 msgid "Recall"
 msgstr "Chamar"
 
-#: themes/default/game.php:100
+#: themes/default/game.php:121
 msgid "Swap Tiles"
 msgstr "Cambiar Fichas"
 
-#: themes/default/game.php:102
+#: themes/default/game.php:123
 msgid "Pass"
 msgstr "Pasar"
 
-#: themes/default/game.php:109
+#: themes/default/game.php:130
 msgid "Confirm your move"
 msgstr "Confirma o teu movemento"
 
-#: themes/default/game.php:116
+#: themes/default/game.php:137
 msgid "Confirm"
 msgstr "Confirmar"
 
-#: themes/default/game.php:119
+#: themes/default/game.php:140
 msgid "Back"
 msgstr "Voltar"
 
-#: themes/default/game.php:123
+#: themes/default/game.php:144
 msgid "Resign"
 msgstr "Rendirse"
 
-#: themes/default/game.php:137
+#: themes/default/game.php:158
 msgid "Do you need help?"
 msgstr "Precisas axuda?"
 
-#: themes/default/game.php:138
+#: themes/default/game.php:159
 msgid "I can give you some suggestions ;)"
 msgstr "Se o precisas podo darche algunhas suxerencias ;)"
 
-#: themes/default/game.php:139
+#: themes/default/game.php:160
 msgid "Yes, please!"
 msgstr "Sí, por favor!"
 
-#: themes/default/game.php:144
+#: themes/default/game.php:165
 msgid "Suggestions"
 msgstr "Suxerencias"
 
-#: themes/default/game.php:145
-#: themes/default/game.php:180
+#: themes/default/game.php:166
+#: themes/default/game.php:201
 #: themes/default/new.php:24
 #: themes/default/new.php:56
 msgid "Search"
 msgstr "Buscar"
 
-#: themes/default/game.php:146
+#: themes/default/game.php:167
 msgid "Tiles"
 msgstr "Fichas"
 
-#: themes/default/game.php:152
+#: themes/default/game.php:173
 msgid "Filter suggested words"
 msgstr "Filtrar as palabras suxeridas"
 
-#: themes/default/game.php:159
+#: themes/default/game.php:180
 #, php-format
 msgid "%s points"
 msgstr "%s puntos"
 
-#: themes/default/game.php:164
+#: themes/default/game.php:185
 #, php-format
 msgid "%s letters"
 msgstr "%s letras"
 
-#: themes/default/game.php:178
+#: themes/default/game.php:199
 msgid "Search with regular expression"
 msgstr "Buscar con expresión regular"
 
-#: themes/default/game.php:182
+#: themes/default/game.php:203
 msgid "Help"
 msgstr "Axuda"
 
-#: themes/default/game.php:191
+#: themes/default/game.php:212
 msgid "This tiles are not played yet:"
 msgstr "Estas fichas aínda non se colocaron:"
 
-#: themes/default/game.php:196
+#: themes/default/game.php:217
 #, php-format
 msgid "<strong>%s</strong> tiles of letter <strong>%s</strong>"
 msgstr "<strong>%s</strong> fichas da letra <strong>%s</strong>"
@@ -480,13 +494,17 @@ msgstr "100% Seguro?"
 msgid "Are you sure that you want pass this turn?"
 msgstr "Estas seguro de querer pasar?"
 
+#: themes/default/js/js-strings.php:20
+msgid "Some error occours with the server response. Please try it again."
+msgstr "Ocorreu algún erro coa resposta do servidor. Por favor, inténtao de novo."
+
 #: aux/game-check.php:5
 msgid "No game ID was received"
 msgstr "Non se recibiu o ID da partida"
 
-#: aux/game-check.php:15
-msgid "This game does not exists"
-msgstr "Esta partida non existe"
+#: aux/game-check.php:19
+msgid "Some error occours triying to load this game. Please reload this page to try it again."
+msgstr "Ocorreu algún erro intentando cargar esta partida. Por favor, recarga esta páxina para intentalo de novo."
 
 #: aux/dynamic-strings.php:4
 msgid "language_ca"
@@ -596,6 +614,13 @@ msgstr "Sentímolo pero estas fichas non poden ser misturadas. Por favor, intén
 #: ajax/search-users.php:13
 msgid "No users founded..."
 msgstr "Non se atoparon usuarios..."
+
+#: ajax/get-chat.php:32
+msgid "There aren't any conversation in this game"
+msgstr "Non hai ningunha conversa nesta partida"
+
+#~ msgid "This game does not exists"
+#~ msgstr "Esta partida non existe"
 
 #~ msgid "Regular expression"
 #~ msgstr "Expresión regular"

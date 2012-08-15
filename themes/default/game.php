@@ -16,6 +16,12 @@
             }
         ?></small>
 
+        <?php if ((isset($Game->messages) && $Game->messages) || (isset($Game->my_message_alerts) && $Game->my_message_alerts)) { ?>
+        <a href="<?php echo BASE_WWW; ?>ajax/get-chat.php?id=<?php echo $Game->id; ?>" class="chat-24" title="<?php __e('You have %s new chat messages', $Game->my_message_alerts); ?>"><?php
+            echo (isset($Game->my_message_alerts) && $Game->my_message_alerts) ? $Game->my_message_alerts : '';
+        ?></a>
+        <?php } ?>
+
         <p>
             <small class="label"><?php echo humanDate($Game->last_turn->play_date); ?></small>
 
@@ -33,6 +39,21 @@
         </p>
     </h1>
 </div>
+
+<?php if ((isset($Game->messages) && $Game->messages) || (isset($Game->my_message_alerts) && $Game->my_message_alerts)) { ?>
+<div id="modal-chat" class="modal hide">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3><?php __e('Chat'); ?></h3>
+    </div>
+
+    <div class="modal-body max-height"></div>
+
+    <div class="modal-footer">
+        <a href="#" class="btn" data-dismiss="modal"><i class="icon-remove"></i> <?php __e('Close'); ?></a>
+    </div>
+</div>
+<?php } ?>
 
 <div class="row">
     <div class="span7 relative">
@@ -103,7 +124,7 @@
 
                             <?php } ?>
 
-                            <div id="confirm-move" class="modal hide">
+                            <div id="modal-confirm" class="modal hide">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal">×</button>
                                     <h3><?php __e('Confirm your move'); ?></h3>

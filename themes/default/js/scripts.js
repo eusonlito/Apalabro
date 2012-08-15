@@ -230,10 +230,10 @@ $(document).ready(function () {
                     return false;
                 }
 
-                $('#confirm-move .modal-header').hide();
-                $('#confirm-move .modal-footer').hide();
+                $('#modal-confirm .modal-header').hide();
+                $('#modal-confirm .modal-footer').hide();
 
-                $('#confirm-move .modal-body').html(
+                $('#modal-confirm .modal-body').html(
                     '<h2 class="center"><img src="'+BASE_THEME+'images/loading.gif" />'+
                     '<span class="offset05">'+strings['sending']+'<span></h2>'
                 );
@@ -270,19 +270,24 @@ $(document).ready(function () {
         var test = ($(this).data('action') == 'test') ? true : false;
 
         if (test) {
-            $('#confirm-move button').remove();
+            $('#modal-confirm button').remove();
         } else {
             $('#game-form button[name="play"]').attr('disabled', 'disabled');
         }
 
-        $('#confirm-move .modal-body').html('<div class="center"><img src="'+BASE_THEME+'images/loading.gif" /></div>');
+        $('#modal-confirm .modal-body').html('<div class="center"><img src="'+BASE_THEME+'images/loading.gif" /></div>');
 
         $.post($(this).data('url'),
             $('#game-form input').serialize(),
             function (response) {
-                response = $.parseJSON(response);
+                try {
+                    response = $.parseJSON(response);
+                } catch (e) {
+                    $('#modal-confirm .modal-body').html(strings['server_error']);
+                    return false;
+                }
 
-                $('#confirm-move .modal-body').html(response.html);
+                $('#modal-confirm .modal-body').html(response.html);
 
                 if (!test && !response.error) {
                     $('#game-form button[name="play"]').attr('disabled', false);
@@ -290,7 +295,7 @@ $(document).ready(function () {
             }
         );
 
-        $('#confirm-move').modal({
+        $('#modal-confirm').modal({
             keyboard: false,
             backdrop: "static"
         });
@@ -328,6 +333,20 @@ $(document).ready(function () {
 
         $('div.swap').hide();
         $('table.board').show();
+
+        return false;
+    });
+
+    $('a.chat-24').click(function () {
+        $('#modal-chat .modal-body').html('<div class="center"><img src="'+BASE_THEME+'images/loading.gif" /></div>');
+
+        $.post($(this).attr('href'),
+            function (response) {
+                $('#modal-chat .modal-body').html(response);
+            }
+        );
+
+        $('#modal-chat').modal();
 
         return false;
     });

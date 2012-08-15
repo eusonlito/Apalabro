@@ -24,7 +24,17 @@
                 </div>
 
                 <div class="span9">
-                    <h4><a href="<?php echo BASE_WWW; ?>game.php?id=<?php echo $Game->id; ?>"><?php echo $Game->opponent->name; ?></a></h4>
+                    <h4>
+                        <a href="<?php echo BASE_WWW; ?>game.php?id=<?php echo $Game->id; ?>">
+                            <?php echo $Game->opponent->name; ?>
+
+                            <?php if (isset($Game->my_message_alerts) && ($Game->my_message_alerts > 0)) { ?>
+                            <span class="chat-16" title="<?php __e('You have %s new chat messages', $Game->my_message_alerts); ?>"><?php
+                                echo $Game->my_message_alerts;
+                            ?></span>
+                            <?php } ?>
+                        </a>
+                    </h4>
 
                     <small class="label label-info"><?php echo $Game->language; ?></small>
 

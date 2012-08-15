@@ -121,34 +121,34 @@ table.board tbody td {
     overflow: auto;
 }
 
-#confirm-move div.alert {
+#modal-confirm div.alert {
     height: 36px;
 }
 
-#confirm-move div.alert div {
+#modal-confirm div.alert div {
     padding-top: 8px;
     font-weight: bold;
 }
 
-#confirm-move div.alert div.points {
+#modal-confirm div.alert div.points {
     text-align: center;
     height: 36px;
 }
 
-#confirm-move div.alert-success div.points {
+#modal-confirm div.alert-success div.points {
     background: url('../images/badge-ok.png') no-repeat center;
 }
 
-#confirm-move div.alert-danger div.points {
+#modal-confirm div.alert-danger div.points {
     background: url('../images/badge-wrong.png') no-repeat center;
 }
 
-#confirm-move div.alert-danger div.pull-right {
+#modal-confirm div.alert-danger div.pull-right {
     font-size: 12px;
     color: #666;
 }
 
-#confirm-move h4 {
+#modal-confirm h4 {
     text-align: center;
 }
 
@@ -187,4 +187,19 @@ table.board tbody td {
 
 .offset05 {
     margin-left: 50px;
+}
+
+.chat-16 {
+    background: url('../images/chat-16.png') no-repeat left;
+    padding-left: 18px;
+    margin-left: 5px;
+    color: #666;
+}
+
+.chat-24 {
+    background: url('../images/chat-24.png') no-repeat left;
+    padding-left: 27px;
+    margin-left: 10px;
+    color: #666;
+    font-size: 16px;
 }

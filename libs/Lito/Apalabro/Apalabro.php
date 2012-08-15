@@ -605,6 +605,38 @@ class Apalabro {
         return $remaining;
     }
 
+    public function getChat ($game) {
+        $this->_loggedOrDie();
+
+        if (!$this->games['all'][$game]) {
+            return array();
+        }
+
+        $Game = $this->games['all'][$game];
+
+        $Chat = $this->Curl->get('users/'.$this->user.'/games/'.$Game->id.'/chat?all=true');
+
+        if (isset($Chat->total) && ($Chat->total > 0)) {
+            krsort($Chat->list);
+
+            return $Chat->list;
+        } else {
+            return array();
+        }
+    }
+
+    public function resetChat ($game) {
+        $this->_loggedOrDie();
+
+        if (!$this->games['all'][$game]) {
+            return array();
+        }
+
+        $Game = $this->games['all'][$game];
+
+        return $this->Curl->get('users/'.$this->user.'/games/'.$Game->id.'/chat?reset=true');
+    }
+
     public function playGame ($game, $post)
     {
         $this->_loggedOrDie();

@@ -17,3 +17,4 @@ strings['no_swap_tiles'] = '<?php echo str_replace("\'", '&apos;', __('You must 
 strings['resign'] = '<?php echo str_replace("\'", '&apos;', __('Are you sure that you want resign this game?!?')); ?>';
 strings['resign_sure'] = '<?php echo str_replace("\'", '&apos;', __('100% Sure?')); ?>';
 strings['pass'] = '<?php echo str_replace("\'", '&apos;', __('Are you sure that you want pass this turn?')); ?>';
+strings['server_error'] = '<?php echo str_replace("\'", '&apos;', __('Some error occours with the server response. Please try it again.')); ?>';

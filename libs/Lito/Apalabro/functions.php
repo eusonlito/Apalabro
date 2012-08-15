@@ -148,3 +148,12 @@ function encode2utf ($string)
         return utf8_encode($string);
     }
 }
+
+function isAjax ()
+{
+    if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && (strcasecmp('XMLHttpRequest', $_SERVER['HTTP_X_REQUESTED_WITH']) === 0)) {
+        return true;
+    } else {
+        return false;
+    }
+}

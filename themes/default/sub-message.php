@@ -10,7 +10,7 @@ if (!$message) {
 
 <div class="alert alert-<?php echo $message['status']; ?>">
     <strong>
-        <?php if ($message['back']) { ?>
+        <?php if ($message['back'] && !isAjax()) { ?>
         <a href="<?php echo getenv('HTTP_REFERER'); ?>">&laquo;</a>
         <?php } ?>
 
