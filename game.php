@@ -55,8 +55,9 @@ if ($Game->game_status !== 'ENDED') {
     }
 
     $words = $Api->solve($Game->id);
+    $remaining_tiles = $Api->getRemainingTiles($Game->id);
 } else {
-    $words = array();
+    $words = $remaining_tiles = array();
 }
 
 $Theme->set('body', basename(__FILE__));

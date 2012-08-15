@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apalabro!\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-14 23:08+0100\n"
-"PO-Revision-Date: 2012-08-14 23:08+0100\n"
+"POT-Creation-Date: 2012-08-15 02:44+0100\n"
+"PO-Revision-Date: 2012-08-15 02:45+0100\n"
 "Last-Translator: Lito <lito@eordes.com>\n"
 "Language-Team: Lito <lito@eordes.com>\n"
 "Language: \n"
@@ -49,7 +49,7 @@ msgstr "Rendícheste nesta partida"
 msgid "Sorry but some problem occours when try to resign this game"
 msgstr "Sentímolo, pero ocorreu algún erro cando intentabas rendirte nesta partida"
 
-#: game.php:64
+#: game.php:65
 #, php-format
 msgid "Game versus %s"
 msgstr "Partida contra %s"
@@ -235,48 +235,58 @@ msgstr "Se o precisas podo darche algunhas suxerencias ;)"
 msgid "Yes, please!"
 msgstr "Sí, por favor!"
 
+#: themes/default/game.php:144
+msgid "Suggestions"
+msgstr "Suxerencias"
+
 #: themes/default/game.php:145
-msgid "Suggested words"
-msgstr "Palabras suxeridas"
+#: themes/default/game.php:180
+#: themes/default/new.php:24
+#: themes/default/new.php:56
+msgid "Search"
+msgstr "Buscar"
 
-#: themes/default/game.php:149
-msgid "Regular expression"
-msgstr "Expresión regular"
+#: themes/default/game.php:146
+msgid "Tiles"
+msgstr "Fichas"
 
-#: themes/default/game.php:156
+#: themes/default/game.php:152
 msgid "Filter suggested words"
 msgstr "Filtrar as palabras suxeridas"
 
-#: themes/default/game.php:163
+#: themes/default/game.php:159
 #, php-format
 msgid "%s points"
 msgstr "%s puntos"
 
-#: themes/default/game.php:168
+#: themes/default/game.php:164
 #, php-format
 msgid "%s letters"
 msgstr "%s letras"
 
+#: themes/default/game.php:178
+msgid "Search with regular expression"
+msgstr "Buscar con expresión regular"
+
 #: themes/default/game.php:182
-msgid "Filter with regular expression"
-msgstr "Filtrar con expresión regular"
-
-#: themes/default/game.php:184
-#: themes/default/new.php:26
-#: themes/default/new.php:58
-msgid "Search"
-msgstr "Buscar"
-
-#: themes/default/game.php:186
 msgid "Help"
 msgstr "Axuda"
+
+#: themes/default/game.php:191
+msgid "This tiles are not played yet:"
+msgstr "Estas fichas aínda non se colocaron:"
+
+#: themes/default/game.php:196
+#, php-format
+msgid "<strong>%s</strong> tiles of letter <strong>%s</strong>"
+msgstr "<strong>%s</strong> fichas da letra <strong>%s</strong>"
 
 #: themes/default/sub-friends-list.php:25
 #, php-format
 msgid "last move %s"
 msgstr "último movemento %s"
 
-#: themes/default/new.php:16
+#: themes/default/new.php:14
 #: themes/default/base.php:101
 #: themes/default/base.php:106
 #: themes/default/about.php:27
@@ -284,28 +294,28 @@ msgstr "último movemento %s"
 msgid "language_"
 msgstr ""
 
-#: themes/default/new.php:24
+#: themes/default/new.php:22
 msgid "Random opponent"
 msgstr "Opoñente aleatorio"
 
-#: themes/default/new.php:25
+#: themes/default/new.php:23
 msgid "Recent and Friends"
 msgstr "Recentes e Amigos"
 
-#: themes/default/new.php:32
+#: themes/default/new.php:30
 msgid "Start a new game with random opponent"
 msgstr "Comezar unha nova partida cun rival aleatorio"
 
-#: themes/default/new.php:44
-#: themes/default/new.php:64
+#: themes/default/new.php:42
+#: themes/default/new.php:62
 msgid "Start a new game"
 msgstr "Comezar unha nova partida"
 
-#: themes/default/new.php:49
+#: themes/default/new.php:47
 msgid "You haven't any user in this list"
 msgstr "No tes usuarios nesta lista"
 
-#: themes/default/new.php:56
+#: themes/default/new.php:54
 msgid "Search..."
 msgstr "Buscar..."
 
@@ -586,6 +596,9 @@ msgstr "Sentímolo pero estas fichas non poden ser misturadas. Por favor, intén
 #: ajax/search-users.php:13
 msgid "No users founded..."
 msgstr "Non se atoparon usuarios..."
+
+#~ msgid "Regular expression"
+#~ msgstr "Expresión regular"
 
 #~ msgid ""
 #~ "Sorry but I can't create a new game... Please try it again in some minutes"

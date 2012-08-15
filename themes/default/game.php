@@ -141,13 +141,9 @@
 
         <div id="suggestions" class="hide">
             <ul class="nav nav-tabs">
-                <li class="active">
-                    <a href="#tab-suggested-words" data-toggle="tab"><?php __e('Suggested words'); ?></a>
-                </li>
-
-                <li>
-                    <a href="#tab-regular-expression" data-toggle="tab"><?php __e('Regular expression'); ?></a>
-                </li>
+                <li class="active"><a href="#tab-suggested-words" data-toggle="tab"><?php __e('Suggestions'); ?></a></li>
+                <li><a href="#tab-regular-expression" data-toggle="tab"><?php __e('Search'); ?></a></li>
+                <li><a href="#tab-tiles" data-toggle="tab"><?php __e('Tiles'); ?></a></li>
             </ul>
 
             <div class="tab-content">
@@ -156,7 +152,7 @@
                         <input type="text" class="span5 filter-list" data-filtered=".words-list li span.word" value="" placeholder="<?php __e('Filter suggested words'); ?>">
                     </div>
 
-                    <ul class="dl-horizontal words-list">
+                    <ul class="max-height words-list">
                         <?php if ($words) { ?>
                         <?php foreach ($words as $points => $words) { ?>
                         <li class="row-fluid">
@@ -179,15 +175,27 @@
                     <form action="<?php echo BASE_WWW; ?>ajax/search-words.php" class="form-inline filter-expression" data-filtered=".words-expression" method="post">
                         <input type="hidden" name="id" value="<?php echo $Game->id; ?>" />
 
-                        <input type="text" name="filter" value="" class="input-large search-query" placeholder="<?php __e('Filter with regular expression'); ?>">
+                        <input type="text" name="filter" value="" class="input-large search-query" placeholder="<?php __e('Search with regular expression'); ?>">
 
                         <button type="submit" class="btn btn-info"><?php __e('Search'); ?></button>
 
                         <a href="http://www.phpf1.com/tutorial/php-regular-expression.html" class="btn btn-success pull-right" target="_blank"><?php __e('Help'); ?></a>
                     </form>
 
-                    <ul class="dl-horizontal words-expression">
+                    <ul class="max-height words-expression">
                         <li></li>
+                    </ul>
+                </div>
+
+                <div class="tab-pane" id="tab-tiles">
+                    <p><?php __e('This tiles are not played yet:'); ?></p>
+
+                    <ul class="max-height center">
+                        <?php
+                        foreach ($remaining_tiles as $tile => $quantity) {
+                            echo '<li><p>'.__('<strong>%s</strong> tiles of letter <strong>%s</strong>', $quantity, $tile).'</p></li>';
+                        }
+                        ?>
                     </ul>
                 </div>
             </div>

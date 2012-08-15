@@ -12,8 +12,8 @@ class Apalabro {
     private $languages = array();
     private $dictionary = array();
     private $points = array();
+    private $quantity = array();
     private $games = array();
-    private $my_rack_tiles = array();
     private $board_points = array();
 
     private $Cookie;
@@ -488,7 +488,7 @@ class Apalabro {
             $this->getGame($game);
         }
 
-        $this->loadPoints();
+        $this->loadLetters();
 
         $Game = $this->games['all'][$game];
 
@@ -556,6 +556,53 @@ class Apalabro {
         $this->Cache->set($cache_key, $words);
 
         return $words;
+    }
+
+    public function getRemainingTiles ($game)
+    {
+        $this->_loggedOrDie();
+
+        if (!isset($this->games['all'][$game])) {
+            return array();
+        }
+
+        if (!isset($this->games['all'][$game]->board_tiles)) {
+            $this->getGame($game);
+        }
+
+        $Game = $this->games['all'][$game];
+
+        if (!$this->quantity) {
+            $this->loadLetters();
+        }
+
+        $tiles = array();
+
+        if ($Game->board_tiles) {
+            $tiles = $Game->board_tiles;
+        }
+
+        if ($Game->my_rack_tiles) {
+            $tiles = array_merge($tiles, $Game->my_rack_tiles);
+        }
+
+        $remaining = $this->quantity;
+
+        foreach ($tiles as $tile) {
+            if (isset($remaining[$tile])) {
+                --$remaining[$tile];
+            }
+        }
+
+        foreach ($remaining as $tile => $quantity) {
+            if ($quantity < 1) {
+                unset($remaining[$tile]);
+            }
+        }
+
+        arsort($remaining);
+
+        return $remaining;
     }
 
     public function playGame ($game, $post)
@@ -647,6 +694,8 @@ class Apalabro {
 
     public function searchWords ($tiles)
     {
+        $this->_loggedOrDie();
+
         $this->loadLanguage();
 
         $this->Timer->mark('INI: Apalabro->searchWords');
@@ -662,7 +711,9 @@ class Apalabro {
 
             $points = $this->getWordPoints($word, $tiles);
 
-            if (!isset($words[$points]) || !in_array($word, $words[$points])) {
+            if (!isset($words[$points])) {
+                $words[$points] = array($word);
+            } else if (!in_array($word, $words[$points])) {
                 $words[$points][] = $word;
             }
         }
@@ -676,6 +727,8 @@ class Apalabro {
 
     public function searchWordsExpression ($tiles, $expression = '')
     {
+        $this->_loggedOrDie();
+
         if (!$expression) {
             return array();
         }
@@ -706,7 +759,9 @@ class Apalabro {
 
             $points = $this->getWordPoints($word, $tiles);
 
-            if (!isset($words[$points]) || !in_array($word, $words[$points])) {
+            if (!isset($words[$points])) {
+                $words[$points] = array($word);
+            } else if (!in_array($word, $words[$points])) {
                 $words[$points][] = $word;
             }
         }
@@ -720,8 +775,10 @@ class Apalabro {
 
     public function getWordPoints ($word, $compare = array())
     {
+        $this->_loggedOrDie();
+
         if (!$this->points) {
-            $this->loadPoints();
+            $this->loadLetters();
         }
 
         if (!is_array($word)) {
@@ -990,7 +1047,7 @@ class Apalabro {
     private function loadLanguage ()
     {
         $this->loadDic();
-        $this->loadPoints();
+        $this->loadLetters();
     }
 
     private function loadDic ()
@@ -1014,13 +1071,14 @@ class Apalabro {
         $this->Timer->mark('END: Apalabro->loadDic '.$this->language);
     }
 
-    private function loadPoints ()
+    private function loadLetters ()
     {
         if ($this->points) {
             return true;
         }
 
         $this->points = array();
+        $this->quantity = array();
 
         $file = BASE_PATH.'/languages/'.$this->language.'/points.php';
 
@@ -1028,7 +1086,12 @@ class Apalabro {
             return false;
         }
 
-        $this->points = include ($file);
+        $letters = include ($file);
+
+        foreach ($letters as $letter => $values) {
+            $this->points[$letter] = $values['points'];
+            $this->quantity[$letter] = $values['quantity'];
+        }
 
         uksort($this->points, function($a, $b) {
             return mb_strlen($b) - mb_strlen($a);
@@ -1103,7 +1166,7 @@ class Apalabro {
         $valid = preg_quote(implode('', $valid), '/');
 
         foreach ($dictionary as $key => $word) {
-            if (preg_match('/[^('.$valid.')]/', $word, $found) || (mb_strlen($word) > 15)) {
+            if (!preg_match('/^['.$valid.']{2,17}$/', $word)) {
                 unset($dictionary[$key]);
             }
         }
@@ -1137,9 +1200,9 @@ class Apalabro {
             while (($position = mb_strpos($string, $letter)) !== false) {
                 $string = mb_substr($string, 0, $position).mb_substr($string, $position + mb_strlen($letter));
 
-                --$wildcard;
+                --$wildcards;
 
-                if ($wildcard < 0) {
+                if ($wildcards < 0) {
                     return false;
                 } else if (!$string) {
                     return true;

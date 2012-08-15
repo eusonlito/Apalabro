@@ -116,7 +116,7 @@ table.board tbody td {
     margin-right: 20px;
 }
 
-.words-expression, .words-list {
+.max-height {
     max-height: 425px;
     overflow: auto;
 }
