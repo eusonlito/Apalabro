@@ -94,6 +94,7 @@
         <?php } ?>
 
         <?php if (isset($User->stats->games_played)) { ?>
+
         <p class="alert alert-info">
             <?php __e('<strong>%s</strong> played games', $User->stats->games_played); ?>
         </p>
@@ -118,17 +119,24 @@
             </div>
         </div>
 
+        <?php if (isset($User->stats->longest_word)) { ?>
         <p class="alert alert-info">
             <?php __e('<strong>%s</strong> was the longest word', $User->stats->longest_word); ?>
         </p>
+        <?php } ?>
 
+        <?php if (isset($User->stats->best_game_points)) { ?>
         <p class="alert alert-info">
             <?php __e('<strong>%s</strong> was the best game', $User->stats->best_game_points); ?>
         </p>
+        <?php } ?>
 
+        <?php if (isset($User->stats->top_play)) { ?>
         <p class="alert alert-info">
             <?php __e('<strong>%s</strong> was the best play', $User->stats->top_play); ?>
         </p>
+        <?php } ?>
+
         <?php } ?>
 
         <p class="alert alert-info">

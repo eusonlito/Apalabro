@@ -43,6 +43,7 @@
         <script type="text/javascript">
         var BASE_WWW = '<?php echo BASE_WWW; ?>';
         var BASE_THEME = '<?php echo BASE_THEME; ?>';
+        var VALID_LETTERS = new Array('<?php echo implode("','", $Api->getValidWords()); ?>');
 
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-33869691-1']);

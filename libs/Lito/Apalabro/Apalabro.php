@@ -380,6 +380,19 @@ class Apalabro {
         return $this->games[$status];
     }
 
+    public function getValidWords ()
+    {
+        $this->_loggedOrDie();
+
+        if (!$this->language) {
+            return array();
+        }
+
+        $this->loadLetters();
+
+        return array_keys($this->points);
+    }
+
     public function getGame ($game)
     {
         $this->_loggedOrDie();
@@ -591,10 +604,13 @@ class Apalabro {
         }
 
         $remaining = $this->quantity;
+        $wildcards = 2;
 
         foreach ($tiles as $tile) {
             if (isset($remaining[$tile])) {
                 --$remaining[$tile];
+            } else if (strstr($tile, '*')) {
+                --$wildcards;
             }
         }
 
@@ -602,6 +618,10 @@ class Apalabro {
             if ($quantity < 1) {
                 unset($remaining[$tile]);
             }
+        }
+
+        if ($wildcards) {
+            $remaining['*'] = $wildcards;
         }
 
         arsort($remaining);
@@ -754,6 +774,10 @@ class Apalabro {
             }
         }
 
+        foreach ($words as $points => $list) {
+            $words[$points] = array_slice($list, 0, 20);
+        }
+
         krsort($words);
 
         $this->Timer->mark('END: Apalabro->searchWords');
@@ -774,7 +798,7 @@ class Apalabro {
         $this->Timer->mark('INI: Apalabro->searchWordsExpression');
 
         $valid = preg_quote(implode('', array_keys($this->points)), '/');
-        $expression = str_replace('/', '', mb_strtolower($expression));
+        $expression = str_replace(array('*', '/'), '', mb_strtolower($expression));
         $expression_tiles = $this->splitWord(preg_replace('/[^'.$valid.']/', '', $expression));
 
         if ($expression_tiles) {
@@ -800,6 +824,10 @@ class Apalabro {
             } else if (!in_array($word, $words[$points])) {
                 $words[$points][] = $word;
             }
+        }
+
+        foreach ($words as $points => $list) {
+            $words[$points] = array_slice($list, 0, 20);
         }
 
         krsort($words);
