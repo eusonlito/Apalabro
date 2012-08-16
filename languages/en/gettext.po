@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Apalabro!\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-08-16 14:36+0100\n"
-"PO-Revision-Date: 2012-08-16 14:37+0100\n"
+"PO-Revision-Date: 2012-08-16 15:24+0100\n"
 "Last-Translator: Lito <lito@eordes.com>\n"
 "Language-Team: Lito <lito@eordes.com>\n"
 "Language: \n"
@@ -347,7 +347,7 @@ msgstr ""
 
 #: themes/default/about.php:9
 msgid "about_info"
-msgstr "<p><strong>Apalabro!</strong> is a PHP project developed by <a href=\"https://github.com/eusonlito\">Lito</a> to create an <a href=\"http://www.apalabrados.com/\">Apalabrados (Angry Words)</a> web interface.</p><p>This means you should download the application on your smartphone <a href=\"https://play.google.com/store/apps/details?id=com.etermax.apalabrados.lite\">Android</a> or <a href=\"http://itunes.apple.com/us/app/apalabrados/id441092257?ls=1&mt=8\">iPhone</a> and register in it with username and password (not through Facebook).</p><p>Once registered you can back and start playing :)</p><p>You can get the sorce code at <a href=\"https://github.com/eusonlito/Apalabro\">Github</a>.</p><p>Also, if you have some suggestion or doubt, you can contact with me at <a href=\"mailto:lito@eordes.com\">lito@eordes.com</a>.</p><p>This site has no connection with the company that owns the application <a href=\"http://www.apalabrados.com/\">Apalabrados</a>.</p>"
+msgstr "<p><strong>Apalabro!</strong> is a PHP project developed by <a href=\"https://github.com/eusonlito\">Lito</a> to create an <a href=\"http://www.apalabrados.com/\">Apalabrados (Angry Words)</a> web interface.</p><p>This means you should download the application on your smartphone <a href=\"https://play.google.com/store/apps/details?id=com.etermax.apalabrados.lite\">Android</a> or <a href=\"http://itunes.apple.com/us/app/apalabrados/id441092257?ls=1&mt=8\">iPhone</a> and register in it with username and password (not through Facebook).</p><p>Once registered you can back and start playing :)</p><p>You can get the sorce code at <a href=\"https://github.com/eusonlito/Apalabro\">Github</a>.</p><p>Also, if you have some suggestion or doubt, you can contact with me at <a href=\"mailto:lito@eordes.com\">lito@eordes.com</a>.</p><p>I greatly appreciated the help with the interface translation. You can do it using as base the file <strong>languages/en/gettext.po</strong> or <strong>languages/en/gettext.mo</strong>.</p><p>This site has no connection with the company that owns the application <a href=\"http://www.apalabrados.com/\">Apalabrados</a>.</p>"
 
 #: themes/default/about.php:15
 msgid "Available Languages"

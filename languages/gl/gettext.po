@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Apalabro!\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-08-16 12:10+0100\n"
-"PO-Revision-Date: 2012-08-16 12:19+0100\n"
+"PO-Revision-Date: 2012-08-16 15:22+0100\n"
 "Last-Translator: Lito <lito@eordes.com>\n"
 "Language-Team: Lito <lito@eordes.com>\n"
 "Language: \n"
@@ -347,7 +347,7 @@ msgstr "Sobre Apalabro!"
 
 #: themes/default/about.php:9
 msgid "about_info"
-msgstr "<p><strong>Apalabro!</strong> é un proxecto desenvolto por <a href=\"https://github.com/eusonlito\">Lito</a> para crear un interface web da aplicación móbil <a href=\"http://www.apalabrados.com/\">Apalabrados (Angry Words)</a>.</p><p>Isto significa que debes descargarte a aplicación no teu smartphone <a href=\"https://play.google.com/store/apps/details?id=com.etermax.apalabrados.lite\">Android</a> ou <a href=\"http://itunes.apple.com/us/app/apalabrados/id441092257?ls=1&mt=8\">iPhone</a> e rexistrarte nela con usuario e contrasinal (non vale a través de Facebook).</p><p>Unha vez rexistrado poderás voltar aquí para acceder e comezar a xogar :)</p><p>Se o desexas podes descargarte o código fonte en <a href=\"https://github.com/eusonlito/Apalabro\">Github</a>.</p><p>De todos xeitos, se tes algunha dúbida ou suxerencia, podes poñerte en contacto conmigo no enderezo de correo <a href=\"mailto:lito@eordes.com\">lito@eordes.com</a>.</p><p>Esta web non ten ningunha relación coa empresa propietaria da aplicación <a href=\"http://www.apalabrados.com/\">Apalabrados</a>.</p>"
+msgstr "<p><strong>Apalabro!</strong> é un proxecto desenvolto por <a href=\"https://github.com/eusonlito\">Lito</a> para crear un interface web da aplicación móbil <a href=\"http://www.apalabrados.com/\">Apalabrados (Angry Words)</a>.</p><p>Isto significa que debes descargarte a aplicación no teu smartphone <a href=\"https://play.google.com/store/apps/details?id=com.etermax.apalabrados.lite\">Android</a> ou <a href=\"http://itunes.apple.com/us/app/apalabrados/id441092257?ls=1&mt=8\">iPhone</a> e rexistrarte nela con usuario e contrasinal (non vale a través de Facebook).</p><p>Unha vez rexistrado poderás voltar aquí para acceder e comezar a xogar :)</p><p>Se o desexas podes descargarte o código fonte en <a href=\"https://github.com/eusonlito/Apalabro\">Github</a>.</p><p>De todos xeitos, se tes algunha dúbida ou suxerencia, podes poñerte en contacto conmigo no enderezo de correo <a href=\"mailto:lito@eordes.com\">lito@eordes.com</a>.</p><p>Agradezo enormemente a axuda na traducción do interface. Podes facela usando como base o arquivo <strong>languages/es/gettext.po</strong> ou <strong>languages/es/gettext.mo</strong>.</p><p>Esta web non ten ningunha relación coa empresa propietaria da aplicación <a href=\"http://www.apalabrados.com/\">Apalabrados</a>.</p>"
 
 #: themes/default/about.php:15
 msgid "Available Languages"
