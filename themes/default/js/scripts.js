@@ -107,6 +107,9 @@ $(document).ready(function () {
         e.preventDefault(); 
 
         var $filtered = $($(this).data('filtered'));
+        var $button = $('button[type="submit"]', $(this));
+
+        $button.attr('disabled', 'disabled');
 
         if ($('input[type="text"]', $(this)).val().length > 0) {
             $filtered.html('<li class="center"><img src="'+BASE_THEME+'images/loading.gif" class="mt-20" /></li>');
@@ -114,10 +117,12 @@ $(document).ready(function () {
             $.post($(this).attr('action'),
                 $('input', $(this)).serialize(),
                 function (response) {
+                    $button.attr('disabled', false);
                     $filtered.html(response);
                 }
             );
         } else {
+            $button.attr('disabled', false);
             $filtered.html('');
         }
 
