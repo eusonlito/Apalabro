@@ -46,7 +46,7 @@ class Gettext
     private $table_translations = NULL; // table for translated strings (offsets)
     private $cache_translations = array(); // original -> translation mapping
     private $languages = array();
-    private $language = 'es';
+    private $language = 'en';
     private $loaded;
 
     const MAGIC1 = -1794895138;

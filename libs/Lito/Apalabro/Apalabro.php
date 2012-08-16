@@ -106,7 +106,8 @@ class Apalabro {
 
         $cookie = $this->Cookie->get();
 
-        if (!isset($cookie['user']) || !isset($cookie['session'])) {
+        if (!isset($cookie['user']) || !$cookie['user']
+        || !isset($cookie['session']) || !$cookie['session']) {
             return false;
         }
 
@@ -159,7 +160,7 @@ class Apalabro {
         $cookie = $this->Cookie->get();
 
         if (!$cookie) {
-            $this->setCookie(array(
+            $this->Cookie->set(array(
                 'user' => $this->user,
                 'session' => $this->session
             ));
@@ -207,7 +208,10 @@ class Apalabro {
 
     public function logout ()
     {
-        $this->Cookie->set('', -3600);
+        $this->Cookie->set(array(
+            'user' => '',
+            'session' => ''
+        ));
     }
 
     public function getUser ($user = '')
