@@ -15,6 +15,11 @@ section {
     margin-bottom: 0;
 }
 
+li#updates > a{
+    background-color: #F89406;
+    color: white;
+}
+
 div.home div.well {
     height: 70px;
     overflow: hidden;

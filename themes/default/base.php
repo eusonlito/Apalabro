@@ -44,12 +44,12 @@
         var VALID_LETTERS = new Array();
         var UPDATED = '';
 
-        <?php if (isset($Game) && $Game->active) { ?>
+        <?php if ($Api->logged()) { ?>
 
+        UPDATED = '<?php echo base64_encode(json_encode(getPlayDates($Api->getGames('all')))); ?>';
+
+        <?php if (isset($Game)) { ?>
         VALID_LETTERS = new Array('<?php echo implode("','", $Api->getValidWords()); ?>');
-
-        <?php if (!$Game->my_turn) { ?>
-        UPDATED = '<?php echo $Game->last_turn->play_date; ?>';
         <?php } ?>
 
         <?php } ?>
@@ -75,7 +75,7 @@
                     <a class="brand" href="<?php echo BASE_WWW; ?>"><?php __e('Apalabro!'); ?></a>
 
                     <div class="nav-collapse">
-                        <ul class="nav">
+                        <ul class="nav pull-left">
                             <li<?php echo (FILENAME === 'index.php') ? ' class="active"' : ''; ?>><a href="<?php echo BASE_WWW; ?>"><?php __e('Home'); ?></a></li>
 
                             <?php if ($Api->logged()) { ?>

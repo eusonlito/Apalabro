@@ -169,9 +169,9 @@ function getPlayDates ($games)
 
     foreach ($games as $Game) {
         if (is_array($Game)) {
-            $return = array_merge($return, getPlayDates($Game));
+            $return = $return + getPlayDates($Game);
         } else if (isset($Game->last_turn->play_date)) {
-            $return[] = $Game->last_turn->play_date;
+            $return[$Game->id] = $Game->last_turn->play_date;
         }
     }
 

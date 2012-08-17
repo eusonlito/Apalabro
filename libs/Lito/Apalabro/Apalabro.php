@@ -318,7 +318,7 @@ class Apalabro {
         return $Users->list;
     }
 
-    private function loadGames ()
+    public function loadGames ()
     {
         $this->_loggedOrDie();
 

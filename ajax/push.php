@@ -1,37 +1,35 @@
 <?php
+if (!$_POST['u']) {
+    die();
+}
+
 require (__DIR__.'/../libs/Lito/Apalabro/Loader.php');
 
 if (!isAjax()) {
     die();
 }
 
-$referer = parse_url(getenv('HTTP_REFERER'));
-$file = basename($referer['path']);
+$updated = json_decode(base64_decode($_POST['u']));
 
-switch ($file) {
-    case 'game.php':
-        parse_str($referer['query'], $query);
-
-        isset($query['id']) or die();
-
-        $game = $query['id'];
-
-        require (BASE_PATH.'/aux/game-check.php');
-
-        die(json_encode(array('text' => $Game->last_turn->play_date)));
-
-    default:
-        if (strstr($file, '.php')) {
-            die(json_encode(array('error' => true)));
-        }
-
-        $games = getPlayDates($Api->getGames());
-
-        if (!$games) {
-            die(json_encode(array('error' => true)));
-        }
-
-        die(json_encode(array('text' => md5(serialize($games)))));
+if (!is_object($updated)) {
+    die();
 }
 
-exit;
+$games = $Api->getGames('all');
+$message = array();
+
+foreach ($games as $Game) {
+    if (!isset($updated->{$Game->id}) || !isset($Game->last_turn->play_date)) {
+        continue;
+    }
+
+    if ($Game->last_turn->play_date !== $updated->{$Game->id}) {
+        $message[] = array(
+            'id' => $Game->id,
+            'text' => __('%s has updated the game', $Game->opponent->name),
+            'link' => (BASE_WWW.'game.php?id='.$Game->id)
+        );
+    }
+}
+
+die(json_encode($message));

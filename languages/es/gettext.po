@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apalabro!\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-17 02:16+0100\n"
-"PO-Revision-Date: 2012-08-17 02:17+0100\n"
+"POT-Creation-Date: 2012-08-17 17:56+0100\n"
+"PO-Revision-Date: 2012-08-17 17:57+0100\n"
 "Last-Translator: Lito <lito@eordes.com>\n"
 "Language-Team: Lito <lito@eordes.com>\n"
 "Language: \n"
@@ -16,6 +16,29 @@ msgstr ""
 "X-Poedit-Country: Spain\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
+
+#: profile.php:7
+msgid "No user ID was received"
+msgstr "No se ha recibido el ID del usuario"
+
+#: profile.php:17
+msgid "This user does not exists"
+msgstr "Este usuario no existe"
+
+#: profile.php:30
+#, php-format
+msgid "%s was added as friend."
+msgstr "%s fue añadido como amigo."
+
+#: profile.php:36
+#, php-format
+msgid "%s was removed as friend."
+msgstr "%s foi quitado de los amigos."
+
+#: profile.php:44
+#, php-format
+msgid "%s Profile"
+msgstr "Perfil de %s"
 
 #: game.php:13
 msgid "Your tiles were set successfully"
@@ -54,107 +77,140 @@ msgstr "Lo sentimos pero ha ocurrido un error cuando intentabas rendirte"
 msgid "Game versus %s"
 msgstr "Partida contra %s"
 
+#: about.php:6
+#: themes/default/base.php:101
+msgid "About"
+msgstr "Sobre"
+
+#: index.php:6
+#: themes/default/base.php:79
+msgid "Home"
+msgstr "Inicio"
+
 #: new.php:12
 msgid "Sorry but you can't play now. You was added to a waiting list."
 msgstr "Lo sentimos pero no hay partidas disponibles. Has sido añadido a la lista de espera."
 
 #: new.php:19
+#: themes/default/base.php:106
 msgid "New Game"
 msgstr "Nueva Partida"
 
-#: index.php:6
-msgid "Home"
-msgstr "Inicio"
+#: themes/default/profile.php:43
+#: themes/default/base.php:113
+#: themes/default/base.php:118
+#: themes/default/about.php:20
+msgid "language_"
+msgstr ""
 
-#: about.php:6
-msgid "About"
-msgstr "Sobre"
+#: themes/default/profile.php:63
+msgid "Remove as friend"
+msgstr "Quitar de amigos"
 
-#: profile.php:7
-msgid "No user ID was received"
-msgstr "No se ha recibido el ID del usuario"
+#: themes/default/profile.php:68
+msgid "Add as friend"
+msgstr "Añadir como amigo"
 
-#: profile.php:17
-msgid "This user does not exists"
-msgstr "Este usuario no existe"
-
-#: profile.php:30
+#: themes/default/profile.php:75
 #, php-format
-msgid "%s was added as friend."
-msgstr "%s fue añadido como amigo."
+msgid "<strong>%s</strong> finished versus games"
+msgstr "Te has enfrentando en <strong>%s</strong> partidas finalizadas"
 
-#: profile.php:36
+#: themes/default/profile.php:82
 #, php-format
-msgid "%s was removed as friend."
-msgstr "%s foi quitado de los amigos."
+msgid "<strong>%s</strong> you won!"
+msgstr "<strong>%s</strong> ganados"
 
-#: profile.php:44
+#: themes/default/profile.php:88
 #, php-format
-msgid "%s Profile"
-msgstr "Perfil de %s"
+msgid "<strong>%s</strong> you lost!"
+msgstr "<strong>%s</strong> perdidos"
 
-#: libs/Lito/Apalabro/Loader.php:10
-msgid "You must be logged to view this section"
-msgstr "Debes estar logueado para poder ver esta sección"
-
-#: libs/Lito/Apalabro/Loader.php:37
-msgid "Login"
-msgstr "Entrar"
-
-#: libs/Lito/Apalabro/Theme.php:45
+#: themes/default/profile.php:99
 #, php-format
-msgid "Theme path \"%s\" does not exists."
-msgstr "El directorio \"%s\" para este tema no existe."
+msgid "<strong>%s</strong> played games"
+msgstr "<strong>%s</strong> jugados"
 
-#: libs/Lito/Apalabro/functions.php:59
-#: libs/Lito/Apalabro/functions.php:66
-msgid "just now"
-msgstr "justo ahora"
-
-#: libs/Lito/Apalabro/functions.php:68
-msgid "one minute ago"
-msgstr "hace un minuto"
-
-#: libs/Lito/Apalabro/functions.php:70
+#: themes/default/profile.php:105
 #, php-format
-msgid "%s minutes ago"
-msgstr "hace %s minutos"
+msgid "<strong>%s</strong> won"
+msgstr "<strong>%s</strong> victorias"
 
-#: libs/Lito/Apalabro/functions.php:72
-msgid "one hour ago"
-msgstr "hace una hora"
-
-#: libs/Lito/Apalabro/functions.php:74
+#: themes/default/profile.php:111
 #, php-format
-msgid "%s hours ago"
-msgstr "hace %s horas"
+msgid "<strong>%s</strong> lost"
+msgstr "<strong>%s</strong> derrotas"
 
-#: libs/Lito/Apalabro/functions.php:76
-msgid "yesterday"
-msgstr "ayer"
-
-#: libs/Lito/Apalabro/functions.php:78
+#: themes/default/profile.php:117
 #, php-format
-msgid "%s days ago"
-msgstr "hace %s días"
+msgid "<strong>%s%%</strong> resign"
+msgstr "<strong>%s</strong> rendiciones"
 
-#: libs/Lito/Apalabro/functions.php:88
-msgid "in a minute"
-msgstr "en un minuto"
-
-#: libs/Lito/Apalabro/functions.php:90
+#: themes/default/profile.php:124
 #, php-format
-msgid "in %s minutes"
-msgstr "en %s minutos"
+msgid "<strong>%s</strong> was the longest word"
+msgstr "<strong>%s</strong> ha sido la palabra más larga"
 
-#: libs/Lito/Apalabro/functions.php:92
-msgid "in an hour"
-msgstr "en una hora"
-
-#: libs/Lito/Apalabro/functions.php:94
+#: themes/default/profile.php:130
 #, php-format
-msgid "in %s hours"
-msgstr "en %s horas"
+msgid "<strong>%s</strong> was the best game"
+msgstr "<strong>%s</strong> ha sido la mejor partida"
+
+#: themes/default/profile.php:136
+#, php-format
+msgid "<strong>%s</strong> was the best play"
+msgstr "<strong>%s</strong> ha sido la mejor jugada"
+
+#: themes/default/profile.php:143
+#, php-format
+msgid "last login <strong>%s</strong>"
+msgstr "último acceso <strong>%s</strong>"
+
+#: themes/default/base.php:7
+#: themes/default/base.php:11
+#: themes/default/base.php:12
+#: themes/default/base.php:75
+msgid "Apalabro!"
+msgstr "Apalabro!"
+
+#: themes/default/base.php:13
+#: themes/default/base.php:14
+msgid "Play to Apalabrados/Angry Words online!"
+msgstr "Juega a Apalabrados en línea!"
+
+#: themes/default/base.php:84
+msgid "Game"
+msgstr "Partida"
+
+#: themes/default/base.php:90
+#: themes/default/base.php:96
+msgid "My Profile"
+msgstr "Mi Perfil"
+
+#: themes/default/base.php:92
+msgid "User Profile"
+msgstr "Perfil del Usuario"
+
+#: themes/default/base.php:107
+msgid "Logout"
+msgstr "Salir"
+
+#: themes/default/sub-games-list.php:31
+#: themes/default/game.php:20
+#, php-format
+msgid "You have %s new chat messages"
+msgstr "Tienes %s nuevos mensajes de chat"
+
+#: themes/default/sub-games-list.php:46
+#: themes/default/game.php:38
+#, php-format
+msgid "%s tiles to remaining"
+msgstr "%s fichas para finalizar"
+
+#: themes/default/sub-friends-list.php:25
+#, php-format
+msgid "last move %s"
+msgstr "último movimiento %s"
 
 #: themes/default/game.php:13
 msgid "Your turn"
@@ -164,22 +220,10 @@ msgstr "Tu turno"
 msgid "Opponent turn"
 msgstr "Turno del oponente"
 
-#: themes/default/game.php:20
-#: themes/default/sub-games-list.php:31
-#, php-format
-msgid "You have %s new chat messages"
-msgstr "Tienes %s nuevos mensajes de chat"
-
 #: themes/default/game.php:35
 #, php-format
 msgid "Last words: %s"
 msgstr "Últimas palabras: %s"
-
-#: themes/default/game.php:38
-#: themes/default/sub-games-list.php:46
-#, php-format
-msgid "%s tiles to remaining"
-msgstr "%s fichas para finalizar"
 
 #: themes/default/game.php:47
 msgid "Chat"
@@ -259,8 +303,6 @@ msgstr "Sugerencias"
 
 #: themes/default/game.php:166
 #: themes/default/game.php:201
-#: themes/default/new.php:24
-#: themes/default/new.php:56
 msgid "Search"
 msgstr "Buscar"
 
@@ -299,18 +341,47 @@ msgstr "Estas fichas aún no se han colocado:"
 msgid "<strong>%s</strong> tiles of letter <strong>%s</strong>"
 msgstr "<strong>%s</strong> fichas de la letra <strong>%s</strong>"
 
-#: themes/default/sub-friends-list.php:25
-#, php-format
-msgid "last move %s"
-msgstr "último movimiento %s"
+#: themes/default/about.php:5
+msgid "About Apalabro!"
+msgstr "Sobre Apalabro!"
 
-#: themes/default/new.php:14
-#: themes/default/base.php:109
-#: themes/default/base.php:114
-#: themes/default/about.php:20
-#: themes/default/profile.php:43
-msgid "language_"
-msgstr ""
+#: themes/default/about.php:9
+msgid "about_info"
+msgstr "<p><strong>Apalabro!</strong> es un proyecto desarrollado por <a href=\"https://github.com/eusonlito\">Lito</a> para crear un interface web de la aplicación móvil <a href=\"http://www.apalabrados.com/\">Apalabrados (Angry Words)</a>.</p><p>Esto significa que debes descargarte la aplicación en tu smartphone <a href=\"https://play.google.com/store/apps/details?id=com.etermax.apalabrados.lite\">Android</a> o <a href=\"http://itunes.apple.com/us/app/apalabrados/id441092257?ls=1&mt=8\">iPhone</a> y registrarte en ella con usuario y contraseña (no vale a través de Facebook).</p><p>Una vez registrado podrás volver aquí para acceder y comenzar a jugar :)</p><p>Si lo deseas puedes descargarte el código fuente en <a href=\"https://github.com/eusonlito/Apalabro\">Github</a>.</p><p>De todas maneras, si tienes alguna dúda o sugerencia, puedes ponerte en contacto conmigo en la dirección <a href=\"mailto:lito@eordes.com\">lito@eordes.com</a>.</p><p>Agradezco enormemente la ayuda en la traducción del interface. Puedes realizarla usando como base el fichero <strong>languages/es/gettext.po</strong> o <strong>languages/es/gettext.mo</strong>.</p><p>Esta web no tiene ninguna relación con la empresa propietaria de la aplicación <a href=\"http://www.apalabrados.com/\">Apalabrados</a>.</p>"
+
+#: themes/default/about.php:15
+msgid "Available Languages"
+msgstr "Idiomas disponibles"
+
+#: themes/default/sub-users-list.php:24
+#, php-format
+msgid "last login %s"
+msgstr "último acceso %s"
+
+#: themes/default/login.php:11
+#: themes/default/login.php:31
+msgid "Login"
+msgstr "Entrar"
+
+#: themes/default/login.php:12
+msgid "Register"
+msgstr "Registro"
+
+#: themes/default/login.php:23
+msgid "Your email"
+msgstr "Tu correo"
+
+#: themes/default/login.php:26
+msgid "Your password"
+msgstr "Tu contraseña"
+
+#: themes/default/login.php:40
+msgid "register_info"
+msgstr "<p>Esta web es sólo un interface para la aplicación original <a href=\"http://www.apalabrados.com/\">Apalabrados</a>.</p><p>Esto significa que debes descargarte la aplicación en tu smartphone <a href=\"https://play.google.com/store/apps/details?id=com.etermax.apalabrados.lite\">Android</a> o <a href=\"http://itunes.apple.com/us/app/apalabrados/id441092257?ls=1&mt=8\">iPhone</a> y registrarte en ella con usuario y contraseña (no vale a través de Facebook).</p><p>Una vez registrado podrás volver aquí para acceder y comenzar a jugar :)</p><p>Esta web no tiene ninguna relación con la empresa propietaria de la aplicación <a href=\"http://www.apalabrados.com/\">Apalabrados</a>.</p>"
+
+#: themes/default/index.php:19
+msgid "No games here :)"
+msgstr "Ninguna partida aquí :)"
 
 #: themes/default/new.php:22
 msgid "Random opponent"
@@ -336,135 +407,6 @@ msgstr "No hay ningún usuario en esta lista"
 #: themes/default/new.php:54
 msgid "Search..."
 msgstr "Buscar..."
-
-#: themes/default/index.php:25
-msgid "No games here :)"
-msgstr "Ninguna partida aquí :)"
-
-#: themes/default/base.php:7
-#: themes/default/base.php:11
-#: themes/default/base.php:12
-#: themes/default/base.php:71
-msgid "Apalabro!"
-msgstr "Apalabro!"
-
-#: themes/default/base.php:13
-#: themes/default/base.php:14
-msgid "Play to Apalabrados/Angry Words online!"
-msgstr "Juega a Apalabrados en línea!"
-
-#: themes/default/base.php:80
-msgid "Game"
-msgstr "Partida"
-
-#: themes/default/base.php:86
-#: themes/default/base.php:92
-msgid "My Profile"
-msgstr "Mi Perfil"
-
-#: themes/default/base.php:88
-msgid "User Profile"
-msgstr "Perfil del Usuario"
-
-#: themes/default/base.php:103
-msgid "Logout"
-msgstr "Salir"
-
-#: themes/default/sub-users-list.php:24
-#, php-format
-msgid "last login %s"
-msgstr "último acceso %s"
-
-#: themes/default/login.php:12
-msgid "Register"
-msgstr "Registro"
-
-#: themes/default/login.php:23
-msgid "Your email"
-msgstr "Tu correo"
-
-#: themes/default/login.php:26
-msgid "Your password"
-msgstr "Tu contraseña"
-
-#: themes/default/login.php:40
-msgid "register_info"
-msgstr "<p>Esta web es sólo un interface para la aplicación original <a href=\"http://www.apalabrados.com/\">Apalabrados</a>.</p><p>Esto significa que debes descargarte la aplicación en tu smartphone <a href=\"https://play.google.com/store/apps/details?id=com.etermax.apalabrados.lite\">Android</a> o <a href=\"http://itunes.apple.com/us/app/apalabrados/id441092257?ls=1&mt=8\">iPhone</a> y registrarte en ella con usuario y contraseña (no vale a través de Facebook).</p><p>Una vez registrado podrás volver aquí para acceder y comenzar a jugar :)</p><p>Esta web no tiene ninguna relación con la empresa propietaria de la aplicación <a href=\"http://www.apalabrados.com/\">Apalabrados</a>.</p>"
-
-#: themes/default/about.php:5
-msgid "About Apalabro!"
-msgstr "Sobre Apalabro!"
-
-#: themes/default/about.php:9
-msgid "about_info"
-msgstr "<p><strong>Apalabro!</strong> es un proyecto desarrollado por <a href=\"https://github.com/eusonlito\">Lito</a> para crear un interface web de la aplicación móvil <a href=\"http://www.apalabrados.com/\">Apalabrados (Angry Words)</a>.</p><p>Esto significa que debes descargarte la aplicación en tu smartphone <a href=\"https://play.google.com/store/apps/details?id=com.etermax.apalabrados.lite\">Android</a> o <a href=\"http://itunes.apple.com/us/app/apalabrados/id441092257?ls=1&mt=8\">iPhone</a> y registrarte en ella con usuario y contraseña (no vale a través de Facebook).</p><p>Una vez registrado podrás volver aquí para acceder y comenzar a jugar :)</p><p>Si lo deseas puedes descargarte el código fuente en <a href=\"https://github.com/eusonlito/Apalabro\">Github</a>.</p><p>De todas maneras, si tienes alguna dúda o sugerencia, puedes ponerte en contacto conmigo en la dirección <a href=\"mailto:lito@eordes.com\">lito@eordes.com</a>.</p><p>Agradezco enormemente la ayuda en la traducción del interface. Puedes realizarla usando como base el fichero <strong>languages/es/gettext.po</strong> o <strong>languages/es/gettext.mo</strong>.</p><p>Esta web no tiene ninguna relación con la empresa propietaria de la aplicación <a href=\"http://www.apalabrados.com/\">Apalabrados</a>.</p>"
-
-#: themes/default/about.php:15
-msgid "Available Languages"
-msgstr "Idiomas disponibles"
-
-#: themes/default/profile.php:63
-msgid "Remove as friend"
-msgstr "Quitar de amigos"
-
-#: themes/default/profile.php:68
-msgid "Add as friend"
-msgstr "Añadir como amigo"
-
-#: themes/default/profile.php:75
-#, php-format
-msgid "<strong>%s</strong> finished versus games"
-msgstr "Te has enfrentando en <strong>%s</strong> partidas finalizadas"
-
-#: themes/default/profile.php:82
-#, php-format
-msgid "<strong>%s</strong> you won!"
-msgstr "<strong>%s</strong> ganados"
-
-#: themes/default/profile.php:88
-#, php-format
-msgid "<strong>%s</strong> you lost!"
-msgstr "<strong>%s</strong> perdidos"
-
-#: themes/default/profile.php:99
-#, php-format
-msgid "<strong>%s</strong> played games"
-msgstr "<strong>%s</strong> jugados"
-
-#: themes/default/profile.php:105
-#, php-format
-msgid "<strong>%s</strong> won"
-msgstr "<strong>%s</strong> victorias"
-
-#: themes/default/profile.php:111
-#, php-format
-msgid "<strong>%s</strong> lost"
-msgstr "<strong>%s</strong> derrotas"
-
-#: themes/default/profile.php:117
-#, php-format
-msgid "<strong>%s%%</strong> resign"
-msgstr "<strong>%s</strong> rendiciones"
-
-#: themes/default/profile.php:124
-#, php-format
-msgid "<strong>%s</strong> was the longest word"
-msgstr "<strong>%s</strong> ha sido la palabra más larga"
-
-#: themes/default/profile.php:130
-#, php-format
-msgid "<strong>%s</strong> was the best game"
-msgstr "<strong>%s</strong> ha sido la mejor partida"
-
-#: themes/default/profile.php:136
-#, php-format
-msgid "<strong>%s</strong> was the best play"
-msgstr "<strong>%s</strong> ha sido la mejor jugada"
-
-#: themes/default/profile.php:143
-#, php-format
-msgid "last login <strong>%s</strong>"
-msgstr "último acceso <strong>%s</strong>"
 
 #: themes/default/js/js-strings.php:9
 msgid "Which letter use?"
@@ -517,6 +459,95 @@ msgstr "Ha ocurrido algún error con la respuesta del servidor. Por favor, inté
 #: themes/default/js/js-strings.php:21
 msgid "This screen has updates. Click here to reload it."
 msgstr "Esta pantalla tiene actualizaciones. Haz click aquí para recargarla."
+
+#: themes/default/js/js-strings.php:22
+msgid "Updates!"
+msgstr "Actualizaciones!"
+
+#: libs/Lito/Apalabro/Theme.php:45
+#, php-format
+msgid "Theme path \"%s\" does not exists."
+msgstr "El directorio \"%s\" para este tema no existe."
+
+#: libs/Lito/Apalabro/Loader.php:10
+msgid "You must be logged to view this section"
+msgstr "Debes estar logueado para poder ver esta sección"
+
+#: libs/Lito/Apalabro/functions.php:59
+#: libs/Lito/Apalabro/functions.php:66
+msgid "just now"
+msgstr "justo ahora"
+
+#: libs/Lito/Apalabro/functions.php:68
+msgid "one minute ago"
+msgstr "hace un minuto"
+
+#: libs/Lito/Apalabro/functions.php:70
+#, php-format
+msgid "%s minutes ago"
+msgstr "hace %s minutos"
+
+#: libs/Lito/Apalabro/functions.php:72
+msgid "one hour ago"
+msgstr "hace una hora"
+
+#: libs/Lito/Apalabro/functions.php:74
+#, php-format
+msgid "%s hours ago"
+msgstr "hace %s horas"
+
+#: libs/Lito/Apalabro/functions.php:76
+msgid "yesterday"
+msgstr "ayer"
+
+#: libs/Lito/Apalabro/functions.php:78
+#, php-format
+msgid "%s days ago"
+msgstr "hace %s días"
+
+#: libs/Lito/Apalabro/functions.php:88
+msgid "in a minute"
+msgstr "en un minuto"
+
+#: libs/Lito/Apalabro/functions.php:90
+#, php-format
+msgid "in %s minutes"
+msgstr "en %s minutos"
+
+#: libs/Lito/Apalabro/functions.php:92
+msgid "in an hour"
+msgstr "en una hora"
+
+#: libs/Lito/Apalabro/functions.php:94
+#, php-format
+msgid "in %s hours"
+msgstr "en %s horas"
+
+#: ajax/push.php:29
+#, php-format
+msgid "%s has updated the game"
+msgstr "%s ha realizar un movimiento en la partida"
+
+#: ajax/get-chat.php:32
+msgid "There aren't any conversation in this game"
+msgstr "No hay ninguna conversación en esta partida"
+
+#: ajax/get-points.php:38
+msgid "No valid word"
+msgstr "No es una palabra válida"
+
+#: ajax/get-points.php:46
+#, php-format
+msgid "Playing for %s points"
+msgstr "Jugando por %s puntos"
+
+#: ajax/get-points.php:50
+msgid "Sorry but these tiles can not be combined. Please, try it another cells"
+msgstr "Lo sentimos pero estas fichas no se pueden combinar. Por favor, inténtalo con otras fichas"
+
+#: ajax/search-users.php:13
+msgid "No users founded..."
+msgstr "No se encontraron usuarios..."
 
 #: aux/game-check.php:5
 msgid "No game ID was received"
@@ -617,27 +648,6 @@ msgstr "COLOCAR FICHA"
 #: aux/dynamic-strings.php:27
 msgid "PASS"
 msgstr "PASA"
-
-#: ajax/get-points.php:38
-msgid "No valid word"
-msgstr "No es una palabra válida"
-
-#: ajax/get-points.php:46
-#, php-format
-msgid "Playing for %s points"
-msgstr "Jugando por %s puntos"
-
-#: ajax/get-points.php:50
-msgid "Sorry but these tiles can not be combined. Please, try it another cells"
-msgstr "Lo sentimos pero estas fichas no se pueden combinar. Por favor, inténtalo con otras fichas"
-
-#: ajax/search-users.php:13
-msgid "No users founded..."
-msgstr "No se encontraron usuarios..."
-
-#: ajax/get-chat.php:32
-msgid "There aren't any conversation in this game"
-msgstr "No hay ninguna conversación en esta partida"
 
 #~ msgid "This game does not exists"
 #~ msgstr "Esta partida no existe"

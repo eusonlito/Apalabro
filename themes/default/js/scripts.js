@@ -361,9 +361,12 @@ $(document).ready(function () {
     });
 
     if ((typeof(UPDATED) != 'undefined') && (UPDATED != '')) {
+        var just_updated = new Array();
+
         var pushInterval = setInterval(function () {
             $.ajax({
                 type: 'POST',
+                data: 'u='+UPDATED,
                 url: BASE_WWW+'ajax/push.php',
                 success: function (response) {
                     try {
@@ -375,19 +378,40 @@ $(document).ready(function () {
                     if (response.error == true) {
                         clearInterval(pushInterval);
                         return false;
+                    } else if (response.length == 0) {
+                        return true;
                     }
 
-                    if (UPDATED != response.text) {
-                        clearInterval(pushInterval);
+                    if (document.title.match(/^\([0-9]+\)/)) {
+                        document.title = document.title.replace(/^\([0-9]+\)/, '('+response.length+')');
+                    } else {
+                        document.title = '('+response.length+') '+document.title;
+                    }
 
-                        document.title = '(*) '+document.title;
+                    $updates = $('div.navbar li#updates');
 
-                        $('body > div.container').prepend(
-                            '<div class="alert alert-info">'+
-                            '<a href="'+window.location+'">'+
-                            '<strong>'+strings['screen_updated']+'</strong>'+
-                            '</a></div>'
+                    if ($updates.length == 0) {
+                        $('div.navbar div.nav-collapse ul.pull-left').append(
+                            '<li id="updates" class="dropdown">'+
+                            '<a href="#" class="dropdown-toggle" data-toggle="dropdown">'+
+                            '<span>'+strings['updates']+'</span> <b class="caret"></b></a>'+
+                            '<ul class="dropdown-menu"></ul>'+
+                            '</li>'
                         );
+                    }
+
+                    $('#updates a span').text(response.length+' '+strings['updates']);
+
+                    for (i = 0; i < response.length; i++) {
+                        if ($.inArray(response[i].id, just_updated) == -1) {
+                            $('#updates ul').prepend(
+                                '<li id="updated-'+response[i].id+'"><a href="'+response[i].link+'">'+
+                                '<strong>'+response[i].text+'</strong>'+
+                                '</li>'
+                            );
+
+                            just_updated.push(response[i].id);
+                        }
                     }
                 }
             });

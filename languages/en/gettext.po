@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apalabro!\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-16 14:36+0100\n"
-"PO-Revision-Date: 2012-08-16 15:24+0100\n"
+"POT-Creation-Date: 2012-08-17 17:56+0100\n"
+"PO-Revision-Date: 2012-08-17 17:56+0100\n"
 "Last-Translator: Lito <lito@eordes.com>\n"
 "Language-Team: Lito <lito@eordes.com>\n"
 "Language: \n"
@@ -78,12 +78,12 @@ msgid "Game versus %s"
 msgstr ""
 
 #: about.php:6
-#: themes/default/base.php:89
+#: themes/default/base.php:101
 msgid "About"
 msgstr ""
 
 #: index.php:6
-#: themes/default/base.php:67
+#: themes/default/base.php:79
 msgid "Home"
 msgstr ""
 
@@ -92,13 +92,13 @@ msgid "Sorry but you can't play now. You was added to a waiting list."
 msgstr ""
 
 #: new.php:19
-#: themes/default/base.php:94
+#: themes/default/base.php:106
 msgid "New Game"
 msgstr ""
 
 #: themes/default/profile.php:43
-#: themes/default/base.php:101
-#: themes/default/base.php:106
+#: themes/default/base.php:113
+#: themes/default/base.php:118
 #: themes/default/about.php:20
 msgid "language_"
 msgstr ""
@@ -126,42 +126,42 @@ msgstr ""
 msgid "<strong>%s</strong> you lost!"
 msgstr ""
 
-#: themes/default/profile.php:98
+#: themes/default/profile.php:99
 #, php-format
 msgid "<strong>%s</strong> played games"
 msgstr ""
 
-#: themes/default/profile.php:104
+#: themes/default/profile.php:105
 #, php-format
 msgid "<strong>%s</strong> won"
 msgstr ""
 
-#: themes/default/profile.php:110
+#: themes/default/profile.php:111
 #, php-format
 msgid "<strong>%s</strong> lost"
 msgstr ""
 
-#: themes/default/profile.php:116
+#: themes/default/profile.php:117
 #, php-format
 msgid "<strong>%s%%</strong> resign"
 msgstr ""
 
-#: themes/default/profile.php:122
+#: themes/default/profile.php:124
 #, php-format
 msgid "<strong>%s</strong> was the longest word"
 msgstr ""
 
-#: themes/default/profile.php:126
+#: themes/default/profile.php:130
 #, php-format
 msgid "<strong>%s</strong> was the best game"
 msgstr ""
 
-#: themes/default/profile.php:130
+#: themes/default/profile.php:136
 #, php-format
 msgid "<strong>%s</strong> was the best play"
 msgstr ""
 
-#: themes/default/profile.php:135
+#: themes/default/profile.php:143
 #, php-format
 msgid "last login <strong>%s</strong>"
 msgstr ""
@@ -169,7 +169,7 @@ msgstr ""
 #: themes/default/base.php:7
 #: themes/default/base.php:11
 #: themes/default/base.php:12
-#: themes/default/base.php:63
+#: themes/default/base.php:75
 msgid "Apalabro!"
 msgstr ""
 
@@ -178,30 +178,30 @@ msgstr ""
 msgid "Play to Apalabrados/Angry Words online!"
 msgstr ""
 
-#: themes/default/base.php:72
+#: themes/default/base.php:84
 msgid "Game"
 msgstr ""
 
-#: themes/default/base.php:78
-#: themes/default/base.php:84
+#: themes/default/base.php:90
+#: themes/default/base.php:96
 msgid "My Profile"
 msgstr ""
 
-#: themes/default/base.php:80
+#: themes/default/base.php:92
 msgid "User Profile"
 msgstr ""
 
-#: themes/default/base.php:95
+#: themes/default/base.php:107
 msgid "Logout"
 msgstr ""
 
-#: themes/default/sub-games-list.php:32
+#: themes/default/sub-games-list.php:31
 #: themes/default/game.php:20
 #, php-format
 msgid "You have %s new chat messages"
 msgstr ""
 
-#: themes/default/sub-games-list.php:47
+#: themes/default/sub-games-list.php:46
 #: themes/default/game.php:38
 #, php-format
 msgid "%s tiles to remaining"
@@ -353,7 +353,7 @@ msgstr "<p><strong>Apalabro!</strong> is a PHP project developed by <a href=\"ht
 msgid "Available Languages"
 msgstr ""
 
-#: themes/default/sub-users-list.php:25
+#: themes/default/sub-users-list.php:24
 #, php-format
 msgid "last login %s"
 msgstr ""
@@ -456,9 +456,21 @@ msgstr ""
 msgid "Some error occours with the server response. Please try it again."
 msgstr ""
 
+#: themes/default/js/js-strings.php:21
+msgid "This screen has updates. Click here to reload it."
+msgstr ""
+
+#: themes/default/js/js-strings.php:22
+msgid "Updates!"
+msgstr ""
+
 #: libs/Lito/Apalabro/Theme.php:45
 #, php-format
 msgid "Theme path \"%s\" does not exists."
+msgstr ""
+
+#: libs/Lito/Apalabro/Loader.php:10
+msgid "You must be logged to view this section"
 msgstr ""
 
 #: libs/Lito/Apalabro/functions.php:59
@@ -511,20 +523,25 @@ msgstr ""
 msgid "in %s hours"
 msgstr ""
 
+#: ajax/push.php:29
+#, php-format
+msgid "%s has updated the game"
+msgstr ""
+
 #: ajax/get-chat.php:32
 msgid "There aren't any conversation in this game"
 msgstr ""
 
-#: ajax/get-points.php:39
+#: ajax/get-points.php:38
 msgid "No valid word"
 msgstr ""
 
-#: ajax/get-points.php:47
+#: ajax/get-points.php:46
 #, php-format
 msgid "Playing for %s points"
 msgstr ""
 
-#: ajax/get-points.php:51
+#: ajax/get-points.php:50
 msgid "Sorry but these tiles can not be combined. Please, try it another cells"
 msgstr ""
 

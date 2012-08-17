@@ -1,15 +1,9 @@
-<?php
-defined('BASE_PATH') or die();
-
-$allgames = $Api->getGames();
-?>
-
-<script type="text/javascript">UPDATED = '<?php echo md5(serialize(getPlayDates($allgames))); ?>';</script>
+<?php defined('BASE_PATH') or die(); ?>
 
 <div class="home">
     <?php
     foreach (array('turn', 'waiting', 'pending', 'ended') as $status) {
-        $games = $allgames[$status];
+        $games = $Api->getGames($status);
 
         if (!$games && ($status === 'pending')) {
             continue;

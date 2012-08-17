@@ -19,3 +19,4 @@ strings['resign_sure'] = '<?php echo str_replace("\'", '&apos;', __('100% Sure?'
 strings['pass'] = '<?php echo str_replace("\'", '&apos;', __('Are you sure that you want pass this turn?')); ?>';
 strings['server_error'] = '<?php echo str_replace("\'", '&apos;', __('Some error occours with the server response. Please try it again.')); ?>';
 strings['screen_updated'] = '<?php echo str_replace("\'", '&apos;', __('This screen has updates. Click here to reload it.')); ?>';
+strings['updates'] = '<?php echo str_replace("\'", '&apos;', __('Updates!')); ?>';
