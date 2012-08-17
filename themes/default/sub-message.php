@@ -9,17 +9,15 @@ if (!$message) {
 ?>
 
 <div class="alert alert-<?php echo $message['status']; ?>">
-    <strong>
-        <?php if (!isAjax()) { ?>
+    <?php if (!isAjax()) { ?>
 
-        <?php if ($message['back']) { ?>
-        <a href="<?php echo getenv('HTTP_REFERER'); ?>">&laquo;</a>
-        <?php } else { ?>
-        <button type="button" class="close" data-dismiss="alert">×</button>
-        <?php } ?>
+    <?php if ($message['back']) { ?>
+    <a href="<?php echo getenv('HTTP_REFERER'); ?>">&laquo;</a>
+    <?php } else { ?>
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <?php } ?>
 
-        <?php } ?>
+    <?php } ?>
 
-        <?php echo $message['text']; ?>
-    </strong>
+    <?php echo $message['text']; ?>
 </div>

@@ -378,7 +378,7 @@ $(document).ready(function () {
                     if (response.error == true) {
                         clearInterval(pushInterval);
                         return false;
-                    } else if (response.length == 0) {
+                    } else if ((response.length == 0) || (response.length == just_updated.length)) {
                         return true;
                     }
 
