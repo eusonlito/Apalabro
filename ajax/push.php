@@ -19,11 +19,17 @@ $games = $Api->getGames('all');
 $message = array();
 
 foreach ($games as $Game) {
-    if (!isset($updated->{$Game->id}) || !isset($Game->last_turn->play_date)) {
+    if (!isset($Game->last_turn->play_date)) {
         continue;
     }
 
-    if ($Game->last_turn->play_date !== $updated->{$Game->id}) {
+    if (!isset($updated->{$Game->id})) {
+        $message[] = array(
+            'id' => $Game->id,
+            'text' => __('%s wants to play with you', $Game->opponent->name),
+            'link' => (BASE_WWW.'game.php?id='.$Game->id)
+        );
+    } else if ($Game->last_turn->play_date !== $updated->{$Game->id}) {
         $message[] = array(
             'id' => $Game->id,
             'text' => __('%s has updated the game', $Game->opponent->name),

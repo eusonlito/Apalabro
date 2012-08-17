@@ -42,15 +42,18 @@
         var BASE_WWW = '<?php echo BASE_WWW; ?>';
         var BASE_THEME = '<?php echo BASE_THEME; ?>';
         var VALID_LETTERS = new Array();
-        var UPDATED = '';
 
         <?php if ($Api->logged()) { ?>
 
-        UPDATED = '<?php echo base64_encode(json_encode(getPlayDates($Api->getGames('all')))); ?>';
+        var UPDATED = '<?php echo base64_encode(json_encode(getPlayDates($Api->getGames('all')))); ?>';
 
         <?php if (isset($Game)) { ?>
         VALID_LETTERS = new Array('<?php echo implode("','", $Api->getValidWords()); ?>');
         <?php } ?>
+
+        <?php } else { ?>
+
+        var UPDATED = '';
 
         <?php } ?>
 
