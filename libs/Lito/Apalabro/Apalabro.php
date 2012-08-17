@@ -666,7 +666,7 @@ class Apalabro {
             return false;
         }
 
-        return $this->turnType($this->Game->id, 'SWAP', array(
+        return $this->turnType('SWAP', array(
             'played_tiles' => implode(',', $tiles)
         ));
     }
@@ -675,14 +675,14 @@ class Apalabro {
     {
         $this->_loggedOrDie();
 
-        return $this->turnType($this->Game->id, 'PASS');
+        return $this->turnType( 'PASS');
     }
 
     public function resignGame ()
     {
         $this->_loggedOrDie();
 
-        return $this->turnType($this->Game->id, 'RESIGN');
+        return $this->turnType('RESIGN');
     }
 
     public function turnType ($type, $data = null)

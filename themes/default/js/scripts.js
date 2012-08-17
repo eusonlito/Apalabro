@@ -383,7 +383,7 @@ $(document).ready(function () {
                         $('body > div.container').prepend(
                             '<div class="alert alert-info">'+
                             '<a href="'+window.location+'">'+
-                            strings['screen_updated']+
+                            '<strong>'+strings['screen_updated']+'</strong>'+
                             '</a></div>'
                         );
                     }
