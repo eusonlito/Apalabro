@@ -359,6 +359,38 @@ $(document).ready(function () {
 
         return false;
     });
+
+    if ((typeof(UPDATED) != 'undefined') && (UPDATED != '')) {
+        var pushInterval = setInterval(function () {
+            $.ajax({
+                type: 'POST',
+                url: BASE_WWW+'ajax/push.php',
+                success: function (response) {
+                    try {
+                        response = $.parseJSON(response);
+                    } catch (e) {
+                        return false;
+                    }
+
+                    if (response.error == true) {
+                        clearInterval(pushInterval);
+                        return false;
+                    }
+
+                    if (UPDATED != response.text) {
+                        clearInterval(pushInterval);
+
+                        $('body > div.container').prepend(
+                            '<div class="alert alert-info">'+
+                            '<a href="'+window.location+'">'+
+                            strings['screen_updated']+
+                            '</a></div>'
+                        );
+                    }
+                }
+            });
+        }, 30000);
+    }
 });
 
 function snapToHight (dragger, target) {

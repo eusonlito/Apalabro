@@ -38,12 +38,17 @@
 
         <script src="<?php echo BASE_THEME; ?>js/js-strings.php?lg=<?php echo $Gettext->getLanguage(); ?>" type="text/javascript"></script>
 
-        <script src="<?php echo BASE_THEME; ?>js/scripts.js" type="text/javascript"></script>
-
         <script type="text/javascript">
         var BASE_WWW = '<?php echo BASE_WWW; ?>';
         var BASE_THEME = '<?php echo BASE_THEME; ?>';
+
+        <?php if (isset($Game) && $Game->active) { ?>
         var VALID_LETTERS = new Array('<?php echo implode("','", $Api->getValidWords()); ?>');
+        var UPDATED = '<?php echo $Game->last_turn->play_date; ?>';
+        <?php } else { ?>
+        var VALID_LETTERS = new Array();
+        var UPDATED = '';
+        <?php } ?>
 
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-33869691-1']);
@@ -55,6 +60,8 @@
             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
         })();
         </script>
+
+        <script src="<?php echo BASE_THEME; ?>js/scripts.js" type="text/javascript"></script>
     </head>
 
     <body>

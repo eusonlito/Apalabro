@@ -7,7 +7,7 @@ require (BASE_PATH.'/aux/game-check.php');
 
 if ($Game->game_status !== 'ENDED') {
     if (isset($_POST['play']) && ($_POST['play'] === 'true')) {
-        $success = $Api->playGame($Game->id, $_POST);
+        $success = $Api->playGame($_POST);
 
         if ($success) {
             $Theme->setMessage(__('Your tiles were set successfully'), 'success');
@@ -19,7 +19,7 @@ if ($Game->game_status !== 'ENDED') {
     }
 
     if (isset($_POST['swap']) && ($_POST['swap'] === 'true')) {
-        $success = $Api->swapTiles($Game->id, $_POST['swapped_tiles']);
+        $success = $Api->swapTiles($_POST['swapped_tiles']);
 
         if ($success) {
             $Theme->setMessage(__('Your tiles were swapped successfully'), 'success');
@@ -31,7 +31,7 @@ if ($Game->game_status !== 'ENDED') {
     }
 
     if (isset($_POST['pass']) && ($_POST['pass'] === 'true')) {
-        $success = $Api->passTurn($Game->id);
+        $success = $Api->passTurn();
 
         if ($success) {
             $Theme->setMessage(__('You have passed'), 'success');
@@ -43,7 +43,7 @@ if ($Game->game_status !== 'ENDED') {
     }
 
     if (isset($_POST['resign']) && ($_POST['resign'] === 'true')) {
-        $success = $Api->resignGame($Game->id);
+        $success = $Api->resignGame();
 
         if ($success) {
             $Theme->setMessage(__('You have resigned this game'), 'success');
@@ -54,8 +54,8 @@ if ($Game->game_status !== 'ENDED') {
         }
     }
 
-    $words = $Api->solve($Game->id);
-    $remaining_tiles = $Api->getRemainingTiles($Game->id);
+    $words = $Api->solve();
+    $remaining_tiles = $Api->getRemainingTiles();
 } else {
     $words = $remaining_tiles = array();
 }

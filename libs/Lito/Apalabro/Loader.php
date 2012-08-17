@@ -6,6 +6,10 @@ if (isset($_GET['reload'])) {
 }
 
 if (!$Api->logged()) {
+    if (isAjax()) {
+        die(__('You must be logged to view this section'));
+    }
+
     if (isset($_POST['user']) && isset($_POST['password']) && !$_POST['email']) {
         $logged = $Api->login($_POST['user'], $_POST['password']);
     } else {

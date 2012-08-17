@@ -10,11 +10,10 @@ $game = $_POST['id'];
 
 require (BASE_PATH.'/aux/game-check.php');
 
-$words = $Api->getPlayPoints($Game->id, $_POST['played_tiles']);
+$words = $Api->getPlayPoints($_POST['played_tiles']);
 
 $html = '';
 $error = false;
-
 
 if ($words) {
     $total = 0;

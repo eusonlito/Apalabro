@@ -157,3 +157,23 @@ function isAjax ()
         return false;
     }
 }
+
+function getPlayDates ($games)
+{
+    if (!is_array($games)) {
+        return array();
+    }
+
+    $games = array_values($games);
+    $return = array();
+
+    foreach ($games as $Game) {
+        if (is_array($Game)) {
+            $return = array_merge($return, getPlayDates($Game));
+        } else if (isset($Game->last_turn->play_date)) {
+            $return[] = $Game->last_turn->play_date;
+        }
+    }
+
+    return $return;
+}

@@ -9,7 +9,7 @@ $game = $_GET['id'];
 
 require (BASE_PATH.'/aux/game-check.php');
 
-$chat = $Api->getChat($Game->id);
+$chat = $Api->getChat();
 
 if ($chat) {
     foreach ($chat as $Message) {
@@ -27,7 +27,7 @@ if ($chat) {
         echo '</span></div></div>';
     }
 
-    $Api->resetChat($Game->id);
+    $Api->resetChat();
 } else {
     echo '<h3>'.__('There aren\'t any conversation in this game').'</h3>';
 }

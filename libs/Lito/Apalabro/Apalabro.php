@@ -16,6 +16,7 @@ class Apalabro {
     private $games = array();
     private $board_points = array();
 
+    private $Game;
     private $Cookie;
     private $Curl;
     private $Debug;
@@ -166,8 +167,6 @@ class Apalabro {
             ));
         }
 
-        $this->loadGames($this->user);
-
         return $this->logged;
     }
 
@@ -212,6 +211,13 @@ class Apalabro {
             'user' => '',
             'session' => ''
         ));
+    }
+
+    private function _loggedOrDie ()
+    {
+        if (!$this->logged) {
+            throw new \Exception('You are not logged');
+        }
     }
 
     public function getUser ($user = '')
@@ -312,7 +318,7 @@ class Apalabro {
         return $Users->list;
     }
 
-    private function loadGames ($user)
+    private function loadGames ()
     {
         $this->_loggedOrDie();
 
@@ -325,7 +331,7 @@ class Apalabro {
             'waiting' => array()
         );
 
-        $Games = $this->Curl->get('users/'.$user.'/games');
+        $Games = $this->Curl->get('users/'.$this->user.'/games');
 
         if (!is_object($Games) || !$Games->total) {
             return array();
@@ -366,45 +372,29 @@ class Apalabro {
         return $this->games;
     }
 
-    private function _loggedOrDie ()
-    {
-        if (!$this->logged) {
-            throw new \Exception('You are not logged');
-        }
-    }
-
-    public function getGames ($status = 'turn')
+    public function getGames ($status = '')
     {
         $this->_loggedOrDie();
 
-        return $this->games[$status];
-    }
-
-    public function getValidWords ()
-    {
-        $this->_loggedOrDie();
-
-        if (!$this->language) {
-            return array();
+        if (!$this->games) {
+            $this->loadGames();
         }
 
-        $this->loadLetters();
-
-        return array_keys($this->points);
+        return ($status) ? $this->games[$status] : $this->games;
     }
 
     public function getGame ($game)
     {
         $this->_loggedOrDie();
 
-        if (!isset($this->games['all'][$game])) {
-            return false;
-        }
-
         if ($this->Cache->exists('game-'.$game)) {
             $Game = $this->Cache->get('game-'.$game);
         } else {
             $Game = $this->Curl->get('users/'.$this->user.'/games/'.$game);
+
+            if (!$Game) {
+                return array();
+            }
 
             if ($Game->game_status === 'ENDED') {
                 $this->Cache->set('game-'.$game, $Game);
@@ -427,23 +417,31 @@ class Apalabro {
             $Game->active = false;
         }
 
-        $this->games['all'][$game] = $Game;
+        $this->Game = $Game;
 
-        $this->setTiles($game);
-        $this->setLanguage($Game->language);
+        $this->setTiles();
+        $this->setLanguage($this->Game->language);
+        $this->loadLanguage();
 
         return $Game;
     }
 
-    private function setTiles ($game)
+    public function getValidWords ()
     {
         $this->_loggedOrDie();
 
-        if (!isset($this->games['all'][$game]->board_tiles)) {
-            return false;
+        if (!$this->language) {
+            return array();
         }
 
-        $Game = &$this->games['all'][$game];
+        return array_keys($this->points);
+    }
+
+    private function setTiles ()
+    {
+        $this->_loggedOrDie();
+
+        $Game = &$this->Game;
 
         if ($Game->board_tiles) {
             $tiles = explode(',', $Game->board_tiles);
@@ -478,38 +476,22 @@ class Apalabro {
         return true;
     }
 
-    public function getTiles ($game)
+    public function getTiles ()
     {
         $this->_loggedOrDie();
 
-        if (!isset($this->games['all'][$game])) {
-            return array();
-        }
-
-        if (!isset($this->games['all'][$game]->board_tiles)) {
+        if (!isset($this->Game->board_tiles)) {
             $this->getGame($game);
         }
 
-        return $this->games['all'][$game]->my_rack_tiles;
+        return $this->Game->my_rack_tiles;
     }
 
-    public function getBoard ($game)
+    public function getBoard ()
     {
         $this->_loggedOrDie();
 
-        if (!$this->games['all'][$game]) {
-            return '';
-        }
-
-        if (!isset($this->games['all'][$game]->board_tiles)) {
-            $this->getGame($game);
-        }
-
-        $this->loadLetters();
-
-        $Game = $this->games['all'][$game];
-
-        $tiles = $Game->board_tiles;
+        $tiles = $this->Game->board_tiles;
 
         $board = '<tr>';
 
@@ -540,19 +522,11 @@ class Apalabro {
         return $board;
     }
 
-    public function solve ($game, $expression = '')
+    public function solve ($expression = '')
     {
         $this->_loggedOrDie();
 
-        if (!isset($this->games['all'][$game])) {
-            return array();
-        }
-
-        if (!isset($this->games['all'][$game]->board_tiles)) {
-            $this->getGame($game);
-        }
-
-        $Game = $this->games['all'][$game];
+        $Game = $this->Game;
 
         if (!isset($Game->my_rack_tiles) || !$Game->my_rack_tiles) {
             return array();
@@ -575,19 +549,11 @@ class Apalabro {
         return $words;
     }
 
-    public function getRemainingTiles ($game)
+    public function getRemainingTiles ()
     {
         $this->_loggedOrDie();
 
-        if (!isset($this->games['all'][$game])) {
-            return array();
-        }
-
-        if (!isset($this->games['all'][$game]->board_tiles)) {
-            $this->getGame($game);
-        }
-
-        $Game = $this->games['all'][$game];
+        $Game = $this->Game;
 
         if (!$this->quantity) {
             $this->loadLetters();
@@ -629,16 +595,11 @@ class Apalabro {
         return $remaining;
     }
 
-    public function getChat ($game) {
+    public function getChat ()
+    {
         $this->_loggedOrDie();
 
-        if (!$this->games['all'][$game]) {
-            return array();
-        }
-
-        $Game = $this->games['all'][$game];
-
-        $Chat = $this->Curl->get('users/'.$this->user.'/games/'.$Game->id.'/chat?all=true');
+        $Chat = $this->Curl->get('users/'.$this->user.'/games/'.$this->Game->id.'/chat?all=true');
 
         if (isset($Chat->total) && ($Chat->total > 0)) {
             krsort($Chat->list);
@@ -649,19 +610,14 @@ class Apalabro {
         }
     }
 
-    public function resetChat ($game) {
+    public function resetChat ()
+    {
         $this->_loggedOrDie();
 
-        if (!$this->games['all'][$game]) {
-            return array();
-        }
-
-        $Game = $this->games['all'][$game];
-
-        return $this->Curl->get('users/'.$this->user.'/games/'.$Game->id.'/chat?reset=true');
+        return $this->Curl->get('users/'.$this->user.'/games/'.$this->Game->id.'/chat?reset=true');
     }
 
-    public function playGame ($game, $post)
+    public function playGame ($post)
     {
         $this->_loggedOrDie();
 
@@ -669,13 +625,7 @@ class Apalabro {
             return false;
         }
 
-        if (!$this->games['all'][$game]) {
-            return false;
-        }
-
-        $Game = $this->games['all'][$game];
-
-        if (!$Game->active || !$Game->my_turn) {
+        if (!$this->Game->active || !$this->Game->my_turn) {
             return false;
         }
 
@@ -685,7 +635,7 @@ class Apalabro {
             $played_tiles[] = strtoupper($letter).'|'.$cell;
         }
 
-        return $this->Curl->post('users/'.$this->user.'/games/'.$Game->id.'/turns', array(
+        return $this->Curl->post('users/'.$this->user.'/games/'.$this->Game->id.'/turns', array(
             'type' => 'PLACE_TILE',
             'played_tiles' => implode(',', $played_tiles)
         ));
@@ -708,51 +658,49 @@ class Apalabro {
         return $this->Curl->post('users/'.$this->user.'/games', $data);
     }
 
-    public function swapTiles ($game, $tiles)
+    public function swapTiles ($tiles)
     {
         $this->_loggedOrDie();
 
-        if (!$tiles || !isset($this->games['active'][$game])) {
+        if (!$tiles) {
             return false;
         }
 
-        return $this->turnType($game, 'SWAP', array(
+        return $this->turnType($this->Game->id, 'SWAP', array(
             'played_tiles' => implode(',', $tiles)
         ));
     }
 
-    public function passTurn ($game)
+    public function passTurn ()
     {
         $this->_loggedOrDie();
 
-        return $this->turnType($game, 'PASS');
+        return $this->turnType($this->Game->id, 'PASS');
     }
 
-    public function resignGame ($game)
+    public function resignGame ()
     {
         $this->_loggedOrDie();
 
-        return $this->turnType($game, 'RESIGN');
+        return $this->turnType($this->Game->id, 'RESIGN');
     }
 
-    public function turnType ($game, $type, $data = null)
+    public function turnType ($type, $data = null)
     {
         $this->_loggedOrDie();
 
-        if (!isset($this->games['active'][$game])) {
+        if (!$this->Game->active) {
             return false;
         }
 
         $data['type'] = $type;
 
-        return $this->Curl->post('users/'.$this->user.'/games/'.$game.'/turns', ($data ?: null));
+        return $this->Curl->post('users/'.$this->user.'/games/'.$this->Game->id.'/turns', ($data ?: null));
     }
 
     public function searchWords ($tiles)
     {
         $this->_loggedOrDie();
-
-        $this->loadLanguage();
 
         $this->Timer->mark('INI: Apalabro->searchWords');
 
@@ -792,8 +740,6 @@ class Apalabro {
         if (!$expression) {
             return array();
         }
-
-        $this->loadLanguage();
 
         $this->Timer->mark('INI: Apalabro->searchWordsExpression');
 
@@ -841,10 +787,6 @@ class Apalabro {
     {
         $this->_loggedOrDie();
 
-        if (!$this->points) {
-            $this->loadLetters();
-        }
-
         if (!is_array($word)) {
             $word = $this->splitWord($word);
         }
@@ -879,15 +821,9 @@ class Apalabro {
         return $points;
     }
 
-    public function getPlayPoints ($game, $tiles)
+    public function getPlayPoints ($tiles)
     {
         $this->_loggedOrDie();
-
-        if (!$this->games['all'][$game]) {
-            return array();
-        }
-
-        $this->loadLanguage();
 
         $valid = preg_quote(implode('', array_keys($this->points)), '/');
 
@@ -903,11 +839,9 @@ class Apalabro {
             return array();
         }
 
-        $this->loadBoardSpaces($game, $tiles);
+        $this->loadBoardSpaces($tiles);
 
-        $Game = $this->games['all'][$game];
-
-        $matched = $Game->board_spaces['added'];
+        $matched = $this->Game->board_spaces['added'];
 
         if (!$matched) {
             return array();
@@ -967,24 +901,14 @@ class Apalabro {
         $this->board_points = include (BASE_PATH.'aux/board-points.php');
     }
 
-    public function loadBoardSpaces ($game, $added = array())
+    public function loadBoardSpaces ($added = array())
     {
         $this->_loggedOrDie();
 
-        if (!$this->games['all'][$game]) {
-            return array();
-        }
-
-        $Game = &$this->games['all'][$game];
+        $Game = &$this->Game;
 
         if (isset($Game->board_spaces)) {
             return $Game->board_spaces;
-        }
-
-        if (!isset($Game->board_tiles)) {
-            $this->getGame($game);
-
-            $Game = &$this->games['all'][$game];
         }
 
         $Game->board_spaces = array();

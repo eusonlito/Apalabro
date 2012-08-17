@@ -9,7 +9,7 @@ $game = $_POST['id'];
 
 require (BASE_PATH.'/aux/game-check.php');
 
-$words = $Api->solve($Game->id, $_POST['filter']);
+$words = $Api->solve($_POST['filter']);
 
 if ($words) {
     foreach ($words as $points => $words) {
