@@ -411,7 +411,7 @@ class Apalabro {
             $Game->opponent->avatar = '';
         }
 
-        if (in_array($Game->game_status, array('ACTIVE', 'PENDING_MY_APPROVAL', 'PENDING_FIRST_MOVE'))) {
+        if (in_array($Game->game_status, array('ACTIVE', 'PENDING_MY_APPROVAL', 'PENDING_FIRST_MOVE', 'PENDING_FRIENDS_APPROVAL'))) {
             $Game->active = true;
         } else {
             $Game->active = false;

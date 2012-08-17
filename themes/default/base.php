@@ -41,19 +41,16 @@
         <script type="text/javascript">
         var BASE_WWW = '<?php echo BASE_WWW; ?>';
         var BASE_THEME = '<?php echo BASE_THEME; ?>';
+        var VALID_LETTERS = new Array();
+        var UPDATED = '';
 
         <?php if (isset($Game) && $Game->active) { ?>
 
-        var VALID_LETTERS = new Array('<?php echo implode("','", $Api->getValidWords()); ?>');
+        VALID_LETTERS = new Array('<?php echo implode("','", $Api->getValidWords()); ?>');
 
         <?php if (!$Game->my_turn) { ?>
-        var UPDATED = '<?php echo $Game->last_turn->play_date; ?>';
+        UPDATED = '<?php echo $Game->last_turn->play_date; ?>';
         <?php } ?>
-
-        <?php } else { ?>
-
-        var VALID_LETTERS = new Array();
-        var UPDATED = '';
 
         <?php } ?>
 
