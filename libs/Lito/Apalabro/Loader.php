@@ -41,7 +41,3 @@ if (!$Api->logged()) {
         exit;
     }
 }
-
-if (!isAjax()) {
-    $Api->loadGames();
-}
