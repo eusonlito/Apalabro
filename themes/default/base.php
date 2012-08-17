@@ -42,7 +42,7 @@
         var BASE_WWW = '<?php echo BASE_WWW; ?>';
         var BASE_THEME = '<?php echo BASE_THEME; ?>';
 
-        <?php if (isset($Game) && $Game->active) { ?>
+        <?php if (isset($Game) && $Game->active && !$Game->my_turn) { ?>
         var VALID_LETTERS = new Array('<?php echo implode("','", $Api->getValidWords()); ?>');
         var UPDATED = '<?php echo $Game->last_turn->play_date; ?>';
         <?php } else { ?>

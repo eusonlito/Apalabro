@@ -380,6 +380,8 @@ $(document).ready(function () {
                     if (UPDATED != response.text) {
                         clearInterval(pushInterval);
 
+                        document.title = '(*) '+document.title;
+
                         $('body > div.container').prepend(
                             '<div class="alert alert-info">'+
                             '<a href="'+window.location+'">'+
