@@ -115,7 +115,7 @@
                                                 .'</a></li>';
                                         }
                                     } else {
-                                        echo '<li><span>'.('There aren\'t games waiting for you').'</span></li>';
+                                        echo '<li><span>'.__('There aren\'t games waiting for you').'</span></li>';
                                     }
                                     ?>
                                 </ul>

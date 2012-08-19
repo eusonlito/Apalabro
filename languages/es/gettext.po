@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apalabro!\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-19 22:01+0100\n"
-"PO-Revision-Date: 2012-08-19 22:02+0100\n"
+"POT-Creation-Date: 2012-08-19 22:19+0100\n"
+"PO-Revision-Date: 2012-08-19 22:21+0100\n"
 "Last-Translator: Lito <lito@eordes.com>\n"
 "Language-Team: Lito <lito@eordes.com>\n"
 "Language: \n"
@@ -199,6 +199,10 @@ msgstr "Tu turno"
 #, php-format
 msgid "Is your turn vs %s"
 msgstr "Es tu turno contra %s"
+
+#: themes/default/base.php:118
+msgid "There aren't games waiting for you"
+msgstr "Non hay partidas esperándote"
 
 #: themes/default/base.php:132
 msgid "Logout"
