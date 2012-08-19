@@ -388,26 +388,24 @@ $(document).ready(function () {
                         document.title = '('+response.length+') '+document.title;
                     }
 
-                    $updates = $('div.navbar li#updates');
+                    $('#updates a span').text(strings['your_turn']+' ('+response.length+')');
 
-                    if ($updates.length == 0) {
-                        $('div.navbar div.nav-collapse ul.pull-left').append(
-                            '<li id="updates" class="dropdown">'+
-                            '<a href="#" class="dropdown-toggle" data-toggle="dropdown">'+
-                            '<span>'+strings['updates']+'</span> <b class="caret"></b></a>'+
-                            '<ul class="dropdown-menu"></ul>'+
-                            '</li>'
-                        );
+                    $('#updates > a').addClass('active');
+
+                    if ($('#updates ul li span').length) {
+                        $('#updates ul li span').parent().remove();
                     }
-
-                    $('#updates a span').text(response.length+' '+strings['updates']);
 
                     for (i = 0; i < response.length; i++) {
                         if ($.inArray(response[i].id, just_updated) == -1) {
+                            if ($('#updates li#updated-'+response[i].id).length) {
+                                $('#updates li#updated-'+response[i].id).remove();
+                            }
+
                             $('#updates ul').prepend(
-                                '<li id="updated-'+response[i].id+'"><a href="'+response[i].link+'">'+
-                                '<strong>'+response[i].text+'</strong>'+
-                                '</li>'
+                                '<li id="updated-'+response[i].id+'">'+
+                                '<a href="'+response[i].link+'"><strong>'+
+                                response[i].text+'</strong></li>'
                             );
 
                             just_updated.push(response[i].id);

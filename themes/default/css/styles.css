@@ -15,9 +15,14 @@ section {
     margin-bottom: 0;
 }
 
-li#updates > a {
+li#updates > a.active {
     background-color: #F89406;
     color: white;
+}
+
+li#updates ul span {
+    padding: 10px;
+    display: block;
 }
 
 div.home div.well {

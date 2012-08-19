@@ -35,6 +35,7 @@
         <script src="<?php echo BASE_THEME; ?>bootstrap/js/bootstrap-dropdown.js" type="text/javascript"></script>
         <script src="<?php echo BASE_THEME; ?>bootstrap/js/bootstrap-tab.js" type="text/javascript"></script>
         <script src="<?php echo BASE_THEME; ?>bootstrap/js/bootstrap-modal.js" type="text/javascript"></script>
+        <script src="<?php echo BASE_THEME; ?>bootstrap/js/bootstrap-alert.js" type="text/javascript"></script>
 
         <script src="<?php echo BASE_THEME; ?>js/js-strings.php?lg=<?php echo $Gettext->getLanguage(); ?>" type="text/javascript"></script>
 
@@ -98,6 +99,27 @@
                             <?php } else { ?>
                             <li><a href="<?php echo BASE_WWW; ?>profile.php"><?php __e('My Profile'); ?></a></li>
                             <?php } ?>
+
+                            <li id="updates" class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <span><?php __e('Your Turn'); ?></span> <b class="caret"></b>
+                                </a>
+
+                                <ul class="dropdown-menu">
+                                    <?php
+                                    if ($Api->getGames('turn')) {
+                                        foreach ($Api->getGames('turn') as $Turn) {
+                                            echo '<li id="updated-'.$Turn->id.'" class="current">'
+                                                .'<a href="'.BASE_WWW.'game.php?id='.$Turn->id.'">'
+                                                .__('Is your turn vs %s', $Turn->opponent->name)
+                                                .'</a></li>';
+                                        }
+                                    } else {
+                                        echo '<li><span>'.('There aren\'t games waiting for you').'</span></li>';
+                                    }
+                                    ?>
+                                </ul>
+                            </li>
 
                             <?php } ?>
 
