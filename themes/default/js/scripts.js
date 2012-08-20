@@ -415,6 +415,8 @@ $(document).ready(function () {
             });
         }, 30000);
     }
+
+     $('abbr.timeago').timeago();
 });
 
 function snapToHight (dragger, target) {

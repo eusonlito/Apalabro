@@ -49,6 +49,12 @@ function __e ($text, $args = null)
     echo __($text, $args);
 }
 
+function timeAgo ($timestamp) {
+    $timestamp = preg_match('/^[0-9]+$/', $timestamp) ? $timestamp : strtotime($timestamp);
+
+    return date('c', $timestamp);
+}
+
 function humanDate ($timestamp)
 {
     $timestamp = preg_match('/^[0-9]+$/', $timestamp) ? $timestamp : strtotime($timestamp);

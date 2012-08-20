@@ -43,3 +43,9 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+$(document).ready(function () {
+    $('input[name="user"]').focus();
+});
+</script>

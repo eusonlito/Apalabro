@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apalabro!\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-19 22:58+0100\n"
-"PO-Revision-Date: 2012-08-19 22:58+0100\n"
+"POT-Creation-Date: 2012-08-20 16:29+0100\n"
+"PO-Revision-Date: 2012-08-20 16:31+0100\n"
 "Last-Translator: Lito <lito@eordes.com>\n"
 "Language-Team: Lito <lito@eordes.com>\n"
 "Language: \n"
@@ -78,12 +78,12 @@ msgid "Game versus %s"
 msgstr ""
 
 #: about.php:6
-#: themes/default/base.php:126
+#: themes/default/base.php:128
 msgid "About"
 msgstr ""
 
 #: index.php:6
-#: themes/default/base.php:83
+#: themes/default/base.php:85
 msgid "Home"
 msgstr ""
 
@@ -92,13 +92,13 @@ msgid "Sorry but you can't play now. You was added to a waiting list."
 msgstr ""
 
 #: new.php:19
-#: themes/default/base.php:131
+#: themes/default/base.php:133
 msgid "New Game"
 msgstr ""
 
 #: themes/default/profile.php:43
-#: themes/default/base.php:138
-#: themes/default/base.php:143
+#: themes/default/base.php:140
+#: themes/default/base.php:145
 #: themes/default/about.php:20
 msgid "language_"
 msgstr ""
@@ -169,7 +169,7 @@ msgstr ""
 #: themes/default/base.php:7
 #: themes/default/base.php:11
 #: themes/default/base.php:12
-#: themes/default/base.php:79
+#: themes/default/base.php:81
 msgid "Apalabro!"
 msgstr ""
 
@@ -178,33 +178,33 @@ msgstr ""
 msgid "Play to Apalabrados/Angry Words online!"
 msgstr ""
 
-#: themes/default/base.php:88
+#: themes/default/base.php:90
 msgid "Game"
 msgstr ""
 
-#: themes/default/base.php:94
-#: themes/default/base.php:100
+#: themes/default/base.php:96
+#: themes/default/base.php:102
 msgid "My Profile"
 msgstr ""
 
-#: themes/default/base.php:96
+#: themes/default/base.php:98
 msgid "User Profile"
 msgstr ""
 
-#: themes/default/base.php:105
+#: themes/default/base.php:107
 msgid "Your Turn"
 msgstr ""
 
-#: themes/default/base.php:114
+#: themes/default/base.php:116
 #, php-format
 msgid "Is your turn vs %s"
 msgstr ""
 
-#: themes/default/base.php:118
+#: themes/default/base.php:120
 msgid "There aren't games waiting for you"
 msgstr ""
 
-#: themes/default/base.php:132
+#: themes/default/base.php:134
 msgid "Logout"
 msgstr ""
 
@@ -421,59 +421,125 @@ msgstr ""
 msgid "Search..."
 msgstr ""
 
-#: themes/default/js/js-strings.php:9
+#: themes/default/js/jquery.timeago.locale.js.php:8
+msgid "prefixAgo"
+msgstr ""
+
+#: themes/default/js/jquery.timeago.locale.js.php:9
+msgid "prefixFromNow"
+msgstr ""
+
+#: themes/default/js/jquery.timeago.locale.js.php:10
+msgid "suffixAgo"
+msgstr "ago"
+
+#: themes/default/js/jquery.timeago.locale.js.php:11
+msgid "suffixFromNow"
+msgstr ""
+
+#: themes/default/js/jquery.timeago.locale.js.php:12
+msgid "less than a minute"
+msgstr ""
+
+#: themes/default/js/jquery.timeago.locale.js.php:13
+msgid "about a minute"
+msgstr ""
+
+#: themes/default/js/jquery.timeago.locale.js.php:14
+#, php-format
+msgid "%d minutes"
+msgstr ""
+
+#: themes/default/js/jquery.timeago.locale.js.php:15
+#, fuzzy
+msgid "about an hour"
+msgstr "<p><strong>Apalabro!</strong> is a PHP project developed by <a href=\"https://github.com/eusonlito\">Lito</a> to create an <a href=\"http://www.apalabrados.com/\">Apalabrados (Angry Words)</a> web interface.</p><p>This means you should download the application on your smartphone <a href=\"https://play.google.com/store/apps/details?id=com.etermax.apalabrados.lite\">Android</a> or <a href=\"http://itunes.apple.com/us/app/apalabrados/id441092257?ls=1&mt=8\">iPhone</a> and register in it with username and password (not through Facebook).</p><p>Once registered you can back and start playing :)</p><p>You can get the sorce code at <a href=\"https://github.com/eusonlito/Apalabro\">Github</a>.</p><p>Also, if you have some suggestion or doubt, you can contact with me at <a href=\"mailto:lito@eordes.com\">lito@eordes.com</a>.</p><p>I greatly appreciated the help with the interface translation. You can do it using as base the file <strong>languages/en/gettext.po</strong> or <strong>languages/en/gettext.mo</strong>.</p><p>This site has no connection with the company that owns the application <a href=\"http://www.apalabrados.com/\">Apalabrados</a>.</p>"
+
+#: themes/default/js/jquery.timeago.locale.js.php:16
+#, php-format
+msgid "about %d hours"
+msgstr ""
+
+#: themes/default/js/jquery.timeago.locale.js.php:17
+msgid "a day"
+msgstr ""
+
+#: themes/default/js/jquery.timeago.locale.js.php:18
+#, php-format
+msgid "%d days"
+msgstr ""
+
+#: themes/default/js/jquery.timeago.locale.js.php:19
+msgid "about a month"
+msgstr ""
+
+#: themes/default/js/jquery.timeago.locale.js.php:20
+#, php-format
+msgid "%d months"
+msgstr ""
+
+#: themes/default/js/jquery.timeago.locale.js.php:21
+msgid "about a year"
+msgstr ""
+
+#: themes/default/js/jquery.timeago.locale.js.php:22
+#, php-format
+msgid "%d years"
+msgstr ""
+
+#: themes/default/js/strings.js.php:9
 msgid "Which letter use?"
 msgstr ""
 
-#: themes/default/js/js-strings.php:10
+#: themes/default/js/strings.js.php:10
 msgid "Play this tiles?"
 msgstr ""
 
-#: themes/default/js/js-strings.php:11
+#: themes/default/js/strings.js.php:11
 msgid "Waiting for reply..."
 msgstr ""
 
-#: themes/default/js/js-strings.php:12
+#: themes/default/js/strings.js.php:12
 msgid "Please, wait..."
 msgstr ""
 
-#: themes/default/js/js-strings.php:13
+#: themes/default/js/strings.js.php:13
 msgid "Sending..."
 msgstr ""
 
-#: themes/default/js/js-strings.php:14
+#: themes/default/js/strings.js.php:14
 msgid "No results for your query"
 msgstr ""
 
-#: themes/default/js/js-strings.php:15
+#: themes/default/js/strings.js.php:15
 msgid "Are you sure do you want to swap this tiles?"
 msgstr ""
 
-#: themes/default/js/js-strings.php:16
+#: themes/default/js/strings.js.php:16
 msgid "You must select some tile to swap"
 msgstr ""
 
-#: themes/default/js/js-strings.php:17
+#: themes/default/js/strings.js.php:17
 msgid "Are you sure that you want resign this game?!?"
 msgstr ""
 
-#: themes/default/js/js-strings.php:18
+#: themes/default/js/strings.js.php:18
 msgid "100% Sure?"
 msgstr ""
 
-#: themes/default/js/js-strings.php:19
+#: themes/default/js/strings.js.php:19
 msgid "Are you sure that you want pass this turn?"
 msgstr ""
 
-#: themes/default/js/js-strings.php:20
+#: themes/default/js/strings.js.php:20
 msgid "Some error occours with the server response. Please try it again."
 msgstr ""
 
-#: themes/default/js/js-strings.php:21
+#: themes/default/js/strings.js.php:21
 msgid "This screen has updates. Click here to reload it."
 msgstr ""
 
-#: themes/default/js/js-strings.php:22
+#: themes/default/js/strings.js.php:22
 msgid "Updates!"
 msgstr ""
 
@@ -486,52 +552,52 @@ msgstr ""
 msgid "You must be logged to view this section"
 msgstr ""
 
-#: libs/Lito/Apalabro/functions.php:59
-#: libs/Lito/Apalabro/functions.php:66
+#: libs/Lito/Apalabro/functions.php:65
+#: libs/Lito/Apalabro/functions.php:72
 msgid "just now"
 msgstr ""
 
-#: libs/Lito/Apalabro/functions.php:68
+#: libs/Lito/Apalabro/functions.php:74
 msgid "one minute ago"
 msgstr ""
 
-#: libs/Lito/Apalabro/functions.php:70
+#: libs/Lito/Apalabro/functions.php:76
 #, php-format
 msgid "%s minutes ago"
 msgstr ""
 
-#: libs/Lito/Apalabro/functions.php:72
+#: libs/Lito/Apalabro/functions.php:78
 msgid "one hour ago"
 msgstr ""
 
-#: libs/Lito/Apalabro/functions.php:74
+#: libs/Lito/Apalabro/functions.php:80
 #, php-format
 msgid "%s hours ago"
 msgstr ""
 
-#: libs/Lito/Apalabro/functions.php:76
+#: libs/Lito/Apalabro/functions.php:82
 msgid "yesterday"
 msgstr ""
 
-#: libs/Lito/Apalabro/functions.php:78
+#: libs/Lito/Apalabro/functions.php:84
 #, php-format
 msgid "%s days ago"
 msgstr ""
 
-#: libs/Lito/Apalabro/functions.php:88
+#: libs/Lito/Apalabro/functions.php:94
 msgid "in a minute"
 msgstr ""
 
-#: libs/Lito/Apalabro/functions.php:90
+#: libs/Lito/Apalabro/functions.php:96
 #, php-format
 msgid "in %s minutes"
 msgstr ""
 
-#: libs/Lito/Apalabro/functions.php:92
+#: libs/Lito/Apalabro/functions.php:98
 msgid "in an hour"
 msgstr ""
 
-#: libs/Lito/Apalabro/functions.php:94
+#: libs/Lito/Apalabro/functions.php:100
 #, php-format
 msgid "in %s hours"
 msgstr ""

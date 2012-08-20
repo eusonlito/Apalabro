@@ -36,8 +36,10 @@
         <script src="<?php echo BASE_THEME; ?>bootstrap/js/bootstrap-tab.js" type="text/javascript"></script>
         <script src="<?php echo BASE_THEME; ?>bootstrap/js/bootstrap-modal.js" type="text/javascript"></script>
         <script src="<?php echo BASE_THEME; ?>bootstrap/js/bootstrap-alert.js" type="text/javascript"></script>
+        <script src="<?php echo BASE_THEME; ?>js/jquery.timeago.js" type="text/javascript"></script>
 
-        <script src="<?php echo BASE_THEME; ?>js/js-strings.php?lg=<?php echo $Gettext->getLanguage(); ?>" type="text/javascript"></script>
+        <script src="<?php echo BASE_THEME; ?>js/strings.js.php?lg=<?php echo $Gettext->getLanguage(); ?>" type="text/javascript"></script>
+        <script src="<?php echo BASE_THEME; ?>js/jquery.timeago.locale.js.php?lg=<?php echo $Gettext->getLanguage(); ?>" type="text/javascript"></script>
 
         <script type="text/javascript">
         var BASE_WWW = '<?php echo BASE_WWW; ?>';

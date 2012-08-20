@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apalabro!\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-19 22:21+0100\n"
-"PO-Revision-Date: 2012-08-19 22:22+0100\n"
+"POT-Creation-Date: 2012-08-20 16:20+0100\n"
+"PO-Revision-Date: 2012-08-20 16:29+0100\n"
 "Last-Translator: Lito <lito@eordes.com>\n"
 "Language-Team: Lito <lito@eordes.com>\n"
 "Language: \n"
@@ -78,12 +78,12 @@ msgid "Game versus %s"
 msgstr "Partida contra %s"
 
 #: about.php:6
-#: themes/default/base.php:126
+#: themes/default/base.php:128
 msgid "About"
 msgstr "Sobre"
 
 #: index.php:6
-#: themes/default/base.php:83
+#: themes/default/base.php:85
 msgid "Home"
 msgstr "Comezo"
 
@@ -92,13 +92,13 @@ msgid "Sorry but you can't play now. You was added to a waiting list."
 msgstr "Sentímolo pero non hai ningunha partida dispoñible neste momento. Foches engadido a lista de espera."
 
 #: new.php:19
-#: themes/default/base.php:131
+#: themes/default/base.php:133
 msgid "New Game"
 msgstr "Nova Partida"
 
 #: themes/default/profile.php:43
-#: themes/default/base.php:138
-#: themes/default/base.php:143
+#: themes/default/base.php:140
+#: themes/default/base.php:145
 #: themes/default/about.php:20
 msgid "language_"
 msgstr ""
@@ -169,7 +169,7 @@ msgstr "último acceso <strong>%s</strong>"
 #: themes/default/base.php:7
 #: themes/default/base.php:11
 #: themes/default/base.php:12
-#: themes/default/base.php:79
+#: themes/default/base.php:81
 msgid "Apalabro!"
 msgstr "Apalabro!"
 
@@ -178,33 +178,33 @@ msgstr "Apalabro!"
 msgid "Play to Apalabrados/Angry Words online!"
 msgstr "Xoga a Apalabrados en liña!"
 
-#: themes/default/base.php:88
+#: themes/default/base.php:90
 msgid "Game"
 msgstr "Partida"
 
-#: themes/default/base.php:94
-#: themes/default/base.php:100
+#: themes/default/base.php:96
+#: themes/default/base.php:102
 msgid "My Profile"
 msgstr "O Meu Perfil"
 
-#: themes/default/base.php:96
+#: themes/default/base.php:98
 msgid "User Profile"
 msgstr "Perfil do Usuario"
 
-#: themes/default/base.php:105
+#: themes/default/base.php:107
 msgid "Your Turn"
 msgstr "Tócache"
 
-#: themes/default/base.php:114
+#: themes/default/base.php:116
 #, php-format
 msgid "Is your turn vs %s"
 msgstr "É o teu turno contra %s"
 
-#: themes/default/base.php:118
+#: themes/default/base.php:120
 msgid "There aren't games waiting for you"
 msgstr "Non hai partidas agardándote"
 
-#: themes/default/base.php:132
+#: themes/default/base.php:134
 msgid "Logout"
 msgstr "Saír"
 
@@ -421,59 +421,124 @@ msgstr "No tes usuarios nesta lista"
 msgid "Search..."
 msgstr "Buscar..."
 
-#: themes/default/js/js-strings.php:9
+#: themes/default/js/jquery.timeago.locale.js.php:8
+msgid "prefixAgo"
+msgstr "hai"
+
+#: themes/default/js/jquery.timeago.locale.js.php:9
+msgid "prefixFromNow"
+msgstr "en"
+
+#: themes/default/js/jquery.timeago.locale.js.php:10
+msgid "suffixAgo"
+msgstr ""
+
+#: themes/default/js/jquery.timeago.locale.js.php:11
+msgid "suffixFromNow"
+msgstr ""
+
+#: themes/default/js/jquery.timeago.locale.js.php:12
+msgid "less than a minute"
+msgstr "menos dun minuto"
+
+#: themes/default/js/jquery.timeago.locale.js.php:13
+msgid "about a minute"
+msgstr "un minuto"
+
+#: themes/default/js/jquery.timeago.locale.js.php:14
+#, php-format
+msgid "%d minutes"
+msgstr "%d minutos"
+
+#: themes/default/js/jquery.timeago.locale.js.php:15
+msgid "about an hour"
+msgstr "unha hora"
+
+#: themes/default/js/jquery.timeago.locale.js.php:16
+#, php-format
+msgid "about %d hours"
+msgstr "%d horas"
+
+#: themes/default/js/jquery.timeago.locale.js.php:17
+msgid "a day"
+msgstr "un día"
+
+#: themes/default/js/jquery.timeago.locale.js.php:18
+#, php-format
+msgid "%d days"
+msgstr "%d días"
+
+#: themes/default/js/jquery.timeago.locale.js.php:19
+msgid "about a month"
+msgstr "un mes"
+
+#: themes/default/js/jquery.timeago.locale.js.php:20
+#, php-format
+msgid "%d months"
+msgstr "%d meses"
+
+#: themes/default/js/jquery.timeago.locale.js.php:21
+msgid "about a year"
+msgstr "un ano"
+
+#: themes/default/js/jquery.timeago.locale.js.php:22
+#, php-format
+msgid "%d years"
+msgstr "%d anos"
+
+#: themes/default/js/strings.js.php:9
 msgid "Which letter use?"
 msgstr "Que letras queres usar?"
 
-#: themes/default/js/js-strings.php:10
+#: themes/default/js/strings.js.php:10
 msgid "Play this tiles?"
 msgstr "Xogar estas fichas?"
 
-#: themes/default/js/js-strings.php:11
+#: themes/default/js/strings.js.php:11
 msgid "Waiting for reply..."
 msgstr "Agardando resposta..."
 
-#: themes/default/js/js-strings.php:12
+#: themes/default/js/strings.js.php:12
 msgid "Please, wait..."
 msgstr "Por favor, agarda..."
 
-#: themes/default/js/js-strings.php:13
+#: themes/default/js/strings.js.php:13
 msgid "Sending..."
 msgstr "Enviando..."
 
-#: themes/default/js/js-strings.php:14
+#: themes/default/js/strings.js.php:14
 msgid "No results for your query"
 msgstr "Sen resultados para a túa consulta"
 
-#: themes/default/js/js-strings.php:15
+#: themes/default/js/strings.js.php:15
 msgid "Are you sure do you want to swap this tiles?"
 msgstr "Estas seguro de querer cambiar estas fichas?"
 
-#: themes/default/js/js-strings.php:16
+#: themes/default/js/strings.js.php:16
 msgid "You must select some tile to swap"
 msgstr "Debes seleccionar algunha ficha para ser cambiada"
 
-#: themes/default/js/js-strings.php:17
+#: themes/default/js/strings.js.php:17
 msgid "Are you sure that you want resign this game?!?"
 msgstr "Estas seguro de querer rendirte?"
 
-#: themes/default/js/js-strings.php:18
+#: themes/default/js/strings.js.php:18
 msgid "100% Sure?"
 msgstr "100% Seguro?"
 
-#: themes/default/js/js-strings.php:19
+#: themes/default/js/strings.js.php:19
 msgid "Are you sure that you want pass this turn?"
 msgstr "Estas seguro de querer pasar?"
 
-#: themes/default/js/js-strings.php:20
+#: themes/default/js/strings.js.php:20
 msgid "Some error occours with the server response. Please try it again."
 msgstr "Ocorreu algún erro coa resposta do servidor. Por favor, inténtao de novo."
 
-#: themes/default/js/js-strings.php:21
+#: themes/default/js/strings.js.php:21
 msgid "This screen has updates. Click here to reload it."
 msgstr "Esta pantalla ten actualizacións. Fai click aquí para recargala."
 
-#: themes/default/js/js-strings.php:22
+#: themes/default/js/strings.js.php:22
 msgid "Updates!"
 msgstr "Actualizacións!"
 
@@ -486,52 +551,52 @@ msgstr "O directorio \"%s\" para este tema non existe."
 msgid "You must be logged to view this section"
 msgstr "Debes estar logueado para poder ver esta sección"
 
-#: libs/Lito/Apalabro/functions.php:59
-#: libs/Lito/Apalabro/functions.php:66
+#: libs/Lito/Apalabro/functions.php:65
+#: libs/Lito/Apalabro/functions.php:72
 msgid "just now"
 msgstr "xusto agora"
 
-#: libs/Lito/Apalabro/functions.php:68
+#: libs/Lito/Apalabro/functions.php:74
 msgid "one minute ago"
 msgstr "hai un minuto"
 
-#: libs/Lito/Apalabro/functions.php:70
+#: libs/Lito/Apalabro/functions.php:76
 #, php-format
 msgid "%s minutes ago"
 msgstr "hai %s minutos"
 
-#: libs/Lito/Apalabro/functions.php:72
+#: libs/Lito/Apalabro/functions.php:78
 msgid "one hour ago"
 msgstr "hai unha hora"
 
-#: libs/Lito/Apalabro/functions.php:74
+#: libs/Lito/Apalabro/functions.php:80
 #, php-format
 msgid "%s hours ago"
 msgstr "hai %s horas"
 
-#: libs/Lito/Apalabro/functions.php:76
+#: libs/Lito/Apalabro/functions.php:82
 msgid "yesterday"
 msgstr "onte"
 
-#: libs/Lito/Apalabro/functions.php:78
+#: libs/Lito/Apalabro/functions.php:84
 #, php-format
 msgid "%s days ago"
 msgstr "hai %s días"
 
-#: libs/Lito/Apalabro/functions.php:88
+#: libs/Lito/Apalabro/functions.php:94
 msgid "in a minute"
 msgstr "nun minuto"
 
-#: libs/Lito/Apalabro/functions.php:90
+#: libs/Lito/Apalabro/functions.php:96
 #, php-format
 msgid "in %s minutes"
 msgstr "en %s minutos"
 
-#: libs/Lito/Apalabro/functions.php:92
+#: libs/Lito/Apalabro/functions.php:98
 msgid "in an hour"
 msgstr "nunha hora"
 
-#: libs/Lito/Apalabro/functions.php:94
+#: libs/Lito/Apalabro/functions.php:100
 #, php-format
 msgid "in %s hours"
 msgstr "en %s horas"
@@ -666,6 +731,12 @@ msgstr "COLOCAR FICHA"
 #: aux/dynamic-strings.php:27
 msgid "PASS"
 msgstr "PASA"
+
+#~ msgid "ago"
+#~ msgstr "hai"
+
+#~ msgid "from now"
+#~ msgstr "dende agora"
 
 #~ msgid "You Turn"
 #~ msgstr "O teu Turno"
