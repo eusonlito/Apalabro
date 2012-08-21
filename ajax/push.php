@@ -28,14 +28,28 @@ foreach ($games as $Game) {
     if (!isset($updated->{$Game->id})) {
         $message[] = array(
             'id' => $Game->id,
+            'key' => md5($Game->id.'|game'),
             'text' => __('%s wants to play with you', $Game->opponent->name),
-            'link' => (BASE_WWW.'game.php?id='.$Game->id)
+            'link' => (BASE_WWW.'game.php?id='.$Game->id),
+            'type' => 'game'
         );
     } else if ($Game->last_turn->play_date !== $updated->{$Game->id}) {
         $message[] = array(
             'id' => $Game->id,
+            'key' => md5($Game->id.'|game'),
             'text' => __('%s has updated the game', $Game->opponent->name),
-            'link' => (BASE_WWW.'game.php?id='.$Game->id)
+            'link' => (BASE_WWW.'game.php?id='.$Game->id),
+            'type' => 'game'
+        );
+    }
+
+    if ($Game->my_message_alerts > 0) {
+        $message[] = array(
+            'id' => $Game->id,
+            'key' => md5($Game->id.'|message'),
+            'text' => __('%s has sent a new message', $Game->opponent->name),
+            'link' => (BASE_WWW.'game.php?id='.$Game->id),
+            'type' => 'message'
         );
     }
 }

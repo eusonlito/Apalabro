@@ -2,10 +2,6 @@
 
 <script src="<?php echo BASE_THEME; ?>js/chat.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-chat['id'] = '<?php echo $chat_id; ?>';
-</script>
-
 <div class="page-header">
     <h1>
         <a href="<?php echo BASE_WWW; ?>profile.php?id=<?php echo $Game->opponent->id; ?>"><?php

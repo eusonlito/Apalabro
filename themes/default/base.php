@@ -44,6 +44,7 @@
         <script type="text/javascript">
         var BASE_WWW = '<?php echo BASE_WWW; ?>';
         var BASE_THEME = '<?php echo BASE_THEME; ?>';
+        var GAME_ID = 0;
         var VALID_LETTERS = new Array();
 
         <?php if ($Api->logged()) { ?>
@@ -51,6 +52,7 @@
         var UPDATED = '<?php echo base64_encode(json_encode(getPlayDates($Api->getGames('all')))); ?>';
 
         <?php if (isset($Game)) { ?>
+        GAME_ID = <?php echo $Game->id; ?>;
         VALID_LETTERS = new Array('<?php echo implode("','", $Api->getValidWords()); ?>');
         <?php } ?>
 

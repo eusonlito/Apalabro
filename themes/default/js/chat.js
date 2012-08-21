@@ -1,89 +1,74 @@
 var chat = new Array();
 
 chat['id'] = '';
-chat['time'] = 0;
-chat['base'] = 10000;
-chat['limit'] = chat['base'] * 10;
-chat['interval'] = 0;
 chat['url'] = BASE_WWW+'ajax/chat.php'+window.location.search+'&last=';
 
-function updateChat (restart) {
-    var updated = restart;
+function updateChat (post) {
+    var $layer = $('#modal-chat .modal-body');
+    var $link = $('a.chat-24');
 
-    if ((updated == true) || (chat['time'] > 0)) {
-        $.post(chat['url']+chat['id'], function (response) {
-            if ((response == null) || !response.id || !response.html || !response.new) {
-                return false;
-            }
+    if (!$layer.is(':visible')) {
+        $link.attr('title', strings['new_messages']);
+        $link.css('color', '#B94A48');
 
-            if (chat['id'] == response.id) {
-                return true;
-            }
-
-            chat['id'] = response.id;
-            updated = true;
-
-            var $layer = $('#modal-chat .modal-body');
-            var $link = $('a.chat-24');
-
-            if ($link.text() != '') {
-                $link.text(parseInt($link.text()) + response.new);
-            } else {
-                $link.text(response.new);
-            }
-
-            if ($layer.is(':visible')) {
-                if ($('.alert-empty', $layer).length) {
-                    $('.alert-empty', $layer).remove();
-                }
-
-                $layer.append(response.html);
-                $layer.scrollTop($layer[0].scrollHeight);
-            } else {
-                $link.attr('title', strings['new_messages']);
-                $link.css('color', '#B94A48');
-
-                if (document.title.match(/^\([0-9]+\)/)) {
-                    document.title = document.title.replace(/^\([0-9]+\)/, '('+response.new+')');
-                } else {
-                    document.title = '('+response.new+') '+document.title;
-                }
-            }
-        });
+        return true;
     }
 
-    var previous = chat['time'];
+    var $submit = $('button[type="submit"]', $layer);
 
-    if (updated == true) {
-        chat['time'] = chat['base'];
-    } else {
-        chat['time'] = chat['time'] + chat['base'];
-        chat['time'] = (chat['time'] > chat['limit']) ? chat['limit'] : chat['time'];
-    }
+    $submit.attr('disabled', 'disabled');
 
-    if (previous != chat['time']) {
-        clearInterval(chat['interval']);
+    $.post(chat['url']+chat['id'], post, function (response) {
+        $submit.attr('disabled', false);
 
-        chat['interval'] = setInterval('updateChat(false)', chat['time']);
-    }
+        if ((response == null) || !response.id || !response.html || !response.new) {
+            return false;
+        }
+
+        if (chat['id'] == response.id) {
+            return true;
+        }
+
+        if ($('.alert-empty', $layer).length) {
+            $('.alert-empty', $layer).remove();
+        }
+
+        if (chat['id']) {
+            $layer.append(response.html);
+        } else {
+            $layer.html(response.html);
+        }
+
+        $layer.scrollTop($layer[0].scrollHeight);
+
+        chat['id'] = response.id;
+
+        var updates = parseInt(response.new);
+
+        $link.attr('title', strings['your_messages'].replace(/%s/, updates));
+        $link.css('color', '');
+
+        if ($link.text() != '') {
+            $link.text(parseInt($link.text()) + updates);
+        } else {
+            $link.text(updates);
+        }
+    });
+
+    return true;
 }
 
 $(document).ready(function () {
     $('a.chat-24').click(function () {
         var $layer = $('#modal-chat');
 
-        $('.modal-body', $layer).html('<div class="center"><img src="'+BASE_THEME+'images/loading.gif" /></div>');
-
-        $.post(chat['url'],
-            function (response) {
-                $('.modal-body', $layer).html(response.html ? response.html : strings['server_error']);
-                $('.modal-body', $layer).scrollTop( $('.modal-body', $layer)[0].scrollHeight);
-            }
-        );
+        if (!chat['id']) {
+            $('.modal-body', $layer).html('<div class="center"><img src="'+BASE_THEME+'images/loading.gif" /></div>');
+        }
 
         $layer.modal();
 
-        document.title = document.title.replace(/^\([0-9]+\) /, '');
+        updateChat();
 
         $(this).attr('title', strings['your_messages'].replace(/%s/, $(this).text()));
         $(this).css('color', '');
@@ -100,20 +85,10 @@ $(document).ready(function () {
             return false;
         }
 
-        var $submit = $('button[type="submit"]', $(this));
-
-        $submit.attr('disabled', 'disabled');
-
-        $.post(chat['url']+chat['id'], $(this).serialize(), function () {
-            updateChat(true);
-
-            $submit.attr('disabled', false);
-        });
+        updateChat($(this).serialize());
 
         $text.attr('value', '');
 
         return false;
     });
-
-    updateChat(false);
 });

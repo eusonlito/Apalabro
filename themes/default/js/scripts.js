@@ -356,8 +356,35 @@ $(document).ready(function () {
                     if (response.error == true) {
                         clearInterval(pushInterval);
                         return false;
-                    } else if ((response.length == 0) || (response.length == just_updated.length)) {
+                    } else if (response.length == 0) {
+                        document.title = document.title.replace(/^\([0-9]+\) /, '');
                         return true;
+                    } else if ((response.length == just_updated.length)) {
+                        return true;
+                    }
+
+                    var activate = true;
+
+                    for (i = 0; i < response.length; i++) {
+                        if ((response[i].type == 'message') && GAME_ID && (GAME_ID == response[i].id)) {
+                            var $chat_layer = $('#modal-chat .modal-body');
+
+                            if (($chat_layer.length > 0) && $chat_layer.is(':visible')) {
+                                activate = false;
+                            }
+
+                            break;
+                        }
+                    }
+
+                    if (activate) {
+                        $('#updates a span').text(strings['your_turn']+' ('+response.length+')');
+
+                        $('#updates > a').addClass('active');
+
+                        if ($('#updates ul li span').length) {
+                            $('#updates ul li span').parent().remove();
+                        }
                     }
 
                     if (document.title.match(/^\([0-9]+\)/)) {
@@ -366,35 +393,39 @@ $(document).ready(function () {
                         document.title = '('+response.length+') '+document.title;
                     }
 
-                    $('#updates a span').text(strings['your_turn']+' ('+response.length+')');
-
-                    $('#updates > a').addClass('active');
-
-                    if ($('#updates ul li span').length) {
-                        $('#updates ul li span').parent().remove();
-                    }
+                    var key = '';
 
                     for (i = 0; i < response.length; i++) {
-                        if ($.inArray(response[i].id, just_updated) == -1) {
-                            if ($('#updates li#updated-'+response[i].id).length) {
-                                $('#updates li#updated-'+response[i].id).remove();
+                        if ((response[i].type == 'message') && GAME_ID && (GAME_ID == response[i].id)) {
+                            updateChat();
+
+                            if (!activate) {
+                                continue;
+                            }
+                        }
+
+                        key = response[i].key;
+
+                        if ($.inArray(key, just_updated) == -1) {
+                            if ($('#updates li#updated-'+key).length) {
+                                $('#updates li#updated-'+key).remove();
                             }
 
                             $('#updates ul').prepend(
-                                '<li id="updated-'+response[i].id+'">'+
+                                '<li id="updated-'+key+'">'+
                                 '<a href="'+response[i].link+'"><strong>'+
                                 response[i].text+'</strong></li>'
                             );
 
-                            just_updated.push(response[i].id);
+                            just_updated.push(key);
                         }
                     }
                 }
             });
-        }, 30000);
+        }, 15000);
     }
 
-     $('abbr.timeago').timeago();
+    $('abbr.timeago').timeago();
 });
 
 function snapToHight (dragger, target) {
