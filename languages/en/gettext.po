@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apalabro!\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-20 16:29+0100\n"
-"PO-Revision-Date: 2012-08-20 16:31+0100\n"
+"POT-Creation-Date: 2012-08-22 00:29+0100\n"
+"PO-Revision-Date: 2012-08-22 00:29+0100\n"
 "Last-Translator: Lito <lito@eordes.com>\n"
 "Language-Team: Lito <lito@eordes.com>\n"
 "Language: \n"
@@ -16,6 +16,59 @@ msgstr ""
 "X-Poedit-Country: Spain\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
+
+#: game.php:15
+msgid "Your tiles were set successfully"
+msgstr ""
+
+#: game.php:19
+msgid "Sorry but these word is no valid"
+msgstr ""
+
+#: game.php:27
+msgid "Your tiles were swapped successfully"
+msgstr ""
+
+#: game.php:31
+msgid "Sorry but yours tiles can not be swapped"
+msgstr ""
+
+#: game.php:39
+msgid "You have passed"
+msgstr ""
+
+#: game.php:43
+msgid "Sorry but some problem occours when try to pass"
+msgstr ""
+
+#: game.php:51
+msgid "You have resigned this game"
+msgstr ""
+
+#: game.php:55
+msgid "Sorry but some problem occours when try to resign this game"
+msgstr ""
+
+#: game.php:71
+#, php-format
+msgid "Game versus %s"
+msgstr ""
+
+#: new.php:12
+msgid "Sorry but you can't play now. You was added to a waiting list."
+msgstr ""
+
+#: new.php:19
+msgid "New Game"
+msgstr ""
+
+#: index.php:6
+msgid "Home"
+msgstr ""
+
+#: about.php:6
+msgid "About"
+msgstr ""
 
 #: profile.php:7
 msgid "No user ID was received"
@@ -40,67 +93,335 @@ msgstr ""
 msgid "%s Profile"
 msgstr ""
 
-#: game.php:13
-msgid "Your tiles were set successfully"
+#: libs/Lito/Apalabro/Loader.php:10
+msgid "You must be logged to view this section"
 msgstr ""
 
-#: game.php:17
-msgid "Sorry but these word is no valid"
+#: libs/Lito/Apalabro/Loader.php:37
+msgid "Login"
 msgstr ""
 
-#: game.php:25
-msgid "Your tiles were swapped successfully"
-msgstr ""
-
-#: game.php:29
-msgid "Sorry but yours tiles can not be swapped"
-msgstr ""
-
-#: game.php:37
-msgid "You have passed"
-msgstr ""
-
-#: game.php:41
-msgid "Sorry but some problem occours when try to pass"
-msgstr ""
-
-#: game.php:49
-msgid "You have resigned this game"
-msgstr ""
-
-#: game.php:53
-msgid "Sorry but some problem occours when try to resign this game"
-msgstr ""
-
-#: game.php:65
+#: libs/Lito/Apalabro/Theme.php:45
 #, php-format
-msgid "Game versus %s"
+msgid "Theme path \"%s\" does not exists."
 msgstr ""
 
-#: about.php:6
-#: themes/default/base.php:128
-msgid "About"
+#: libs/Lito/Apalabro/functions.php:65
+#: libs/Lito/Apalabro/functions.php:72
+msgid "just now"
 msgstr ""
 
-#: index.php:6
-#: themes/default/base.php:85
-msgid "Home"
+#: libs/Lito/Apalabro/functions.php:74
+msgid "one minute ago"
 msgstr ""
 
-#: new.php:12
-msgid "Sorry but you can't play now. You was added to a waiting list."
+#: libs/Lito/Apalabro/functions.php:76
+#, php-format
+msgid "%s minutes ago"
 msgstr ""
 
-#: new.php:19
-#: themes/default/base.php:133
-msgid "New Game"
+#: libs/Lito/Apalabro/functions.php:78
+msgid "one hour ago"
 msgstr ""
 
-#: themes/default/profile.php:43
-#: themes/default/base.php:140
-#: themes/default/base.php:145
+#: libs/Lito/Apalabro/functions.php:80
+#, php-format
+msgid "%s hours ago"
+msgstr ""
+
+#: libs/Lito/Apalabro/functions.php:82
+msgid "yesterday"
+msgstr ""
+
+#: libs/Lito/Apalabro/functions.php:84
+#, php-format
+msgid "%s days ago"
+msgstr ""
+
+#: libs/Lito/Apalabro/functions.php:94
+msgid "in a minute"
+msgstr ""
+
+#: libs/Lito/Apalabro/functions.php:96
+#, php-format
+msgid "in %s minutes"
+msgstr ""
+
+#: libs/Lito/Apalabro/functions.php:98
+msgid "in an hour"
+msgstr ""
+
+#: libs/Lito/Apalabro/functions.php:100
+#, php-format
+msgid "in %s hours"
+msgstr ""
+
+#: themes/default/game.php:15
+msgid "Your turn"
+msgstr ""
+
+#: themes/default/game.php:15
+msgid "Opponent turn"
+msgstr ""
+
+#: themes/default/game.php:21
+#, php-format
+msgid "You have %s chat messages"
+msgstr ""
+
+#: themes/default/game.php:35
+#, php-format
+msgid "Last words: %s"
+msgstr ""
+
+#: themes/default/game.php:38
+#: themes/default/sub-games-list.php:46
+#, php-format
+msgid "%s tiles to remaining"
+msgstr ""
+
+#: themes/default/game.php:46
+msgid "Chat"
+msgstr ""
+
+#: themes/default/game.php:54
+msgid "Send"
+msgstr ""
+
+#: themes/default/game.php:59
+msgid "Close"
+msgstr ""
+
+#: themes/default/game.php:71
+msgid "Swapping Tiles"
+msgstr ""
+
+#: themes/default/game.php:75
+msgid "Swap"
+msgstr ""
+
+#: themes/default/game.php:76
+msgid "Cancel"
+msgstr ""
+
+#: themes/default/game.php:81
+msgid "Move here yours tiles"
+msgstr ""
+
+#: themes/default/game.php:111
+msgid "Play!"
+msgstr ""
+
+#: themes/default/game.php:115
+msgid "Test"
+msgstr ""
+
+#: themes/default/game.php:122
+msgid "Recall"
+msgstr ""
+
+#: themes/default/game.php:126
+msgid "Swap Tiles"
+msgstr ""
+
+#: themes/default/game.php:128
+msgid "Pass"
+msgstr ""
+
+#: themes/default/game.php:135
+msgid "Confirm your move"
+msgstr ""
+
+#: themes/default/game.php:142
+msgid "Confirm"
+msgstr ""
+
+#: themes/default/game.php:145
+msgid "Back"
+msgstr ""
+
+#: themes/default/game.php:149
+msgid "Resign"
+msgstr ""
+
+#: themes/default/game.php:163
+msgid "Do you need help?"
+msgstr ""
+
+#: themes/default/game.php:164
+msgid "I can give you some suggestions ;)"
+msgstr ""
+
+#: themes/default/game.php:165
+msgid "Yes, please!"
+msgstr ""
+
+#: themes/default/game.php:170
+msgid "Suggestions"
+msgstr ""
+
+#: themes/default/game.php:171
+#: themes/default/game.php:206
+#: themes/default/new.php:24
+#: themes/default/new.php:56
+msgid "Search"
+msgstr ""
+
+#: themes/default/game.php:172
+msgid "Tiles"
+msgstr ""
+
+#: themes/default/game.php:178
+msgid "Filter suggested words"
+msgstr ""
+
+#: themes/default/game.php:185
+#, php-format
+msgid "%s points"
+msgstr ""
+
+#: themes/default/game.php:190
+#, php-format
+msgid "%s letters"
+msgstr ""
+
+#: themes/default/game.php:204
+msgid "Search with regular expression"
+msgstr ""
+
+#: themes/default/game.php:208
+msgid "Help"
+msgstr ""
+
+#: themes/default/game.php:217
+msgid "This tiles are not played yet:"
+msgstr ""
+
+#: themes/default/game.php:222
+#, php-format
+msgid "<strong>%s</strong> tiles of letter <strong>%s</strong>"
+msgstr ""
+
+#: themes/default/sub-games-list.php:31
+#, php-format
+msgid "You have %s new chat messages"
+msgstr ""
+
+#: themes/default/sub-friends-list.php:25
+#, php-format
+msgid "last move %s"
+msgstr ""
+
+#: themes/default/new.php:14
+#: themes/default/base.php:142
+#: themes/default/base.php:147
 #: themes/default/about.php:20
+#: themes/default/profile.php:43
 msgid "language_"
+msgstr ""
+
+#: themes/default/new.php:22
+msgid "Random opponent"
+msgstr ""
+
+#: themes/default/new.php:23
+msgid "Recent and Friends"
+msgstr ""
+
+#: themes/default/new.php:30
+msgid "Start a new game with random opponent"
+msgstr ""
+
+#: themes/default/new.php:42
+#: themes/default/new.php:62
+msgid "Start a new game"
+msgstr ""
+
+#: themes/default/new.php:47
+msgid "You haven't any user in this list"
+msgstr ""
+
+#: themes/default/new.php:54
+msgid "Search..."
+msgstr ""
+
+#: themes/default/index.php:19
+msgid "No games here :)"
+msgstr ""
+
+#: themes/default/base.php:7
+#: themes/default/base.php:11
+#: themes/default/base.php:12
+#: themes/default/base.php:83
+msgid "Apalabro!"
+msgstr ""
+
+#: themes/default/base.php:13
+#: themes/default/base.php:14
+msgid "Play to Apalabrados/Angry Words online!"
+msgstr ""
+
+#: themes/default/base.php:92
+msgid "Game"
+msgstr ""
+
+#: themes/default/base.php:98
+#: themes/default/base.php:104
+msgid "My Profile"
+msgstr ""
+
+#: themes/default/base.php:100
+msgid "User Profile"
+msgstr ""
+
+#: themes/default/base.php:109
+msgid "Your Turn"
+msgstr ""
+
+#: themes/default/base.php:118
+#, php-format
+msgid "Is your turn vs %s"
+msgstr ""
+
+#: themes/default/base.php:122
+msgid "There aren't games waiting for you"
+msgstr ""
+
+#: themes/default/base.php:136
+msgid "Logout"
+msgstr ""
+
+#: themes/default/sub-users-list.php:24
+#, php-format
+msgid "last login %s"
+msgstr ""
+
+#: themes/default/login.php:12
+msgid "Register"
+msgstr ""
+
+#: themes/default/login.php:23
+msgid "Your email"
+msgstr ""
+
+#: themes/default/login.php:26
+msgid "Your password"
+msgstr ""
+
+#: themes/default/login.php:40
+msgid "register_info"
+msgstr "<p>This site is just an interface to the original application <a href=\"http://www.angrywords.com/\">Apalabrados (Angry Words)</a>.</p><p>This means you should download the application on your smartphone <a href=\"https://play.google.com/store/apps/details?id=com.etermax.apalabrados.lite\">Android</a> or <a href=\"http://itunes.apple.com/us/app/apalabrados/id441092257?ls=1&mt=8\">iPhone</a> and register in it with username and password (not through Facebook).</p><p>Once registered you can back and start playing :)</p><p>This site has no connection with the company that owns the application <a href=\"http://www.angrywords.com/\">Apalabrados (Angry Words)</a>.</p>"
+
+#: themes/default/about.php:5
+msgid "About Apalabro!"
+msgstr ""
+
+#: themes/default/about.php:9
+msgid "about_info"
+msgstr "<p><strong>Apalabro!</strong> is a PHP project developed by <a href=\"https://github.com/eusonlito\">Lito</a> to create an <a href=\"http://www.apalabrados.com/\">Apalabrados (Angry Words)</a> web interface.</p><p>This means you should download the application on your smartphone <a href=\"https://play.google.com/store/apps/details?id=com.etermax.apalabrados.lite\">Android</a> or <a href=\"http://itunes.apple.com/us/app/apalabrados/id441092257?ls=1&mt=8\">iPhone</a> and register in it with username and password (not through Facebook).</p><p>Once registered you can back and start playing :)</p><p>You can get the sorce code at <a href=\"https://github.com/eusonlito/Apalabro\">Github</a>.</p><p>Also, if you have some suggestion or doubt, you can contact with me at <a href=\"mailto:lito@eordes.com\">lito@eordes.com</a>.</p><p>I greatly appreciated the help with the interface translation. You can do it using as base the file <strong>languages/en/gettext.po</strong> or <strong>languages/en/gettext.mo</strong>.</p><p>This site has no connection with the company that owns the application <a href=\"http://www.apalabrados.com/\">Apalabrados</a>.</p>"
+
+#: themes/default/about.php:15
+msgid "Available Languages"
 msgstr ""
 
 #: themes/default/profile.php:63
@@ -164,261 +485,6 @@ msgstr ""
 #: themes/default/profile.php:143
 #, php-format
 msgid "last login <strong>%s</strong>"
-msgstr ""
-
-#: themes/default/base.php:7
-#: themes/default/base.php:11
-#: themes/default/base.php:12
-#: themes/default/base.php:81
-msgid "Apalabro!"
-msgstr ""
-
-#: themes/default/base.php:13
-#: themes/default/base.php:14
-msgid "Play to Apalabrados/Angry Words online!"
-msgstr ""
-
-#: themes/default/base.php:90
-msgid "Game"
-msgstr ""
-
-#: themes/default/base.php:96
-#: themes/default/base.php:102
-msgid "My Profile"
-msgstr ""
-
-#: themes/default/base.php:98
-msgid "User Profile"
-msgstr ""
-
-#: themes/default/base.php:107
-msgid "Your Turn"
-msgstr ""
-
-#: themes/default/base.php:116
-#, php-format
-msgid "Is your turn vs %s"
-msgstr ""
-
-#: themes/default/base.php:120
-msgid "There aren't games waiting for you"
-msgstr ""
-
-#: themes/default/base.php:134
-msgid "Logout"
-msgstr ""
-
-#: themes/default/sub-games-list.php:31
-#: themes/default/game.php:20
-#, php-format
-msgid "You have %s new chat messages"
-msgstr ""
-
-#: themes/default/sub-games-list.php:46
-#: themes/default/game.php:38
-#, php-format
-msgid "%s tiles to remaining"
-msgstr ""
-
-#: themes/default/sub-friends-list.php:25
-#, php-format
-msgid "last move %s"
-msgstr ""
-
-#: themes/default/game.php:13
-msgid "Your turn"
-msgstr ""
-
-#: themes/default/game.php:13
-msgid "Opponent turn"
-msgstr ""
-
-#: themes/default/game.php:35
-#, php-format
-msgid "Last words: %s"
-msgstr ""
-
-#: themes/default/game.php:47
-msgid "Chat"
-msgstr ""
-
-#: themes/default/game.php:53
-msgid "Close"
-msgstr ""
-
-#: themes/default/game.php:66
-msgid "Swapping Tiles"
-msgstr ""
-
-#: themes/default/game.php:70
-msgid "Swap"
-msgstr ""
-
-#: themes/default/game.php:71
-msgid "Cancel"
-msgstr ""
-
-#: themes/default/game.php:76
-msgid "Move here yours tiles"
-msgstr ""
-
-#: themes/default/game.php:106
-msgid "Play!"
-msgstr ""
-
-#: themes/default/game.php:110
-msgid "Test"
-msgstr ""
-
-#: themes/default/game.php:117
-msgid "Recall"
-msgstr ""
-
-#: themes/default/game.php:121
-msgid "Swap Tiles"
-msgstr ""
-
-#: themes/default/game.php:123
-msgid "Pass"
-msgstr ""
-
-#: themes/default/game.php:130
-msgid "Confirm your move"
-msgstr ""
-
-#: themes/default/game.php:137
-msgid "Confirm"
-msgstr ""
-
-#: themes/default/game.php:140
-msgid "Back"
-msgstr ""
-
-#: themes/default/game.php:144
-msgid "Resign"
-msgstr ""
-
-#: themes/default/game.php:158
-msgid "Do you need help?"
-msgstr ""
-
-#: themes/default/game.php:159
-msgid "I can give you some suggestions ;)"
-msgstr ""
-
-#: themes/default/game.php:160
-msgid "Yes, please!"
-msgstr ""
-
-#: themes/default/game.php:165
-msgid "Suggestions"
-msgstr ""
-
-#: themes/default/game.php:166
-#: themes/default/game.php:201
-msgid "Search"
-msgstr ""
-
-#: themes/default/game.php:167
-msgid "Tiles"
-msgstr ""
-
-#: themes/default/game.php:173
-msgid "Filter suggested words"
-msgstr ""
-
-#: themes/default/game.php:180
-#, php-format
-msgid "%s points"
-msgstr ""
-
-#: themes/default/game.php:185
-#, php-format
-msgid "%s letters"
-msgstr ""
-
-#: themes/default/game.php:199
-msgid "Search with regular expression"
-msgstr ""
-
-#: themes/default/game.php:203
-msgid "Help"
-msgstr ""
-
-#: themes/default/game.php:212
-msgid "This tiles are not played yet:"
-msgstr ""
-
-#: themes/default/game.php:217
-#, php-format
-msgid "<strong>%s</strong> tiles of letter <strong>%s</strong>"
-msgstr ""
-
-#: themes/default/about.php:5
-msgid "About Apalabro!"
-msgstr ""
-
-#: themes/default/about.php:9
-msgid "about_info"
-msgstr "<p><strong>Apalabro!</strong> is a PHP project developed by <a href=\"https://github.com/eusonlito\">Lito</a> to create an <a href=\"http://www.apalabrados.com/\">Apalabrados (Angry Words)</a> web interface.</p><p>This means you should download the application on your smartphone <a href=\"https://play.google.com/store/apps/details?id=com.etermax.apalabrados.lite\">Android</a> or <a href=\"http://itunes.apple.com/us/app/apalabrados/id441092257?ls=1&mt=8\">iPhone</a> and register in it with username and password (not through Facebook).</p><p>Once registered you can back and start playing :)</p><p>You can get the sorce code at <a href=\"https://github.com/eusonlito/Apalabro\">Github</a>.</p><p>Also, if you have some suggestion or doubt, you can contact with me at <a href=\"mailto:lito@eordes.com\">lito@eordes.com</a>.</p><p>I greatly appreciated the help with the interface translation. You can do it using as base the file <strong>languages/en/gettext.po</strong> or <strong>languages/en/gettext.mo</strong>.</p><p>This site has no connection with the company that owns the application <a href=\"http://www.apalabrados.com/\">Apalabrados</a>.</p>"
-
-#: themes/default/about.php:15
-msgid "Available Languages"
-msgstr ""
-
-#: themes/default/sub-users-list.php:24
-#, php-format
-msgid "last login %s"
-msgstr ""
-
-#: themes/default/login.php:11
-#: themes/default/login.php:31
-msgid "Login"
-msgstr ""
-
-#: themes/default/login.php:12
-msgid "Register"
-msgstr ""
-
-#: themes/default/login.php:23
-msgid "Your email"
-msgstr ""
-
-#: themes/default/login.php:26
-msgid "Your password"
-msgstr ""
-
-#: themes/default/login.php:40
-msgid "register_info"
-msgstr "<p>This site is just an interface to the original application <a href=\"http://www.angrywords.com/\">Apalabrados (Angry Words)</a>.</p><p>This means you should download the application on your smartphone <a href=\"https://play.google.com/store/apps/details?id=com.etermax.apalabrados.lite\">Android</a> or <a href=\"http://itunes.apple.com/us/app/apalabrados/id441092257?ls=1&mt=8\">iPhone</a> and register in it with username and password (not through Facebook).</p><p>Once registered you can back and start playing :)</p><p>This site has no connection with the company that owns the application <a href=\"http://www.angrywords.com/\">Apalabrados (Angry Words)</a>.</p>"
-
-#: themes/default/index.php:19
-msgid "No games here :)"
-msgstr ""
-
-#: themes/default/new.php:22
-msgid "Random opponent"
-msgstr ""
-
-#: themes/default/new.php:23
-msgid "Recent and Friends"
-msgstr ""
-
-#: themes/default/new.php:30
-msgid "Start a new game with random opponent"
-msgstr ""
-
-#: themes/default/new.php:42
-#: themes/default/new.php:62
-msgid "Start a new game"
-msgstr ""
-
-#: themes/default/new.php:47
-msgid "You haven't any user in this list"
-msgstr ""
-
-#: themes/default/new.php:54
-msgid "Search..."
 msgstr ""
 
 #: themes/default/js/jquery.timeago.locale.js.php:8
@@ -543,94 +609,13 @@ msgstr ""
 msgid "Updates!"
 msgstr ""
 
-#: libs/Lito/Apalabro/Theme.php:45
+#: themes/default/js/strings.js.php:24
+msgid "You have new messages!"
+msgstr ""
+
+#: themes/default/js/strings.js.php:25
 #, php-format
-msgid "Theme path \"%s\" does not exists."
-msgstr ""
-
-#: libs/Lito/Apalabro/Loader.php:10
-msgid "You must be logged to view this section"
-msgstr ""
-
-#: libs/Lito/Apalabro/functions.php:65
-#: libs/Lito/Apalabro/functions.php:72
-msgid "just now"
-msgstr ""
-
-#: libs/Lito/Apalabro/functions.php:74
-msgid "one minute ago"
-msgstr ""
-
-#: libs/Lito/Apalabro/functions.php:76
-#, php-format
-msgid "%s minutes ago"
-msgstr ""
-
-#: libs/Lito/Apalabro/functions.php:78
-msgid "one hour ago"
-msgstr ""
-
-#: libs/Lito/Apalabro/functions.php:80
-#, php-format
-msgid "%s hours ago"
-msgstr ""
-
-#: libs/Lito/Apalabro/functions.php:82
-msgid "yesterday"
-msgstr ""
-
-#: libs/Lito/Apalabro/functions.php:84
-#, php-format
-msgid "%s days ago"
-msgstr ""
-
-#: libs/Lito/Apalabro/functions.php:94
-msgid "in a minute"
-msgstr ""
-
-#: libs/Lito/Apalabro/functions.php:96
-#, php-format
-msgid "in %s minutes"
-msgstr ""
-
-#: libs/Lito/Apalabro/functions.php:98
-msgid "in an hour"
-msgstr ""
-
-#: libs/Lito/Apalabro/functions.php:100
-#, php-format
-msgid "in %s hours"
-msgstr ""
-
-#: ajax/push.php:29
-#, php-format
-msgid "%s wants to play with you"
-msgstr ""
-
-#: ajax/push.php:35
-#, php-format
-msgid "%s has updated the game"
-msgstr ""
-
-#: ajax/get-chat.php:32
-msgid "There aren't any conversation in this game"
-msgstr ""
-
-#: ajax/get-points.php:38
-msgid "No valid word"
-msgstr ""
-
-#: ajax/get-points.php:46
-#, php-format
-msgid "Playing for %s points"
-msgstr ""
-
-#: ajax/get-points.php:50
-msgid "Sorry but these tiles can not be combined. Please, try it another cells"
-msgstr ""
-
-#: ajax/search-users.php:13
-msgid "No users founded..."
+msgid "You have %s messages"
 msgstr ""
 
 #: aux/game-check.php:5
@@ -731,5 +716,41 @@ msgstr ""
 
 #: aux/dynamic-strings.php:27
 msgid "PASS"
+msgstr ""
+
+#: ajax/get-points.php:41
+msgid "No valid word"
+msgstr ""
+
+#: ajax/get-points.php:49
+#, php-format
+msgid "Playing for %s points"
+msgstr ""
+
+#: ajax/get-points.php:53
+msgid "Sorry but these tiles can not be combined. Please, try it another cells"
+msgstr ""
+
+#: ajax/push.php:32
+#, php-format
+msgid "%s wants to play with you"
+msgstr ""
+
+#: ajax/push.php:40
+#, php-format
+msgid "%s has updated the game"
+msgstr ""
+
+#: ajax/push.php:50
+#, php-format
+msgid "%s has sent a new message"
+msgstr ""
+
+#: ajax/search-users.php:13
+msgid "No users founded..."
+msgstr ""
+
+#: ajax/chat.php:47
+msgid "There aren't any conversation in this game"
 msgstr ""
 
