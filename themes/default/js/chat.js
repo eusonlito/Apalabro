@@ -21,7 +21,12 @@ function updateChat (post) {
     $.post(chat['url']+chat['id'], post, function (response) {
         $submit.attr('disabled', false);
 
-        if ((response == null) || !response.id || !response.html || !response.new) {
+        if ((response == null) || !response.html) {
+            return false;
+        }
+
+        if (!response.id && response.html) {
+            $layer.html(response.html);
             return false;
         }
 
