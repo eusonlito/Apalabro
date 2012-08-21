@@ -14,7 +14,7 @@ function updateChat (post) {
         return true;
     }
 
-    var $submit = $('button[type="submit"]', $layer);
+    var $submit = $('#modal-chat button[type="submit"]');
 
     $submit.attr('disabled', 'disabled');
 
@@ -38,26 +38,26 @@ function updateChat (post) {
             $('.alert-empty', $layer).remove();
         }
 
+        var updates = parseInt(response.new);
+
         if (chat['id']) {
             $layer.append(response.html);
+
+            if ($link.text() != '') {
+                $link.text(parseInt($link.text()) + updates);
+            } else {
+                $link.text(updates);
+            }
         } else {
             $layer.html(response.html);
         }
 
         $layer.scrollTop($layer[0].scrollHeight);
 
-        chat['id'] = response.id;
-
-        var updates = parseInt(response.new);
-
         $link.attr('title', strings['your_messages'].replace(/%s/, updates));
         $link.css('color', '');
 
-        if ($link.text() != '') {
-            $link.text(parseInt($link.text()) + updates);
-        } else {
-            $link.text(updates);
-        }
+        chat['id'] = response.id;
     });
 
     return true;
