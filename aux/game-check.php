@@ -13,7 +13,7 @@ if (!preg_match('/^[0-9]+$/', $game)) {
     die();
 }
 
-$Game = $Api->getGame($game);
+$Game = $Api->preloadGame($game);
 
 if (!$Game) {
     $Theme->setMessage(__('Some error occours triying to load this game. Please reload this page to try it again.'), 'error', true);

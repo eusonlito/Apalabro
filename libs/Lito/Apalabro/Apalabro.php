@@ -383,7 +383,7 @@ class Apalabro {
         return ($status) ? $this->games[$status] : $this->games;
     }
 
-    public function getGame ($game)
+    public function preloadGame ($game)
     {
         $this->_loggedOrDie();
 
@@ -419,11 +419,19 @@ class Apalabro {
 
         $this->Game = $Game;
 
+        return $Game;
+    }
+
+    public function getGame ($game, $reload = false) {
+        if (!$this->Game || ($this->Game->id != $game) || $reload) {
+            $this->preloadGame($game);
+        }
+
         $this->setTiles();
         $this->setLanguage($this->Game->language);
         $this->loadLanguage();
 
-        return $Game;
+        return $this->Game;
     }
 
     public function getValidWords ()
@@ -459,7 +467,7 @@ class Apalabro {
             $Game->board_tiles = array();
         }
 
-        if (isset($Game->my_rack_tiles) && $Game->my_rack_tiles) {
+        if (isset($Game->my_rack_tiles) && is_string($Game->my_rack_tiles)) {
             $Game->my_rack_tiles = explode(',', $Game->my_rack_tiles);
 
             sort($Game->my_rack_tiles, SORT_STRING);
@@ -608,6 +616,21 @@ class Apalabro {
         } else {
             return array();
         }
+    }
+
+    public function setChat ($message)
+    {
+        $this->_loggedOrDie();
+
+        $message = trim($message);
+
+        if (!$message) {
+            return false;
+        }
+
+        return $this->Curl->post('users/'.$this->user.'/games/'.$this->Game->id.'/chat', array(
+            'message' => $message
+        ));
     }
 
     public function resetChat ()

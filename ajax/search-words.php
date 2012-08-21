@@ -9,6 +9,8 @@ $game = $_POST['id'];
 
 require (BASE_PATH.'/aux/game-check.php');
 
+$Game = $Api->getGame($Game->id);
+
 $words = $Api->solve($_POST['filter']);
 
 if ($words) {

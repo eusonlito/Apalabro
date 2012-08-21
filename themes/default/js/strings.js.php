@@ -1,5 +1,5 @@
 <?php
-header("content-type: text/javascript");
+header('Content-Type: text/javascript');
 
 require (__DIR__.'/../../../libs/Lito/Apalabro/Loader-min.php');
 ?>
@@ -21,3 +21,5 @@ strings['server_error'] = '<?php echo str_replace("\'", '&apos;', __('Some error
 strings['screen_updated'] = '<?php echo str_replace("\'", '&apos;', __('This screen has updates. Click here to reload it.')); ?>';
 strings['updates'] = '<?php echo str_replace("\'", '&apos;', __('Updates!')); ?>';
 strings['your_turn'] = '<?php echo str_replace("\'", '&apos;', __('Your Turn')); ?>';
+strings['new_messages'] = '<?php echo str_replace("\'", '&apos;', __('You have new messages!')); ?>';
+strings['your_messages'] = '<?php echo str_replace("\'", '&apos;', __('You have %s messages')); ?>';

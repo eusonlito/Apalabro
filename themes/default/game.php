@@ -1,5 +1,11 @@
 <?php defined('BASE_PATH') or die(); ?>
 
+<script src="<?php echo BASE_THEME; ?>js/chat.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+chat['id'] = '<?php echo $chat_id; ?>';
+</script>
+
 <div class="page-header">
     <h1>
         <a href="<?php echo BASE_WWW; ?>profile.php?id=<?php echo $Game->opponent->id; ?>"><?php
@@ -16,11 +22,9 @@
             }
         ?></small>
 
-        <?php if ((isset($Game->messages) && $Game->messages) || (isset($Game->my_message_alerts) && $Game->my_message_alerts)) { ?>
-        <a href="<?php echo BASE_WWW; ?>ajax/get-chat.php?id=<?php echo $Game->id; ?>" class="chat-24" title="<?php __e('You have %s new chat messages', $Game->my_message_alerts); ?>"><?php
-            echo (isset($Game->my_message_alerts) && $Game->my_message_alerts) ? $Game->my_message_alerts : '';
+        <a href="#" class="chat-24" title="<?php __e('You have %s chat messages', count($Game->messages)); ?>"><?php
+            echo $Game->messages ? count($Game->messages) : '';
         ?></a>
-        <?php } ?>
 
         <p>
             <small class="label"><abbr class="timeago" title="<?php echo timeAgo($Game->last_turn->play_date); ?>"><?php echo humanDate($Game->last_turn->play_date); ?></abbr></small>
@@ -40,7 +44,6 @@
     </h1>
 </div>
 
-<?php if ((isset($Game->messages) && $Game->messages) || (isset($Game->my_message_alerts) && $Game->my_message_alerts)) { ?>
 <div id="modal-chat" class="modal hide">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">×</button>
@@ -49,11 +52,17 @@
 
     <div class="modal-body max-height"></div>
 
+    <form autocomplete="off" method="post" class="form-inline">
+        <fieldset class="center">
+            <input class="input-xlarge" size="16" type="text" name="message" />
+            <button type="submit" class="btn btn-success"><?php __e('Send'); ?></button>
+        </fieldset>
+    </form>
+
     <div class="modal-footer">
         <a href="#" class="btn" data-dismiss="modal"><i class="icon-remove"></i> <?php __e('Close'); ?></a>
     </div>
 </div>
-<?php } ?>
 
 <div class="row">
     <div class="span7 relative">

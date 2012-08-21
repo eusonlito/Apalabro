@@ -1,5 +1,5 @@
 <?php
-header("content-type: text/javascript");
+header('Content-Type: text/javascript');
 
 require (__DIR__.'/../../../libs/Lito/Apalabro/Loader-min.php');
 ?>

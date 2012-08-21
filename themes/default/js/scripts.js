@@ -289,9 +289,7 @@ $(document).ready(function () {
         $.post($(this).data('url'),
             $('#game-form input').serialize(),
             function (response) {
-                try {
-                    response = $.parseJSON(response);
-                } catch (e) {
+                if (!response.html) {
                     $('#modal-confirm .modal-body').html(strings['server_error']);
                     return false;
                 }
@@ -346,20 +344,6 @@ $(document).ready(function () {
         return false;
     });
 
-    $('a.chat-24').click(function () {
-        $('#modal-chat .modal-body').html('<div class="center"><img src="'+BASE_THEME+'images/loading.gif" /></div>');
-
-        $.post($(this).attr('href'),
-            function (response) {
-                $('#modal-chat .modal-body').html(response);
-            }
-        );
-
-        $('#modal-chat').modal();
-
-        return false;
-    });
-
     if ((typeof(UPDATED) != 'undefined') && (UPDATED != '')) {
         var just_updated = new Array();
 
@@ -369,12 +353,6 @@ $(document).ready(function () {
                 data: 'u='+UPDATED,
                 url: BASE_WWW+'ajax/push.php',
                 success: function (response) {
-                    try {
-                        response = $.parseJSON(response);
-                    } catch (e) {
-                        return false;
-                    }
-
                     if (response.error == true) {
                         clearInterval(pushInterval);
                         return false;

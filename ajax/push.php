@@ -1,4 +1,6 @@
 <?php
+header('Content-Type: application/json');
+
 if (!$_POST['u']) {
     die();
 }

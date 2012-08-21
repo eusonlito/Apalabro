@@ -1,4 +1,5 @@
 <?php
+header('Content-Type: application/json');
 
 if (!isset($_POST['id']) || !$_POST['id'] || !isset($_POST['played_tiles']) || !$_POST['played_tiles']) {
     die();
@@ -9,6 +10,8 @@ require (__DIR__.'/../libs/Lito/Apalabro/Loader.php');
 $game = $_POST['id'];
 
 require (BASE_PATH.'/aux/game-check.php');
+
+$Game = $Api->getGame($Game->id);
 
 $words = $Api->getPlayPoints($_POST['played_tiles']);
 
