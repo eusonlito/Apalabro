@@ -1,0 +1,15 @@
+[submodule "libs/ANS/Gettext"]
+	path = libs/ANS/Gettext
+	url = git@github.com:eusonlito/Gettext.git
+[submodule "libs/ANS/Timer"]
+	path = libs/ANS/Timer
+	url = git@github.com:eusonlito/Timer.git
+[submodule "libs/ANS/Cookie"]
+	path = libs/ANS/Cookie
+	url = git@github.com:eusonlito/Cookie.git
+[submodule "libs/ANS/Curl"]
+	path = libs/ANS/Curl
+	url = git@github.com:eusonlito/Curl.git
+[submodule "libs/ANS/Cache"]
+	path = libs/ANS/Cache
+	url = git@github.com:eusonlito/Cache.git

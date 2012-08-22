@@ -4,15 +4,15 @@ namespace Lito\Apalabro;
 defined('BASE_PATH') or die();
 
 class Debug {
-    private $enable = false;
+    public $enable = false;
 
-    public function show ($text, $info = true)
+    public function show ($text, $trace = true)
     {
         if (!$this->enable) {
             return true;
         }
 
-        if ($info) {
+        if ($trace) {
             $debug = array_reverse(debug_backtrace());
 
             echo '<pre>';

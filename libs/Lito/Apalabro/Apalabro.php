@@ -29,19 +29,33 @@ class Apalabro {
         $this->setLanguages();
     }
 
-    public function setTimer ($Timer) {
+    public function setTimer ($Timer)
+    {
         $this->Timer = &$Timer;
     }
 
-    public function setCache ($Cache) {
+    public function setCache ($Cache)
+    {
         $this->Cache = $Cache;
     }
 
-    public function setDebug ($Debug) {
-        $this->Debug = $Debug;
+    public function setDebug ($Debug, $function)
+    {
+        if (is_object($Debug) && method_exists($Debug, $function)) {
+            $Debug->function = $function;
+            $this->Debug = $Debug;
+        }
     }
 
-    public function setCurl ($Curl) {
+    public function debug ($text, $trace = true)
+    {
+        if ($this->Debug) {
+            $this->Debug->{$this->Debug->$function}($text, $trace);
+        }
+    }
+
+    public function setCurl ($Curl)
+    {
         $this->Curl = $Curl;
 
         $this->Curl->init($this->server);
@@ -90,11 +104,6 @@ class Apalabro {
     public function getLanguage ()
     {
         return $this->language;
-    }
-
-    public function debug ($text, $info = true)
-    {
-        $this->Debug->show($text, $info);
     }
 
     public function reload ()
@@ -441,7 +450,8 @@ class Apalabro {
         return $Game;
     }
 
-    public function getGame ($game, $reload = false) {
+    public function getGame ($game, $reload = false)
+    {
         if (!$this->Game || ($this->Game->id != $game) || $reload) {
             $this->preloadGame($game);
         }
