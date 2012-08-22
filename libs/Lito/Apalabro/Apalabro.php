@@ -26,24 +26,38 @@ class Apalabro {
 
     public function __construct ()
     {
-        global $Timer;
-
-        $this->Cache = new Cache;
-        $this->Cookie = new Cookie;
-        $this->Curl = new Curl;
-        $this->Debug = new Debug;
-
-        $this->Timer = $Timer;
-
-        $this->Curl->init($this->server);
-
         $this->setLanguages();
     }
 
-    public function setDebug ($debug)
+    public function setTimer ($Timer) {
+        $this->Timer = &$Timer;
+    }
+
+    public function setCache ($Cache) {
+        $this->Cache = $Cache;
+    }
+
+    public function setDebug ($Debug) {
+        $this->Debug = $Debug;
+    }
+
+    public function setCurl ($Curl) {
+        $this->Curl = $Curl;
+
+        $this->Curl->init($this->server);
+
+        $this->Curl->setOption(CURLOPT_USERAGENT, 'Android/4.0.4 Apalabro/1.4.1.3');
+        $this->Curl->setOption(CURLOPT_HTTPHEADER, array(
+            'Content-Type: application/json; charset=utf-8',
+            'Connection: Keep-Alive'
+        ));
+
+        $this->Curl->setJson(true);
+    }
+
+    public function setCookie ($Cookie)
     {
-        $this->Debug->setDebug($debug);
-        $this->Curl->Debug->setDebug($debug);
+        $this->Cookie = $Cookie;
     }
 
     public function setLanguages ()
@@ -85,8 +99,13 @@ class Apalabro {
 
     public function reload ()
     {
-        $this->Cache->reload(true);
-        $this->Curl->Cache->reload(true);
+        if ($this->Cache) {
+            $this->Cache->reload(true);
+        }
+
+        if ($this->Curl->Cache) {
+            $this->Curl->Cache->reload(true);
+        }
 
         unset($_GET['reload']);
     }
@@ -387,7 +406,7 @@ class Apalabro {
     {
         $this->_loggedOrDie();
 
-        if ($this->Cache->exists('game-'.$game)) {
+        if ($this->Cache && $this->Cache->exists('game-'.$game)) {
             $Game = $this->Cache->get('game-'.$game);
         } else {
             $Game = $this->Curl->get('users/'.$this->user.'/games/'.$game);
@@ -396,7 +415,7 @@ class Apalabro {
                 return array();
             }
 
-            if ($Game->game_status === 'ENDED') {
+            if ($this->Cache && ($Game->game_status === 'ENDED')) {
                 $this->Cache->set('game-'.$game, $Game);
             }
         }
@@ -542,7 +561,7 @@ class Apalabro {
 
         $cache_key = implode('', $Game->my_rack_tiles).$expression;
 
-        if ($this->Cache->exists($cache_key)) {
+        if ($this->Cache && $this->Cache->exists($cache_key)) {
             return $this->Cache->get($cache_key);
         }
 
@@ -552,7 +571,9 @@ class Apalabro {
             $words = $this->searchWords($Game->my_rack_tiles);
         }
 
-        $this->Cache->set($cache_key, $words);
+        if ($this->Cache) {
+            $this->Cache->set($cache_key, $words);
+        }
 
         return $words;
     }

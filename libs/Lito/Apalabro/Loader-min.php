@@ -10,15 +10,43 @@ define('BASE_PATH', preg_replace('#[/\\\]+#', '/', realpath(__DIR__.'/../../../'
 define('BASE_WWW', preg_replace('|^'.DOCUMENT_ROOT.'|i', '', BASE_PATH));
 define('FILENAME', basename(getenv('SCRIPT_FILENAME')));
 
+use Lito\Timer\Timer;
+use Lito\Cookie\Cookie;
+use Lito\Gettext\Gettext;
+use Lito\Curl\Curl;
+
 require (__DIR__.'/functions.php');
 require (__DIR__.'/Autoload.php');
 
 Autoload::register();
 Autoload::registerComposer();
 
-$Timer = new Timer();
-$Gettext = new Gettext();
+$Timer = new Timer;
+$Debug = new Debug;
+$Cache = new Cache;
+$Cookie = new Cookie;
+
+$Cookie->setName('apalabro');
+
+$Gettext = new Gettext;
+
+$Gettext->setPath(BASE_PATH.'languages');
+$Gettext->setCookie($Cookie);
+$Gettext->init();
+
+$Curl = new Curl;
+
+$Curl->setTimer($Timer);
+$Curl->setDebug($Debug);
+$Curl->setCache($Cache);
+
 $Api = new Apalabro();
+
+$Api->setTimer($Timer);
+$Api->setDebug($Debug);
+$Api->setCache($Cache);
+$Api->setCookie($Cookie);
+$Api->setCurl($Curl);
 
 if (isset($_GET['language'])) {
     $Gettext->setLanguage($_GET['language'], true);
@@ -32,8 +60,5 @@ if (isset($_GET['logout'])) {
 }
 
 $Theme = new Theme();
-$Debug = new Debug();
 
 define('BASE_THEME', $Theme->www());
-
-$Debug->setDebug(true);
