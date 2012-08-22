@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apalabro!\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-22 00:25+0100\n"
-"PO-Revision-Date: 2012-08-22 00:28+0100\n"
+"POT-Creation-Date: 2012-08-23 01:42+0100\n"
+"PO-Revision-Date: 2012-08-23 01:43+0100\n"
 "Last-Translator: Lito <lito@eordes.com>\n"
 "Language-Team: Lito <lito@eordes.com>\n"
 "Language: \n"
@@ -22,8 +22,8 @@ msgid "Your tiles were set successfully"
 msgstr "As fichas colocáronse correctamente"
 
 #: game.php:19
-msgid "Sorry but these word is no valid"
-msgstr "Recoiros, a palabra que escolleches non parece valer"
+msgid "Some error occours triying to play yours words. Please try it again."
+msgstr "Ocorreu algún erro cando intentaba realizar a túa xogada. Por favor, inténtao de novo."
 
 #: game.php:27
 msgid "Your tiles were swapped successfully"
@@ -75,8 +75,8 @@ msgid "No user ID was received"
 msgstr "Non se recibiu o ID do usuario"
 
 #: profile.php:17
-msgid "This user does not exists"
-msgstr "Este usuario non existe"
+msgid "This user does not exists or could not be loaded. Please reload this page to try it again."
+msgstr "Este usuario non existe ou non se puido cargar. Por favor, recarga esta páxina para intentalo de novo."
 
 #: profile.php:30
 #, php-format
@@ -106,55 +106,63 @@ msgstr "Entrar"
 msgid "Theme path \"%s\" does not exists."
 msgstr "O directorio \"%s\" para este tema non existe."
 
-#: libs/Lito/Apalabro/functions.php:65
-#: libs/Lito/Apalabro/functions.php:72
+#: libs/Lito/Apalabro/functions.php:64
+#: libs/Lito/Apalabro/functions.php:71
 msgid "just now"
 msgstr "xusto agora"
 
-#: libs/Lito/Apalabro/functions.php:74
+#: libs/Lito/Apalabro/functions.php:73
 msgid "one minute ago"
 msgstr "hai un minuto"
 
-#: libs/Lito/Apalabro/functions.php:76
+#: libs/Lito/Apalabro/functions.php:75
 #, php-format
 msgid "%s minutes ago"
 msgstr "hai %s minutos"
 
-#: libs/Lito/Apalabro/functions.php:78
+#: libs/Lito/Apalabro/functions.php:77
 msgid "one hour ago"
 msgstr "hai unha hora"
 
-#: libs/Lito/Apalabro/functions.php:80
+#: libs/Lito/Apalabro/functions.php:79
 #, php-format
 msgid "%s hours ago"
 msgstr "hai %s horas"
 
-#: libs/Lito/Apalabro/functions.php:82
+#: libs/Lito/Apalabro/functions.php:81
 msgid "yesterday"
 msgstr "onte"
 
-#: libs/Lito/Apalabro/functions.php:84
+#: libs/Lito/Apalabro/functions.php:83
 #, php-format
 msgid "%s days ago"
 msgstr "hai %s días"
 
-#: libs/Lito/Apalabro/functions.php:94
+#: libs/Lito/Apalabro/functions.php:93
 msgid "in a minute"
 msgstr "nun minuto"
 
-#: libs/Lito/Apalabro/functions.php:96
+#: libs/Lito/Apalabro/functions.php:95
 #, php-format
 msgid "in %s minutes"
 msgstr "en %s minutos"
 
-#: libs/Lito/Apalabro/functions.php:98
+#: libs/Lito/Apalabro/functions.php:97
 msgid "in an hour"
 msgstr "nunha hora"
 
-#: libs/Lito/Apalabro/functions.php:100
+#: libs/Lito/Apalabro/functions.php:99
 #, php-format
 msgid "in %s hours"
 msgstr "en %s horas"
+
+#: libs/ANS/Gettext/example.php:19
+msgid "Hi! This text (translated or not)"
+msgstr ""
+
+#: libs/ANS/Gettext/example.php:22
+msgid "Another text :)"
+msgstr ""
 
 #: themes/default/game.php:15
 msgid "Your turn"
@@ -375,6 +383,7 @@ msgid "User Profile"
 msgstr "Perfil do Usuario"
 
 #: themes/default/base.php:109
+#: themes/default/js/strings.js.php:23
 msgid "Your Turn"
 msgstr "Tócache"
 
@@ -717,16 +726,20 @@ msgstr "COLOCAR FICHA"
 msgid "PASS"
 msgstr "PASA"
 
-#: ajax/get-points.php:41
+#: ajax/get-points.php:22
+msgid "Some error occours triying to load the points. Please close this window and try it again."
+msgstr "Ocorreu algún erro intentando obter os puntos da xogada. Por favor, pecha esta fiestra e inténtao de novo."
+
+#: ajax/get-points.php:50
 msgid "No valid word"
 msgstr "Non é unha palabra válida"
 
-#: ajax/get-points.php:49
+#: ajax/get-points.php:58
 #, php-format
 msgid "Playing for %s points"
 msgstr "Xogando por %s puntos"
 
-#: ajax/get-points.php:53
+#: ajax/get-points.php:62
 msgid "Sorry but these tiles can not be combined. Please, try it another cells"
 msgstr "Sentímolo pero estas fichas non poden ser misturadas. Por favor, inténtao con outras fichas"
 
@@ -752,6 +765,12 @@ msgstr "Non se atoparon usuarios..."
 #: ajax/chat.php:47
 msgid "There aren't any conversation in this game"
 msgstr "Non hai ningunha conversa nesta partida"
+
+#~ msgid "Sorry but these word is no valid"
+#~ msgstr "Recoiros, a palabra que escolleches non parece valer"
+
+#~ msgid "This user does not exists"
+#~ msgstr "Este usuario non existe"
 
 #~ msgid "ago"
 #~ msgstr "hai"

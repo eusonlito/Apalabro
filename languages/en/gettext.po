@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apalabro!\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-22 00:29+0100\n"
-"PO-Revision-Date: 2012-08-22 00:29+0100\n"
+"POT-Creation-Date: 2012-08-23 01:40+0100\n"
+"PO-Revision-Date: 2012-08-23 01:40+0100\n"
 "Last-Translator: Lito <lito@eordes.com>\n"
 "Language-Team: Lito <lito@eordes.com>\n"
 "Language: \n"
@@ -22,7 +22,7 @@ msgid "Your tiles were set successfully"
 msgstr ""
 
 #: game.php:19
-msgid "Sorry but these word is no valid"
+msgid "Some error occours triying to play yours words. Please try it again."
 msgstr ""
 
 #: game.php:27
@@ -75,7 +75,7 @@ msgid "No user ID was received"
 msgstr ""
 
 #: profile.php:17
-msgid "This user does not exists"
+msgid "This user does not exists or could not be loaded. Please reload this page to try it again."
 msgstr ""
 
 #: profile.php:30
@@ -106,54 +106,62 @@ msgstr ""
 msgid "Theme path \"%s\" does not exists."
 msgstr ""
 
-#: libs/Lito/Apalabro/functions.php:65
-#: libs/Lito/Apalabro/functions.php:72
+#: libs/Lito/Apalabro/functions.php:64
+#: libs/Lito/Apalabro/functions.php:71
 msgid "just now"
 msgstr ""
 
-#: libs/Lito/Apalabro/functions.php:74
+#: libs/Lito/Apalabro/functions.php:73
 msgid "one minute ago"
 msgstr ""
 
-#: libs/Lito/Apalabro/functions.php:76
+#: libs/Lito/Apalabro/functions.php:75
 #, php-format
 msgid "%s minutes ago"
 msgstr ""
 
-#: libs/Lito/Apalabro/functions.php:78
+#: libs/Lito/Apalabro/functions.php:77
 msgid "one hour ago"
 msgstr ""
 
-#: libs/Lito/Apalabro/functions.php:80
+#: libs/Lito/Apalabro/functions.php:79
 #, php-format
 msgid "%s hours ago"
 msgstr ""
 
-#: libs/Lito/Apalabro/functions.php:82
+#: libs/Lito/Apalabro/functions.php:81
 msgid "yesterday"
 msgstr ""
 
-#: libs/Lito/Apalabro/functions.php:84
+#: libs/Lito/Apalabro/functions.php:83
 #, php-format
 msgid "%s days ago"
 msgstr ""
 
-#: libs/Lito/Apalabro/functions.php:94
+#: libs/Lito/Apalabro/functions.php:93
 msgid "in a minute"
 msgstr ""
 
-#: libs/Lito/Apalabro/functions.php:96
+#: libs/Lito/Apalabro/functions.php:95
 #, php-format
 msgid "in %s minutes"
 msgstr ""
 
-#: libs/Lito/Apalabro/functions.php:98
+#: libs/Lito/Apalabro/functions.php:97
 msgid "in an hour"
 msgstr ""
 
-#: libs/Lito/Apalabro/functions.php:100
+#: libs/Lito/Apalabro/functions.php:99
 #, php-format
 msgid "in %s hours"
+msgstr ""
+
+#: libs/ANS/Gettext/example.php:19
+msgid "Hi! This text (translated or not)"
+msgstr ""
+
+#: libs/ANS/Gettext/example.php:22
+msgid "Another text :)"
 msgstr ""
 
 #: themes/default/game.php:15
@@ -375,6 +383,7 @@ msgid "User Profile"
 msgstr ""
 
 #: themes/default/base.php:109
+#: themes/default/js/strings.js.php:23
 msgid "Your Turn"
 msgstr ""
 
@@ -718,16 +727,20 @@ msgstr ""
 msgid "PASS"
 msgstr ""
 
-#: ajax/get-points.php:41
+#: ajax/get-points.php:22
+msgid "Some error occours triying to load the points. Please close this window and try it again."
+msgstr ""
+
+#: ajax/get-points.php:50
 msgid "No valid word"
 msgstr ""
 
-#: ajax/get-points.php:49
+#: ajax/get-points.php:58
 #, php-format
 msgid "Playing for %s points"
 msgstr ""
 
-#: ajax/get-points.php:53
+#: ajax/get-points.php:62
 msgid "Sorry but these tiles can not be combined. Please, try it another cells"
 msgstr ""
 
