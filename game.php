@@ -16,7 +16,7 @@ if ($Game->game_status !== 'ENDED') {
 
             $Game = $Api->getGame($Game->id, true);
         } else {
-            $Theme->setMessage(__('Sorry but these word is no valid'), 'error');
+            $Theme->setMessage(__('Some error occours triying to play yours words. Please try it again.'), 'error');
         }
     }
 

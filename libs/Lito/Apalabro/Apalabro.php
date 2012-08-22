@@ -911,6 +911,10 @@ class Apalabro {
 
         $check = $this->Curl->post('dictionaries/'.mb_strtoupper($this->language), mb_strtoupper(implode(',', $words)));
 
+        if (!$check) {
+            return false;
+        }
+
         $this->loadBoardPoints();
 
         foreach ($matched as &$word) {
@@ -1222,15 +1226,21 @@ class Apalabro {
 
     private function stringInArray ($string, $array, $wildcards)
     {
-        foreach ($array as $letter) {
-            if (($position = mb_strpos($string, $letter)) === false) {
-                continue;
-            }
+        if (!$string) {
+            return false;
+        }
 
-            $string = mb_substr($string, 0, $position).mb_substr($string, $position + mb_strlen($letter));
+        if ($array) {
+            foreach ($array as $letter) {
+                if (!$letter || (($position = mb_strpos($string, $letter)) === false)) {
+                    continue;
+                }
 
-            if (!$string) {
-                return true;
+                $string = mb_substr($string, 0, $position).mb_substr($string, $position + mb_strlen($letter));
+
+                if (!$string) {
+                    return true;
+                }
             }
         }
 

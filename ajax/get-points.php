@@ -15,6 +15,15 @@ $Game = $Api->getGame($Game->id);
 
 $words = $Api->getPlayPoints($_POST['played_tiles']);
 
+if ($words === false) {
+    die(json_encode(array(
+        'error' => true,
+        'html' => ('<div class="alert alert-danger"><p>'
+            .__('Some error occours triying to load the points. Please close this window and try it again.')
+            .'</p></div>')
+    )));
+}
+
 $html = '';
 $error = false;
 

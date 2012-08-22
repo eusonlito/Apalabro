@@ -6,12 +6,17 @@ defined('BASE_PATH') or die();
 class Debug {
     public $enable = false;
 
-    public function show ($text, $trace = true)
+    public function showIf ($text, $trace = true)
     {
         if (!$this->enable) {
             return true;
         }
 
+        $this->show($text, $trace);
+    }
+
+    public function show ($text, $trace = true)
+    {
         if ($trace) {
             $debug = array_reverse(debug_backtrace());
 

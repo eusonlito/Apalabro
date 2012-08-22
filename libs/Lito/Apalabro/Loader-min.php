@@ -50,13 +50,13 @@ $Gettext->init();
 $Curl = new Curl;
 
 $Curl->setTimer($Timer);
-$Curl->setDebug($Debug, 'show');
+$Curl->setDebug($Debug, 'showIf');
 $Curl->setCache($Cache);
 
 $Api = new Apalabro();
 
 $Api->setTimer($Timer);
-$Api->setDebug($Debug, 'show');
+$Api->setDebug($Debug, 'showIf');
 $Api->setCache($Cache);
 $Api->setCookie($Cookie);
 $Api->setCurl($Curl);

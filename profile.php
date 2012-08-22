@@ -13,8 +13,8 @@ if (!preg_match('/^[0-9]+$/', $user)) {
 
 $User = $Api->getUser($user);
 
-if (!$User) {
-    $Theme->setMessage(__('This user does not exists'), 'error', true);
+if (!isset($User->id)) {
+    $Theme->setMessage(__('This user does not exists or could not be loaded. Please reload this page to try it again.'), 'error', true);
 
     include ($Theme->get('base.php'));
 
