@@ -6,7 +6,7 @@ Only login using user and password is available (Facebook ins't implemented yet)
 
 You can view a only demo at at <a href="http://litoweb.net/apalabro/">Apalabro! demo</a>.
 
-Intallation
+Installation
 --------
 We can download full project with git commands:
 
