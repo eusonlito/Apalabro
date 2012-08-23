@@ -20,7 +20,7 @@
             </div>
 
             <div class="span9">
-                <h4><?php echo $Friend->friend->name; ?></h4>
+                <h4><a href="<?php echo BASE_WWW; ?>profile.php?id=<?php echo $Friend->friend->id; ?>"><?php echo $Friend->friend->name; ?></a></h4>
 
                 <small class="label"><?php echo __('last move %s', humanDate($Friend->lastPlayed)); ?></small>
 

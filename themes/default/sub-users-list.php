@@ -19,7 +19,7 @@
             </div>
 
             <div class="span9">
-                <h4><?php echo $User->name; ?></h4>
+                <h4><a href="<?php echo BASE_WWW; ?>profile.php?id=<?php echo $User->id; ?>"><?php echo $User->name; ?></a></h4>
 
                 <small class="label"><?php echo __('last login %s', humanDate($User->last_log)); ?></small>
             </div>

@@ -71,11 +71,11 @@
             </fieldset>
         </form>
 
+        <?php if (($User->my_wins + $User->opponent_wins) > 0) { ?>
         <p class="alert alert-info">
             <?php __e('<strong>%s</strong> finished versus games', $User->my_wins + $User->opponent_wins); ?>
         </p>
 
-        <?php if (($User->my_wins + $User->opponent_wins) > 0) { ?>
         <div class="row-fluid">
             <div class="span6">
                 <p class="alert alert-success">
