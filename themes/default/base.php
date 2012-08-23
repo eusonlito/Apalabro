@@ -19,7 +19,7 @@
         <link rel="shortcut icon" href="<?php echo BASE_WWW; ?>favicon.ico" />
 
         <link href="<?php echo BASE_THEME; ?>bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
-        <link href="<?php echo BASE_THEME; ?>css/styles.css" type="text/css" rel="stylesheet" />
+        <link href="<?php echo BASE_THEME; ?>css/styles.css?1" type="text/css" rel="stylesheet" />
 
         <?php if ($Api->getLanguage()) { ?>
         <style>
