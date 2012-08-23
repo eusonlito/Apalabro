@@ -209,7 +209,7 @@
                     <form action="<?php echo BASE_WWW; ?>ajax/search-words.php" class="form-inline filter-expression" data-filtered=".words-expression" method="post">
                         <input type="hidden" name="id" value="<?php echo $Game->id; ?>" />
 
-                        <input type="text" name="filter" value="" class="input-large search-query" placeholder="<?php __e('Search with regular expression'); ?>">
+                        <input type="text" name="filter" value="" class="input-large" placeholder="<?php __e('Search with regular expression'); ?>">
 
                         <button type="submit" class="btn btn-info"><?php __e('Search'); ?></button>
 
