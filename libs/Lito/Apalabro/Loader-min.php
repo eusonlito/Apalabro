@@ -45,6 +45,7 @@ $Gettext = new Gettext;
 
 $Gettext->setPath(BASE_PATH.'languages');
 $Gettext->setCookie($Cookie);
+$Gettext->setDefaultLanguage('en');
 $Gettext->init();
 
 $Curl = new Curl;
