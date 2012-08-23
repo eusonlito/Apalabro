@@ -32,10 +32,7 @@
         <script src="<?php echo BASE_THEME; ?>js/jquery.min.js" type="text/javascript"></script>
         <script src="<?php echo BASE_THEME; ?>js/jquery-ui/js/jquery-ui-1.8.22.custom.min.js" type="text/javascript"></script>
         <script src="<?php echo BASE_THEME; ?>js/jquery-ui/js/jquery.ui.touch-punch.min.js" type="text/javascript"></script>
-        <script src="<?php echo BASE_THEME; ?>bootstrap/js/bootstrap-dropdown.js" type="text/javascript"></script>
-        <script src="<?php echo BASE_THEME; ?>bootstrap/js/bootstrap-tab.js" type="text/javascript"></script>
-        <script src="<?php echo BASE_THEME; ?>bootstrap/js/bootstrap-modal.js" type="text/javascript"></script>
-        <script src="<?php echo BASE_THEME; ?>bootstrap/js/bootstrap-alert.js" type="text/javascript"></script>
+        <script src="<?php echo BASE_THEME; ?>bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
         <script src="<?php echo BASE_THEME; ?>js/jquery.timeago.js" type="text/javascript"></script>
 
         <script src="<?php echo BASE_THEME; ?>js/strings.js.php?lg=<?php echo $Gettext->getLanguage(); ?>" type="text/javascript"></script>
