@@ -73,7 +73,7 @@
         })();
         </script>
 
-        <script src="<?php echo BASE_THEME; ?>js/scripts.js" type="text/javascript"></script>
+        <script src="<?php echo BASE_THEME; ?>js/scripts.js?1" type="text/javascript"></script>
     </head>
 
     <body>
@@ -88,8 +88,8 @@
 
                             <?php if ($Api->logged()) { ?>
 
-                            <?php if ((FILENAME === 'game.php') && isset($Game->id)) { ?>
-                            <li class="active"><a href="?id=<?php echo $Game->id; ?>"><?php __e('Game'); ?></a></li>
+                            <?php if ((FILENAME === 'game.php') && isset($game) && $game) { ?>
+                            <li class="active"><a href="?id=<?php echo $game; ?>"><?php __e('Game'); ?></a></li>
                             <?php } ?>
 
                             <?php if (FILENAME === 'profile.php') { ?>

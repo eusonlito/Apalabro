@@ -344,6 +344,18 @@ $(document).ready(function () {
         return false;
     });
 
+    $('a[data-action="profile-new-game"]').click(function () {
+        var $modal = $('#modal-profile-new-game');
+
+        $modal.modal();
+
+        $('input[name="language"]', $modal).click(function () {
+            $('button[type="submit"]', $modal).attr('disabled', false);
+        });
+
+        return false;
+    });
+
     if ((typeof(UPDATED) != 'undefined') && (UPDATED != '')) {
         var just_updated = new Array();
 
