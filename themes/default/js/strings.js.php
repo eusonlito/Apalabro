@@ -23,3 +23,4 @@ strings['updates'] = '<?php echo str_replace("\'", '&apos;', __('Updates!')); ?>
 strings['your_turn'] = '<?php echo str_replace("\'", '&apos;', __('Your Turn')); ?>';
 strings['new_messages'] = '<?php echo str_replace("\'", '&apos;', __('You have new messages!')); ?>';
 strings['your_messages'] = '<?php echo str_replace("\'", '&apos;', __('You have %s messages')); ?>';
+strings['select_language'] = '<?php echo str_replace("\'", '&apos;', __('You must select a language')); ?>';

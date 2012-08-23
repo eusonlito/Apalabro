@@ -18,6 +18,15 @@ $(document).ready(function () {
         $('button[type="submit"]', $(this).parents('div.tab-pane')).attr('disabled', false);
     });
 
+    $('#new-game').submit(function () {
+        if ($('input[name="language"]:checked', $(this)).length != 1) {
+            alert(strings['select_language']);
+            return false;
+        }
+
+        return true;
+    });
+
     $('.filter-users button[type="submit"]').click(function (e) {
         if (($(this).data('url') == undefined) || ($(this).data('filtered') == undefined)) {
             return true;

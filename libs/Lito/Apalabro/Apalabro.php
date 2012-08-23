@@ -703,6 +703,7 @@ class Apalabro {
             return false;
         }
 
+        $user = intval($user);
         $data = array('language' => strtoupper($language));
 
         if ($user && preg_match('/^[0-9]+$/', $user)) {

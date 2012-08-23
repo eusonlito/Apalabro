@@ -2,7 +2,9 @@
 require (__DIR__.'/libs/Lito/Apalabro/Loader.php');
 
 if (isset($_POST['new']) && isset($_POST['language'])) {
-    $Game = $Api->newGame($_POST['language'], $_POST['user_id']);
+    $user = ($_POST['new'] === 'random') ? 0 : $_POST['user_id'];
+
+    $Game = $Api->newGame($_POST['language'], $user);
 
     if (isset($Game->id)) {
         header('Location: '.BASE_WWW.'game.php?id='.$Game->id);

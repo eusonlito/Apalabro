@@ -27,7 +27,9 @@
         <div class="tab-content">
             <div class="tab-pane active" id="tab-random">
                 <div class="form-actions">
-                    <button type="submit" class="btn btn-success"><?php __e('Start a new game with random opponent'); ?></button>
+                    <button type="submit" name="new" value="random" class="btn btn-success">
+                        <?php __e('Start a new game with random opponent'); ?>
+                    </button>
                 </div>
             </div>
 

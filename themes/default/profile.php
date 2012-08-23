@@ -101,6 +101,8 @@
                 </div>
 
                 <div class="modal-footer">
+                    <a href="#" class="btn" data-dismiss="modal"><i class="icon-remove"></i> <?php __e('Cancel'); ?></a>
+
                     <button type="submit" name="new" value="true" class="btn btn-large btn-primary" disabled="disabled">
                         <i class="icon-play-circle icon-white"></i> <?php __e('Play!'); ?>
                     </button>
