@@ -44,7 +44,7 @@ $Cache->setSettings(array(
 $Gettext = new Gettext;
 
 $Gettext->setPath(BASE_PATH.'languages');
-$Gettext->setCookie($Cookie);
+$Gettext->setCookie($Cookie, 'language');
 $Gettext->setDefaultLanguage('en');
 $Gettext->init();
 
