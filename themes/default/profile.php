@@ -10,7 +10,6 @@
 
         <div class="tile-50">
             <span class="letter"><?php echo substr($User->name, 0, 1); ?></span>
-            <span class="points"><?php echo $Api->getWordPoints(substr($User->name, 0, 1)); ?></span>
         </div>
 
         <?php } ?>
@@ -33,23 +32,30 @@
             <?php } ?>
         </div>
 
-        <?php foreach ($User->games_by_language as $Game) { ?>
-        <div class="well pull-left">
-            <h4>
-                <?php
-                $language = mb_strtolower($Game->language);
+        <div class="row-fluid">
+            <?php foreach ($User->games_by_language as $i => $Game) { ?>
 
-                if (in_array($language, $languages)) {
-                    echo '<img src="'.BASE_WWW.'languages/'.$language.'/flag.png" alt="'.__('language_'.$language).'" />';
-                } else {
-                    echo '['.$Game->language.']';
-                }
+            <?php if (($i > 0) && (($i % 4) === 0)) { ?>
+            </div><div class="row-fluid">
+            <?php } ?>
 
-                echo ' '.$Game->count;
-                ?>
-            </h4>
+            <div class="span3">
+                <div class="well center">
+                    <?php
+                    $language = mb_strtolower($Game->language);
+
+                    if (in_array($language, $languages)) {
+                        echo '<img src="'.BASE_WWW.'languages/'.$language.'/flag.png" alt="'.__('language_'.$language).'" />';
+                    } else {
+                        echo '['.$Game->language.']';
+                    }
+
+                    echo ' <strong>'.$Game->count.'</strong>';
+                    ?>
+                </div>
+            </div>
+            <?php } ?>
         </div>
-        <?php } ?>
     </div>
 
     <div class="span5">

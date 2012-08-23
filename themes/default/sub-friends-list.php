@@ -13,7 +13,6 @@
 
                 <div class="tile-50">
                     <span class="letter"><?php echo substr($Friend->friend->name, 0, 1); ?></span>
-                    <span class="points"><?php echo $Api->getWordPoints(substr($Friend->friend->name, 0, 1)); ?></span>
                 </div>
 
                 <?php } ?>
