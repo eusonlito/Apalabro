@@ -103,13 +103,19 @@
 
                             <li id="updates" class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <span><?php __e('Your Turn'); ?></span> <b class="caret"></b>
+                                    <span><?php
+                                        __e('Your Turn');
+
+                                        $turn = $Api->getGames('turn');
+
+                                        echo $turn ? (' ('.count($turn).')') : '';
+                                    ?></span> <b class="caret"></b>
                                 </a>
 
                                 <ul class="dropdown-menu">
                                     <?php
-                                    if ($Api->getGames('turn')) {
-                                        foreach ($Api->getGames('turn') as $Turn) {
+                                    if ($turn) {
+                                        foreach ($turn as $Turn) {
                                             echo '<li id="updated-'.$Turn->id.'" class="current">'
                                                 .'<a href="'.BASE_WWW.'game.php?id='.$Turn->id.'">'
                                                 .__('Is your turn vs %s', $Turn->opponent->name)
