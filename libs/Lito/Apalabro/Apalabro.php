@@ -524,11 +524,17 @@ class Apalabro {
         return $this->Game->my_rack_tiles;
     }
 
-    public function getBoard ()
+    public function getBoard ($highlights = array())
     {
         $this->_loggedOrDie();
 
         $tiles = $this->Game->board_tiles;
+
+        if (($highlights === true) && isset($this->Game->last_turn->played_tiles)) {
+            $highlights = explode(',', $this->Game->last_turn->played_tiles);
+        } else if (is_string($highlights)) {
+            $highlights = explode(',', $highlights);
+        }
 
         $board = '<tr>';
 
@@ -537,14 +543,18 @@ class Apalabro {
                 $board .= '</tr><tr>';
             }
 
-            if (isset($tiles[$i])) {
-                if (strstr($tiles[$i], '*') === false) {
-                    $board .= '<td class="tile-35">';
-                    $board .= '<span class="letter">'.$tiles[$i].'</span>';
-                    $board .= '<span class="points">'.$this->points[$tiles[$i]].'</span>';
+            $tile = isset($tiles[$i]) ? $tiles[$i] : false;
+
+            if ($tile) {
+                $highlight = ($highlights && in_array($i, $highlights)) ? ' highlight' : '';
+
+                if (strstr($tile, '*') === false) {
+                    $board .= '<td class="tile-35'.$highlight.'">';
+                    $board .= '<span class="letter">'.$tile.'</span>';
+                    $board .= '<span class="points">'.$this->points[$tile].'</span>';
                 } else {
-                    $board .= '<td class="tile-35 wildcard">';
-                    $board .= '<span class="letter">'.str_replace('*', '', $tiles[$i]).'</span>';
+                    $board .= '<td class="tile-35'.$highlight.' wildcard">';
+                    $board .= '<span class="letter">'.str_replace('*', '', $tile).'</span>';
                     $board .= '<span class="points">0</span>';
                 }
             } else {

@@ -81,6 +81,10 @@ div.home div.well {
     margin-right: 0 !important;
 }
 
+.tile-35.highlight {
+    background-position: -70px 0;
+}
+
 div.tile-35 {
     cursor: pointer;
     background-position: -35px 0;

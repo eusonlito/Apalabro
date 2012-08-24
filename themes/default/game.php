@@ -96,7 +96,7 @@
             <?php } ?>
 
             <table class="board">
-                <?php echo $Api->getBoard($Game->id); ?>
+                <?php echo $Api->getBoard(true); ?>
             </table>
 
             <div class="rack-tiles" height="50">
