@@ -258,6 +258,10 @@ class Apalabro {
             $User = $this->Curl->get('users/'.$this->user);
         }
 
+        if (!is_object($User) || !$User->id) {
+            return false;
+        }
+
         if (isset($User->facebook_name)) {
             $User->name = $User->facebook_name;
             $User->avatar = 'http://graph.facebook.com/'
@@ -299,6 +303,10 @@ class Apalabro {
         $this->_loggedOrDie();
 
         $Friends = $this->Curl->get('users/'.$this->user.'/friends');
+
+        if (!is_object($Friends) || !$Friends->list) {
+            return array();
+        }
 
         foreach ($Friends->list as &$Friend) {
             if (isset($Friend->friend->facebook_name)) {
@@ -420,8 +428,8 @@ class Apalabro {
         } else {
             $Game = $this->Curl->get('users/'.$this->user.'/games/'.$game);
 
-            if (!$Game) {
-                return array();
+            if (!is_object($Game) || !$Game->id) {
+                return false;
             }
 
             if ($this->Cache && ($Game->game_status === 'ENDED')) {
@@ -650,13 +658,13 @@ class Apalabro {
 
         $Chat = $this->Curl->get('users/'.$this->user.'/games/'.$this->Game->id.'/chat?all=true');
 
-        if (isset($Chat->total) && ($Chat->total > 0)) {
-            krsort($Chat->list);
-
-            return $Chat->list;
-        } else {
+        if (!is_object($Chat) || !$Chat->list) {
             return array();
         }
+
+        krsort($Chat->list);
+
+        return $Chat->list;
     }
 
     public function setChat ($message)
