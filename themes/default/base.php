@@ -116,10 +116,14 @@
                                     <?php
                                     if ($turn) {
                                         foreach ($turn as $Turn) {
-                                            echo '<li id="updated-'.$Turn->id.'" class="current">'
-                                                .'<a href="'.BASE_WWW.'game.php?id='.$Turn->id.'">'
-                                                .__('Is your turn vs %s', $Turn->opponent->name)
-                                                .'</a></li>';
+                                            $text = getLastTurnMessage($Turn, getPlayDates($Api->getGames('all')));
+
+                                            if (is_string($text)) {
+                                                echo '<li id="updated-'.$Turn->id.'" class="current">'
+                                                    .'<a href="'.BASE_WWW.'game.php?id='.$Turn->id.'">'
+                                                    .$text
+                                                    .'</a></li>';
+                                            }
                                         }
                                     } else {
                                         echo '<li><span>'.__('There aren\'t games waiting for you').'</span></li>';

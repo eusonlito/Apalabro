@@ -91,7 +91,7 @@ class Apalabro {
 
         $language = mb_strtolower($language);
 
-        if (in_array($language, $this->languages)) {
+        if (in_array($language, $this->languages, true)) {
             $this->language = $language;
         }
     }
@@ -382,7 +382,7 @@ class Apalabro {
 
             $this->games['all'][$Game->id] = $Game;
 
-            if (in_array($Game->game_status, array('ACTIVE', 'PENDING_MY_APPROVAL', 'PENDING_FIRST_MOVE'))) {
+            if (in_array($Game->game_status, array('ACTIVE', 'PENDING_MY_APPROVAL', 'PENDING_FIRST_MOVE'), true)) {
                 $this->games['active'][$Game->id] = $Game;
 
                 if ($Game->my_turn) {
@@ -439,7 +439,7 @@ class Apalabro {
             $Game->opponent->avatar = '';
         }
 
-        if (in_array($Game->game_status, array('ACTIVE', 'PENDING_MY_APPROVAL', 'PENDING_FIRST_MOVE', 'PENDING_FRIENDS_APPROVAL'))) {
+        if (in_array($Game->game_status, array('ACTIVE', 'PENDING_MY_APPROVAL', 'PENDING_FIRST_MOVE', 'PENDING_FRIENDS_APPROVAL'), true)) {
             $Game->active = true;
         } else {
             $Game->active = false;
@@ -709,7 +709,7 @@ class Apalabro {
     {
         $this->_loggedOrDie();
 
-        if (!in_array($language, $this->languages)) {
+        if (!in_array($language, $this->languages, true)) {
             return false;
         }
 

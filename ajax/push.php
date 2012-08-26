@@ -11,9 +11,9 @@ if (!isAjax()) {
     die();
 }
 
-$updated = json_decode(base64_decode($_POST['u']));
+$Current = json_decode(base64_decode($_POST['u']));
 
-if (!is_object($updated)) {
+if (!is_object($Current)) {
     die();
 }
 
@@ -21,23 +21,17 @@ $games = $Api->getGames('all');
 $message = array();
 
 foreach ($games as $Game) {
-    if (!isset($Game->last_turn->play_date)) {
+    if (!isset($Game->last_turn->play_date) || !$Game->my_turn) {
         continue;
     }
 
-    if (!isset($updated->{$Game->id})) {
+    $text = getLastTurnMessage($Game, $Current);
+
+    if (is_string($text)) {
         $message[] = array(
             'id' => $Game->id,
             'key' => md5($Game->id.'|game'),
-            'text' => __('%s wants to play with you', $Game->opponent->name),
-            'link' => (BASE_WWW.'game.php?id='.$Game->id),
-            'type' => 'game'
-        );
-    } else if ($Game->last_turn->play_date !== $updated->{$Game->id}) {
-        $message[] = array(
-            'id' => $Game->id,
-            'key' => md5($Game->id.'|game'),
-            'text' => __('%s has updated the game', $Game->opponent->name),
+            'text' => $text,
             'link' => (BASE_WWW.'game.php?id='.$Game->id),
             'type' => 'game'
         );

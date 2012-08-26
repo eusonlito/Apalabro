@@ -182,3 +182,51 @@ function getPlayDates ($games)
 
     return $return;
 }
+
+function getLastTurnMessage ($Game, $Current = null) {
+    if (!is_object($Game) || (isset($Current->{$Game->id}) && ($Game->last_turn->play_date === $Current->{$Game->id}))) {
+        return false;
+    }
+
+    if (in_array($Game->game_status, array('PENDING_MY_APPROVAL', 'PENDING_FIRST_MOVE'), true)) {
+        return __('%s wants to play with you', $Game->opponent->name);
+    }
+
+    if ($Game->game_status === 'ACTIVE') {
+        switch ($Game->last_turn->type) {
+            case 'PLACE_TILE':
+                return __('%s has place tiles', $Game->opponent->name);
+
+            case 'PASS':
+                return __('%s has passed the turn', $Game->opponent->name);
+
+            case 'SWAP':
+                return __('%s has swapped tiles', $Game->opponent->name);
+
+            default:
+                return __('%s has updated the game', $Game->opponent->name);
+        }
+    }
+
+    if ($Game->game_status === 'ENDED') {
+        if ($Game->ended_reason === 'NORMAL') {
+            if ($Game->last_turn->type === 'REJECT') {
+                return __('%s does\'t wants to play', $Game->opponent->name);
+            } else if ($Game->last_turn->type === 'RESIGN') {
+                return __('%s has resigned. You win!', $Game->opponent->name);
+            } else if ($Game->win) {
+                return __('Game versus %s was ended. You win!', $Game->opponent->name);
+            } else {
+                return __('Game versus %s was ended. You lost :(', $Game->opponent->name);
+            }
+        } else if ($Game->ended_reason === 'EXPIRE') {
+            if ($Game->win) {
+                return __('Game versus %s was expired. You win!', $Game->opponent->name);
+            } else {
+                return __('Game versus %s was expired. You lost :(', $Game->opponent->name);
+            }
+        }
+    }
+
+    return false;
+}
