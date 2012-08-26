@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apalabro!\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-26 21:39+0100\n"
-"PO-Revision-Date: 2012-08-26 21:39+0100\n"
+"POT-Creation-Date: 2012-08-27 00:10+0100\n"
+"PO-Revision-Date: 2012-08-27 00:11+0100\n"
 "Last-Translator: Lito <lito@eordes.com>\n"
 "Language-Team: Lito <lito@eordes.com>\n"
 "Language: \n"
@@ -66,7 +66,7 @@ msgstr "Nueva Partida"
 msgid "Home"
 msgstr "Inicio"
 
-#: about.php:6
+#: about.php:27
 msgid "About"
 msgstr "Sobre"
 
@@ -74,21 +74,26 @@ msgstr "Sobre"
 msgid "No user ID was received"
 msgstr "No se ha recibido el ID del usuario"
 
-#: profile.php:17
+#: profile.php:9
+#: profile.php:21
+msgid "Ops.."
+msgstr "Ups..."
+
+#: profile.php:19
 msgid "This user does not exists or could not be loaded. Please reload this page to try it again."
 msgstr "Este usuario no existe o no se ha podido cargar. Por favor, recarga esta página e inténtalo de nuevo."
 
-#: profile.php:30
+#: profile.php:34
 #, php-format
 msgid "%s was added as friend."
 msgstr "%s fue añadido como amigo."
 
-#: profile.php:36
+#: profile.php:40
 #, php-format
 msgid "%s was removed as friend."
 msgstr "%s foi quitado de los amigos."
 
-#: profile.php:44
+#: profile.php:48
 #, php-format
 msgid "%s Profile"
 msgstr "Perfil de %s"
@@ -273,7 +278,7 @@ msgstr "Cambiar"
 
 #: themes/default/game.php:84
 #: themes/default/game.php:149
-#: themes/default/profile.php:110
+#: themes/default/profile.php:116
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -282,7 +287,7 @@ msgid "Move here yours tiles"
 msgstr "Move tus fichas aquí"
 
 #: themes/default/game.php:119
-#: themes/default/profile.php:113
+#: themes/default/profile.php:119
 msgid "Play!"
 msgstr "Jugar!"
 
@@ -386,8 +391,8 @@ msgstr "último movimiento %s"
 #: themes/default/base.php:149
 #: themes/default/base.php:154
 #: themes/default/about.php:20
-#: themes/default/profile.php:48
-#: themes/default/profile.php:103
+#: themes/default/profile.php:54
+#: themes/default/profile.php:109
 msgid "language_"
 msgstr ""
 
@@ -491,73 +496,83 @@ msgstr "<p><strong>Apalabro!</strong> es un proyecto desarrollado por <a href=\"
 msgid "Available Languages"
 msgstr "Idiomas disponibles"
 
-#: themes/default/profile.php:71
+#: themes/default/about.php:28
+msgid "Project Updates"
+msgstr "Actualizaciones del Proyecto"
+
+#: themes/default/profile.php:30
+#: themes/default/profile.php:31
+#, php-format
+msgid "%s Facebook profile"
+msgstr "Perfil de Facebook de %s"
+
+#: themes/default/profile.php:77
 msgid "Remove as friend"
 msgstr "Quitar de amigos"
 
-#: themes/default/profile.php:76
+#: themes/default/profile.php:82
 msgid "Add as friend"
 msgstr "Añadir como amigo"
 
-#: themes/default/profile.php:86
+#: themes/default/profile.php:92
 msgid "Play a versus game"
 msgstr "Jugarle una partida"
 
-#: themes/default/profile.php:97
+#: themes/default/profile.php:103
 msgid "Select a language"
 msgstr "Selecciona un idioma"
 
-#: themes/default/profile.php:121
+#: themes/default/profile.php:127
 #, php-format
 msgid "<strong>%s</strong> finished versus games"
 msgstr "Te has enfrentando en <strong>%s</strong> partidas finalizadas"
 
-#: themes/default/profile.php:127
+#: themes/default/profile.php:133
 #, php-format
 msgid "<strong>%s</strong> you won!"
 msgstr "<strong>%s</strong> ganados"
 
-#: themes/default/profile.php:133
+#: themes/default/profile.php:139
 #, php-format
 msgid "<strong>%s</strong> you lost!"
 msgstr "<strong>%s</strong> perdidos"
 
-#: themes/default/profile.php:144
+#: themes/default/profile.php:150
 #, php-format
 msgid "<strong>%s</strong> played games"
 msgstr "<strong>%s</strong> jugados"
 
-#: themes/default/profile.php:150
+#: themes/default/profile.php:156
 #, php-format
 msgid "<strong>%s</strong> won"
 msgstr "<strong>%s</strong> victorias"
 
-#: themes/default/profile.php:156
+#: themes/default/profile.php:162
 #, php-format
 msgid "<strong>%s</strong> lost"
 msgstr "<strong>%s</strong> derrotas"
 
-#: themes/default/profile.php:162
+#: themes/default/profile.php:168
 #, php-format
 msgid "<strong>%s%%</strong> resign"
 msgstr "<strong>%s</strong> rendiciones"
 
-#: themes/default/profile.php:169
+#: themes/default/profile.php:175
 #, php-format
 msgid "<strong>%s</strong> was the longest word"
 msgstr "<strong>%s</strong> ha sido la palabra más larga"
 
-#: themes/default/profile.php:175
+#: themes/default/profile.php:181
 #, php-format
 msgid "<strong>%s</strong> was the best game"
 msgstr "<strong>%s</strong> ha sido la mejor partida"
 
-#: themes/default/profile.php:181
+#: themes/default/profile.php:187
 #, php-format
 msgid "<strong>%s</strong> was the best play"
 msgstr "<strong>%s</strong> ha sido la mejor jugada"
 
-#: themes/default/profile.php:188
+#: themes/default/profile.php:194
 #, php-format
 msgid "last login <strong>%s</strong>"
 msgstr "último acceso <strong>%s</strong>"
@@ -700,7 +715,7 @@ msgstr "Debes seleccionar un idioma"
 msgid "No game ID was received"
 msgstr "No se ha recibido el ID de la partida"
 
-#: aux/game-check.php:19
+#: aux/game-check.php:21
 msgid "Some error occours triying to load this game. Please reload this page to try it again."
 msgstr "Ha ocurrido algún error intentando cargar esta partida. Por favor, recarga esta página e inténtalo de nuevo."
 

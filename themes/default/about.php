@@ -21,3 +21,22 @@
         <?php } ?>
     </div>
 </section>
+
+<?php if ($git) { ?>
+<section>
+    <div class="page-header">
+        <h1><?php __e('Project Updates'); ?></h1>
+    </div>
+
+    <div class="row">
+        <?php foreach ($git as $column) { ?>
+        <dl class="span6">
+            <?php foreach ($column as $row) { ?>
+            <dt><?php echo $row['date']; ?></dt>
+            <dd><?php echo $row['message']; ?></dd>
+            <?php } ?>
+        </dl>
+        <?php } ?>
+    </div>
+</section>
+<?php } ?>

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apalabro!\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-26 21:37+0100\n"
-"PO-Revision-Date: 2012-08-26 21:37+0100\n"
+"POT-Creation-Date: 2012-08-27 00:10+0100\n"
+"PO-Revision-Date: 2012-08-27 00:10+0100\n"
 "Last-Translator: Lito <lito@eordes.com>\n"
 "Language-Team: Lito <lito@eordes.com>\n"
 "Language: \n"
@@ -66,7 +66,7 @@ msgstr ""
 msgid "Home"
 msgstr ""
 
-#: about.php:6
+#: about.php:27
 msgid "About"
 msgstr ""
 
@@ -74,21 +74,26 @@ msgstr ""
 msgid "No user ID was received"
 msgstr ""
 
-#: profile.php:17
+#: profile.php:9
+#: profile.php:21
+msgid "Ops.."
+msgstr ""
+
+#: profile.php:19
 msgid "This user does not exists or could not be loaded. Please reload this page to try it again."
 msgstr ""
 
-#: profile.php:30
+#: profile.php:34
 #, php-format
 msgid "%s was added as friend."
 msgstr ""
 
-#: profile.php:36
+#: profile.php:40
 #, php-format
 msgid "%s was removed as friend."
 msgstr ""
 
-#: profile.php:44
+#: profile.php:48
 #, php-format
 msgid "%s Profile"
 msgstr ""
@@ -178,7 +183,7 @@ msgstr ""
 
 #: libs/Lito/Apalabro/functions.php:207
 #, php-format
-msgid "%s has Current the game"
+msgid "%s has updated the game"
 msgstr ""
 
 #: libs/Lito/Apalabro/functions.php:214
@@ -273,7 +278,7 @@ msgstr ""
 
 #: themes/default/game.php:84
 #: themes/default/game.php:149
-#: themes/default/profile.php:110
+#: themes/default/profile.php:116
 msgid "Cancel"
 msgstr ""
 
@@ -282,7 +287,7 @@ msgid "Move here yours tiles"
 msgstr ""
 
 #: themes/default/game.php:119
-#: themes/default/profile.php:113
+#: themes/default/profile.php:119
 msgid "Play!"
 msgstr ""
 
@@ -386,8 +391,8 @@ msgstr ""
 #: themes/default/base.php:149
 #: themes/default/base.php:154
 #: themes/default/about.php:20
-#: themes/default/profile.php:48
-#: themes/default/profile.php:103
+#: themes/default/profile.php:54
+#: themes/default/profile.php:109
 msgid "language_"
 msgstr ""
 
@@ -491,73 +496,83 @@ msgstr "<p><strong>Apalabro!</strong> is a PHP project developed by <a href=\"ht
 msgid "Available Languages"
 msgstr ""
 
-#: themes/default/profile.php:71
+#: themes/default/about.php:28
+msgid "Project Updates"
+msgstr ""
+
+#: themes/default/profile.php:30
+#: themes/default/profile.php:31
+#, php-format
+msgid "%s Facebook profile"
+msgstr ""
+
+#: themes/default/profile.php:77
 msgid "Remove as friend"
 msgstr ""
 
-#: themes/default/profile.php:76
+#: themes/default/profile.php:82
 msgid "Add as friend"
 msgstr ""
 
-#: themes/default/profile.php:86
+#: themes/default/profile.php:92
 msgid "Play a versus game"
 msgstr ""
 
-#: themes/default/profile.php:97
+#: themes/default/profile.php:103
 msgid "Select a language"
-msgstr ""
-
-#: themes/default/profile.php:121
-#, php-format
-msgid "<strong>%s</strong> finished versus games"
 msgstr ""
 
 #: themes/default/profile.php:127
 #, php-format
-msgid "<strong>%s</strong> you won!"
+msgid "<strong>%s</strong> finished versus games"
 msgstr ""
 
 #: themes/default/profile.php:133
 #, php-format
-msgid "<strong>%s</strong> you lost!"
+msgid "<strong>%s</strong> you won!"
 msgstr ""
 
-#: themes/default/profile.php:144
+#: themes/default/profile.php:139
 #, php-format
-msgid "<strong>%s</strong> played games"
+msgid "<strong>%s</strong> you lost!"
 msgstr ""
 
 #: themes/default/profile.php:150
 #, php-format
-msgid "<strong>%s</strong> won"
+msgid "<strong>%s</strong> played games"
 msgstr ""
 
 #: themes/default/profile.php:156
 #, php-format
-msgid "<strong>%s</strong> lost"
+msgid "<strong>%s</strong> won"
 msgstr ""
 
 #: themes/default/profile.php:162
 #, php-format
-msgid "<strong>%s%%</strong> resign"
+msgid "<strong>%s</strong> lost"
 msgstr ""
 
-#: themes/default/profile.php:169
+#: themes/default/profile.php:168
 #, php-format
-msgid "<strong>%s</strong> was the longest word"
+msgid "<strong>%s%%</strong> resign"
 msgstr ""
 
 #: themes/default/profile.php:175
 #, php-format
-msgid "<strong>%s</strong> was the best game"
+msgid "<strong>%s</strong> was the longest word"
 msgstr ""
 
 #: themes/default/profile.php:181
 #, php-format
+msgid "<strong>%s</strong> was the best game"
+msgstr ""
+
+#: themes/default/profile.php:187
+#, php-format
 msgid "<strong>%s</strong> was the best play"
 msgstr ""
 
-#: themes/default/profile.php:188
+#: themes/default/profile.php:194
 #, php-format
 msgid "last login <strong>%s</strong>"
 msgstr ""
@@ -700,7 +715,7 @@ msgstr ""
 msgid "No game ID was received"
 msgstr ""
 
-#: aux/game-check.php:19
+#: aux/game-check.php:21
 msgid "Some error occours triying to load this game. Please reload this page to try it again."
 msgstr ""
 
