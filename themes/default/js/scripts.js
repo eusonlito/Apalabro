@@ -61,13 +61,35 @@ $(document).ready(function () {
         return false;
     });
 
-    $('.randomize').click(function () {
-        var randomize = $($(this).data('randomize'));
-        var divs = randomize.children();
+    $('a[data-action="shuffle"]').click(function () {
+        var rack_top = $('div.rack-tiles').position().top;
+        var positions = [];
 
-        while (divs.length) {
-            randomize.append(divs.splice(Math.floor(Math.random() * divs.length), 1)[0]);
-        }
+        $('div.rack-tiles > div').each(function () {
+            var tile_top = $(this).position().top;
+
+            if (tile_top < rack_top) {
+                return;
+            }
+
+            positions[positions.length] = positions.length * 45;
+        });
+
+        for (var j, x, i = positions.length; i; j = parseInt(Math.random() * i), x = positions[--i], positions[i] = positions[j], positions[j] = x);
+
+        $('div.rack-tiles > div').each(function () {
+            var tile_top = $(this).position().top;
+
+            if (tile_top < rack_top) {
+                return;
+            }
+
+            var position = parseInt(positions.splice(0, 1)) - $(this).data('position').left;
+
+            $(this).animate({
+                left: position
+            });
+        });
 
         return false;
     });
@@ -184,9 +206,6 @@ $(document).ready(function () {
             $(this).animate({
                 top: snapToHight(this, dropped),
                 left: snapToWidth(this, dropped)
-            }, {
-                duration: 600,
-                easing: 'easeOutBack'
             });
 
             if (playReady()) {
@@ -233,9 +252,6 @@ $(document).ready(function () {
 
             ui.draggable.animate({
                 top: snapToHight(ui.draggable, $(this))
-            }, {
-                duration: 600,
-                easing: 'easeOutBack'
             });
         }
     });
@@ -340,9 +356,6 @@ $(document).ready(function () {
 
             ui.draggable.animate({
                 top: snapToHight(ui.draggable, $(this))
-            }, {
-                duration: 600,
-                easing: 'easeOutBack'
             });
         }
     });
@@ -379,6 +392,10 @@ $(document).ready(function () {
                 data: 'u='+UPDATED,
                 url: BASE_WWW+'ajax/push.php',
                 success: function (response) {
+                    if (!response) {
+                        return false;
+                    }
+
                     if (response.error == true) {
                         clearInterval(pushInterval);
                         return false;
@@ -452,6 +469,8 @@ $(document).ready(function () {
     }
 
     $('abbr.timeago').timeago();
+
+    recall();
 });
 
 function snapToHight (dragger, target) {
@@ -514,6 +533,12 @@ function playReady () {
 function recall () {
     var rack = $('.rack-tiles');
 
+    if (rack.length == 0) {
+        return false;
+    }
+
+    var i = 0;
+
     $('div', rack).each(function () {
         $('input', $(this)).remove();
 
@@ -523,10 +548,11 @@ function recall () {
 
         $(this).animate({
             top: snapToHight($(this), $(rack)),
-            left: (rack.position().left + $(this).data('position').left)
-        }, {
-            duration: 600,
-            easing: 'easeOutBack'
+            left: (i * 10)
         });
+
+        i++;
     });
+
+    return false;
 }

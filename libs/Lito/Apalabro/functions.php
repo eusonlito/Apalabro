@@ -183,7 +183,8 @@ function getPlayDates ($games)
     return $return;
 }
 
-function getLastTurnMessage ($Game, $Current = null) {
+function getLastTurnMessage ($Game, $Current = null)
+{
     if (!is_object($Game) || (isset($Current->{$Game->id}) && ($Game->last_turn->play_date === $Current->{$Game->id}))) {
         return false;
     }

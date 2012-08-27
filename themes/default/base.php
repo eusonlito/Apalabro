@@ -48,7 +48,7 @@
 
         var UPDATED = '<?php echo base64_encode(json_encode(getPlayDates($Api->getGames('all')))); ?>';
 
-        <?php if (isset($Game)) { ?>
+        <?php if (isset($Game) && isset($Game->id)) { ?>
         GAME_ID = <?php echo $Game->id; ?>;
         VALID_LETTERS = new Array('<?php echo implode("','", $Api->getValidWords()); ?>');
         <?php } ?>

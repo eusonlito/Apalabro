@@ -106,6 +106,10 @@
                     <span class="points"><?php echo $Api->getWordPoints($tile); ?></span>
                 </div>
                 <?php } ?>
+
+                <?php if ($Game->my_rack_tiles) { ?>
+                <a href="#" data-action="shuffle" class="btn pull-right"><?php __e('Shuffle'); ?></a>
+                <?php } ?>
             </div>
 
             <?php if ($Game->game_status !== 'ENDED') { ?>
