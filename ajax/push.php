@@ -1,7 +1,7 @@
 <?php
 header('Content-Type: application/json');
 
-if (!$_POST['u']) {
+if (!isset($_POST['u'])) {
     die();
 }
 

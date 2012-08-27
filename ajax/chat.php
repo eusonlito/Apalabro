@@ -7,6 +7,10 @@ if (!isset($_GET['id']) || !$_GET['id']) {
 
 require (__DIR__.'/../libs/Lito/Apalabro/Loader.php');
 
+if (!isAjax()) {
+    die();
+}
+
 $game = $_GET['id'];
 
 require (BASE_PATH.'/aux/game-check.php');

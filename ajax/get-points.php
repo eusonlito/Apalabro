@@ -7,6 +7,10 @@ if (!isset($_POST['id']) || !$_POST['id'] || !isset($_POST['played_tiles']) || !
 
 require (__DIR__.'/../libs/Lito/Apalabro/Loader.php');
 
+if (!isAjax()) {
+    die();
+}
+
 $game = $_POST['id'];
 
 require (BASE_PATH.'/aux/game-check.php');

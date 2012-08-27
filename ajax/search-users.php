@@ -5,6 +5,10 @@ if (!isset($_POST['filter']) || !$_POST['filter']) {
 
 require (__DIR__.'/../libs/Lito/Apalabro/Loader.php');
 
+if (!isAjax()) {
+    die();
+}
+
 $users = $Api->searchUsers($_POST['filter']);
 
 if ($users) {
