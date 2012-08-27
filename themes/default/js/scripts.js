@@ -28,21 +28,26 @@ $(document).ready(function () {
     });
 
     $('.filter-users button[type="submit"]').click(function (e) {
-        if (($(this).data('url') == undefined) || ($(this).data('filtered') == undefined)) {
+        var $this = $(this);
+
+        if (($this.data('url') == undefined) || ($this.data('filtered') == undefined)) {
             return true;
         }
 
         e.preventDefault(); 
 
-        var $filtered = $($(this).data('filtered'));
+        var $filtered = $($this.data('filtered'));
 
         if ($('input[type="text"][name="search"]').val().length > 0) {
             $filtered.html('<div class="span12 center"><img src="'+BASE_THEME+'images/loading.gif" /></div>');
+
+            $this.attr('disabled', 'disabled');
 
             $.post($(this).data('url'), {
                 filter: $('input[type="text"][name="search"]').val(),
                 }, function (response) {
                     $filtered.html(response);
+                    $this.attr('disabled', false);
                 }
             );
         }

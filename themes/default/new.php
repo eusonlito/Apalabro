@@ -53,7 +53,7 @@
 
             <div class="tab-pane filter-users" id="tab-search">
                 <div class="form-actions">
-                    <input type="text" name="search" value="" class="input-large search-query" placeholder="<?php __e('Search...'); ?>" />
+                    <input type="text" name="search" value="" class="input-large" placeholder="<?php __e('Search...'); ?>" />
 
                     <button type="submit" class="btn btn-info" data-filtered="#users-result" data-url="<?php echo BASE_WWW; ?>ajax/search-users.php"><?php __e('Search'); ?></button>
                 </div>

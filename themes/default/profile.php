@@ -24,6 +24,12 @@
                 }
 
                 echo $User->name;
+
+                if (isset($User->facebook_id) && $User->facebook_id) {
+                    echo ' <a href="https://facebook.com/'.$User->facebook_id.'" title="'
+                        .__('%s Facebook profile', $User->name).'"><img src="'.BASE_THEME.'images/facebook.png"'
+                        .' alt="'.__('%s Facebook profile', $User->name).'" /></a>';
+                }
                 ?>
             </h1>
 

@@ -6,6 +6,8 @@ $user = isset($_GET['id']) ? $_GET['id'] : 0;
 if (!preg_match('/^[0-9]+$/', $user)) {
     $Theme->setMessage(__('No user ID was received'), 'error', true);
 
+    $Theme->meta('title', __('Ops..'));
+
     include ($Theme->get('base.php'));
 
     die();
@@ -15,6 +17,8 @@ $User = $Api->getUser($user);
 
 if (!isset($User->id)) {
     $Theme->setMessage(__('This user does not exists or could not be loaded. Please reload this page to try it again.'), 'error', true);
+
+    $Theme->meta('title', __('Ops..'));
 
     include ($Theme->get('base.php'));
 

@@ -65,9 +65,10 @@ li#updates > a.active {
 li#updates ul span {
     padding: 10px;
     display: block;
+    white-space: nowrap;
 }
 
-div.home div.well {
+div.home div.well, #new-game div.well {
     height: 70px;
     overflow: hidden;
 }

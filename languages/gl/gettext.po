@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apalabro!\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-23 21:42+0100\n"
-"PO-Revision-Date: 2012-08-23 21:42+0100\n"
+"POT-Creation-Date: 2012-08-27 00:10+0100\n"
+"PO-Revision-Date: 2012-08-27 00:10+0100\n"
 "Last-Translator: Lito <lito@eordes.com>\n"
 "Language-Team: Lito <lito@eordes.com>\n"
 "Language: \n"
@@ -66,7 +66,7 @@ msgstr "Nova Partida"
 msgid "Home"
 msgstr "Comezo"
 
-#: about.php:6
+#: about.php:27
 msgid "About"
 msgstr "Sobre"
 
@@ -74,21 +74,26 @@ msgstr "Sobre"
 msgid "No user ID was received"
 msgstr "Non se recibiu o ID do usuario"
 
-#: profile.php:17
+#: profile.php:9
+#: profile.php:21
+msgid "Ops.."
+msgstr "Ups..."
+
+#: profile.php:19
 msgid "This user does not exists or could not be loaded. Please reload this page to try it again."
 msgstr "Este usuario non existe ou non se puido cargar. Por favor, recarga esta páxina para intentalo de novo."
 
-#: profile.php:30
+#: profile.php:34
 #, php-format
 msgid "%s was added as friend."
 msgstr "%s foi engadido como amigo."
 
-#: profile.php:36
+#: profile.php:40
 #, php-format
 msgid "%s was removed as friend."
 msgstr "%s foi quitado dos amigos."
 
-#: profile.php:44
+#: profile.php:48
 #, php-format
 msgid "%s Profile"
 msgstr "Perfil de %s"
@@ -156,6 +161,61 @@ msgstr "nunha hora"
 msgid "in %s hours"
 msgstr "en %s horas"
 
+#: libs/Lito/Apalabro/functions.php:192
+#, php-format
+msgid "%s wants to play with you"
+msgstr "%s quere xogar contigo"
+
+#: libs/Lito/Apalabro/functions.php:198
+#, php-format
+msgid "%s has place tiles"
+msgstr "%s colocou fichas"
+
+#: libs/Lito/Apalabro/functions.php:201
+#, php-format
+msgid "%s has passed the turn"
+msgstr "%s pasou o seu turno"
+
+#: libs/Lito/Apalabro/functions.php:204
+#, php-format
+msgid "%s has swapped tiles"
+msgstr "%s cambiou fichas"
+
+#: libs/Lito/Apalabro/functions.php:207
+#, php-format
+msgid "%s has updated the game"
+msgstr "%s fixo un movemento na partida"
+
+#: libs/Lito/Apalabro/functions.php:214
+#, php-format
+msgid "%s does't wants to play"
+msgstr "%s non quere xogar contigo"
+
+#: libs/Lito/Apalabro/functions.php:216
+#, php-format
+msgid "%s has resigned. You win!"
+msgstr "%s rendiuse. Gañaches!"
+
+#: libs/Lito/Apalabro/functions.php:218
+#, php-format
+msgid "Game versus %s was ended. You win!"
+msgstr "A partida contra %s rematou. Gañaches!"
+
+#: libs/Lito/Apalabro/functions.php:220
+#, php-format
+msgid "Game versus %s was ended. You lost :("
+msgstr "A partida contra %s rematou. Perdiches :("
+
+#: libs/Lito/Apalabro/functions.php:224
+#, php-format
+msgid "Game versus %s was expired. You win!"
+msgstr "A partida contra %s expirou. Gañaches!"
+
+#: libs/Lito/Apalabro/functions.php:226
+#, php-format
+msgid "Game versus %s was expired. You lost :("
+msgstr "A partida contra %s expirou. Perdiches :("
+
 #: libs/ANS/Gettext/example.php:19
 msgid "Hi! This text (translated or not)"
 msgstr ""
@@ -183,18 +243,8 @@ msgid "Last words: %s"
 msgstr "Últimas palabras: %s"
 
 #: themes/default/game.php:39
-#, php-format
-msgid "%s has swapped tiles"
-msgstr "%s cambiou fichas"
-
-#: themes/default/game.php:39
 msgid "You has swapped tiles"
 msgstr "Cambiaches fichas"
-
-#: themes/default/game.php:41
-#, php-format
-msgid "%s has passed the turn"
-msgstr "%s pasou o seu turno"
 
 #: themes/default/game.php:41
 msgid "You has passed your turn"
@@ -228,7 +278,7 @@ msgstr "Cambiar"
 
 #: themes/default/game.php:84
 #: themes/default/game.php:149
-#: themes/default/profile.php:104
+#: themes/default/profile.php:116
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -237,7 +287,7 @@ msgid "Move here yours tiles"
 msgstr "Move aquí as túas fichas"
 
 #: themes/default/game.php:119
-#: themes/default/profile.php:107
+#: themes/default/profile.php:119
 msgid "Play!"
 msgstr "Xogar!"
 
@@ -332,17 +382,17 @@ msgstr "<strong>%s</strong> fichas da letra <strong>%s</strong>"
 msgid "You have %s new chat messages"
 msgstr "Tes %s novas mensaxes no chat"
 
-#: themes/default/sub-friends-list.php:25
+#: themes/default/sub-friends-list.php:24
 #, php-format
 msgid "last move %s"
 msgstr "último movemento %s"
 
 #: themes/default/new.php:14
-#: themes/default/base.php:142
-#: themes/default/base.php:147
+#: themes/default/base.php:149
+#: themes/default/base.php:154
 #: themes/default/about.php:20
-#: themes/default/profile.php:43
-#: themes/default/profile.php:97
+#: themes/default/profile.php:54
+#: themes/default/profile.php:109
 msgid "language_"
 msgstr ""
 
@@ -378,7 +428,7 @@ msgstr "Ningunha partida aquí :)"
 #: themes/default/base.php:7
 #: themes/default/base.php:11
 #: themes/default/base.php:12
-#: themes/default/base.php:83
+#: themes/default/base.php:80
 msgid "Apalabro!"
 msgstr "Apalabro!"
 
@@ -387,34 +437,29 @@ msgstr "Apalabro!"
 msgid "Play to Apalabrados/Angry Words online!"
 msgstr "Xoga a Apalabrados en liña!"
 
-#: themes/default/base.php:92
+#: themes/default/base.php:89
 msgid "Game"
 msgstr "Partida"
 
-#: themes/default/base.php:98
-#: themes/default/base.php:104
+#: themes/default/base.php:95
+#: themes/default/base.php:101
 msgid "My Profile"
 msgstr "O Meu Perfil"
 
-#: themes/default/base.php:100
+#: themes/default/base.php:97
 msgid "User Profile"
 msgstr "Perfil do Usuario"
 
-#: themes/default/base.php:109
+#: themes/default/base.php:107
 #: themes/default/js/strings.js.php:23
 msgid "Your Turn"
 msgstr "Tócache"
 
-#: themes/default/base.php:118
-#, php-format
-msgid "Is your turn vs %s"
-msgstr "É o teu turno contra %s"
-
-#: themes/default/base.php:122
+#: themes/default/base.php:129
 msgid "There aren't games waiting for you"
 msgstr "Non hai partidas agardándote"
 
-#: themes/default/base.php:136
+#: themes/default/base.php:143
 msgid "Logout"
 msgstr "Saír"
 
@@ -451,73 +496,83 @@ msgstr "<p><strong>Apalabro!</strong> é un proxecto desenvolto por <a href=\"ht
 msgid "Available Languages"
 msgstr "Idiomas Dispoñibles"
 
-#: themes/default/profile.php:65
+#: themes/default/about.php:28
+msgid "Project Updates"
+msgstr "Actualizacións do Proxecto"
+
+#: themes/default/profile.php:30
+#: themes/default/profile.php:31
+#, php-format
+msgid "%s Facebook profile"
+msgstr "Perfil de Facebook de %s"
+
+#: themes/default/profile.php:77
 msgid "Remove as friend"
 msgstr "Eliminado de amigos"
 
-#: themes/default/profile.php:70
+#: themes/default/profile.php:82
 msgid "Add as friend"
 msgstr "Engadir como amigo"
 
-#: themes/default/profile.php:80
+#: themes/default/profile.php:92
 msgid "Play a versus game"
 msgstr "Xogarlle unha partida"
 
-#: themes/default/profile.php:91
+#: themes/default/profile.php:103
 msgid "Select a language"
 msgstr "Escolle un idioma"
 
-#: themes/default/profile.php:115
+#: themes/default/profile.php:127
 #, php-format
 msgid "<strong>%s</strong> finished versus games"
 msgstr "enfrentácheste en <strong>%s</strong> partidas rematadas"
 
-#: themes/default/profile.php:121
+#: themes/default/profile.php:133
 #, php-format
 msgid "<strong>%s</strong> you won!"
 msgstr "gañaches <strong>%s</strong>"
 
-#: themes/default/profile.php:127
+#: themes/default/profile.php:139
 #, php-format
 msgid "<strong>%s</strong> you lost!"
 msgstr "perdeches <strong>%s</strong>"
 
-#: themes/default/profile.php:138
+#: themes/default/profile.php:150
 #, php-format
 msgid "<strong>%s</strong> played games"
 msgstr "<strong>%s</strong> xogados"
 
-#: themes/default/profile.php:144
+#: themes/default/profile.php:156
 #, php-format
 msgid "<strong>%s</strong> won"
 msgstr "<strong>%s</strong> victorias"
 
-#: themes/default/profile.php:150
+#: themes/default/profile.php:162
 #, php-format
 msgid "<strong>%s</strong> lost"
 msgstr "<strong>%s</strong> derrotas"
 
-#: themes/default/profile.php:156
+#: themes/default/profile.php:168
 #, php-format
 msgid "<strong>%s%%</strong> resign"
 msgstr "<strong>%s</strong> rendicións"
 
-#: themes/default/profile.php:163
+#: themes/default/profile.php:175
 #, php-format
 msgid "<strong>%s</strong> was the longest word"
 msgstr "<strong>%s</strong> foi a palabra máis longa"
 
-#: themes/default/profile.php:169
+#: themes/default/profile.php:181
 #, php-format
 msgid "<strong>%s</strong> was the best game"
 msgstr "<strong>%s</strong> foi a mellor partida"
 
-#: themes/default/profile.php:175
+#: themes/default/profile.php:187
 #, php-format
 msgid "<strong>%s</strong> was the best play"
 msgstr "<strong>%s</strong> foi a mellor xogada"
 
-#: themes/default/profile.php:182
+#: themes/default/profile.php:194
 #, php-format
 msgid "last login <strong>%s</strong>"
 msgstr "último acceso <strong>%s</strong>"
@@ -660,7 +715,7 @@ msgstr "Debes escoller un idioma"
 msgid "No game ID was received"
 msgstr "Non se recibiu o ID da partida"
 
-#: aux/game-check.php:19
+#: aux/game-check.php:21
 msgid "Some error occours triying to load this game. Please reload this page to try it again."
 msgstr "Ocorreu algún erro intentando cargar esta partida. Por favor, recarga esta páxina para intentalo de novo."
 
@@ -773,17 +828,7 @@ msgstr "Xogando por %s puntos"
 msgid "Sorry but these tiles can not be combined. Please, try it another cells"
 msgstr "Sentímolo pero estas fichas non poden ser misturadas. Por favor, inténtao con outras fichas"
 
-#: ajax/push.php:32
-#, php-format
-msgid "%s wants to play with you"
-msgstr "%s quere xogar contigo"
-
-#: ajax/push.php:40
-#, php-format
-msgid "%s has updated the game"
-msgstr "%s fixo un movemento na partida"
-
-#: ajax/push.php:50
+#: ajax/push.php:44
 #, php-format
 msgid "%s has sent a new message"
 msgstr "%s enviouche unha nova mensaxe"
@@ -795,6 +840,9 @@ msgstr "Non se atoparon usuarios..."
 #: ajax/chat.php:47
 msgid "There aren't any conversation in this game"
 msgstr "Non hai ningunha conversa nesta partida"
+
+#~ msgid "Is your turn vs %s"
+#~ msgstr "É o teu turno contra %s"
 
 #~ msgid "Back"
 #~ msgstr "Voltar"
