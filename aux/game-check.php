@@ -7,7 +7,15 @@ if (!preg_match('/^[0-9]+$/', $game)) {
     $Theme->meta('title', __('Ops..'));
 
     if (isAjax()) {
+        ob_start();
+
         include ($Theme->get('sub-message.php'));
+
+        $html = ob_get_contents();
+
+        ob_end_clean();
+
+        dieJson(array('html' => $Theme->getMessage()));
     } else {
         include ($Theme->get('base.php'));
     }
@@ -23,7 +31,15 @@ if (!$Game) {
     $Theme->meta('title', __('Ops..'));
 
     if (isAjax()) {
+        ob_start();
+
         include ($Theme->get('sub-message.php'));
+
+        $html = ob_get_contents();
+
+        ob_end_clean();
+
+        dieJson(array('html' => $Theme->getMessage()));
     } else {
         include ($Theme->get('base.php'));
     }

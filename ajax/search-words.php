@@ -17,6 +17,8 @@ $Game = $Api->getGame($Game->id);
 
 $words = $Api->solve($_POST['filter']);
 
+ob_start();
+
 if ($words) {
     foreach ($words as $points => $words) {
         echo '<li class="row-fluid">';
@@ -31,9 +33,11 @@ if ($words) {
         echo '</li>';
     }
 } else {
-    __e('No results for your query');
+    __e('<div class="alert alert-empty">No results for your query</div>');
 }
 
-include ($Theme->get('sub-timer.php'));
+$html = ob_get_contents();
 
-exit;
+ob_end_clean();
+
+dieJson(array('html' => $html));

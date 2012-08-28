@@ -11,12 +11,16 @@ if (!isAjax()) {
 
 $users = $Api->searchUsers($_POST['filter']);
 
+ob_start();
+
 if ($users) {
     include ($Theme->get('sub-users-list.php'));
 } else {
     echo '<h3 class="span12 center">'.__('No users founded...').'</h3>';
 }
 
-include ($Theme->get('sub-timer.php'));
+$html = ob_get_contents();
 
-exit;
+ob_end_clean();
+
+dieJson(array('html' => $html));

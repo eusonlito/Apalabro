@@ -7,7 +7,7 @@ if (isset($_GET['reload'])) {
 
 if (!$Api->logged()) {
     if (isAjax()) {
-        die(__('You must be logged to view this section'));
+        dieJson(array('html' => __('You must be logged to view this section')));
     }
 
     if (isset($_POST['user']) && isset($_POST['password']) && !$_POST['email']) {

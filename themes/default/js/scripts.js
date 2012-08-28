@@ -46,8 +46,13 @@ $(document).ready(function () {
             $.post($(this).data('url'), {
                 filter: $('input[type="text"][name="search"]').val(),
                 }, function (response) {
-                    $filtered.html(response);
                     $this.attr('disabled', false);
+
+                    if (!response.html) {
+                        $filtered.html(strings['server_error']);
+                    } else {
+                        $filtered.html(response.html);
+                    }
                 }
             );
         }
@@ -154,7 +159,12 @@ $(document).ready(function () {
                 $('input', $(this)).serialize(),
                 function (response) {
                     $button.attr('disabled', false);
-                    $filtered.html(response);
+
+                    if (!response.html) {
+                        $filtered.html(strings['server_error']);
+                    } else {
+                        $filtered.html(response.html);
+                    }
                 }
             );
         } else {
