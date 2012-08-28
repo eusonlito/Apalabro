@@ -47,6 +47,15 @@ section {
     font-size: 16px;
 }
 
+.alert {
+    padding: 8px 15px;
+}
+
+.alert .close {
+    top: auto;
+    right: auto;
+}
+
 /* Custom styles */
 
 .login-form.well {

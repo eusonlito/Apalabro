@@ -129,13 +129,13 @@
 
         <div class="row-fluid">
             <div class="span6">
-                <p class="alert alert-success">
+                <p class="alert alert-success center">
                     <?php __e('<strong>%s</strong> you won!', $User->my_wins); ?>
                 </p>
             </div>
 
             <div class="span6">
-                <p class="alert alert-danger">
+                <p class="alert alert-danger center">
                     <?php __e('<strong>%s</strong> you lost!', $User->opponent_wins); ?>
                 </p>
             </div>
@@ -152,19 +152,19 @@
 
         <div class="row-fluid">
             <div class="span4">
-                <p class="alert alert-success">
+                <p class="alert alert-success center">
                     <?php __e('<strong>%s</strong> won', $User->stats->games_won); ?>
                 </p>
             </div>
 
             <div class="span4">
-                <p class="alert alert-danger">
+                <p class="alert alert-danger center">
                     <?php __e('<strong>%s</strong> lost', $User->stats->games_lost); ?>
                 </p>
             </div>
 
             <div class="span4">
-                <p class="alert">
+                <p class="alert center">
                     <?php __e('<strong>%s%%</strong> resign', $User->stats->games_resign); ?>
                 </p>
             </div>
