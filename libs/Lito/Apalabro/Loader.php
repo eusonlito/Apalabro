@@ -28,7 +28,7 @@ $language = $Gettext->getLanguage();
 if (is_file(BASE_PATH.'languages/'.$language.'/board.png')) {
     $Api->setLanguage($language);
 } else {
-    $Api->setLanguage('es');
+    $Api->setLanguage('en');
 }
 
 if (isset($logged->message)) {
