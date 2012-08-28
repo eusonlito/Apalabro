@@ -33,7 +33,7 @@ if ($words) {
         echo '</li>';
     }
 } else {
-    __e('<div class="alert alert-empty">No results for your query</div>');
+    echo '<div class="alert alert-empty">'.__('No results for your query').'</div>';
 }
 
 $html = ob_get_contents();

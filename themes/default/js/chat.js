@@ -1,9 +1,11 @@
 var chat = new Array();
 
 chat['id'] = '';
-chat['url'] = BASE_WWW+'ajax/chat.php'+window.location.search+'&last=';
+chat['url'] = BASE_WWW + 'ajax/chat.php' + window.location.search + '&last=';
 
-function updateChat (post) {
+function updateChat(post) {
+    'use strict';
+
     var $layer = $('#modal-chat .modal-body');
     var $link = $('a.chat-24');
 
@@ -18,10 +20,10 @@ function updateChat (post) {
 
     $submit.attr('disabled', 'disabled');
 
-    $.post(chat['url']+chat['id'], post, function (response) {
+    $.post(chat['url'] + chat['id'], post, function (response) {
         $submit.attr('disabled', false);
 
-        if ((response == null) || !response.html) {
+        if ((response === null) || !response.html) {
             return false;
         }
 
@@ -30,7 +32,7 @@ function updateChat (post) {
             return false;
         }
 
-        if (chat['id'] == response.id) {
+        if (chat['id'] === response.id) {
             return true;
         }
 
@@ -43,7 +45,7 @@ function updateChat (post) {
         if (chat['id']) {
             $layer.append(response.html);
 
-            if ($link.text() != '') {
+            if ($link.text() !== '') {
                 $link.text(parseInt($link.text()) + updates);
             } else {
                 $link.text(updates);
@@ -64,11 +66,13 @@ function updateChat (post) {
 }
 
 $(document).ready(function () {
+    'use strict';
+
     $('a.chat-24').click(function () {
         var $layer = $('#modal-chat');
 
         if (!chat['id']) {
-            $('.modal-body', $layer).html('<div class="center"><img src="'+BASE_THEME+'images/loading.gif" /></div>');
+            $('.modal-body', $layer).html('<div class="center"><img src="' + BASE_THEME + 'images/loading.gif" /></div>');
         }
 
         $layer.modal();
@@ -86,7 +90,7 @@ $(document).ready(function () {
 
         $text.val($.trim($text.val()));
 
-        if ($text.val().lenght == 0) {
+        if ($text.val().lenght === 0) {
             return false;
         }
 

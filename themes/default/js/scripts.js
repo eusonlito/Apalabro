@@ -1,14 +1,16 @@
 $(document).ready(function () {
+    'use strict';
+
     $('span[class="letter"]').each(function () {
         var letters = $(this).text().length;
 
-        if (letters == 1) {
+        if (letters === 1) {
             return true;
         }
 
         $(this).css('font-size', parseInt($(this).css('font-size')) - 7);
     });
-    
+
     $('#new-game').on('click', '.well.user', function () {
         $('input[name="user_id"]', $('#new-game')).val($(this).data('id'));
 
@@ -19,7 +21,7 @@ $(document).ready(function () {
     });
 
     $('#new-game').submit(function () {
-        if ($('input[name="language"]:checked', $(this)).length != 1) {
+        if ($('input[name="language"]:checked', $(this)).length !== 1) {
             alert(strings['select_language']);
             return false;
         }
@@ -30,36 +32,35 @@ $(document).ready(function () {
     $('.filter-users button[type="submit"]').click(function (e) {
         var $this = $(this);
 
-        if (($this.data('url') == undefined) || ($this.data('filtered') == undefined)) {
+        if (($this.data('url') === undefined) || ($this.data('filtered') === undefined)) {
             return true;
         }
 
-        e.preventDefault(); 
+        e.preventDefault();
 
         var $filtered = $($this.data('filtered'));
 
         if ($('input[type="text"][name="search"]').val().length > 0) {
-            $filtered.html('<div class="span12 center"><img src="'+BASE_THEME+'images/loading.gif" /></div>');
+            $filtered.html('<div class="span12 center"><img src="' + BASE_THEME + 'images/loading.gif" /></div>');
 
             $this.attr('disabled', 'disabled');
 
             $.post($(this).data('url'), {
-                filter: $('input[type="text"][name="search"]').val(),
-                }, function (response) {
-                    $this.attr('disabled', false);
+                filter: $('input[type="text"][name="search"]').val()
+            }, function (response) {
+                $this.attr('disabled', false);
 
-                    if (!response.html) {
-                        $filtered.html(strings['server_error']);
-                    } else {
-                        $filtered.html(response.html);
-                    }
+                if (!response.html) {
+                    $filtered.html(strings['server_error']);
+                } else {
+                    $filtered.html(response.html);
                 }
-            );
+            });
         }
 
         return false;
     }).keydown(function (e) {
-        if (e.which == 13) {
+        if (e.which === 13) {
             e.preventDefault();
         }
 
@@ -115,7 +116,7 @@ $(document).ready(function () {
     });
 
     $('.filter-list').keyup(function (e) {
-        if (e.keyCode == 27) {
+        if (e.keyCode === 27) {
             $(this).val('');
             $($(this).data('filtered')).parent('div').show();
 
@@ -129,7 +130,7 @@ $(document).ready(function () {
             $($(this).data('filtered')).each(function () {
                 var $this = $(this);
 
-                if ($this.text().indexOf(filter) != -1) {
+                if ($this.text().indexOf(filter) !== -1) {
                     $this.parent('div').show();
                 } else {
                     $this.parent('div').hide();
@@ -139,13 +140,13 @@ $(document).ready(function () {
             $($(this).data('filtered')).parent('div').show();
         }
     }).keydown(function (e) {
-        if (e.which == 13) {
+        if (e.which === 13) {
             e.preventDefault();
-        }  
+        }
     });
 
     $('.filter-expression').submit(function (e) {
-        e.preventDefault(); 
+        e.preventDefault();
 
         var $filtered = $($(this).data('filtered'));
         var $button = $('button[type="submit"]', $(this));
@@ -153,7 +154,7 @@ $(document).ready(function () {
         $button.attr('disabled', 'disabled');
 
         if ($('input[type="text"]', $(this)).val().length > 0) {
-            $filtered.html('<li class="center"><img src="'+BASE_THEME+'images/loading.gif" class="mt-20" /></li>');
+            $filtered.html('<li class="center"><img src="' + BASE_THEME + 'images/loading.gif" class="mt-20" /></li>');
 
             $.post($(this).attr('action'),
                 $('input', $(this)).serialize(),
@@ -176,8 +177,8 @@ $(document).ready(function () {
     });
 
     $('.rack-tiles div').draggable({
-        cursor: "move",
-        revert:  function (dropped) {
+        cursor: 'move',
+        revert: function (dropped) {
             if (!dropped) {
                 return true;
             }
@@ -195,11 +196,11 @@ $(document).ready(function () {
             if ($(this).hasClass('wildcard')) {
                 var letter = prompt(strings['which_letter_use']);
 
-                if ((letter == null) || (letter == '')) {
+                if ((letter === null) || (letter === '')) {
                     return true;
                 }
 
-                if ($.inArray(letter, VALID_LETTERS) == -1) {
+                if ($.inArray(letter, VALID_LETTERS) === -1) {
                     alert('Letter not valid');
                     return true;
                 }
@@ -242,7 +243,7 @@ $(document).ready(function () {
     });
 
     $('.board td:not(.tile-35)').droppable({
-        accept: ".rack-tiles > div"
+        accept: '.rack-tiles > div'
     });
 
     $('.rack-tiles').droppable({
@@ -283,14 +284,14 @@ $(document).ready(function () {
                 $('#modal-confirm .modal-footer').hide();
 
                 $('#modal-confirm .modal-body').html(
-                    '<h2 class="center"><img src="'+BASE_THEME+'images/loading.gif" />'+
-                    '<span class="offset05">'+strings['sending']+'<span></h2>'
+                    '<h2 class="center"><img src="' + BASE_THEME + 'images/loading.gif" />' +
+                    '<span class="offset05">' + strings['sending'] + '<span></h2>'
                 );
 
                 return true;
 
             case 'swap':
-                if ($('input[name^=swapped_tiles\\[]').length == 0) {
+                if ($('input[name^=swapped_tiles\\[]').length === 0) {
                     alert(strings['no_swap_tiles']);
                     return false;
                 }
@@ -304,7 +305,7 @@ $(document).ready(function () {
                 if (!confirm(strings['resign'])) {
                     return false;
                 }
-                
+
                 return confirm(strings['resign_sure']);
         }
 
@@ -316,7 +317,7 @@ $(document).ready(function () {
             return false;
         }
 
-        var test = ($(this).data('action') == 'test') ? true : false;
+        var test = ($(this).data('action') === 'test') ? true : false;
 
         if (test) {
             $('#modal-confirm button').remove();
@@ -324,7 +325,7 @@ $(document).ready(function () {
             $('#game-form button[name="play"]').attr('disabled', 'disabled');
         }
 
-        $('#modal-confirm .modal-body').html('<div class="center"><img src="'+BASE_THEME+'images/loading.gif" /></div>');
+        $('#modal-confirm .modal-body').html('<div class="center"><img src="' + BASE_THEME + 'images/loading.gif" /></div>');
 
         $.post($(this).data('url'),
             $('#game-form input').serialize(),
@@ -344,7 +345,7 @@ $(document).ready(function () {
 
         $('#modal-confirm').modal({
             keyboard: false,
-            backdrop: "static"
+            backdrop: 'static'
         });
 
         return false;
@@ -393,35 +394,35 @@ $(document).ready(function () {
         return false;
     });
 
-    if ((typeof(UPDATED) != 'undefined') && (UPDATED != '')) {
+    if ((typeof(UPDATED) !== 'undefined') && (UPDATED !== '')) {
         var just_updated = new Array();
 
         var pushInterval = setInterval(function () {
             $.ajax({
                 type: 'POST',
-                data: 'u='+UPDATED,
-                url: BASE_WWW+'ajax/push.php',
+                data: 'u=' + UPDATED,
+                url: BASE_WWW + 'ajax/push.php',
                 success: function (response) {
                     if (!response) {
                         return false;
                     }
 
-                    if (response.error == true) {
+                    if (response.error === true) {
                         clearInterval(pushInterval);
                         return false;
-                    } else if (response.length == 0) {
+                    } else if (response.length === 0) {
                         document.title = document.title.replace(/^\([0-9]+\) /, '');
                         return true;
-                    } else if ((response.length == just_updated.length)) {
+                    } else if ((response.length === just_updated.length)) {
                         return true;
                     }
 
+                    var $chat_layer = $('#modal-chat .modal-body');
+                    var length = response.length;
                     var activate = true;
 
-                    for (i = 0; i < response.length; i++) {
-                        if ((response[i].type == 'message') && GAME_ID && (GAME_ID == response[i].id)) {
-                            var $chat_layer = $('#modal-chat .modal-body');
-
+                    for (var i = 0; i < length; i++) {
+                        if ((response[i].type === 'message') && GAME_ID && (GAME_ID === response[i].id)) {
                             if (($chat_layer.length > 0) && $chat_layer.is(':visible')) {
                                 activate = false;
                             }
@@ -431,7 +432,7 @@ $(document).ready(function () {
                     }
 
                     if (activate) {
-                        $('#updates a span').text(strings['your_turn']+' ('+response.length+')');
+                        $('#updates a span').text(strings['your_turn'] + ' (' + length + ')');
 
                         $('#updates > a').addClass('active');
 
@@ -441,15 +442,15 @@ $(document).ready(function () {
                     }
 
                     if (document.title.match(/^\([0-9]+\)/)) {
-                        document.title = document.title.replace(/^\([0-9]+\)/, '('+response.length+')');
+                        document.title = document.title.replace(/^\([0-9]+\)/, '(' + length + ')');
                     } else {
-                        document.title = '('+response.length+') '+document.title;
+                        document.title = '(' + length + ') ' + document.title;
                     }
 
                     var key = '';
 
-                    for (i = 0; i < response.length; i++) {
-                        if ((response[i].type == 'message') && GAME_ID && (GAME_ID == response[i].id)) {
+                    for (var i = 0; i < length; i++) {
+                        if ((response[i].type === 'message') && GAME_ID && (GAME_ID === response[i].id)) {
                             updateChat();
 
                             if (!activate) {
@@ -459,15 +460,15 @@ $(document).ready(function () {
 
                         key = response[i].key;
 
-                        if ($.inArray(key, just_updated) == -1) {
-                            if ($('#updates li#updated-'+key).length) {
-                                $('#updates li#updated-'+key).remove();
+                        if ($.inArray(key, just_updated) === -1) {
+                            if ($('#updates li#updated-' + key).length) {
+                                $('#updates li#updated-' + key).remove();
                             }
 
                             $('#updates ul').prepend(
-                                '<li id="updated-'+key+'">'+
-                                '<a href="'+response[i].link+'"><strong>'+
-                                response[i].text+'</strong></li>'
+                                '<li id="updated-' + key + '">' +
+                                '<a href="' + response[i].link + '"><strong>' +
+                                response[i].text + '</strong></li>'
                             );
 
                             just_updated.push(key);
@@ -483,29 +484,29 @@ $(document).ready(function () {
     recall();
 });
 
-function snapToHight (dragger, target) {
+function snapToHight(dragger, target) {
     return target.position().top - dragger.data('position').top + (target.outerHeight(true) - dragger.outerHeight(true)) / 2;
 }
 
-function snapToWidth (dragger, target) {
+function snapToWidth(dragger, target) {
     return target.position().left - dragger.data('position').left + (target.outerWidth(true) - dragger.outerWidth(true)) / 2;
 }
 
-function nearWord (cell, empty) {
-    if ((typeof(empty[cell + 1]) == 'undefined') || (typeof(empty[cell - 1]) == 'undefined')
-    || (((cell + 15) < (15 * 15)) && (typeof(empty[cell + 15]) == 'undefined'))
-    || (((cell - 15) >= 0) && (typeof(empty[cell - 15]) == 'undefined'))) {
+function nearWord(cell, empty) {
+    if ((typeof(empty[cell + 1]) === 'undefined') || (typeof(empty[cell - 1]) === 'undefined') ||
+    (((cell + 15) < (15 * 15)) && (typeof(empty[cell + 15]) === 'undefined')) ||
+    (((cell - 15) >= 0) && (typeof(empty[cell - 15]) === 'undefined'))) {
         return true;
     } else {
         return false;
     }
 }
 
-function playReady () {
+function playReady() {
     var played_tiles = $('input[name^=played_tiles\\[]');
     var len = played_tiles.length;
 
-    if (len == 0) {
+    if (len === 0) {
         return false;
     }
 
@@ -513,13 +514,13 @@ function playReady () {
     var empty = new Array;
 
     $('table.board td').each(function () {
-        if ($(this).data('position') != undefined) {
+        if ($(this).data('position') !== undefined) {
             empty[$(this).data('position')] = true;
             total++;
         }
     });
 
-    if (total == (15 * 15)) {
+    if (total === (15 * 15)) {
         return (len > 1) ? true : false;
     }
 
@@ -527,7 +528,7 @@ function playReady () {
     var letter = '';
     var position = 0;
 
-    for (i = 0; i < len; i++) {
+    for (var i = 0; i < len; i++) {
         letter = played_tiles[i];
         cell = parseInt($(letter).attr('name').match(/[0-9]+/));
 
@@ -540,10 +541,10 @@ function playReady () {
     return valid;
 }
 
-function recall () {
+function recall() {
     var rack = $('.rack-tiles');
 
-    if (rack.length == 0) {
+    if (rack.length === 0) {
         return false;
     }
 
