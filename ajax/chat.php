@@ -1,6 +1,4 @@
 <?php
-header('Content-Type: application/json');
-
 if (!isset($_GET['id']) || !$_GET['id']) {
     die();
 }
@@ -51,6 +49,4 @@ if ($chat) {
     $html = '<div class="alert alert-empty">'.__('There aren\'t any conversation in this game').'</div>';
 }
 
-die(json_encode(array('id' => $chat_id, 'new' => $new, 'html' => $html)));
-
-exit;
+dieJson(array('id' => $chat_id, 'new' => $new, 'html' => $html));

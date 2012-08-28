@@ -7,11 +7,6 @@
 * More information at license.txt
 */
 
-/*
- * function __ ($text, [$args = null])
- *
- * return string
- */
 function __ ($text, $args = null)
 {
     global $Gettext;
@@ -31,11 +26,6 @@ function __ ($text, $args = null)
     }
 }
 
-/*
- * function __e ($text)
- *
- * echo string
- */
 function __e ($text, $args = null)
 {
     if (count(func_get_args()) > 2) {
@@ -46,6 +36,14 @@ function __e ($text, $args = null)
 
     echo __($text, $args);
 }
+
+function dieJson ($data = array())
+{
+    header('Content-Type: application/json');
+
+    die(json_encode($data));
+}
+
 
 function timeAgo ($timestamp)
 {
@@ -183,7 +181,8 @@ function getPlayDates ($games)
     return $return;
 }
 
-function getLastTurnMessage ($Game, $Current = null) {
+function getLastTurnMessage ($Game, $Current = null)
+{
     if (!is_object($Game) || (isset($Current->{$Game->id}) && ($Game->last_turn->play_date === $Current->{$Game->id}))) {
         return false;
     }

@@ -1,6 +1,4 @@
 <?php
-header('Content-Type: application/json');
-
 if (!isset($_POST['u'])) {
     die();
 }
@@ -14,7 +12,7 @@ if (!isAjax()) {
 $Current = json_decode(base64_decode($_POST['u']));
 
 if (!is_object($Current)) {
-    die();
+    dieJson();
 }
 
 $games = $Api->getGames('all');
@@ -48,4 +46,4 @@ foreach ($games as $Game) {
     }
 }
 
-die(json_encode($message));
+dieJson($message);
