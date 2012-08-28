@@ -267,6 +267,13 @@ class Apalabro {
         return $User;
     }
 
+    public function getUserLogged ()
+    {
+        $this->_loggedOrDie();
+
+        return $this->user;
+    }
+
     public function setFacebookInfo ($User) {
         if (!is_object($User)) {
             return $User;
