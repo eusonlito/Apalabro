@@ -169,10 +169,6 @@ table.board tbody td {
     background-color: #EEE;
 }
 
-.rack-tiles div {
-    margin-right: 20px;
-}
-
 .max-height {
     max-height: 425px;
     overflow: auto;

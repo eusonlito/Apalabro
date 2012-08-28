@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apalabro!\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-27 00:10+0100\n"
-"PO-Revision-Date: 2012-08-27 00:10+0100\n"
+"POT-Creation-Date: 2012-08-28 00:57+0100\n"
+"PO-Revision-Date: 2012-08-28 00:58+0100\n"
 "Last-Translator: Lito <lito@eordes.com>\n"
 "Language-Team: Lito <lito@eordes.com>\n"
 "Language: \n"
@@ -161,57 +161,57 @@ msgstr ""
 msgid "in %s hours"
 msgstr ""
 
-#: libs/Lito/Apalabro/functions.php:192
+#: libs/Lito/Apalabro/functions.php:193
 #, php-format
 msgid "%s wants to play with you"
 msgstr ""
 
-#: libs/Lito/Apalabro/functions.php:198
+#: libs/Lito/Apalabro/functions.php:199
 #, php-format
 msgid "%s has place tiles"
 msgstr ""
 
-#: libs/Lito/Apalabro/functions.php:201
+#: libs/Lito/Apalabro/functions.php:202
 #, php-format
 msgid "%s has passed the turn"
 msgstr ""
 
-#: libs/Lito/Apalabro/functions.php:204
+#: libs/Lito/Apalabro/functions.php:205
 #, php-format
 msgid "%s has swapped tiles"
 msgstr ""
 
-#: libs/Lito/Apalabro/functions.php:207
+#: libs/Lito/Apalabro/functions.php:208
 #, php-format
 msgid "%s has updated the game"
 msgstr ""
 
-#: libs/Lito/Apalabro/functions.php:214
+#: libs/Lito/Apalabro/functions.php:215
 #, php-format
 msgid "%s does't wants to play"
 msgstr ""
 
-#: libs/Lito/Apalabro/functions.php:216
+#: libs/Lito/Apalabro/functions.php:217
 #, php-format
 msgid "%s has resigned. You win!"
 msgstr ""
 
-#: libs/Lito/Apalabro/functions.php:218
+#: libs/Lito/Apalabro/functions.php:219
 #, php-format
 msgid "Game versus %s was ended. You win!"
 msgstr ""
 
-#: libs/Lito/Apalabro/functions.php:220
+#: libs/Lito/Apalabro/functions.php:221
 #, php-format
 msgid "Game versus %s was ended. You lost :("
 msgstr ""
 
-#: libs/Lito/Apalabro/functions.php:224
+#: libs/Lito/Apalabro/functions.php:225
 #, php-format
 msgid "Game versus %s was expired. You win!"
 msgstr ""
 
-#: libs/Lito/Apalabro/functions.php:226
+#: libs/Lito/Apalabro/functions.php:227
 #, php-format
 msgid "Game versus %s was expired. You lost :("
 msgstr ""
@@ -277,7 +277,7 @@ msgid "Swap"
 msgstr ""
 
 #: themes/default/game.php:84
-#: themes/default/game.php:149
+#: themes/default/game.php:153
 #: themes/default/profile.php:116
 msgid "Cancel"
 msgstr ""
@@ -286,93 +286,97 @@ msgstr ""
 msgid "Move here yours tiles"
 msgstr ""
 
-#: themes/default/game.php:119
+#: themes/default/game.php:111
+msgid "Shuffle"
+msgstr ""
+
+#: themes/default/game.php:123
 #: themes/default/profile.php:119
 msgid "Play!"
 msgstr ""
 
-#: themes/default/game.php:123
+#: themes/default/game.php:127
 msgid "Test"
 msgstr ""
 
-#: themes/default/game.php:130
+#: themes/default/game.php:134
 msgid "Recall"
 msgstr ""
 
-#: themes/default/game.php:134
+#: themes/default/game.php:138
 msgid "Swap Tiles"
 msgstr ""
 
-#: themes/default/game.php:136
+#: themes/default/game.php:140
 msgid "Pass"
 msgstr ""
 
-#: themes/default/game.php:143
+#: themes/default/game.php:147
 msgid "Confirm your move"
 msgstr ""
 
-#: themes/default/game.php:152
+#: themes/default/game.php:156
 msgid "Confirm"
 msgstr ""
 
-#: themes/default/game.php:157
+#: themes/default/game.php:161
 msgid "Resign"
 msgstr ""
 
-#: themes/default/game.php:171
+#: themes/default/game.php:175
 msgid "Do you need help?"
 msgstr ""
 
-#: themes/default/game.php:172
+#: themes/default/game.php:176
 msgid "I can give you some suggestions ;)"
 msgstr ""
 
-#: themes/default/game.php:173
+#: themes/default/game.php:177
 msgid "Yes, please!"
 msgstr ""
 
-#: themes/default/game.php:178
+#: themes/default/game.php:182
 msgid "Suggestions"
 msgstr ""
 
-#: themes/default/game.php:179
-#: themes/default/game.php:214
+#: themes/default/game.php:183
+#: themes/default/game.php:218
 #: themes/default/new.php:24
 #: themes/default/new.php:58
 msgid "Search"
 msgstr ""
 
-#: themes/default/game.php:180
+#: themes/default/game.php:184
 msgid "Tiles"
 msgstr ""
 
-#: themes/default/game.php:186
+#: themes/default/game.php:190
 msgid "Filter suggested words"
 msgstr ""
 
-#: themes/default/game.php:193
+#: themes/default/game.php:197
 #, php-format
 msgid "%s points"
 msgstr ""
 
-#: themes/default/game.php:198
+#: themes/default/game.php:202
 #, php-format
 msgid "%s letters"
 msgstr ""
 
-#: themes/default/game.php:212
+#: themes/default/game.php:216
 msgid "Search with regular expression"
 msgstr ""
 
-#: themes/default/game.php:216
+#: themes/default/game.php:220
 msgid "Help"
 msgstr ""
 
-#: themes/default/game.php:225
+#: themes/default/game.php:229
 msgid "This tiles are not played yet:"
 msgstr ""
 
-#: themes/default/game.php:230
+#: themes/default/game.php:234
 #, php-format
 msgid "<strong>%s</strong> tiles of letter <strong>%s</strong>"
 msgstr ""
@@ -811,20 +815,20 @@ msgstr ""
 msgid "PASS"
 msgstr ""
 
-#: ajax/get-points.php:22
+#: ajax/get-points.php:26
 msgid "Some error occours triying to load the points. Please close this window and try it again."
 msgstr ""
 
-#: ajax/get-points.php:50
+#: ajax/get-points.php:54
 msgid "No valid word"
 msgstr ""
 
-#: ajax/get-points.php:58
+#: ajax/get-points.php:62
 #, php-format
 msgid "Playing for %s points"
 msgstr ""
 
-#: ajax/get-points.php:62
+#: ajax/get-points.php:66
 msgid "Sorry but these tiles can not be combined. Please, try it another cells"
 msgstr ""
 
@@ -833,11 +837,11 @@ msgstr ""
 msgid "%s has sent a new message"
 msgstr ""
 
-#: ajax/search-users.php:13
+#: ajax/search-users.php:17
 msgid "No users founded..."
 msgstr ""
 
-#: ajax/chat.php:47
+#: ajax/chat.php:51
 msgid "There aren't any conversation in this game"
 msgstr ""
 
