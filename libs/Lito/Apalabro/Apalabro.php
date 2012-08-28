@@ -262,14 +262,32 @@ class Apalabro {
             return false;
         }
 
-        if (isset($User->facebook_name)) {
+        $User = $this->setFacebookInfo($User);
+
+        return $User;
+    }
+
+    public function setFacebookInfo ($User) {
+        if (!is_object($User)) {
+            return $User;
+        }
+
+        $User->facebook_public = true;
+
+        if (isset($User->facebook_id) && isset($User->facebook_name) && $User->fb_show_name && $User->facebook_name) {
             $User->name = $User->facebook_name;
+        } else {
+            $User->name = $User->username;
+            $User->facebook_public = false;
+        }
+
+        if (isset($User->facebook_id) && $User->fb_show_picture) {
             $User->avatar = 'http://graph.facebook.com/'
                 .$User->facebook_id
                 .'/picture';
         } else {
-            $User->name = $User->username;
             $User->avatar = '';
+            $User->facebook_public = false;
         }
 
         return $User;
@@ -309,15 +327,7 @@ class Apalabro {
         }
 
         foreach ($Friends->list as &$Friend) {
-            if (isset($Friend->friend->facebook_name)) {
-                $Friend->friend->name = $Friend->friend->facebook_name;
-                $Friend->friend->avatar = 'http://graph.facebook.com/'
-                    .$Friend->friend->facebook_id
-                    .'/picture';
-            } else {
-                $Friend->friend->name = $Friend->friend->username;
-                $Friend->friend->avatar = '';
-            }
+            $Friend->friend = $this->setFacebookInfo($Friend->friend);
         }
 
         unset($Friend);
@@ -338,15 +348,7 @@ class Apalabro {
         }
 
         foreach ($Users->list as &$User) {
-            if (isset($User->facebook_name)) {
-                $User->name = $User->facebook_name;
-                $User->avatar = 'http://graph.facebook.com/'
-                    .$User->facebook_id
-                    .'/picture';
-            } else {
-                $User->name = $User->username;
-                $User->avatar = '';
-            }
+            $User = $this->setFacebookInfo($User);
         }
 
         unset($User);
@@ -378,15 +380,7 @@ class Apalabro {
                 continue;
             }
 
-            if (isset($Game->opponent->facebook_name)) {
-                $Game->opponent->name = $Game->opponent->facebook_name;
-                $Game->opponent->avatar = 'http://graph.facebook.com/'
-                    .$Game->opponent->facebook_id
-                    .'/picture';
-            } else {
-                $Game->opponent->name = $Game->opponent->username;
-                $Game->opponent->avatar = '';
-            }
+            $Game->opponent = $this->setFacebookInfo($Game->opponent);
 
             $this->games['all'][$Game->id] = $Game;
 
@@ -437,15 +431,7 @@ class Apalabro {
             }
         }
 
-        if (isset($Game->opponent->facebook_name)) {
-            $Game->opponent->name = $Game->opponent->facebook_name;
-            $Game->opponent->avatar = 'http://graph.facebook.com/'
-                .$Game->opponent->facebook_id
-                .'/picture';
-        } else {
-            $Game->opponent->name = $Game->opponent->username;
-            $Game->opponent->avatar = '';
-        }
+        $Game->opponent = $this->setFacebookInfo($Game->opponent);
 
         if (in_array($Game->game_status, array('ACTIVE', 'PENDING_MY_APPROVAL', 'PENDING_FIRST_MOVE', 'PENDING_FRIENDS_APPROVAL'), true)) {
             $Game->active = true;
