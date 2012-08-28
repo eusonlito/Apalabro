@@ -7,8 +7,7 @@ if (isset($_POST['new']) && isset($_POST['language'])) {
     $Game = $Api->newGame($_POST['language'], $user);
 
     if (isset($Game->id)) {
-        header('Location: '.BASE_WWW.'game.php?id='.$Game->id);
-        exit;
+        die(header('Location: '.BASE_WWW.'game.php?id='.$Game->id));
     }
 
     $Theme->setMessage(__('Sorry but you can\'t play now. You was added to a waiting list.'), 'error');

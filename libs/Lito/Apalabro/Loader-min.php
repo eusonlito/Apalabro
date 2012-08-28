@@ -69,8 +69,7 @@ if (isset($_GET['language'])) {
 if (isset($_GET['logout'])) {
     $Api->logout();
 
-    header('Location: '.BASE_WWW);
-    exit;
+    die(header('Location: '.BASE_WWW));
 }
 
 $Theme = new Theme();
