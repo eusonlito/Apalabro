@@ -15,7 +15,7 @@ if (!preg_match('/^[0-9]+$/', $game)) {
 
         ob_end_clean();
 
-        dieJson(array('html' => $Theme->getMessage()));
+        dieJson(array('html' => $html));
     } else {
         include ($Theme->get('base.php'));
     }
@@ -39,7 +39,7 @@ if (!$Game) {
 
         ob_end_clean();
 
-        dieJson(array('html' => $Theme->getMessage()));
+        dieJson(array('html' => $html));
     } else {
         include ($Theme->get('base.php'));
     }
