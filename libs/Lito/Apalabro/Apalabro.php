@@ -188,7 +188,8 @@ class Apalabro {
 
         $cookie = $this->Cookie->get();
 
-        if (!$cookie) {
+        if (!isset($cookie['user']) || !$cookie['user']
+        || !isset($cookie['session']) || !$cookie['session']) {
             $this->Cookie->set(array(
                 'user' => $this->user,
                 'session' => $this->session
