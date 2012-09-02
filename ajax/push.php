@@ -19,7 +19,7 @@ $games = $Api->getGames('all');
 $message = array();
 
 foreach ($games as $Game) {
-    if (!isset($Game->last_turn->play_date) || !$Game->my_turn) {
+    if (!isset($Game->last_turn->play_date)) {
         continue;
     }
 
