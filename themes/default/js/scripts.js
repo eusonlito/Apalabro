@@ -72,21 +72,15 @@ $(document).ready(function () {
         var positions = [];
 
         $('div.rack-tiles > div').each(function () {
-            var tile_top = $(this).position().top;
-
-            if (tile_top < rack_top) {
-                return;
+            if ($(this).position().top >= rack_top) {
+                positions[positions.length] = positions.length * 45;
             }
-
-            positions[positions.length] = positions.length * 45;
         });
 
         for (var j, x, i = positions.length; i; j = parseInt(Math.random() * i), x = positions[--i], positions[i] = positions[j], positions[j] = x);
 
         $('div.rack-tiles > div').each(function () {
-            var tile_top = $(this).position().top;
-
-            if (tile_top < rack_top) {
+            if ($(this).position().top < rack_top) {
                 return;
             }
 
@@ -410,10 +404,7 @@ $(document).ready(function () {
                     if (response.error === true) {
                         clearInterval(pushInterval);
                         return false;
-                    } else if (response.length === 0) {
-                        document.title = document.title.replace(/^\([0-9]+\) /, '');
-                        return true;
-                    } else if ((response.length === just_updated.length)) {
+                    } else if ((response.length === 0) || (response.length === just_updated.length)) {
                         return true;
                     }
 

@@ -13,6 +13,8 @@
 
             if ($Game->active) {
                 echo ' ('.($Game->my_turn ? __('Your turn') : __('Opponent turn')).')';
+            } else if ($Game->ended_reason === 'EXPIRED') {
+                echo ' ('.__('EXPIRED').')';
             } else if (isset($Game->last_turn->type) && ($Game->last_turn->type !== 'PLACE_TILE')) {
                 echo ' ('.__($Game->last_turn->type).')';
             }
