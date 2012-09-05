@@ -6,7 +6,13 @@ if (isset($_GET['reload'])) {
 }
 
 if ($Api->logged()) {
-    return true;
+    if ($Api->getUser()) {
+        return true;
+    }
+
+    $Api->logout();
+
+    $Theme->setMessage(__('Your session was expired. Please login again.'), 'error');
 }
 
 if (isAjax()) {

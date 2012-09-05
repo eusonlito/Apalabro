@@ -29,7 +29,10 @@ $Timer = new Timer;
 $Debug = new Debug;
 $Cookie = new Cookie;
 
-$Cookie->setName('apalabro');
+$Cookie->setSettings(array(
+    'name' => 'apalabro',
+    'path' => BASE_WWW
+));
 
 $Cache = new Cache;
 
