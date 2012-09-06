@@ -72,7 +72,14 @@ if (isset($_GET['language'])) {
 if (isset($_GET['logout'])) {
     $Api->logout();
 
-    die(header('Location: '.BASE_WWW));
+    if (isAjax()) {
+        dieJson(array(
+            'error' => true,
+            'html' => __('You must be logged to view this section')
+        ));
+    } else {
+        die(header('Location: '.BASE_WWW));
+    }
 }
 
 $Theme = new Theme();

@@ -10,13 +10,29 @@ if ($Api->logged()) {
         return true;
     }
 
-    $Api->logout();
+    $message = __('There are a problem loading this page. Please reload or try to login again.');
 
-    $Theme->setMessage(__('Your session was expired. Please login again.'), 'error');
+    if (isAjax()) {
+        dieJson(array(
+            'error' => true,
+            'html' => $message
+        ));
+    }
+
+    $Theme->meta('title', __('Ops..'));
+
+    $Theme->setMessage($message, 'error', true);
+
+    include ($Theme->get('base.php'));
+
+    die();
 }
 
 if (isAjax()) {
-    dieJson(array('html' => __('You must be logged to view this section')));
+    dieJson(array(
+        'error' => true,
+        'html' => __('You must be logged to view this section')
+    ));
 }
 
 if (isset($_POST['user']) && isset($_POST['password']) && !$_POST['email']) {

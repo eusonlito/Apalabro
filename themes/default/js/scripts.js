@@ -50,11 +50,11 @@ $(document).ready(function () {
             }, function (response) {
                 $this.attr('disabled', false);
 
-                if (!response.html) {
-                    $filtered.html(strings['server_error']);
-                } else {
-                    $filtered.html(response.html);
+                if (!checkResponse(response, $filtered)) {
+                    return false;
                 }
+
+                $filtered.html(response.html);
             });
         }
 
@@ -155,11 +155,11 @@ $(document).ready(function () {
                 function (response) {
                     $button.attr('disabled', false);
 
-                    if (!response.html) {
-                        $filtered.html(strings['server_error']);
-                    } else {
-                        $filtered.html(response.html);
+                    if (!checkResponse(response, $filtered)) {
+                        return false;
                     }
+
+                    $filtered.html(response.html);
                 }
             );
         } else {
@@ -324,12 +324,13 @@ $(document).ready(function () {
         $.post($(this).data('url'),
             $('#game-form input').serialize(),
             function (response) {
-                if (!response.html) {
-                    $('#modal-confirm .modal-body').html(strings['server_error']);
+                var $modal = $('#modal-confirm .modal-body');
+
+                if (!checkResponse(response, $modal)) {
                     return false;
                 }
 
-                $('#modal-confirm .modal-body').html(response.html);
+                $modal.html(response.html);
 
                 if (!test && !response.error) {
                     $('#game-form button[name="play"]').attr('disabled', false);
@@ -397,14 +398,11 @@ $(document).ready(function () {
                 data: 'u=' + UPDATED,
                 url: BASE_WWW + 'ajax/push.php',
                 success: function (response) {
-                    if (!response) {
+                    if (!checkResponse(response)) {
                         return false;
                     }
 
-                    if (response.error === true) {
-                        clearInterval(pushInterval);
-                        return false;
-                    } else if ((response.length === 0) || (response.length === just_updated.length)) {
+                    if ((response.length === 0) || (response.length === just_updated.length)) {
                         return true;
                     }
 
@@ -555,6 +553,19 @@ function recall() {
 
         i++;
     });
+
+    return false;
+}
+
+function checkResponse (response, content) {
+    if (!response.error) {
+        return true;
+    }
+
+    if (content) {
+        var html = response.html ? response.html : strings['server_error'];
+        content.html('<div class="alert alert-error"><div>' + html + '</div></div>');
+    }
 
     return false;
 }

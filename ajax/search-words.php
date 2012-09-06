@@ -15,6 +15,13 @@ require (BASE_PATH.'/aux/game-check.php');
 
 $Game = $Api->getGame($Game->id);
 
+if (!is_object($Game)) {
+    dieJson(array(
+        'error' => true,
+        'html' => __('Some error occours triying to load this game. Please reload this page to try it again.')
+    ));
+}
+
 $words = $Api->solve($_POST['filter']);
 
 ob_start();

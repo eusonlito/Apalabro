@@ -15,14 +15,19 @@ require (BASE_PATH.'/aux/game-check.php');
 
 $Game = $Api->getGame($Game->id);
 
+if (!is_object($Game)) {
+    dieJson(array(
+        'error' => true,
+        'html' => __('Some error occours triying to load this game. Please reload this page to try it again.')
+    ));
+}
+
 $words = $Api->getPlayPoints($_POST['played_tiles']);
 
 if ($words === false) {
     dieJson(array(
         'error' => true,
-        'html' => ('<div class="alert alert-danger"><p>'
-            .__('Some error occours triying to load the points. Please close this window and try it again.')
-            .'</p></div>')
+        'html' => __('Some error occours triying to load the points. Please close this window and try it again.')
     ));
 }
 
@@ -61,7 +66,7 @@ if ($words) {
     }
 } else {
     $error = true;
-    $html = '<div class="alert alert-danger"><p>'.__('Sorry but these tiles can not be combined. Please, try it another cells').'</p></div>';
+    $html = __('Sorry but these tiles can not be combined. Please, try it another cells');
 }
 
 dieJson(array('error' => $error, 'html' => $html));

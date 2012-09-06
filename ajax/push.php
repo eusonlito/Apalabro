@@ -12,7 +12,10 @@ if (!isAjax()) {
 $Current = json_decode(base64_decode($_POST['u']));
 
 if (!is_object($Current)) {
-    dieJson();
+    dieJson(array(
+        'error' => true,
+        'html' => __('Some error occours triying to load this game. Please reload this page to try it again.')
+    ));
 }
 
 $games = $Api->getGames('all');
