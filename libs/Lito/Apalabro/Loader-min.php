@@ -30,7 +30,7 @@ $Debug = new Debug;
 $Cookie = new Cookie;
 
 $Cookie->setSettings(array(
-    'name' => 'apalabro',
+    'name' => 'apalabro2',
     'path' => BASE_WWW
 ));
 
