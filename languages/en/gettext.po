@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apalabro!\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-07 00:06+0100\n"
-"PO-Revision-Date: 2012-09-07 00:06+0100\n"
+"POT-Creation-Date: 2012-09-07 11:36+0100\n"
+"PO-Revision-Date: 2012-09-07 11:36+0100\n"
 "Last-Translator: Lito <lito@eordes.com>\n"
 "Language-Team: Lito <lito@eordes.com>\n"
 "Language: \n"
@@ -253,11 +253,11 @@ msgid "Last words: %s"
 msgstr ""
 
 #: themes/default/game.php:41
-msgid "You has swapped tiles"
+msgid "You have swapped tiles"
 msgstr ""
 
 #: themes/default/game.php:43
-msgid "You has passed your turn"
+msgid "You have passed your turn"
 msgstr ""
 
 #: themes/default/game.php:48

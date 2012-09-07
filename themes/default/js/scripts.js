@@ -332,7 +332,7 @@ $(document).ready(function () {
 
                 $modal.html(response.html);
 
-                if (!test && !response.error) {
+                if (!test && response.valid) {
                     $('#game-form button[name="play"]').attr('disabled', false);
                 }
             }

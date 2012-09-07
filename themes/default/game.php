@@ -38,9 +38,9 @@
             <?php } else if (isset($Game->last_turn->type) && in_array($Game->last_turn->type, array('SWAP', 'PASS'))) { ?>
             <small class="label label-important"><?php
                 if ($Game->last_turn->type === 'SWAP') {
-                    echo $Game->my_turn ? __('%s has swapped tiles', $Game->opponent->name) : __('You has swapped tiles');
+                    echo $Game->my_turn ? __('%s has swapped tiles', $Game->opponent->name) : __('You have swapped tiles');
                 } else {
-                    echo $Game->my_turn ? __('%s has passed the turn', $Game->opponent->name) : __('You has passed your turn');
+                    echo $Game->my_turn ? __('%s has passed the turn', $Game->opponent->name) : __('You have passed your turn');
                 }
             ?></small>
             <?php } ?>

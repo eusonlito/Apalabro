@@ -32,6 +32,7 @@ if ($words === false) {
 }
 
 $html = '';
+$valid = true;
 $error = false;
 
 if ($words) {
@@ -39,7 +40,7 @@ if ($words) {
 
     foreach ($words as $word) {
         if (!isset($word['ok'])) {
-            $error = true;
+            $valid = false;
         }
 
         $html .= '<div class="row-fluid">';
@@ -61,12 +62,17 @@ if ($words) {
         $html .= '</div>';
     }
 
-    if (!$error && (count($words) > 1)) {
+    if ($valid && (count($words) > 1)) {
         $html .= '<h4 class="alert alert-info">'.__('Playing for %s points', $total).'</h4>';
     }
 } else {
+    $valid = false;
     $error = true;
     $html = __('Sorry but these tiles can not be combined. Please, try it another cells');
 }
 
-dieJson(array('error' => $error, 'html' => $html));
+dieJson(array(
+    'error' => $error,
+    'valid' => $valid,
+    'html' => $html
+));

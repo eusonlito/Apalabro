@@ -70,7 +70,7 @@
         })();
         </script>
 
-        <script src="<?php echo BASE_THEME; ?>js/scripts.js?1" type="text/javascript"></script>
+        <script src="<?php echo BASE_THEME; ?>js/scripts.js?2" type="text/javascript"></script>
     </head>
 
     <body>
