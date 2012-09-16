@@ -151,6 +151,7 @@ class Apalabro {
 
         $this->clearData();
 
+        $this->Curl->setHeader(true);
         $this->Curl->setOption(CURLOPT_FAILONERROR, false);
 
         $Login = $this->Curl->post('login', array(
@@ -158,15 +159,21 @@ class Apalabro {
             'password' => $password
         ));
 
+        $this->Curl->setHeader(false);
+
         if (!is_object($Login) || !isset($Login->id)) {
             return $Login;
         }
 
+        $header = $this->Curl->getHeader();
+
+        preg_match('/ap_session=[a-z0-9]+/', $header, $session);
+
         $this->logged = true;
         $this->user = $Login->id;
-        $this->session = $Login->session->session;
+        $this->session = $session[0];
 
-        $this->Curl->setCookie('ap_session='.$this->session);
+        $this->Curl->setCookie($this->session);
 
         $this->Cookie->set(array(
             'user' => $this->user,
@@ -178,7 +185,7 @@ class Apalabro {
 
     public function loginSession ($user, $session)
     {
-        $this->Curl->setCookie('ap_session='.$session);
+        $this->Curl->setCookie($session);
 
         $this->clearData();
 
@@ -224,7 +231,7 @@ class Apalabro {
         $this->user = $Login->id;
         $this->session = $Login->session->session;
 
-        $this->Curl->setCookie('ap_session='.$this->session);
+        $this->Curl->setCookie($this->session);
 
         $this->Cookie->set(array(
             'user' => $this->user,
