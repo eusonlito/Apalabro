@@ -34,7 +34,13 @@
             <small class="label label-info"><?php echo $Game->language; ?></small>
 
             <?php if (isset($Game->last_turn->words)) { ?>
-            <small class="label label-info"><?php __e('Last words: %s', str_replace('-', ', ', $Game->last_turn->words)); ?></small>
+            <small class="label label-info"><?php
+                __e('Last words: %s', str_replace('-', ', ', $Game->last_turn->words));
+
+                if (isset($Game->last_turn->turn_points)) {
+                    echo ' - '.__('%s points', $Game->last_turn->turn_points);
+                }
+            ?></small>
             <?php } else if (isset($Game->last_turn->type) && in_array($Game->last_turn->type, array('SWAP', 'PASS'))) { ?>
             <small class="label label-important"><?php
                 if ($Game->last_turn->type === 'SWAP') {
