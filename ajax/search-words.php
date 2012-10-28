@@ -3,7 +3,8 @@ if (!isset($_POST['id']) || !$_POST['id'] || !isset($_POST['filter']) || !$_POST
     die();
 }
 
-ini_set('max_execution_time', 15);
+ini_set('max_execution_time', 30);
+ini_set('memory_limit', '32M');
 
 require (__DIR__.'/../libs/Lito/Apalabro/Loader.php');
 
