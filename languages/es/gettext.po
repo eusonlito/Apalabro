@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Apalabro!\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-09-07 11:36+0100\n"
-"PO-Revision-Date: 2012-09-07 11:36+0100\n"
+"PO-Revision-Date: 2012-12-08 17:15+0100\n"
 "Last-Translator: Lito <lito@eordes.com>\n"
 "Language-Team: Lito <lito@eordes.com>\n"
 "Language: \n"
@@ -101,7 +101,7 @@ msgstr "Perfil de %s"
 
 #: libs/Lito/Apalabro/Loader.php:13
 msgid "There are a problem loading this page. Please reload or try to login again."
-msgstr "Ha ocurrido algún error intentando cargar esta página. Por favor, recarga esta página e inténtalo de nuevo."
+msgstr "Ha ocurrido algún error intentando cargar esta página. Por favor, recarga esta página e inténtalo de nuevo.  Si el problema continúa, prueba a desconectarte y loguearte de nuevo."
 
 #: libs/Lito/Apalabro/Loader.php:34
 #: libs/Lito/Apalabro/Loader-min.php:78
@@ -702,7 +702,7 @@ msgstr "Estas seguro de querer pasar este turno?"
 
 #: themes/default/js/strings.js.php:20
 msgid "Some error occours with the server response. Please try it again."
-msgstr "Ha ocurrido algún error con la respuesta del servidor. Por favor, inténtalo de nuevo."
+msgstr "Ha ocurrido algún error con la respuesta del servidor. Por favor, inténtalo de nuevo. Si el problema continúa, prueba a desconectarte y loguearte de nuevo."
 
 #: themes/default/js/strings.js.php:21
 msgid "This screen has updates. Click here to reload it."
@@ -731,7 +731,7 @@ msgstr "No se ha recibido el ID de la partida"
 
 #: aux/game-check.php:26
 msgid "Some error occours triying to load this game. Please reload this page to try it again."
-msgstr "Ha ocurrido algún error intentando cargar esta partida. Por favor, recarga esta página e inténtalo de nuevo."
+msgstr "Ha ocurrido algún error intentando cargar esta partida. Por favor, recarga esta página e inténtalo de nuevo.  Si el problema continúa, prueba a desconectarte y loguearte de nuevo."
 
 #: aux/dynamic-strings.php:4
 msgid "language_ca"
