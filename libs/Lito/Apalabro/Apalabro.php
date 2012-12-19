@@ -937,8 +937,12 @@ class Apalabro {
 
         $this->loadBoardPoints();
 
+        array_walk($check->ok, function (&$value) {
+            $value = mb_strtolower($value);
+        });
+
         foreach ($matched as &$word) {
-            if (!in_array(mb_strtoupper(implode('', $word['letters'])), $check->ok)) {
+            if (!in_array(mb_strtolower(implode('', $word['letters'])), $check->ok)) {
                 continue;
             }
 
