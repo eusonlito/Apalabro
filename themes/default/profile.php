@@ -33,7 +33,7 @@
                 ?>
             </h1>
 
-            <?php if (isset($User->status)) { ?>
+            <?php if (isset($User->status) && isset($User->status->message)) { ?>
             <h4><?php echo $User->status->message; ?></h4>
             <?php } ?>
         </div>
