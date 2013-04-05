@@ -25,7 +25,7 @@ if (!is_object($Game)) {
     ));
 }
 
-$words = $Api->solve($_POST['filter']);
+$words = $Api->solve($_POST['filter'], $_POST['tiles']);
 
 ob_start();
 

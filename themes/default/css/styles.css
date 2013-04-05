@@ -169,13 +169,33 @@ table.board tbody td {
     display: block;
     float: none;
     margin-top: 15px;
-    float: left;
     width: 100%;
     height: 50px;
 }
 
 .rack-tiles.hover {
     background-color: #EEE;
+}
+
+.rack-simple {
+    display: block;
+    float: none;
+    width: 100%;
+    height: 30px;
+    margin-top: 20px;
+}
+
+.rack-simple input {
+    display: block;
+    height: 35px;
+    float: left;
+    vertical-align: middle;
+    margin: 0 3px;
+    width: 13px;
+}
+
+.rack-simple label {
+    display: inline;
 }
 
 .max-height {

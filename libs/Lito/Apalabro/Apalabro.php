@@ -135,8 +135,8 @@ class Apalabro {
 
         $cookie = $this->Cookie->get();
 
-        if (!isset($cookie['user']) || !$cookie['user']
-        || !isset($cookie['session']) || !$cookie['session']) {
+        if (!isset($cookie['user']) || empty($cookie['user'])
+        || !isset($cookie['session']) || empty($cookie['session'])) {
             return false;
         }
 
@@ -145,7 +145,7 @@ class Apalabro {
 
     public function login ($user, $password)
     {
-        if (!$user || !$password) {
+        if (empty($user) || empty($password)) {
             return false;
         }
 
@@ -195,8 +195,8 @@ class Apalabro {
 
         $cookie = $this->Cookie->get();
 
-        if (!isset($cookie['user']) || !$cookie['user']
-        || !isset($cookie['session']) || !$cookie['session']) {
+        if (!isset($cookie['user']) || empty($cookie['user'])
+        || !isset($cookie['session']) || empty($cookie['session'])) {
             $this->Cookie->set(array(
                 'user' => $this->user,
                 'session' => $this->session
@@ -251,7 +251,7 @@ class Apalabro {
 
     private function _loggedOrDie ()
     {
-        if (!$this->logged) {
+        if (empty($this->logged)) {
             throw new \Exception('You are not logged');
         }
     }
@@ -266,7 +266,7 @@ class Apalabro {
             $User = $this->Curl->get('users/'.$this->user);
         }
 
-        if (!is_object($User) || !$User->id) {
+        if (!is_object($User) || empty($User->id)) {
             return false;
         }
 
@@ -337,7 +337,7 @@ class Apalabro {
 
         $Friends = $this->Curl->get('users/'.$this->user.'/friends');
 
-        if (!is_object($Friends) || !$Friends->list) {
+        if (!is_object($Friends) || empty($Friends->list)) {
             return array();
         }
 
@@ -358,7 +358,7 @@ class Apalabro {
 
         $Users = $this->Curl->get('search?email='.$filter.'&username='.$filter);
 
-        if (!is_object($Users) || !$Users->list) {
+        if (!is_object($Users) || empty($Users->list)) {
             return array();
         }
 
@@ -386,7 +386,7 @@ class Apalabro {
 
         $Games = $this->Curl->get('users/'.$this->user.'/games');
 
-        if (!is_object($Games) || !$Games->total) {
+        if (!is_object($Games) || empty($Games->total)) {
             return array();
         }
 
@@ -421,7 +421,7 @@ class Apalabro {
     {
         $this->_loggedOrDie();
 
-        if (!$this->games) {
+        if (empty($this->games)) {
             $this->loadGames();
         }
 
@@ -437,7 +437,7 @@ class Apalabro {
         } else {
             $Game = $this->Curl->get('users/'.$this->user.'/games/'.$game);
 
-            if (!is_object($Game) || !$Game->id) {
+            if (!is_object($Game) || empty($Game->id)) {
                 return false;
             }
 
@@ -461,7 +461,7 @@ class Apalabro {
 
     public function getGame ($game, $reload = false)
     {
-        if (!$this->Game || ($this->Game->id != $game) || $reload) {
+        if (empty($this->Game) || ($this->Game->id != $game) || $reload) {
             $this->preloadGame($game);
         }
 
@@ -476,7 +476,7 @@ class Apalabro {
     {
         $this->_loggedOrDie();
 
-        if (!$this->language) {
+        if (empty($this->language)) {
             return array();
         }
 
@@ -578,26 +578,32 @@ class Apalabro {
         return $board;
     }
 
-    public function solve ($expression = '')
+    public function solve ($expression = '', $tiles = array())
     {
         $this->_loggedOrDie();
 
         $Game = $this->Game;
 
-        if (!isset($Game->my_rack_tiles) || !$Game->my_rack_tiles) {
+        if (!isset($Game->my_rack_tiles) || empty($Game->my_rack_tiles)) {
             return array();
         }
 
-        $cache_key = implode('', $Game->my_rack_tiles).$expression;
+        if ($tiles) {
+            $tiles = array_intersect($tiles, $Game->my_rack_tiles);
+        } else {
+            $tiles = $Game->my_rack_tiles;
+        }
+
+        $cache_key = implode('', $tiles).$expression;
 
         if ($this->Cache && $this->Cache->exists($cache_key)) {
             return $this->Cache->get($cache_key);
         }
 
         if ($expression) {
-            $words = $this->searchWordsExpression($Game->my_rack_tiles, $expression);
+            $words = $this->searchWordsExpression($tiles, $expression);
         } else {
-            $words = $this->searchWords($Game->my_rack_tiles);
+            $words = $this->searchWords($tiles);
         }
 
         if ($this->Cache) {
@@ -613,7 +619,7 @@ class Apalabro {
 
         $Game = $this->Game;
 
-        if (!$this->quantity) {
+        if (empty($this->quantity)) {
             $this->loadLetters();
         }
 
@@ -659,7 +665,7 @@ class Apalabro {
 
         $Chat = $this->Curl->get('users/'.$this->user.'/games/'.$this->Game->id.'/chat?all=true');
 
-        if (!is_object($Chat) || !$Chat->list) {
+        if (!is_object($Chat) || empty($Chat->list)) {
             return array();
         }
 
@@ -674,7 +680,7 @@ class Apalabro {
 
         $message = trim($message);
 
-        if (!$message) {
+        if (empty($message)) {
             return false;
         }
 
@@ -694,11 +700,11 @@ class Apalabro {
     {
         $this->_loggedOrDie();
 
-        if (!isset($post['played_tiles']) || !$post['played_tiles']) {
+        if (!isset($post['played_tiles']) || empty($post['played_tiles'])) {
             return false;
         }
 
-        if (!$this->Game->active || !$this->Game->my_turn) {
+        if (empty($this->Game->active) || empty($this->Game->my_turn)) {
             return false;
         }
 
@@ -736,7 +742,7 @@ class Apalabro {
     {
         $this->_loggedOrDie();
 
-        if (!$tiles) {
+        if (empty($tiles)) {
             return false;
         }
 
@@ -763,7 +769,7 @@ class Apalabro {
     {
         $this->_loggedOrDie();
 
-        if (!$this->Game->active) {
+        if (empty($this->Game->active)) {
             return false;
         }
 
@@ -811,7 +817,7 @@ class Apalabro {
     {
         $this->_loggedOrDie();
 
-        if (!$expression) {
+        if (empty($expression)) {
             return array();
         }
 
@@ -888,7 +894,7 @@ class Apalabro {
             }
         }
 
-        if (($full === 7) && ($used >= 7) && (!$compare || (isset($compare[0]) && ($compare[0] === '*')))) {
+        if (($full === 7) && ($used >= 7) && (empty($compare) || (isset($compare[0]) && ($compare[0] === '*')))) {
             $points += 40;
         }
 
@@ -909,7 +915,7 @@ class Apalabro {
             }
         }
 
-        if (!$tiles) {
+        if (empty($tiles)) {
             return array();
         }
 
@@ -917,7 +923,7 @@ class Apalabro {
 
         $matched = $this->Game->board_spaces['added'];
 
-        if (!$matched) {
+        if (empty($matched)) {
             return array();
         }
 
@@ -931,7 +937,7 @@ class Apalabro {
 
         $check = $this->Curl->post('dictionaries/'.mb_strtoupper($this->language), mb_strtoupper(implode(',', $words)));
 
-        if (!$check) {
+        if (empty($check)) {
             return false;
         }
 
@@ -995,7 +1001,7 @@ class Apalabro {
 
         $Game->board_spaces = array();
 
-        if (!$Game->board_tiles && !$added) {
+        if (empty($Game->board_tiles) && empty($added)) {
             return array();
         }
 
@@ -1178,7 +1184,7 @@ class Apalabro {
 
         $this->loadLanguage();
 
-        if (!$this->points) {
+        if (empty($this->points)) {
             return false;
         }
 
@@ -1250,25 +1256,25 @@ class Apalabro {
 
     private function stringInArray ($string, $array, $wildcards)
     {
-        if (!$string) {
+        if (empty($string)) {
             return false;
         }
 
         if ($array) {
             foreach ($array as $letter) {
-                if (!$letter || (($position = mb_strpos($string, $letter)) === false)) {
+                if (empty($letter) || (($position = mb_strpos($string, $letter)) === false)) {
                     continue;
                 }
 
                 $string = mb_substr($string, 0, $position).mb_substr($string, $position + mb_strlen($letter));
 
-                if (!$string) {
+                if (empty($string)) {
                     return true;
                 }
             }
         }
 
-        if (!$wildcards) {
+        if (empty($wildcards)) {
             return false;
         }
 
@@ -1280,7 +1286,7 @@ class Apalabro {
 
                 if ($wildcards < 0) {
                     return false;
-                } else if (!$string) {
+                } else if (empty($string)) {
                     return true;
                 }
             }

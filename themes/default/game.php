@@ -221,11 +221,25 @@
                     <form action="<?php echo BASE_WWW; ?>ajax/search-words.php" class="form-inline filter-expression" data-filtered=".words-expression" method="post">
                         <input type="hidden" name="id" value="<?php echo $Game->id; ?>" />
 
+
                         <input type="text" name="filter" value="" class="input-large" placeholder="<?php __e('Search with regular expression'); ?>">
 
                         <button type="submit" class="btn btn-info"><?php __e('Search'); ?></button>
 
                         <a href="http://www.phpf1.com/tutorial/php-regular-expression.html" class="btn btn-success pull-right" target="_blank"><?php __e('Help'); ?></a>
+
+                        <div class="rack-simple">
+                            <?php foreach ($Game->my_rack_tiles as $tile) { ?>
+                            <label>
+                                <input type="checkbox" name="tiles[]" value="<?php echo $tile; ?>" checked="checked" />
+
+                                <div class="tile-35<?php echo (strstr($tile, '*') === false) ? '' : ' wildcard'; ?>">
+                                    <span class="letter"><?php echo $tile; ?></span>
+                                    <span class="points"><?php echo $Api->getWordPoints($tile); ?></span>
+                                </div>
+                            </label>
+                            <?php } ?>
+                        </div>
                     </form>
 
                     <ul class="max-height words-expression">
