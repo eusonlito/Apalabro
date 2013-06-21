@@ -50,7 +50,7 @@ class Apalabro {
     public function debug ($text, $trace = true)
     {
         if ($this->Debug) {
-            $this->Debug->{$this->Debug->$function}($text, $trace);
+            $this->Debug->{$this->Debug->function}($text, $trace);
         }
     }
 
