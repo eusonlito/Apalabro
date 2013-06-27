@@ -669,8 +669,6 @@ class Apalabro {
             return array();
         }
 
-        krsort($Chat->list);
-
         return $Chat->list;
     }
 
