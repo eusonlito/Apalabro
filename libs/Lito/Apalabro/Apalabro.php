@@ -490,7 +490,7 @@ class Apalabro {
         $Game = &$this->Game;
 
         if ($Game->board_tiles) {
-            $tiles = explode(',', $Game->board_tiles);
+            $tiles = explode(',', mb_strtolower($Game->board_tiles));
 
             $Game->board_tiles = array();
 
@@ -506,7 +506,7 @@ class Apalabro {
         }
 
         if (isset($Game->my_rack_tiles) && is_string($Game->my_rack_tiles)) {
-            $Game->my_rack_tiles = explode(',', $Game->my_rack_tiles);
+            $Game->my_rack_tiles = explode(',', mb_strtolower($Game->my_rack_tiles));
 
             sort($Game->my_rack_tiles, SORT_STRING);
 
